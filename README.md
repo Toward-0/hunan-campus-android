@@ -4,7 +4,7 @@
 
 当前交付版本为 **0.2.21-compat-s1（33）**，已有 realme 和 iQOO 真机联网成功记录。可下载安装使用，更多系统和长期后台表现仍在持续验证。
 
-**[下载手机 APK](https://github.com/Toward-0/hunan-campus-android/releases/download/v0.2.21-compat-s1/ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk)** · [版本说明](https://github.com/Toward-0/hunan-campus-android/releases/tag/v0.2.21-compat-s1) · [使用指南](docs/USER_GUIDE.md)
+**[下载手机 APK](https://github.com/Toward-0/hunan-campus-android/raw/6e832752c7b14d4997b141c16c65657897d5d97e/artifacts/main/ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk)** · [版本说明](https://github.com/Toward-0/hunan-campus-android/releases/tag/v0.2.21-compat-s1) · [使用指南](docs/USER_GUIDE.md)
 
 ## 开始使用
 
