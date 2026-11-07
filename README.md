@@ -1,39 +1,64 @@
 # 湖南校园网 Android
 
-当前归档版本 **0.2.21-compat-s1 / versionCode 33**。这是持续开发的私有项目，**阶段1整体未通过**，不是已完成的兼容性或后台稳定性承诺。
+在安卓手机上使用校园网账号和密码连接湖南校园网，查看连接状态，并在需要时手动修复网络。
 
-当前已有 realme RMX3820（Android 14 / API 34）和用户称为 iQOO 12 的 vivo V2307A（Android 15 / API 35）上该版本的实际联网成功证据。iQOO 对照中高级项为空，仅由用户输入账号密码并手动连接成功；该结果只覆盖记录的设备、网络与短时窗口。
+当前交付版本为 **0.2.21-compat-s1（33）**，已有 realme 和 iQOO 真机联网成功记录。可下载安装使用，更多系统和长期后台表现仍在持续验证。
 
-## 从这里继续
+**[下载手机 APK](https://github.com/Toward-0/hunan-campus-android/releases/download/v0.2.21-compat-s1/ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk)** · [版本说明](https://github.com/Toward-0/hunan-campus-android/releases/tag/v0.2.21-compat-s1) · [使用指南](docs/USER_GUIDE.md)
 
-- [当前进度、验证边界和未解决问题](docs/CURRENT_STATUS.md)
-- [完整开发、测试、交付流程](docs/FULL_WORKFLOW.md)
-- [下次对话可直接使用的提示词](docs/NEXT_PROMPT.md)
-- [构建、安装和工具使用说明](docs/BUILD_AND_INSTALL.md)
-- [证据与哈希说明](evidence/README.md)
-- [协作约束](AGENTS.md)
+## 开始使用
 
-`source/` 保存 v33 工程。其内部 README 和部分复现文档保留旧版本时点的说明，**当前进度以本页和 docs/ 为准**。运行代码与构建文件保持 v33 原样；只有一份历史操作文档中的设备序列号被替换为占位符，见 `evidence/publication-changes.json`。原 APK 构建绑定使用 `original-source-manifest.json`，发布副本使用新的 `source-manifest.json`，两者不可混称。
+1. 下载并安装上面的手机 APK；已有同签名版本可尝试直接覆盖安装，保留应用数据。
+2. 在系统中直接连接校园 Wi-Fi。
+3. 打开应用，在账号页输入账号、密码，先保持高级参数为空。
+4. 点击一次“保存并连接”，查看连接状态及外网检测结果。
 
-## APK
+**更换手机前，在原手机仍连接校园 Wi-Fi 时点击“注销并停止”，确认注销成功后，再用新手机连接。** “停止连接”或断开 Wi-Fi 不等于注销服务器会话。
 
-| 文件 | 用途 | 包名 / ABI |
-|---|---|---|
-| [candidate-phone](artifacts/main/ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk) | 主应用；真实认证只能由用户手动执行 | org.esurfing.hunan / arm64-v8a + armeabi-v7a |
-| [isolation-phone](artifacts/isolation/ESurfingHunan-0.2.21-compat-s1-isolation-phone.apk) | 隔离测试 | org.esurfing.hunan.isolation / 双 ARM |
-| [isolation-arm32](artifacts/isolation/ESurfingHunan-0.2.21-compat-s1-isolation-arm32.apk) | 支持32位设备上的实际32位JNI测试 | armeabi-v7a |
-| [isolation-x86_64](artifacts/isolation/ESurfingHunan-0.2.21-compat-s1-isolation-x86_64.apk) | 匹配模拟器的隔离测试 | x86_64 |
+## 当前功能
 
-主 APK SHA256：`7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D`。
+- 账号密码登录与校园门户自动发现。
+- 已认证会话的心跳维护、连接状态与外网可用性检测。
+- “更多 → 修复网络”常驻入口：条件满足后，由用户确认执行修复。
+- 网络丢失或身份变化后停止连接；进程终止、强制停止或重启后等待手动连接。
+- 简洁四页界面，手机安装包同时包含 32 位和 64 位 ARM 原生库。
 
-设计支持 minSdk 26、targetSdk 35；手机交付双 ARM。ARM64/16KB 实际运行环境仍缺失；API35 大字体状态栏裁切仍未解决；完整约定矩阵不能用旧构建结果替代。没有8小时自然锁屏或全厂商适配结论。
+## 支持与验证范围
 
-## 连接和修复规则
+**设计支持**：Android 8.0 / API 26 起，targetSdk 35；手机 ABI 为 `arm64-v8a` 与 `armeabi-v7a`。设计范围不代表其中每个系统和机型都已验证。
 
-“更多 → 修复网络”入口常驻，但执行仍受安全条件约束。用户确认、自身注销得到协议认可的成功、客户端等待策略、至多一次重新登录缺一不可。停止连接/关闭 Wi-Fi 不等于服务端注销。105 的协议含义和根因尚未确认，连接恢复也不等于已修复其根因。
+**当前版本已验证**：
 
-网络丢失或身份变化、进程终止、强制停止及重启后不自动认证。不自动开机登录，不自动重放账号 POST，不修改协议、生产端点或 MAC/客户端标识策略。
+| 设备 / 环境 | 系统 | ABI / 页大小 | 已有结果 |
+|---|---|---|---|
+| realme RMX3820 | Android 14 / API 34 | ARM64、ARM32 / 4KB | 主包安装与实网成功；同版本隔离包 ARM64、ARM32 JNI 通过 |
+| iQOO 12（设备型号 V2307A） | Android 15 / API 35 | ARM64 / 4KB | 主包安装、仅账号密码实网连接成功；同版本隔离包 ARM64 JNI 通过 |
+| Android Emulator | API 35 | x86_64 / 4KB | 隔离包专项测试；不作为手机 ARM 兼容证明 |
 
-## 仓库边界
+**当前不足与未验证范围**：
 
-本仓库含筛选源码、APK、可复现脚本和白名单证据摘要；原始本机封存证据以哈希引用。无签名私钥、用户凭据、完整抓包、原始手机日志、SDK或缓存。仍需开发者自行配置工具链及由用户持有的既有测试签名；不承诺下载后无需配置即可构建。第三方代码保留自身许可，尚未为整个项目新增许可证。
+- 尚未完成 ARM64 / 16KB 页大小设备的实际运行验证；静态对齐检查通过不能替代真机结果。
+- API 35 下两倍字体仍有状态栏顶部裁切，四页的全部刘海、导航、键盘与大字体组合尚未验收完毕。
+- 当前版本的旧 Android 系统完整回归矩阵仍待补齐，其他厂商和型号需逐台验证。
+- 尚未完成 Doze 组合及 8 小时自然锁屏测试，不能保证所有手机在省电限制下持续准时心跳。
+- 诊断导出的完整性和部分测试记录仍需完善。
+
+当前使用既有**测试签名**。将来迁移正式签名时，安装方式与数据迁移可能需要调整，不能保证换签后直接覆盖安装。
+
+## 下载与反馈
+
+普通使用者只需安装 `ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk`。名称含 `isolation` 的 APK 仅用于开发测试。
+
+主包 SHA256：
+
+```text
+7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D
+```
+
+反馈时请说明手机型号、Android 版本、应用版本、操作顺序和页面提示。不要提交账号、密码、票据、完整抓包或未经检查的完整日志。可通过 [Issues](https://github.com/Toward-0/hunan-campus-android/issues) 记录使用问题与改进建议。
+
+## 开发与持续完善
+
+源码位于 [`source/`](source/)，构建入口和工具使用说明见 [构建文档](docs/BUILD_AND_INSTALL.md)，完整开发流程见 [FULL_WORKFLOW.md](docs/FULL_WORKFLOW.md)，验证资料见 [`evidence/`](evidence/)。本次发布沿用已验证的同一 APK，没有重建或变更应用版本。
+
+后续优先完善界面适配、旧系统与 16KB 运行验证、后台调度和长期锁屏表现。源码目录内部分说明属于历史版本，以仓库首页及本次版本说明为当前使用入口。第三方代码的原有许可和来源说明保留在源码中。
