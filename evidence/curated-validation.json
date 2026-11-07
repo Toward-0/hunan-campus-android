@@ -1,0 +1,1387 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Reviewed field-allowlisted handoff index; original device telemetry and screenshots remain in local sealed archives.",
+  "generatedAt": "2026-11-07T22:43:58.199735+08:00",
+  "phase": 1,
+  "overallStatus": "FAIL",
+  "conclusion": "阶段1整体未通过。iQOO与realme已有v33短时实网成功证据，但ARM64 16KB运行、完整矩阵和UI等缺口未关闭。",
+  "currentBuild": {
+    "buildId": "0.2.21-compat-s1+33",
+    "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+    "mainApkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D"
+  },
+  "provenanceRules": [
+    "Each archived status is retained as originally recorded.",
+    "Later real-network successes supplement but do not rewrite earlier NOT_RUN records.",
+    "PASS of a scoped probe is not full UI, broad device, 16KB-runtime, or 8-hour stability acceptance.",
+    "Original evidence references are local archive identifiers with hashes, not repository-relative download links.",
+    "Raw device identifiers, credentials, addresses, network handles and machine paths are not exported."
+  ],
+  "archives": [
+    {
+      "stageId": "repair-menu-20261107-01",
+      "status": "FAIL",
+      "validation": {
+        "archivePath": "outputs/repair-menu-20261107-01/validation.json",
+        "sha256": "CCFC1E2D5E15D37F45077511A6A80E78628674D3C37F7B049B10D24D2912D6EF",
+        "includedInRepository": false
+      },
+      "report": {
+        "archivePath": "outputs/repair-menu-20261107-01/验收报告.md",
+        "sha256": "4F90F8BCACE14DFD7D15963AC8D46DAEFCE8C3C25243D8FF8463C3400ECD8222",
+        "includedInRepository": false
+      }
+    },
+    {
+      "stageId": "iqoo12-s1-compare-20261107-01",
+      "status": "FAIL",
+      "validation": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/validation.json",
+        "sha256": "A9F9515E15BC3FBF26C4CB5BA92AFEF418714A39BE7ACC21379ABCB28F9F163A",
+        "includedInRepository": false
+      },
+      "report": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/验收报告.md",
+        "sha256": "720E2094C58C8A07F8A8C9CFF6DD5E8B6F9505182FE38B6A1E6A958680A36765",
+        "includedInRepository": false
+      }
+    },
+    {
+      "stageId": "realme105-20261107-01",
+      "status": "FAIL",
+      "validation": {
+        "archivePath": "outputs/realme105-20261107-01/validation.json",
+        "sha256": "A8D3EE4835D5708916CFA347EACF6195452A23E45E61837F70DCA2EB45C547E5",
+        "includedInRepository": false
+      },
+      "report": {
+        "archivePath": "outputs/realme105-20261107-01/验收报告.md",
+        "sha256": "3AAE921BFE6E42F210F9CD17C147A6075713F807CF97053BF670BB61913D726F",
+        "includedInRepository": false
+      }
+    }
+  ],
+  "tests": [
+    {
+      "testId": "api35-CompatProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7385280149654A2312D301F62CD49B8C7A4B4A7DA77150115B6619F7F94F2D30",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:33:47.287107+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "35",
+        "model": "sdk_gphone64_x86_64",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "x86_64",
+          "arm64-v8a"
+        ]
+      },
+      "actualSummary": {
+        "testId": "S1-JNI",
+        "cycles": 200,
+        "api": 35,
+        "model": "sdk_gphone64_x86_64",
+        "supportedAbis": "x86_64,arm64-v8a",
+        "process64": true,
+        "pageSize": 4096,
+        "status": "PASS",
+        "nativeBits": 64,
+        "handlesAfter": 0,
+        "syntheticAlgorithms": 9,
+        "allocationFailurePositionsPerAlgorithm": 20,
+        "manufacturer": "Google",
+        "malformedRejected": 182,
+        "loadedAbi": "x86_64"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/api35-CompatProbe/result.json",
+        "sha256": "A18F00BC860512D0737A749E1A7EE101E33927C37D249E48B7EFB7705354F994",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "api35-RepairMenuProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7385280149654A2312D301F62CD49B8C7A4B4A7DA77150115B6619F7F94F2D30",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:33:50.343603+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "35",
+        "model": "sdk_gphone64_x86_64",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "x86_64",
+          "arm64-v8a"
+        ]
+      },
+      "actualSummary": "All 14 synthetic repair-menu cases passed, including disabled-state explanation, confirmation, cancellation, duplicate-dialog protection and stale confirmation protection.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/api35-RepairMenuProbe/result.json",
+        "sha256": "BCD9C539601CCA1B680CCAFB78EF56C1ED21486FA89BD805AD0ACA8A9DE27CAF",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "api35-ui",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7385280149654A2312D301F62CD49B8C7A4B4A7DA77150115B6619F7F94F2D30",
+      "expected": "UI probe completes; More repair button visibility and text checked separately. Automated PASS is not full four-page visual acceptance.",
+      "time": "2026-11-07T13:33:52.991442+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": 35,
+        "fontRequested": "1.0",
+        "navigationRequested": "current"
+      },
+      "actualSummary": "UI probe completed. This does not establish complete four-page visual acceptance.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/api35-ui/result.json",
+        "sha256": "DD35D0D25BB58678EB7AF52F3347F0FBE35FF18F92EA86AC0F3F9C2D58262286",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "api35-ui-large",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7385280149654A2312D301F62CD49B8C7A4B4A7DA77150115B6619F7F94F2D30",
+      "expected": "UI probe completes; More repair button visibility and text checked separately. Automated PASS is not full four-page visual acceptance.",
+      "time": "2026-11-07T13:34:29.080234+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": 35,
+        "fontRequested": "2.0",
+        "navigationRequested": "current"
+      },
+      "actualSummary": "UI probe completed at font scale 2. More repair control passed visual review, but system status bar clipping remains.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/api35-ui-large/result.json",
+        "sha256": "04AA708B4AB90EA011635006C4D43893AFE70B345F1EAB1A106EA32978E1EF1A",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "main-install",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Same-signature update to version33; installed APK hash matches; retain app data; no login/logout command.",
+      "time": "2026-11-07T21:41:37.388353+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "pageSize": "4096",
+        "api": "34",
+        "model": "RMX3820",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi"
+      },
+      "actualSummary": "Same-signature upgrade installed versionCode 33; installed APK hash matched. Main application data was retained. No authentication operation was automated.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/main-install/result.json",
+        "sha256": "5A10BF44FF597E6F1252324FFB2B71A5BF3AEBFED9DD550381FA3DD488CC88FD",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "realme32-CompatProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "15DFE23B3A391698A48A6E6E635C6DDA3F4C04585775A0C46496C7B19724B593",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:39:34.451924+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "34",
+        "model": "RMX3820",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "armeabi"
+        ]
+      },
+      "actualSummary": {
+        "testId": "S1-JNI",
+        "cycles": 200,
+        "api": 34,
+        "model": "RMX3820",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "process64": false,
+        "pageSize": 4096,
+        "status": "PASS",
+        "nativeBits": 32,
+        "handlesAfter": 0,
+        "syntheticAlgorithms": 9,
+        "allocationFailurePositionsPerAlgorithm": 20,
+        "manufacturer": "realme",
+        "malformedRejected": 182,
+        "loadedAbi": "armeabi-v7a"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/realme32-CompatProbe/result.json",
+        "sha256": "188219891B795C367ABBF57DF704CC944749EF36062FE2D321D45B13BB895129",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "realme32-RepairMenuProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "15DFE23B3A391698A48A6E6E635C6DDA3F4C04585775A0C46496C7B19724B593",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:40:09.159027+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "34",
+        "model": "RMX3820",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "armeabi"
+        ]
+      },
+      "actualSummary": "All 14 synthetic repair-menu cases passed, including disabled-state explanation, confirmation, cancellation, duplicate-dialog protection and stale confirmation protection.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/realme32-RepairMenuProbe/result.json",
+        "sha256": "439DA07FBAC734823E939E7A50D8353B7913B12EF6C26E2DB0A9DFC5B92DAA1A",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "realme34-CompatProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:32:48.501360+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "34",
+        "model": "RMX3820",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "armeabi"
+        ]
+      },
+      "actualSummary": {
+        "testId": "S1-JNI",
+        "cycles": 200,
+        "api": 34,
+        "model": "RMX3820",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "process64": true,
+        "pageSize": 4096,
+        "status": "PASS",
+        "nativeBits": 64,
+        "handlesAfter": 0,
+        "syntheticAlgorithms": 9,
+        "allocationFailurePositionsPerAlgorithm": 20,
+        "manufacturer": "realme",
+        "malformedRejected": 182,
+        "loadedAbi": "arm64-v8a"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/realme34-CompatProbe/result.json",
+        "sha256": "DC46EEDC92E6A22C8F161C10D15279C5C4EE83417173E4FD6DEF4C07C9A9FC78",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "realme34-repair",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:33:10.619496+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "34",
+        "model": "RMX3820",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "armeabi"
+        ]
+      },
+      "actualSummary": "Six isolated repair paths passed: unconfirmed logout, stop, network loss, network identity change, service end, and confirmed-success path. Success path waited at least 99 seconds for the client 100-second strategy and relogged at most once.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/realme34-repair/result.json",
+        "sha256": "5DBD59972EAF3BB96795DA8D855E4D27F3764088E1772DD6924F8376E5FDD1C2",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "realme34-RepairMenuProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "All named probe assertions pass; only synthetic inputs and device loopback; no production authentication.",
+      "time": "2026-11-07T13:32:57.744956+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": "34",
+        "model": "RMX3820",
+        "pageSize": 4096,
+        "supportedAbis": [
+          "arm64-v8a",
+          "armeabi-v7a",
+          "armeabi"
+        ]
+      },
+      "actualSummary": "All 14 synthetic repair-menu cases passed, including disabled-state explanation, confirmation, cancellation, duplicate-dialog protection and stale confirmation protection.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/realme34-RepairMenuProbe/result.json",
+        "sha256": "3176C0841990F7BC45F93E7B32C363301F96B8BCE9A217C313CBD72E985B85D7",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "realme34-ui",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "UI probe completes; More repair button visibility and text checked separately. Automated PASS is not full four-page visual acceptance.",
+      "time": "2026-11-07T13:33:00.244674+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": 34,
+        "fontRequested": "1.0",
+        "navigationRequested": "current"
+      },
+      "actualSummary": "UI probe completed. More repair control visually checked; page0 capture/metadata unexpectedly showed More, so full four-page acceptance is not established.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/realme34-ui/result.json",
+        "sha256": "55A161BD8C86860DCD78D34E35DF9322AE0C1BDC1DD1C20882A121B4436597AF",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "APK-ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "min26/target35/version33; dual ARM main; 64-bit ELF LOAD >=16384; no test entry in main",
+      "time": "2026-11-07T13:34:50.874680+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "static APK and ELF inspection"
+      },
+      "actualSummary": {
+        "package": "org.esurfing.hunan",
+        "versionCode": "33",
+        "versionName": "0.2.21-compat-s1",
+        "minSdk": "26",
+        "targetSdk": "35"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/apk-audit.json",
+        "sha256": "5C4145AA8FBD9B38CCE6CECD5473294FF3E0E956404D743E87A7F367E6E728B8",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "APK-ESurfingHunan-0.2.21-compat-s1-isolation-arm32.apk",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "15DFE23B3A391698A48A6E6E635C6DDA3F4C04585775A0C46496C7B19724B593",
+      "expected": "min26/target35/version33; dual ARM main; 64-bit ELF LOAD >=16384; no test entry in main",
+      "time": "2026-11-07T13:34:51.141908+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "static APK and ELF inspection"
+      },
+      "actualSummary": {
+        "package": "org.esurfing.hunan.isolation",
+        "versionCode": "33",
+        "versionName": "0.2.21-compat-s1-isolation",
+        "minSdk": "26",
+        "targetSdk": "35"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/apk-audit.json",
+        "sha256": "5C4145AA8FBD9B38CCE6CECD5473294FF3E0E956404D743E87A7F367E6E728B8",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "APK-ESurfingHunan-0.2.21-compat-s1-isolation-phone.apk",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "min26/target35/version33; dual ARM main; 64-bit ELF LOAD >=16384; no test entry in main",
+      "time": "2026-11-07T13:34:51.184796+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "static APK and ELF inspection"
+      },
+      "actualSummary": {
+        "package": "org.esurfing.hunan.isolation",
+        "versionCode": "33",
+        "versionName": "0.2.21-compat-s1-isolation",
+        "minSdk": "26",
+        "targetSdk": "35"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/apk-audit.json",
+        "sha256": "5C4145AA8FBD9B38CCE6CECD5473294FF3E0E956404D743E87A7F367E6E728B8",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "APK-ESurfingHunan-0.2.21-compat-s1-isolation-x86_64.apk",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7385280149654A2312D301F62CD49B8C7A4B4A7DA77150115B6619F7F94F2D30",
+      "expected": "min26/target35/version33; dual ARM main; 64-bit ELF LOAD >=16384; no test entry in main",
+      "time": "2026-11-07T13:34:51.252051+00:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "static APK and ELF inspection"
+      },
+      "actualSummary": {
+        "package": "org.esurfing.hunan.isolation",
+        "versionCode": "33",
+        "versionName": "0.2.21-compat-s1-isolation",
+        "minSdk": "26",
+        "targetSdk": "35"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/apk-audit.json",
+        "sha256": "5C4145AA8FBD9B38CCE6CECD5473294FF3E0E956404D743E87A7F367E6E728B8",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "build-phone",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "exit 0",
+      "time": "2026-11-07T13:30:43.482Z",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "exitCode": 0
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/build-phone-exit.json",
+        "sha256": "603977B7451D9365244D68A381CB3C893252F3C8712D2572E1C03313401084C6",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "build-x86",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "exit 0",
+      "time": "2026-11-07T13:33:32.221Z",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "exitCode": 0
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/build-x86-exit.json",
+        "sha256": "1B39FC42898B610958DB8F0163B8D2C6AAE4C2035B3E7EFBB449AEC5CD0B5603",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "build-arm32",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "exit 0",
+      "time": "2026-11-07T13:34:21.915Z",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "exitCode": 0
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/build-arm32-exit.json",
+        "sha256": "047335DA377F3B75E2B23A857B9E9FEC21F57A49378897B3160974C836081759",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "repair-policy",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "exit 0",
+      "time": "2026-11-07T13:28:43.811Z",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "exitCode": 0
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/repair-policy-exit.json",
+        "sha256": "1CFF6809E459266C6B42508648E70502E9993EFC83B38D13DB9E0876BE36DF4A",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "audit",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "exit 0",
+      "time": "2026-11-07T13:34:51.314Z",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "exitCode": 0
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/audit-exit.json",
+        "sha256": "9C7B13C95BE7BD14239FEF4B8B747EB522D6E4EA1B48C7184F9106EDA13A9AEF",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "toolchain",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "exit 0",
+      "time": "2026-11-07T13:29:42.434Z",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "exitCode": 0
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/toolchain-exit.json",
+        "sha256": "B5248F5446A250D83D0C4CE60A741F4C74F3FAD14B8BB7693274026FED11D28C",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "lint-candidate",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "0 errors; report raw warnings without hiding",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "errors": 0,
+        "rawWarnings": 15,
+        "zeroRawWarningsAchieved": false
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/lint-summary-candidate.json",
+        "sha256": "F428FDFA4A0D5DD3341E961AE27E3B09ABA27EDB0620E07473E8B307AF57612A",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "lint-isolation",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "0 errors; report raw warnings without hiding",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": {
+        "errors": 0,
+        "rawWarnings": 33,
+        "zeroRawWarningsAchieved": false
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/lint-summary-isolation.json",
+        "sha256": "EF6DCADF3AE15A2D42769A055233A534A21BA88031FE69A67C7CB72380D81200",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "protected-baseline",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Protected source and delivered output hashes unchanged",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": "Protected predecessor source and delivered output hashes remained unchanged.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/protected-after.json",
+        "sha256": "5B4C26E124150B644CFAC1AD9AD2C6C420C5BE073A7A25A2D45AB0F64053E54C",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "isolation-cleanup",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "15DFE23B3A391698A48A6E6E635C6DDA3F4C04585775A0C46496C7B19724B593",
+      "expected": "Remove only temporary isolation package; no main data change",
+      "time": "2026-11-07T21:41:59.209105+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {},
+      "actualSummary": "Temporary isolation package removed; main application data was not touched.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/isolation-cleanup.json",
+        "sha256": "26CC800608CFB6C05132EBF073A850F8CF63A7AE7C4CAF448DAB7E8E87A462E7",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "emulator-cleanup",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Own API35 emulator shut down and disconnected",
+      "time": "2026-11-07T21:34:50.869882+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {},
+      "actualSummary": "Owned API35 emulator shut down and disconnected.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/console-cleanup-api35.json",
+        "sha256": "067F0F311FCD36408DABFEF8F1EB98995FFE19483B276E7E8149CA7103F15FBD",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "More-visual-review",
+      "status": "PASS",
+      "required": true,
+      "scope": "revision",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Repair entry is visible at top of More with readable text",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {},
+      "actualSummary": "More repair control is visible, readable and enabled on realme API34 and API35 emulator at large font. Full UI gate remains failed due to API35 status bar clipping; realme page0 capture needs follow-up.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/visual-review.json",
+        "sha256": "7F2204162E1BD68CD857B15C17AAB8E5E124515756FD5E2102F35A74E7135FEC",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "API26-current-revision",
+      "status": "BLOCKED",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Current-version old-system menu regression",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": 26,
+        "abi": "x86_64"
+      },
+      "actualSummary": "Current revision could not run because disk space was insufficient. Cleanup command required unavailable approval and was not executed. Historical v32 API26 PASS is not v33 evidence.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/api26-space-blocker.json",
+        "sha256": "5AF0A1E049C26E0E8A61FA36FBA63F9D785ADEF90AF536FFB574CF0E3AC67D32",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "ARM64-16KB-RUNTIME",
+      "status": "BLOCKED",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Install/start/JNI on ARM64 PAGE_SIZE16384",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "abi": "arm64-v8a",
+        "pageSize": 16384
+      },
+      "actualSummary": "No suitable ARM64 PAGE_SIZE=16384 device or ARM host environment is available; user confirmed the gap. Static ELF/ZIP checks do not replace runtime evidence.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/验收报告.md",
+        "sha256": "4F90F8BCACE14DFD7D15963AC8D46DAEFCE8C3C25243D8FF8463C3400ECD8222",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "FULL-UI-GATE",
+      "status": "FAIL",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "All four pages/system bars/cutout/navigation/keyboard/large font meet full stage1 acceptance",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "api": 35,
+        "abi": "x86_64",
+        "font": 2
+      },
+      "actualSummary": "API35 emulator at font scale 2 still clips system status bar glyphs. The More control passed, but complete UI acceptance remains unresolved.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/api35-ui-large/page3.png",
+        "sha256": "B8BBC8A66A91154D87976F70C53C09A6F53E0C05EDD0B9CF6D9A6112E0EBCC57",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "DIAGNOSTIC-JSON-TRUNCATION",
+      "status": "NOT_RUN",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Cumulative export remains valid JSON lines",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": "Known v32 takeLast(128000) partial-JSON-line defect is unchanged and was not retested in this revision. It remains open.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/验收报告.md",
+        "sha256": "4F90F8BCACE14DFD7D15963AC8D46DAEFCE8C3C25243D8FF8463C3400ECD8222",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "API29-31-33-36-current-revision",
+      "status": "NOT_RUN",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Current-build agreed matrix results",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": "Only historical v32 evidence exists for these API levels; current v33 full matrix was not rerun.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/验收报告.md",
+        "sha256": "4F90F8BCACE14DFD7D15963AC8D46DAEFCE8C3C25243D8FF8463C3400ECD8222",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "REAL-NETWORK-v33",
+      "status": "NOT_RUN",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "User-run production confirmation with predefined budget",
+      "time": "2026-11-07T21:42:17.992816+08:00",
+      "archiveStageId": "repair-menu-20261107-01",
+      "environment": {
+        "type": "Windows host"
+      },
+      "actualSummary": "At this archive date, v33 had only isolation/install evidence and this test was NOT_RUN. Subsequent iQOO and realme archives establish separate bounded v33 real-network successes; they do not retroactively change this record.",
+      "evidenceReference": {
+        "archivePath": "outputs/repair-menu-20261107-01/验收报告.md",
+        "sha256": "4F90F8BCACE14DFD7D15963AC8D46DAEFCE8C3C25243D8FF8463C3400ECD8222",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "main-install",
+      "status": "PASS",
+      "required": true,
+      "scope": "device-comparison",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Same signature update retaining main data; exact APK hash/version33",
+      "time": "2026-11-07T21:51:05.293450+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "Same-signature upgrade installed versionCode 33; installed APK hash matched. Main application data was retained. No authentication operation was automated.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/main-install/result.json",
+        "sha256": "96D5005F12090A74E3487B5423FFF706F8BF8CA5170F1D7CB402201CC5259A78",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "iqoo35-CompatProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "device-comparison",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "Actual ARM64/64-bit JNI, malformed inputs rejected, handles released",
+      "time": "2026-11-07T13:51:57.623660+00:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": {
+        "testId": "S1-JNI",
+        "cycles": 200,
+        "api": 35,
+        "model": "V2307A",
+        "supportedAbis": "arm64-v8a",
+        "process64": true,
+        "pageSize": 4096,
+        "status": "PASS",
+        "nativeBits": 64,
+        "handlesAfter": 0,
+        "syntheticAlgorithms": 9,
+        "allocationFailurePositionsPerAlgorithm": 20,
+        "manufacturer": "vivo",
+        "malformedRejected": 182,
+        "loadedAbi": "arm64-v8a"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/iqoo35-CompatProbe/result.json",
+        "sha256": "2F3E132679A778C3FE9ECDAE8B9F29669E2E279C072C64D57A3E2F993D2DEE68",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "iqoo35-RepairMenuProbe",
+      "status": "PASS",
+      "required": true,
+      "scope": "device-comparison",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "All 14 synthetic menu states and stale confirmation/cancel protections pass",
+      "time": "2026-11-07T13:52:59.485946+00:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "All 14 synthetic repair-menu cases passed, including disabled-state explanation, confirmation, cancellation, duplicate-dialog protection and stale confirmation protection.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/iqoo35-RepairMenuProbe/result.json",
+        "sha256": "CB30C77277DF119C3BF7EF5CF26AA66F99C879B3CC334F0777A65C8F12236B34",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "iqoo35-ui",
+      "status": "PASS",
+      "required": true,
+      "scope": "device-comparison",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7",
+      "expected": "UI probe/keyboard completes; More screenshot visually checked; record foreground assistance and restore original font",
+      "time": "2026-11-07T13:55:51.210282+00:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "UI and keyboard probe completed with explicit foreground am-start assistance after an initial stall on the launcher. More page was visually checked. Font scale 1.0 was used and original 0.9 restored; this was not an unattended startup test.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/iqoo35-ui/result.json",
+        "sha256": "1874C8D73A7A88B7E57D300C2200D89E9DD988AD822ABD56308A420C490D96E6",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "IQOO-LOGIN-ONLY-01",
+      "status": "PASS",
+      "required": true,
+      "scope": "device-comparison",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Only account/password, no overrides/cache; one login, initial heartbeat and HTTPS verified, no repair/logout",
+      "time": "2026-11-07T22:02:59.130507+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": {
+        "recordedLogoutCount": 0,
+        "loginSuccess": 1,
+        "internetEvidence": "HTTPS_VERIFIED",
+        "recordedLoginCount": 1,
+        "agentAuthenticationCommands": 0,
+        "scheduledHeartbeatSuccess": 1,
+        "advancedFieldsEmptyBeforeAndAfter": true,
+        "heartbeatServerIntervalSeconds": [
+          300,
+          300
+        ],
+        "cacheCreatedAfter": true,
+        "observedWindowSeconds": 286.158,
+        "initialHeartbeatSuccess": 1,
+        "recordedRepairCount": 0,
+        "cacheExistedBefore": false,
+        "summary": "Direct campus Wi-Fi; account/password only and advanced overrides empty before/after. Identity cache absent before, created after. One manual login, initial and one scheduled heartbeat plus HTTPS verification succeeded; no logout or repair. Existing settings retained, not a fresh-install test. Baseline label was captured after login; evidence binding uses the earlier pre-install state plus exact v33 APK/new process records.",
+        "window": "2026-11-07 21:57:29 to 22:02:15 Asia/Shanghai"
+      },
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/connection-analysis.json",
+        "sha256": "B4BCB9927D05D1A6F86F38F036CC603CB0A4506BDA3A333E99D97DCE2968FABD",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "preserved-source-and-output",
+      "status": "PASS",
+      "required": true,
+      "scope": "device-comparison",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Prior sealed output and source hashes unchanged; copied source exact",
+      "time": "2026-11-07T22:05:37.110621+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "Prior sealed source and outputs remained unchanged and the source copy matched the manifest.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/protected-after.json",
+        "sha256": "F4839EA2F0DF0DCA9DC783030F657D7173C13E0D8931F3F6929EAB81EEB94F8C",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "device-arm32",
+      "status": "NOT_RUN",
+      "required": false,
+      "scope": "device-limitation",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Only test an ABI the device supports",
+      "time": "2026-11-07T22:05:37.110621+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "iQOO advertises only arm64-v8a. No armeabi-v7a install or runtime test was attempted. Actual realme 32-bit evidence is separate.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/preflight.json",
+        "sha256": "268B77EF308C39CE40F4D73B8E3AC31136B7FC6DD4A63DE4F966B96434308A6D",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "ARM64-16KB",
+      "status": "BLOCKED",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "ARM64 runtime at PAGE_SIZE16384",
+      "time": "2026-11-07T22:05:37.110621+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "iQOO uses PAGE_SIZE=4096. The ARM64 16KB runtime gap remains.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/evidence/preflight.json",
+        "sha256": "268B77EF308C39CE40F4D73B8E3AC31136B7FC6DD4A63DE4F966B96434308A6D",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "complete-stage1-matrix-and-UI",
+      "status": "NOT_RUN",
+      "required": true,
+      "scope": "stage1",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Complete agreed system matrix and full UI requirements",
+      "time": "2026-11-07T22:05:37.110621+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "Additional API35 physical-device comparison does not close the current-build matrix, API26 regression, or API35 large-font UI gaps.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/验收报告.md",
+        "sha256": "720E2094C58C8A07F8A8C9CFF6DD5E8B6F9505182FE38B6A1E6A958680A36765",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "long-lockscreen-and-process-lifecycle",
+      "status": "NOT_RUN",
+      "required": false,
+      "scope": "later-stage",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Separate approved Doze/8h/lifecycle verification",
+      "time": "2026-11-07T22:05:37.110621+08:00",
+      "archiveStageId": "iqoo12-s1-compare-20261107-01",
+      "environment": {
+        "model": "V2307A",
+        "manufacturer": "vivo",
+        "api": "35",
+        "android": "15",
+        "supportedAbis": "arm64-v8a",
+        "pageSize": "4096"
+      },
+      "actualSummary": "Doze, 8-hour lockscreen and lifecycle testing are outside this bounded foreground comparison and were not run.",
+      "evidenceReference": {
+        "archivePath": "outputs/iqoo12-s1-compare-20261107-01/验收报告.md",
+        "sha256": "720E2094C58C8A07F8A8C9CFF6DD5E8B6F9505182FE38B6A1E6A958680A36765",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "REALME-RECOVERED",
+      "status": "PASS",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "User reports connected; LOGIN and initial keep succeed; HTTPS_VERIFIED",
+      "time": "2026-11-07T22:25:31.208954+08:00",
+      "archiveStageId": "realme105-20261107-01",
+      "environment": {
+        "model": "RMX3820",
+        "api": "34",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "pageSize": "4096"
+      },
+      "actualSummary": "User confirmed connected. A later manual LOGIN succeeded at 22:19:00 Asia/Shanghai on 2026-11-07, with initial keep and HTTPS_VERIFIED. This is a retrospective observation, not a predefined success-rate experiment.",
+      "evidenceReference": {
+        "archivePath": "outputs/realme105-20261107-01/evidence/analysis.json",
+        "sha256": "DE514D02AEAAD12F111462076930946E4764C118B4F5189DF36926C456358917",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "REPAIR-GATE-REASON",
+      "status": "PASS",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Failed LOGIN does not authorize repair or automatic account replay",
+      "time": "2026-11-07T22:25:31.208954+08:00",
+      "archiveStageId": "realme105-20261107-01",
+      "environment": {
+        "model": "RMX3820",
+        "api": "34",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "pageSize": "4096"
+      },
+      "actualSummary": "Four manual LOGIN attempts returned protocol code 105 before a later manual success. The failed LOGIN state had no authenticated local ticket; repair requires an authenticated session and qualifying portal evidence. No repair or automatic account replay was initiated.",
+      "evidenceReference": {
+        "archivePath": "outputs/realme105-20261107-01/验收报告.md",
+        "sha256": "3AAE921BFE6E42F210F9CD17C147A6075713F807CF97053BF670BB61913D726F",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "STALE-PROTOCOL-CODE",
+      "status": "FAIL",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "A subsequent successful session must not carry previous failure as current protocolCode",
+      "time": "2026-11-07T22:25:31.208954+08:00",
+      "archiveStageId": "realme105-20261107-01",
+      "environment": {
+        "model": "RMX3820",
+        "api": "34",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "pageSize": "4096"
+      },
+      "actualSummary": "47 successful-session events still contained old protocolCode 105 despite AUTHENTICATED, error NONE and HTTPS_VERIFIED. The diagnostic stale-code defect is confirmed and not fixed.",
+      "evidenceReference": {
+        "archivePath": "outputs/realme105-20261107-01/evidence/analysis.json",
+        "sha256": "DE514D02AEAAD12F111462076930946E4764C118B4F5189DF36926C456358917",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "105-SERVER-ROOT-CAUSE",
+      "status": "NOT_RUN",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "Establish protocol105 semantics and causal reason without guessing",
+      "time": "2026-11-07T22:25:31.208954+08:00",
+      "archiveStageId": "realme105-20261107-01",
+      "environment": {
+        "model": "RMX3820",
+        "api": "34",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "pageSize": "4096"
+      },
+      "actualSummary": "The previous iQOO client had been stopped and disconnected from Wi-Fi without a confirmed server logout. Residual server-side occupancy is only a hypothesis. Code 105 semantics, causality and server TTL remain unknown.",
+      "evidenceReference": {
+        "archivePath": "outputs/realme105-20261107-01/验收报告.md",
+        "sha256": "3AAE921BFE6E42F210F9CD17C147A6075713F807CF97053BF670BB61913D726F",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    },
+    {
+      "testId": "BASELINE-INTEGRITY",
+      "status": "PASS",
+      "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+      "buildId": "0.2.21-compat-s1+33",
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+      "expected": "No changes to sealed source/artifacts",
+      "time": "2026-11-07T22:25:31.208954+08:00",
+      "archiveStageId": "realme105-20261107-01",
+      "environment": {
+        "model": "RMX3820",
+        "api": "34",
+        "supportedAbis": "arm64-v8a,armeabi-v7a,armeabi",
+        "pageSize": "4096"
+      },
+      "actualSummary": "Sealed source and artifacts were unchanged during read-only diagnosis.",
+      "evidenceReference": {
+        "archivePath": "outputs/realme105-20261107-01/evidence/protected-baseline-check.json",
+        "sha256": "615F52DF28A3D2090A2D3F8006CEB7542240F313E9E40AF3EB43C3A68B413A6E",
+        "includedInRepository": false
+      },
+      "evidenceScope": "archived-v33-evidence; no test rerun during handoff"
+    }
+  ],
+  "counts": {
+    "PASS": 36,
+    "BLOCKED": 3,
+    "FAIL": 2,
+    "NOT_RUN": 7
+  },
+  "countsMeaning": "Counts are archived acceptance records, including repeated scoped checks across archives; they are not independent experiments or a success-rate denominator.",
+  "laterEvidenceLinks": [
+    {
+      "earlier": "repair-menu-20261107-01/REAL-NETWORK-v33",
+      "later": [
+        "iqoo12-s1-compare-20261107-01/IQOO-LOGIN-ONLY-01",
+        "realme105-20261107-01/REALME-RECOVERED"
+      ],
+      "meaning": "Separate bounded successes on the same v33 APK; not an 8-hour or general compatibility claim."
+    }
+  ],
+  "historicalEvidenceBoundary": {
+    "version": "0.2.20-compat-s1+32",
+    "apiLevels": [
+      26,
+      29,
+      31,
+      33,
+      35,
+      36
+    ],
+    "status": "Historical only; not rerun or relabeled as current v33 proof."
+  }
+}

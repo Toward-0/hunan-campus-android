@@ -1,0 +1,5 @@
+# Preserve bytes of the archived source and evidence across platforms.
+* -text
+*.apk binary
+*.jar binary
+*.zsm binary

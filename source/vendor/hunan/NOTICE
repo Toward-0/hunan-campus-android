@@ -1,0 +1,107 @@
+ESurfingClient-CVersion — Hunan adaptation
+==========================================
+
+This project is a modified version of:
+
+    ESurfingClient-CVersion
+    https://github.com/BadGhost520/ESurfingClient-CVersion
+    Copyright BadGhost520 and contributors
+    Licensed under the Apache License, Version 2.0
+
+The fork was extracted from that project's `esurfingclient/app/` subtree. 121 of
+the 129 files in that subtree are byte-identical to upstream and served as the
+baseline (local commit `00f1b5b`). The LuCI plugin, OpenWrt packaging, `docs/`,
+CI workflows and the upstream README were **not** carried over.
+
+
+What was modified (Apache License 2.0, section 4(b))
+----------------------------------------------------
+
+Added — Hunan province protocol support:
+    `src/hunan/`            HunanXml / HunanSelfTest / HunanLiveTest
+    `src/cipher/algo/hunan/` double-layer AES-CBC + Hunan key tables
+    `include/hunan/`
+
+Added — `src/utils/UrlParse.c`, `include/utils/UrlParse.h`
+    Pure functions to split a URL's host/port and read a query parameter.
+
+Added — portal address discovery (`src/clients/net/CheckNetwork.c`)
+    When unauthenticated, the access device (BAS) hijacks plain HTTP and answers
+    with a 302 whose `Location` contains the portal URL. The program snapshots it,
+    so the portal address does not have to be configured — the configuration value
+    is only a fallback.
+
+Added — Web UI rewritten in WinUI / Fluent style, zero external assets:
+    `portal/index.html`, `portal/assets/css/app.css`, `portal/assets/js/app.js`
+    The original files are kept alongside as `*.upstream.*`.
+
+Added — `scripts/` — CMake + Ninja build, client restart, offline self-test.
+
+Replaced — the bundled mongoose HTTP server with a self-written minimal one:
+    `third_party/minihttp/` (~500 lines, same 18 entry points as mongoose).
+    mongoose is GPL-2.0-only-or-commercial; it was removed entirely, which drops
+    the GPL obligation from the shipped binary.
+
+Modified — configuration handling. The program now starts its web UI on first run
+    and lets the user fill in account and province there, instead of requiring a
+    hand-edited JSON file before it will do anything.
+
+The per-file history of all of the above is in this repository's git log.
+
+
+Third-party components bundled in this repository
+-------------------------------------------------
+
+    third_party/7z        LZMA SDK by Igor Pavlov        Public domain
+    third_party/cJSON     cJSON by Dave Gamble et al.    MIT
+    third_party/minihttp  written for this fork          Apache-2.0 (as this project)
+
+
+Not included
+------------
+
+The author's packet captures of the official closed-source client, and the
+scripts used to analyse them, are **not** part of this repository. They are
+reverse-engineering evidence, not third-party source code.
+
+Windows portable modifications (2026-10-10)
+-------------------------------------------
+Built from yk23311/ESurfingClient-Hunan commit
+05a730a20d63a090337bdd76c73e9d412e3b7388.
+Modified CMake static linking; console setup; local-only Web access and
+same-origin request checks; password-redacted Web settings with preserve/clear
+semantics; configuration validation and atomic saves; sensitive log removal;
+HTTP response sizing; network probe bounds, cancellation and response cleanup;
+standalone configuration reload and continued management during network failure.
+Authentication cipher calculations, XML construction and adapter identity
+selection were not changed. Cipher-source changes only remove sensitive logs.
+This basic release uses the original plaintext credential file format. Optional
+DPAPI source support is disabled and is not validated for release use.
+libcurl 8.22.0 and GCC/MinGW runtime code are statically linked. Applicable
+third-party notices and license texts accompany this distribution.
+
+Network recovery modifications (2026-10-12, 2.1.5-r7)
+---------------------------------------------------
+Built on the locally available Windows portable baseline described above.
+Changed CheckNetwork, NetClient and NetClientCurl to capture fresh response
+Locations, identify campus portals and try independent internet probes on both
+transport and HTTP errors. Automatic recovery now requires three consecutive
+portal observations for an authenticated session and does not send term/logout.
+Transient network/heartbeat failures keep local session state and continue
+heartbeat attempts. Explicit disconnect and configuration changes retain logout.
+Hunan no longer uses the inherited fixed 47h50m restart policy.
+Added offline probe, header and recovery regression tests. Authentication
+encryption, credentials, identity, ticket and login payloads remain unchanged.
+Changes exist in the local fix/stable-network-recovery branch only; no changes
+were pushed to the author's master branch. No real-campus validation is claimed.
+
+Diagnostic follow-up (2026-10-12, 2.1.5-r8)
+------------------------------------------
+Follow-up logs show public status-probe timeouts at 17:42-17:44 without any new
+authentication/logout. Added rate-limited per-site probe outcomes, durations and
+portal classification without logging URLs, query parameters or response bodies.
+Timeout messages now use the effective request limits, including the Web thread's
+one-second limit. Numeric Error-Code headers and heartbeat response durations are
+captured for diagnosis; authentication payloads and recovery decisions are unchanged.
+This release improves evidence collection; it does not claim to cure the reported
+network interruptions or prove a server-enforced 30-minute session lifetime.

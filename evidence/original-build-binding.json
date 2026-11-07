@@ -1,0 +1,26 @@
+{
+  "stageId": "repair-menu-20261107-01",
+  "versionCode": 33,
+  "versionName": "0.2.21-compat-s1",
+  "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+  "baselineVersion": "0.2.20-compat-s1 /32",
+  "baselineManifestSha256": "DEE754064104B89CB06C48F1ACB7406A9AF5005927C6671F3DD29E5339946F07",
+  "apks": [
+    {
+      "file": "ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk",
+      "sha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D"
+    },
+    {
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-arm32.apk",
+      "sha256": "15DFE23B3A391698A48A6E6E635C6DDA3F4C04585775A0C46496C7B19724B593"
+    },
+    {
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-phone.apk",
+      "sha256": "4401FCBADE8FB71F539CC780A8F7F4FE0229E6AFEF20B84413CD52CBDF832FF7"
+    },
+    {
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-x86_64.apk",
+      "sha256": "7385280149654A2312D301F62CD49B8C7A4B4A7DA77150115B6619F7F94F2D30"
+    }
+  ]
+}

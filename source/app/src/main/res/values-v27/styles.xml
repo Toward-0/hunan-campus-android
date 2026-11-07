@@ -1,0 +1,6 @@
+<resources>
+    <style name="CampusTheme" parent="CampusThemeBase">
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:navigationBarColor">#F6F8F6</item>
+    </style>
+</resources>

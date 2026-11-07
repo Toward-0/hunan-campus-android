@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <instrumentation android:name="org.esurfing.hunan.RepairMenuProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic repair menu UI regression"/>
+    <instrumentation android:name="org.esurfing.hunan.DiscoveryProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated discovery and privacy regression"/>
+    <instrumentation android:name="org.esurfing.hunan.UiProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated four-page layout verification"/>
+    <instrumentation android:name="org.esurfing.hunan.CompatProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic ABI compatibility regression"/>
+    <queries><package android:name="org.esurfing.hunan"/></queries>
+    <instrumentation android:name="org.esurfing.hunan.InternetProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated internet evidence regression"/>
+    <instrumentation android:name="org.esurfing.hunan.CredentialProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated credential storage regression"/>
+    <instrumentation android:name="org.esurfing.hunan.CancelProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated delayed module cancellation"/>
+    <instrumentation android:name="org.esurfing.hunan.AlarmProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated scheduler contract"/>
+    <instrumentation android:name="org.esurfing.hunan.SessionProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated simulated session lifecycle"/>
+    <application android:label="湖南校园网 · 隔离测试" tools:replace="android:label">
+        <service android:name="org.esurfing.hunan.StabilityService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Synthetic loopback stability regression"/>
+        </service>
+        <activity android:name="org.esurfing.hunan.FixtureActivity" android:exported="false"/>
+        <service android:name="org.esurfing.hunan.MockSessionService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Isolated lifecycle test only"/>
+        </service>
+    </application>
+    <instrumentation android:name="org.esurfing.hunan.StabilityProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic stability regression"/>
+</manifest>

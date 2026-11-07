@@ -1,0 +1,234 @@
+--- v32/app/build.gradle.kts
++++ v33/app/build.gradle.kts
+@@ -9,8 +9,8 @@
+         applicationId = "org.esurfing.hunan"
+         minSdk = 26
+         targetSdk = 35
+-        versionCode = 32
+-        versionName = "0.2.20-compat-s1"
++        versionCode = 33
++        versionName = "0.2.21-compat-s1"
+         externalNativeBuild { cmake { arguments += "-DANDROID_STL=none" } }
+     }
+     externalNativeBuild { cmake { path = file("src/main/cpp/CMakeLists.txt"); version = "3.22.1"; buildStagingDirectory = file("../../cxx") } }
+--- v32/app/src/isolation/AndroidManifest.xml
++++ v33/app/src/isolation/AndroidManifest.xml
+@@ -1,4 +1,5 @@
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
++    <instrumentation android:name="org.esurfing.hunan.RepairMenuProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic repair menu UI regression"/>
+     <instrumentation android:name="org.esurfing.hunan.DiscoveryProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated discovery and privacy regression"/>
+     <instrumentation android:name="org.esurfing.hunan.UiProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated four-page layout verification"/>
+     <instrumentation android:name="org.esurfing.hunan.CompatProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic ABI compatibility regression"/>
+--- v32/app/src/isolation/java/org/esurfing/hunan/RepairMenuProbe.kt
++++ v33/app/src/isolation/java/org/esurfing/hunan/RepairMenuProbe.kt
+@@ -0,0 +1,86 @@
++package org.esurfing.hunan
++
++import android.app.AlertDialog
++import android.app.Instrumentation
++import android.content.Intent
++import android.os.Bundle
++import android.view.View
++import android.view.ViewGroup
++import android.widget.Button
++import org.json.JSONObject
++import org.json.JSONArray
++import java.io.File
++
++/** Actual UI interaction, synthetic snapshot only; never confirms a live repair. */
++class RepairMenuProbe : Instrumentation() {
++    override fun onCreate(arguments: Bundle?) { super.onCreate(arguments); start() }
++    override fun onStart() {
++        val cases = JSONArray()
++        var activity: MainActivity? = null
++        var stage = "setup"
++        try {
++            check(targetContext.packageName == "org.esurfing.hunan.isolation")
++            val a = startActivitySync(Intent(targetContext, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)) as MainActivity
++            activity = a; waitForIdleSync()
++            fun views(v: View): List<View> = listOf(v) + if(v is ViewGroup) (0 until v.childCount).flatMap { views(v.getChildAt(it)) } else emptyList()
++            fun button(text: String) = views(a.window.decorView).filterIsInstance<Button>().single { it.text.toString() == text }
++            val field = MainActivity::class.java.getDeclaredField("repairDialog").apply { isAccessible = true }
++            fun dialog() = field.get(a) as AlertDialog
++            val serviceCount = SessionService.instancesCreated.get()
++            val states = listOf(
++                "idle" to SessionSnapshot(),
++                "waiting-wifi" to SessionSnapshot(phase=Phase.WAITING_WIFI),
++                "discovery" to SessionSnapshot(phase=Phase.DISCOVERING),
++                "authenticating" to SessionSnapshot(phase=Phase.AUTHENTICATING),
++                "logged-out" to SessionSnapshot(phase=Phase.LOGGED_OUT),
++                "logging-out" to SessionSnapshot(phase=Phase.LOGGING_OUT),
++                "interrupted" to SessionSnapshot(phase=Phase.INTERRUPTED),
++                "online" to SessionSnapshot(phase=Phase.AUTHENTICATED,internetEvidence=InternetEvidence.HTTPS_VERIFIED,internetAt=System.currentTimeMillis()),
++                "uncertain" to SessionSnapshot(phase=Phase.AUTHENTICATED,internetEvidence=InternetEvidence.HTTPS_UNREACHABLE),
++                "portal-pending" to SessionSnapshot(phase=Phase.AUTHENTICATED,internetEvidence=InternetEvidence.PORTAL_REQUIRED),
++                "repair-wait" to SessionSnapshot(phase=Phase.REPAIRING,repairing=true,nextRecoveryAt=System.currentTimeMillis()+100000)
++            )
++            for((name,state) in states) {
++                stage=name
++                runOnMainSync {
++                    SessionState.change { state }
++                    button("更多").performClick()
++                    check(button("修复网络").isShown && button("修复网络").isEnabled)
++                    button("修复网络").performClick()
++                    val d=dialog();check(d.isShowing)
++                    check(d.getButton(AlertDialog.BUTTON_POSITIVE).text.toString()=="查看连接")
++                    d.getButton(AlertDialog.BUTTON_NEGATIVE).performClick()
++                }
++                check(SessionService.instancesCreated.get()==serviceCount)
++                cases.put(name)
++            }
++            val ready=SessionSnapshot(generation=77,desired=true,phase=Phase.AUTHENTICATED,
++                repairAvailable=true,internetEvidence=InternetEvidence.PORTAL_REQUIRED,internetAt=System.currentTimeMillis())
++            stage="eligible-cancel-and-duplicate-click"
++            runOnMainSync {
++                SessionState.change { ready };button("更多").performClick();button("修复网络").performClick()
++                val d=dialog();repeat(10){button("修复网络").performClick()};check(dialog()===d)
++                check(d.getButton(AlertDialog.BUTTON_POSITIVE).text.toString()=="开始修复")
++                d.getButton(AlertDialog.BUTTON_NEGATIVE).performClick()
++            }
++            check(SessionService.instancesCreated.get()==serviceCount);cases.put(stage)
++            for(replacement in listOf(ready.copy(generation=78),ready.copy(phase=Phase.STOPPED,repairAvailable=false))) {
++                stage="stale-confirmation-${replacement.phase}-${replacement.generation}"
++                runOnMainSync {
++                    SessionState.change { ready };button("修复网络").performClick()
++                    SessionState.change { replacement }
++                    dialog().getButton(AlertDialog.BUTTON_POSITIVE).performClick()
++                }
++                waitForIdleSync();Thread.sleep(100)
++                check(SessionService.instancesCreated.get()==serviceCount);cases.put(stage)
++            }
++            SessionState.change { SessionSnapshot() }
++            File(targetContext.filesDir,"repair-menu-result.json").writeText(JSONObject().put("status","PASS")
++                .put("api",android.os.Build.VERSION.SDK_INT).put("model",android.os.Build.MODEL)
++                .put("cases",cases).put("serviceCommands",0).toString(2))
++            finish(-1,Bundle().apply{putString("result","PASS: persistent repair entry, eligibility explanations, cancel, duplicate click and stale confirmation guards; no network actions")})
++        } catch(t:Throwable) {
++            finish(0,Bundle().apply{putString("result","FAIL $stage ${t.javaClass.simpleName}")})
++        } finally { activity?.let { a -> runOnMainSync { a.finish() } } }
++    }
++}
+--- v32/app/src/main/java/org/esurfing/hunan/MainActivity.kt
++++ v33/app/src/main/java/org/esurfing/hunan/MainActivity.kt
+@@ -24,6 +24,8 @@
+     private lateinit var runtime: TextView
+     private lateinit var channel: Spinner
+     private lateinit var repairButton: Button
++    private lateinit var repairNote: TextView
++    private var repairDialog: AlertDialog? = null
+     private lateinit var loginButton: Button
+     private lateinit var logoutButton: Button
+     private lateinit var stopButton: Button
+@@ -38,8 +40,9 @@
+             val fresh = snapshot.internetAt > 0 && now - snapshot.internetAt in 0..600_000
+             val online = snapshot.phase == Phase.AUTHENTICATED && fresh && snapshot.internetEvidence == InternetEvidence.HTTPS_VERIFIED
+             val active = snapshot.configurationBlocked()
+-            repairButton.isEnabled = snapshot.repairAvailable && snapshot.phase == Phase.AUTHENTICATED && !snapshot.repairing
++            repairButton.isEnabled = canRepair(snapshot)
+             repairButton.visibility = if(repairButton.isEnabled) View.VISIBLE else View.GONE
++            repairNote.text = repairExplanation(snapshot, now)
+             loginButton.isEnabled = !snapshot.repairing
+             loginButton.visibility = if(active) View.GONE else View.VISIBLE
+             stopButton.visibility = if(active || snapshot.repairing) View.VISIBLE else View.GONE
+@@ -116,6 +119,47 @@
+             post { scrollTo(0,0) }
+         }
+     }
++    private fun canRepair(state: SessionSnapshot) = state.repairAvailable &&
++        state.phase == Phase.AUTHENTICATED && !state.repairing
++
++    private fun repairExplanation(state: SessionSnapshot, now: Long): String = when {
++        state.repairing && state.nextRecoveryAt > now ->
++            "旧会话已注销，约 ${(state.nextRecoveryAt-now+999)/1000} 秒后登录一次。可到“连接”页取消修复并停止。"
++        state.repairing -> "正在修复当前会话。可到“连接”页查看进度或取消修复并停止。"
++        canRepair(state) -> "已确认当前会话持续受到门户拦截，可以尝试修复。点击后需再次确认。"
++        state.phase == Phase.LOGGING_OUT -> "正在注销，请等待结果。结束后需手动连接。"
++        state.phase in listOf(Phase.WAITING_WIFI, Phase.DISCOVERING, Phase.AUTHENTICATING, Phase.RECOVERING) ->
++            "当前连接尚未完成，请先查看“连接”页的状态。"
++        state.phase == Phase.AUTHENTICATED && state.internetEvidence == InternetEvidence.HTTPS_VERIFIED &&
++            state.internetAt > 0 && now - state.internetAt in 0..600_000 ->
++            "最近外网检测通过，暂不需要修复。"
++        state.phase == Phase.AUTHENTICATED ->
++            "暂未满足修复条件。需连续确认校园网仍要求登录，单次检测失败不会启动修复；每次连接服务最多修复一次。"
++        else -> "当前没有可修复的活动会话，请先到“连接”页手动连接。"
++    }
++
++    private fun showRepairPrompt() {
++        if (repairDialog?.isShowing == true) return
++        val state = SessionState.snapshot()
++        val dialog = AlertDialog.Builder(this)
++        if (canRepair(state)) {
++            dialog.setTitle("修复当前连接？")
++                .setMessage("将注销当前会话，确认后按客户端策略等待 100 秒，再登录一次。该等待不是已确认的服务器要求。过程中可随时取消并停止；失败后不会循环重试。")
++                .setNegativeButton("取消", null)
++                .setPositiveButton("开始修复") { _, _ ->
++                    val current = SessionState.snapshot()
++                    if (current.generation == state.generation && canRepair(current)) command("repair")
++                    else toast("连接状态已变化，请重新检查后再修复。")
++                }
++        } else {
++            dialog.setTitle("修复网络")
++                .setMessage(repairExplanation(state, System.currentTimeMillis()))
++                .setNegativeButton("知道了", null)
++                .setPositiveButton("查看连接") { _, _ -> showPage(0) }
++        }
++        repairDialog = dialog.create().also { it.show() }
++    }
++
+     private fun command(action: String) = startForegroundService(Intent(this, SessionService::class.java).setAction(action))
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+@@ -141,12 +185,8 @@
+             background=GradientDrawable().apply { setColor(Color.WHITE); cornerRadius=dp(16).toFloat() }
+         }
+         statusNote=label(home,"连接校园 Wi-Fi 后开始。",15f)
+-        repairButton = button(home,"修复连接") {
+-            AlertDialog.Builder(this).setTitle("修复当前连接？")
+-                .setMessage("将注销当前会话，确认后按客户端策略等待 100 秒，再登录一次。该等待不是已确认的服务器要求。过程中可随时取消并停止；失败后不会循环重试。")
+-                .setNegativeButton("取消",null)
+-                .setPositiveButton("开始修复") { _,_ -> command("repair") }.show()
+-        }.apply { isEnabled = false; visibility=View.GONE }
++        repairButton = button(home,"修复连接") { showRepairPrompt() }
++            .apply { isEnabled = false; visibility=View.GONE }
+         label(settings,"校园网账号",22f)
+         input(settings,"username","账号")
+         input(settings,"password","密码",password=true)
+@@ -181,6 +221,8 @@
+         }
+         stopButton=button(home,"停止连接") { command("stop") }
+         label(home,"账号和密码在“账号”页管理。",13f)
++        button(columns[3],"修复网络") { showRepairPrompt() }
++        repairNote = label(columns[3], repairExplanation(SessionState.snapshot(), System.currentTimeMillis()), 13f)
+         logoutButton = button(columns[3],"注销并停止") {
+             AlertDialog.Builder(this).setTitle("注销校园网？").setMessage("将请求服务器结束当前会话，并停止连接。")
+                 .setNegativeButton("取消",null).setPositiveButton("注销") { _,_ -> command("logout") }.show()
+@@ -272,6 +314,7 @@
+     private fun toast(text:String)=Toast.makeText(this,text,Toast.LENGTH_LONG).show()
+     override fun onResume(){super.onResume();handler.post(refresh)}
+     override fun onPause(){handler.removeCallbacks(refresh);super.onPause()}
++    override fun onDestroy(){repairDialog?.dismiss();repairDialog=null;super.onDestroy()}
+ }
+ 
+ 
+--- v32/app/src/main/java/org/esurfing/hunan/SessionState.kt
++++ v33/app/src/main/java/org/esurfing/hunan/SessionState.kt
+@@ -51,7 +51,7 @@
+     }
+     @Synchronized fun logs() = lines.joinToString("\n")
+     @Synchronized fun export(): String {
+-        return "0.2.20-compat-s1 | timing schema=2 (discovery fields)\n" + TimingTrace.export()
++        return "0.2.21-compat-s1 | timing schema=2 (discovery fields)\n" + TimingTrace.export()
+     }
+ }
+ 
+--- v32/build-stage.ps1
++++ v33/build-stage.ps1
+@@ -30,7 +30,7 @@
+ foreach($variant in $variants){
+  $inputApk="$PSScriptRoot/app/build/outputs/apk/$variant/app-$variant-unsigned.apk"
+  $aligned="$StageRoot/pack/$variant-$BuildAbi-aligned.apk"
+- $apk=Join-Path $OutputRoot "ESurfingHunan-0.2.20-compat-s1-$variant-$BuildAbi.apk"
++ $apk=Join-Path $OutputRoot "ESurfingHunan-0.2.21-compat-s1-$variant-$BuildAbi.apk"
+  & "$env:ANDROID_HOME/build-tools/35.0.0/zipalign.exe" -f -P 16 4 $inputApk $aligned
+  if($LASTEXITCODE){throw 'zipalign failed'}
+  & "$env:JAVA_HOME/bin/java.exe" -jar "$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" sign --ks $key --ks-pass pass:android --out $apk $aligned

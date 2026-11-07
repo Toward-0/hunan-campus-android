@@ -1,0 +1,56 @@
+[
+  {
+    "path": "tools/v33-history/adb_client.py",
+    "sha256": "89AC1533C508213BE6A0D2CF0BA06143BBF624F3BB0566186CA789AEE360306B",
+    "originalArchivePath": "work/repair-menu-20261107-01/adb_client.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/audit_artifacts.py",
+    "sha256": "4B0B10294DE984A4F1A761807396ACE16ECE6C43A6366D1A2E8879300986EE3D",
+    "originalArchivePath": "work/repair-menu-20261107-01/audit_artifacts.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/device_main.py",
+    "sha256": "EE6F3EA8D3777EAEF1A87AE3841DB267566DFA3C3C80F5DE7113B486841A10D5",
+    "originalArchivePath": "work/repair-menu-20261107-01/device_main.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/run_device.py",
+    "sha256": "52DA3792BE80649F119DC70E54A9C8DA4F67CD8C3E509540482AC814BE9ED149",
+    "originalArchivePath": "work/repair-menu-20261107-01/run_device.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/run_menu_suite.py",
+    "sha256": "8348FFEEB637B38C3D58D58FA8043B921E46BF556D0B7F4955AB7324D064F949",
+    "originalArchivePath": "work/repair-menu-20261107-01/run_menu_suite.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/run_ui.py",
+    "sha256": "AEB659AF6B8FBC58D8FAFD648E29B58B23D38B79DF76BF72FE459E679CAAFD21",
+    "originalArchivePath": "work/repair-menu-20261107-01/run_ui.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/stage_guard.py",
+    "sha256": "13C16A9E6B1FF606DDB97AFEABB4F5066F18193080CF8E8F04F7C9E6A759860B",
+    "originalArchivePath": "work/repair-menu-20261107-01/stage_guard.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/start_emulator.py",
+    "sha256": "2A5CC76D06A6DBC06EF18A112906843E59A6A426F0DC78D2BF03B6722E3C8A33",
+    "originalArchivePath": "work/repair-menu-20261107-01/start_emulator.py",
+    "executionStatus": "NOT_RUN during handoff"
+  },
+  {
+    "path": "tools/v33-history/stop_console.py",
+    "sha256": "2A2FFDB1018ED302849C4E132130237063E285DA329FCD7A34D2CF81407648ED",
+    "originalArchivePath": "work/repair-menu-20261107-01/stop_console.py",
+    "executionStatus": "NOT_RUN during handoff"
+  }
+]

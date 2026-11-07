@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 1,
+  "buildId": "0.2.21-compat-s1+33",
+  "sourceManifestSha256": "C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA",
+  "mainApkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D",
+  "runtime16KBStatus": "BLOCKED",
+  "note": "Extracted static records from the sealed v33 build; no new build or test was performed.",
+  "records": [
+    {
+      "kind": "elf-load-segment-alignment",
+      "file": "ESurfingHunan-0.2.21-compat-s1-candidate-phone-arm64-v8a-elf.txt",
+      "loadSegments": [
+        "LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x019b80 0x019b80 R E 0x4000",
+        "LOAD           0x019b80 0x000000000001db80 0x000000000001db80 0x000568 0x001480 RW  0x4000",
+        "LOAD           0x01a0e8 0x00000000000220e8 0x00000000000220e8 0x000030 0x0002b8 RW  0x4000"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/ESurfingHunan-0.2.21-compat-s1-candidate-phone-arm64-v8a-elf.txt",
+        "sha256": "FD108AF0B271C8516EC56581F6B33F9416D202AF0BE9D1CFB19D32AE8E9EE7AA",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "elf-load-segment-alignment",
+      "file": "ESurfingHunan-0.2.21-compat-s1-candidate-phone-armeabi-v7a-elf.txt",
+      "loadSegments": [
+        "LOAD           0x000000 0x00000000 0x00000000 0x0f120 0x0f120 R E 0x1000",
+        "LOAD           0x00f120 0x00010120 0x00010120 0x002d8 0x00ee0 RW  0x1000",
+        "LOAD           0x00f3f8 0x000113f8 0x000113f8 0x00020 0x0023c RW  0x1000"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/ESurfingHunan-0.2.21-compat-s1-candidate-phone-armeabi-v7a-elf.txt",
+        "sha256": "D48700E6BD4D1D54924BE82A1D7C7E7A9C5E70047369DD075F0BBBA412ADBBFD",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "elf-load-segment-alignment",
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-arm32-armeabi-v7a-elf.txt",
+      "loadSegments": [
+        "LOAD           0x000000 0x00000000 0x00000000 0x0f360 0x0f360 R E 0x1000",
+        "LOAD           0x00f360 0x00010360 0x00010360 0x002dc 0x00ca0 RW  0x1000",
+        "LOAD           0x00f640 0x00011640 0x00011640 0x00024 0x00244 RW  0x1000"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/ESurfingHunan-0.2.21-compat-s1-isolation-arm32-armeabi-v7a-elf.txt",
+        "sha256": "16E4A1F3CC8808EC6820E24F2E6D22D5DD3040161EA9502A24181305A8CF08B2",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "elf-load-segment-alignment",
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-phone-arm64-v8a-elf.txt",
+      "loadSegments": [
+        "LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x01a630 0x01a630 R E 0x4000",
+        "LOAD           0x01a630 0x000000000001e630 0x000000000001e630 0x0005c0 0x0009d0 RW  0x4000",
+        "LOAD           0x01abf0 0x0000000000022bf0 0x0000000000022bf0 0x000034 0x0002d0 RW  0x4000"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/ESurfingHunan-0.2.21-compat-s1-isolation-phone-arm64-v8a-elf.txt",
+        "sha256": "ADFA9192C587FC972E2C83B3E488529BF8E9624BA18D9F7D433ECA9F1F0CE637",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "elf-load-segment-alignment",
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-phone-armeabi-v7a-elf.txt",
+      "loadSegments": [
+        "LOAD           0x000000 0x00000000 0x00000000 0x0f360 0x0f360 R E 0x1000",
+        "LOAD           0x00f360 0x00010360 0x00010360 0x002dc 0x00ca0 RW  0x1000",
+        "LOAD           0x00f640 0x00011640 0x00011640 0x00024 0x00244 RW  0x1000"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/ESurfingHunan-0.2.21-compat-s1-isolation-phone-armeabi-v7a-elf.txt",
+        "sha256": "16E4A1F3CC8808EC6820E24F2E6D22D5DD3040161EA9502A24181305A8CF08B2",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "elf-load-segment-alignment",
+      "file": "ESurfingHunan-0.2.21-compat-s1-isolation-x86_64-x86_64-elf.txt",
+      "loadSegments": [
+        "LOAD           0x000000 0x0000000000000000 0x0000000000000000 0x01a3e0 0x01a3e0 R E 0x4000",
+        "LOAD           0x01a3e0 0x000000000001e3e0 0x000000000001e3e0 0x000580 0x000c20 RW  0x4000",
+        "LOAD           0x01a960 0x0000000000022960 0x0000000000022960 0x000034 0x0002cc RW  0x4000"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/ESurfingHunan-0.2.21-compat-s1-isolation-x86_64-x86_64-elf.txt",
+        "sha256": "3CD3E027EDC6BFD4525FAF609D3608B36EC1CDEA48DEAA09E3ADAE3DADA951BD",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "apk-signature",
+      "file": "signature-candidate-phone.txt",
+      "verificationLines": [
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): true",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Signer #1 certificate SHA-256 digest: 2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/signature-candidate-phone.txt",
+        "sha256": "C6068EB2E9FCB9918715CA2716B7A2F81E539F96E93E894BF826F4EBBAC649AE",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "apk-signature",
+      "file": "signature-isolation-arm32.txt",
+      "verificationLines": [
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): true",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Signer #1 certificate SHA-256 digest: 2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/signature-isolation-arm32.txt",
+        "sha256": "C6068EB2E9FCB9918715CA2716B7A2F81E539F96E93E894BF826F4EBBAC649AE",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "apk-signature",
+      "file": "signature-isolation-phone.txt",
+      "verificationLines": [
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): true",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Signer #1 certificate SHA-256 digest: 2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/signature-isolation-phone.txt",
+        "sha256": "C6068EB2E9FCB9918715CA2716B7A2F81E539F96E93E894BF826F4EBBAC649AE",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "apk-signature",
+      "file": "signature-isolation-x86_64.txt",
+      "verificationLines": [
+        "Verified using v1 scheme (JAR signing): false",
+        "Verified using v2 scheme (APK Signature Scheme v2): true",
+        "Verified using v3 scheme (APK Signature Scheme v3): true",
+        "Verified using v3.1 scheme (APK Signature Scheme v3.1): false",
+        "Verified using v4 scheme (APK Signature Scheme v4): false",
+        "Signer #1 certificate SHA-256 digest: 2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/signature-isolation-x86_64.txt",
+        "sha256": "C6068EB2E9FCB9918715CA2716B7A2F81E539F96E93E894BF826F4EBBAC649AE",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "final-apk-zipalign",
+      "file": "zipalign-candidate-phone.txt",
+      "arguments": [
+        "-c",
+        "-P",
+        "16",
+        "-v",
+        "4"
+      ],
+      "result": "PASS per sealed APK audit",
+      "summaryLines": [
+        "Verification succesful"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/zipalign-candidate-phone.txt",
+        "sha256": "2B76C6F49A1949C4DAFA58064E3119591A0ABC132CEF97DD816B5806BDE792BD",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "final-apk-zipalign",
+      "file": "zipalign-isolation-arm32.txt",
+      "arguments": [
+        "-c",
+        "-P",
+        "16",
+        "-v",
+        "4"
+      ],
+      "result": "PASS per sealed APK audit",
+      "summaryLines": [
+        "Verification succesful"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/zipalign-isolation-arm32.txt",
+        "sha256": "D581AB552B36A7FCB47A88DD4AC6B8460D65A9A64648099C85C1AAA084F13277",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "final-apk-zipalign",
+      "file": "zipalign-isolation-phone.txt",
+      "arguments": [
+        "-c",
+        "-P",
+        "16",
+        "-v",
+        "4"
+      ],
+      "result": "PASS per sealed APK audit",
+      "summaryLines": [
+        "Verification succesful"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/zipalign-isolation-phone.txt",
+        "sha256": "81A71DD2598C8E1FE2BB3E3543CEA2838BFDC90D9134D0D3F9FE3489938340AC",
+        "includedInRepository": false
+      }
+    },
+    {
+      "kind": "final-apk-zipalign",
+      "file": "zipalign-isolation-x86_64.txt",
+      "arguments": [
+        "-c",
+        "-P",
+        "16",
+        "-v",
+        "4"
+      ],
+      "result": "PASS per sealed APK audit",
+      "summaryLines": [
+        "Verification succesful"
+      ],
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/zipalign-isolation-x86_64.txt",
+        "sha256": "F776FA7E50BA01BABD3F2C205C4D3835F4FAA89C6FA086DA47B4B79D2B1F5DA9",
+        "includedInRepository": false
+      }
+    }
+  ],
+  "toolchain": {
+    "hostOS": "Microsoft Windows NT 10.0.26100.0",
+    "powershell": "7.6.9",
+    "kotlin": "2.1.20",
+    "time": "2026-11-07T21:29:42.3875149+08:00",
+    "ndk": "28.0.13004108",
+    "agp": "8.9.2",
+    "buildTools": "35.0.0",
+    "jdk": "17.0.16",
+    "gradle": "8.11.1",
+    "cmake": "3.22.1",
+    "originalEvidence": {
+      "archivePath": "outputs/repair-menu-20261107-01/evidence/toolchain.json",
+      "sha256": "A9C80957D45762002E63EFCFC0AFD71B4B91F631A8BEC663B82936923A773F16",
+      "includedInRepository": false
+    }
+  },
+  "lint": [
+    {
+      "variant": "candidate",
+      "errors": 0,
+      "rawWarnings": 15,
+      "zeroRawWarningsAchieved": false,
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/lint-summary-candidate.json",
+        "sha256": "F428FDFA4A0D5DD3341E961AE27E3B09ABA27EDB0620E07473E8B307AF57612A",
+        "includedInRepository": false
+      }
+    },
+    {
+      "variant": "isolation",
+      "errors": 0,
+      "rawWarnings": 33,
+      "zeroRawWarningsAchieved": false,
+      "source": {
+        "archivePath": "outputs/repair-menu-20261107-01/evidence/lint-summary-isolation.json",
+        "sha256": "EF6DCADF3AE15A2D42769A055233A534A21BA88031FE69A67C7CB72380D81200",
+        "includedInRepository": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "note": "Historical commands, not executed during this handoff. Machine paths mapped to placeholders; original hashes retained.",
+  "records": [
+    {
+      "time": "2026-11-07T21:28:44.1740977+08:00",
+      "environment": {
+        "sdk": "<STAGE>/sdk",
+        "avd": "<STAGE>/avd",
+        "gradle": "<STAGE>/gradle-user",
+        "javaOptions": "-Djava.io.tmpdir=<STAGE>/tmp -Djdk.net.unixdomain.tmpdir=<STAGE>/tmp -Duser.home=<STAGE>/java-user",
+        "android": "<STAGE>/android-user",
+        "temp": "<STAGE>/tmp"
+      },
+      "arguments": [
+        "-p",
+        "<STAGE>/source",
+        "--offline",
+        "--no-daemon",
+        "-PtestAbi=phone",
+        ":app:assembleIsolation",
+        ":app:assembleCandidate",
+        ":app:lintCandidate",
+        ":app:lintIsolation"
+      ],
+      "command": "<READ_ONLY_TOOLCHAIN>/gradle/gradle-8.11.1/bin/gradle.bat",
+      "buildAbi": "phone",
+      "exit": {
+        "exitCode": 0,
+        "time": "2026-11-07T21:30:25.5404890+08:00"
+      },
+      "originalRecordSha256": "396726CC5DFEF02A0FECF2DB0B26E5C43A4BC6AA88C48BC5FB7E270ECE49FB54"
+    },
+    {
+      "time": "2026-11-07T21:33:47.6166156+08:00",
+      "command": "<READ_ONLY_TOOLCHAIN>/gradle/gradle-8.11.1/bin/gradle.bat",
+      "arguments": [
+        "-p",
+        "<STAGE>/source",
+        "--offline",
+        "--no-daemon",
+        "-PtestAbi=arm32",
+        ":app:assembleIsolation"
+      ],
+      "environment": {
+        "android": "<STAGE>/android-user",
+        "sdk": "<STAGE>/sdk",
+        "avd": "<STAGE>/avd",
+        "gradle": "<STAGE>/gradle-user",
+        "javaOptions": "-Djava.io.tmpdir=<STAGE>/tmp -Djdk.net.unixdomain.tmpdir=<STAGE>/tmp -Duser.home=<STAGE>/java-user",
+        "temp": "<STAGE>/tmp"
+      },
+      "buildAbi": "arm32",
+      "exit": {
+        "exitCode": 0,
+        "time": "2026-11-07T21:34:13.2387434+08:00"
+      },
+      "originalRecordSha256": "F50625678F4E8F783A4FBC176123A903FDBA23933A3A412B44979DD357131AD1"
+    },
+    {
+      "arguments": [
+        "-p",
+        "<STAGE>/source",
+        "--offline",
+        "--no-daemon",
+        "-PtestAbi=x86_64",
+        ":app:assembleIsolation"
+      ],
+      "command": "<READ_ONLY_TOOLCHAIN>/gradle/gradle-8.11.1/bin/gradle.bat",
+      "time": "2026-11-07T21:32:56.8268062+08:00",
+      "environment": {
+        "sdk": "<STAGE>/sdk",
+        "temp": "<STAGE>/tmp",
+        "gradle": "<STAGE>/gradle-user",
+        "android": "<STAGE>/android-user",
+        "avd": "<STAGE>/avd",
+        "javaOptions": "-Djava.io.tmpdir=<STAGE>/tmp -Djdk.net.unixdomain.tmpdir=<STAGE>/tmp -Duser.home=<STAGE>/java-user"
+      },
+      "buildAbi": "x86_64",
+      "exit": {
+        "time": "2026-11-07T21:33:23.5040618+08:00",
+        "exitCode": 0
+      },
+      "originalRecordSha256": "2CC43EBAE889807D8DEE501651812B8F25C7DD08C56BA43356AE5420B115D512"
+    }
+  ]
+}

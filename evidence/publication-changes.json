@@ -1,0 +1,9 @@
+[
+  {
+    "path": "source/docs/阶段1复现与真机操作.md",
+    "status": "M",
+    "beforeSha256": "6CA4EC33C723E2790FA900F116DCF52D13EBB234DEB4E5A25964FD4F59B075DA",
+    "afterSha256": "7D26A1680F5F8F57E49ACD343774F0FE2D5042AFBE3E77444FFB0385CE30E00B",
+    "reason": "Replace example device identifier with an explicit placeholder; no application/build code change."
+  }
+]

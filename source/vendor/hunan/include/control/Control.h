@@ -1,0 +1,101 @@
+#ifndef ESURFINGCLIENT_CONTROL_H
+#define ESURFINGCLIENT_CONTROL_H
+
+#include <stdbool.h>
+#include <stdint.h>
+
+#define CONTROL_DEFAULT_PORT 8890
+
+#define CONTROL_MSG_MAX 1024
+
+typedef struct
+{
+    uint8_t account;
+    bool is_authed;
+    bool is_running;
+    bool is_time_disabled;
+    /* 用户主动断开中 (登出且不再自动重连), Web 端据此把按钮切成「连接」 */
+    bool is_manual_offline;
+} control_status_t;
+
+/* -------------------- 认证进程侧 -------------------- */
+
+/**
+ * @brief 启动控制服务
+ * @param port 监听端口
+ * @return 是否启动成功 (端口被占用时返回 false, 调用方可降级为不提供服务)
+ */
+bool control_server_start(uint16_t port);
+
+/**
+ * @brief 停止控制服务并等待线程退出
+ */
+void control_server_stop(void);
+
+/* -------------------- Web 进程侧 -------------------- */
+
+/**
+ * @brief 设置要连接的控制端口
+ * @param port 端口
+ */
+void control_set_port(uint16_t port);
+
+/**
+ * @brief 查询认证进程的运行时状态
+ * @param out 状态快照
+ * @return 是否查询成功 (认证进程没起来时为 false)
+ */
+bool control_query_status(control_status_t* out);
+
+/**
+ * @brief 请求认证进程重新认证
+ * @return 是否下发成功
+ */
+bool control_restart_auth(void);
+
+/**
+ * @brief 请求认证进程重新加载配置并重新认证
+ * @return 是否下发成功
+ */
+bool control_apply_config(void);
+
+/**
+ * @brief 请求认证进程断开连接 (登出并停止自动重连)
+ *
+ * 语义是"用户主动下线": 先跑一次 term() 把会话从服务端释放, 之后**不再自动重连**,
+ * 直到 control_connect()。断开期间认证线程不再被拉起, 因此没有任何网络流量。
+ * @return 是否下发成功
+ */
+bool control_disconnect(void);
+
+/**
+ * @brief 请求认证进程重新连接 (解除断开状态并重新认证)
+ * @return 是否下发成功
+ */
+bool control_connect(void);
+
+/**
+ * @brief 请求认证进程强制发起一次认证 (不管网络探测怎么说)
+ *
+ * 与 control_restart_auth() 的区别: 那个要求**已经有会话**, 语义是"重登";
+ * 这个用于"网络通、但本程序还没有会话"的状态 —— 那时网络探测判定为已在线,
+ * 主循环从不创建认证线程, 普通重认证请求会因为"没有线程在认证"而失败。
+ * @return 是否下发成功
+ */
+bool control_force_auth(void);
+
+/**
+ * @brief 请求认证进程优雅退出 (监管者停止子进程时用)
+ *
+ * 为什么需要它: Windows 上没有 SIGTERM, 监管者原本靠 GenerateConsoleCtrlEvent
+ * 发 CTRL_BREAK。但那个 API 要求调用方与目标在同一个控制台, 而**服务由 SCM
+ * 启动时根本没有控制台**, 于是这一路必然失败, 只能 TerminateProcess 强杀 ——
+ * 认证子进程跑不到 clean(), 也就不会登出。
+ *
+ * 控制通道走的是回环 TCP, 不依赖控制台, 三种场景 (服务 / 控制台 / POSIX)
+ * 行为一致, 因此作为首选路径; 发不出去时监管者再退回原来的办法。
+ * @return 是否下发成功 (子进程没监听控制端口时为 false)
+ */
+bool control_request_shutdown(void);
+
+#endif

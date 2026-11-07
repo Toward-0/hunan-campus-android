@@ -1,0 +1,706 @@
+/* Modified 2026-10-12: stable network detection and recovery; see NOTICE. */
+/* Modified 2026-10-10: keep standalone management alive during network failure,
+ * and apply settings changes while waiting for a network. Protocol unchanged. */
+#include "clients/dialer/DialerClient.h"
+
+#include "clients/dialer/DialerInternal.h"
+
+#include "clients/net/NetClient.h"
+
+#include "states/States.h"
+
+#include "utils/PlatformUtils.h"
+#include "utils/TimeControl.h"
+#include "utils/Shutdown.h"
+#include "utils/Watchdog.h"
+#include "utils/Logger.h"
+#include "utils/sim/SimThread.h"
+
+#ifdef _WIN32
+extern bool get_service_mode();
+#else
+#include <stdlib.h>
+#endif
+
+#ifndef __OPENWRT__
+#include "supervisor/Supervisor.h"
+
+extern bool start_web_server_remote();
+extern bool start_web_server();
+#endif
+
+typedef enum
+{
+    RUN_SUCCESS = 0,
+    RUN_FAILED = 1,
+    TIMEOUT_RETRY = 2
+} RunStatus;
+
+static const uint64_t table[] = {1, 5, 10, 20, 30};
+
+static RunStatus run()
+{
+    static _Thread_local uint8_t retry_timeout = 1;
+    static _Thread_local unsigned portal_count = 0;
+    static _Thread_local uint8_t retry_auth = 1;
+    static _Thread_local uint64_t retry_auth_time = 0;
+
+    /**
+     * 用户主动断开: 不碰网络。
+     *
+     * 正常路径走不到这里 —— 断开请求同时置了 is_need_reauth, 线程会退出循环、
+     * 在 clean() 里登出, 之后线程守护不再重启它。这里是防"标志还在、线程却被重新
+     * 拉起来" (配置变更 / 时间窗口切换等路径) 的那一道闸: 宁可空转, 也不自作主张重连。
+     */
+    if (g_prog_status[tl_thread_idx].runtime_status.is_manual_offline)
+    {
+        sleep_ms(1000, false);
+        return RUN_SUCCESS;
+    }
+
+    // 时间控制/重置请求优先于一切网络操作：
+    // 到点下线后不应再发送心跳包，也不应继续认证或重试。
+    if (g_prog_status[tl_thread_idx].runtime_status.is_time_disabled)
+    {
+        g_prog_status[tl_thread_idx].runtime_status.is_need_reauth = true;
+    }
+    if (g_prog_status[tl_thread_idx].runtime_status.is_need_reauth)
+    {
+        return RUN_SUCCESS;
+    }
+
+    /**
+     * 用户点了「重新认证」而当时还没有会话: 直接发起一次认证, 不看网络探测结果。
+     *
+     * 为什么必须排在这个 switch 之前: 已在线时 check_network_status() 返回
+     * STATUS_OK, 那个分支只会打"已连接至互联网"然后 sleep —— 认证根本不会被调用。
+     * 这正是"网络通、但本程序没有会话, 点了按钮没反应"的根因。
+     *
+     * 标志在这里才消费(而不是 dialer_app 启动时): 它必须活到**这一行**,
+     * 否则 run() 读到的是 0, 又会掉进 STATUS_OK。实测踩过两次 ——
+     * 第一次在主线程 wait_need_auth() 里清掉, 第二次在 dialer_app 里清掉,
+     * 两次都是"标志提前消失、认证没发起"。消费点必须和使用点重合。
+     */
+    if (g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_force)
+    {
+        g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_force = false;
+        g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_pending = false;
+
+        retry_timeout = 1;
+        retry_auth = 1;
+
+        LOG_INFO("强制认证: 跳过网络探测, 直接发起一次认证");
+
+        if (auth() != AUTH_SUCCESS)
+        {
+            /* 认证失败不该打死这一轮: 要重试而不是退出线程。
+               (之前这里直接 return RUN_SUCCESS, 等于一次失败就永远不再试。) */
+            if (g_prog_status[tl_thread_idx].runtime_status.is_running == false)
+            {
+                return RUN_FAILED;
+            }
+            if (retry_auth > 5)
+            {
+                LOG_FATAL("强制认证失败 %" PRIu8 " 次, 停止重试 (账号密码或门户地址可能有误)", retry_auth - 1);
+                return RUN_FAILED;
+            }
+            retry_auth_time = 60000 * table[retry_auth - 1];
+            LOG_ERROR("强制认证失败, 重试: 第 %" PRIu8 " 次, 最多 5 次, 下一次重试时间: %" PRIu64 " 毫秒后",
+                      retry_auth, retry_auth_time);
+            retry_auth++;
+            sleep_ms(retry_auth_time, true);
+
+            /* 重试也要继续走强制路径: 否则下一次进 run() 又会掉进 STATUS_OK */
+            g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_force = true;
+            return RUN_SUCCESS;
+        }
+        return RUN_SUCCESS;
+    }
+
+    /* Heartbeat scheduling is independent of public probe availability.
+     * Never tear down an authenticated session due to transport errors. */
+    if (g_prog_status[tl_thread_idx].runtime_status.is_initialized &&
+        g_prog_status[tl_thread_idx].runtime_status.is_authed &&
+        g_prog_status[tl_thread_idx].auth_cfg.keep_retry != 0 &&
+        get_cur_tm_ms() - g_prog_status[tl_thread_idx].auth_cfg.tick >=
+            g_prog_status[tl_thread_idx].auth_cfg.keep_retry * 1000)
+    {
+        LOG_INFO("发送心跳包");
+        if (heartbeat())
+        {
+            g_prog_status[tl_thread_idx].auth_cfg.tick = get_cur_tm_ms();
+            LOG_INFO("心跳响应解析成功，下一次心跳: %" PRIu64 " 秒后", g_prog_status[tl_thread_idx].auth_cfg.keep_retry);
+        }
+        else
+        {
+            LOG_WARN("心跳失败，保留会话并检测门户，10 秒后重试");
+            sleep_ms(10000, true);
+        }
+        if (g_prog_status[tl_thread_idx].runtime_status.is_need_reauth || g_stop_requested)
+            return RUN_SUCCESS;
+    }
+
+    const network_status_t network = check_network_status(true);
+    if (g_prog_status[tl_thread_idx].runtime_status.is_need_reauth || g_stop_requested)
+        return RUN_SUCCESS;
+    switch (network)
+    {
+    case STATUS_OK: // 正常联网
+        retry_timeout = 1;
+        retry_auth = 1;
+        portal_count = 0;
+        if (!g_prog_status[tl_thread_idx].runtime_status.is_authed)
+            LOG_INFO("已连接至互联网");
+        sleep_ms(1000, false);
+        return RUN_SUCCESS;
+    case STATUS_NEED_AUTH: // 需要认证
+        retry_timeout = 1;
+        if (g_prog_status[tl_thread_idx].runtime_status.is_authed && ++portal_count < 3)
+        {
+            LOG_WARN("检测到校园门户，保留会话，等待连续三次确认 (%u/3)", portal_count);
+            sleep_ms(3000, true);
+            return RUN_SUCCESS;
+        }
+        portal_count = 0;
+        LOG_INFO("需要认证（已确认校园门户重定向）");
+        if (g_prog_status[tl_thread_idx].runtime_status.is_initialized) // 进入认证流程的时候如果会话已经初始化, 重置认证配置参数
+        {
+            reset_for_recovery();
+            g_prog_status[tl_thread_idx].runtime_status.is_running = true;
+        }
+        if (auth() != AUTH_SUCCESS)
+        {
+            if (g_prog_status[tl_thread_idx].runtime_status.is_running == false)
+            {
+                return RUN_FAILED;
+            }
+            if (retry_auth > 5)
+            {
+                LOG_FATAL("超过最多重试次数, 请检查账号密码是否正确");
+                return RUN_FAILED;
+            }
+            retry_auth_time = 60000 * table[retry_auth - 1];
+            LOG_ERROR("配置 %" PRIu8 " 认证失败, 下标 %" PRIu8 ", 重试: 第 %" PRIu8 " 次, 最多 5 次, 下一次重试时间: %" PRIu64 " 毫秒 (% " PRIu64 " 秒) 后",
+                g_prog_status[tl_thread_idx].login_cfg.idx,
+                tl_thread_idx,
+                retry_auth,
+                retry_auth_time,
+                retry_auth_time / 1000);
+            retry_auth++;
+            sleep_ms(retry_auth_time, true);
+        }
+        return RUN_SUCCESS;
+    case STATUS_ERROR: // Inconclusive public probes: keep session and heartbeat.
+        portal_count = 0;
+        retry_auth = 1;
+        if (retry_timeout == 1)
+            LOG_WARN("网络检测无明确认证证据，保留会话，10 秒后重试");
+        if (retry_timeout < 255) retry_timeout++;
+        sleep_ms(10000, true);
+        return TIMEOUT_RETRY;
+    default:
+        retry_timeout = 1;
+        retry_auth = 1;
+        LOG_ERROR("网络错误");
+        sleep_ms(5000, true);
+        return RUN_FAILED;
+    }
+}
+
+#ifndef NETWORK_RECOVERY_TEST
+int dialer_app(void* arg)
+{
+    tl_thread_idx = (int8_t)(intptr_t)arg; // 领取线程下标参数
+    g_prog_status[tl_thread_idx].runtime_status.is_running = true;
+    g_prog_status[tl_thread_idx].thread_id = sim_thread_cur_id(); // 获取当前线程 TID
+    LOG_DEBUG("认证线程 %" PRId8 " 创建成功, ID: %" PRIu64 ", 使用配置: %" PRIu8,
+        tl_thread_idx,
+        g_prog_status[tl_thread_idx].thread_id,
+        g_prog_status[tl_thread_idx].login_cfg.idx);
+
+    refresh_states(); // 刷新数据 (algo_id, host_name, client_id, mac_addr)
+
+    /**
+     * 清掉"上一轮会话要求重来"的标志。
+     *
+     * 这个标志在线程守护那一路是**用来打断旧线程**的: 用户点「重新认证」/ 配置变更
+     * 时置上它, 让旧线程退出循环。但线程守护随后会带着同一个标志创建**新**线程 ——
+     * 而 sleep_ms(ms, true) 每 100 毫秒检查一次 is_need_reauth, 看到它就直接返回。
+     * 结果是新线程里所有可中断的睡眠全部变成空转: get_last_location() 会以每秒几十次
+     * 的频率狂刷 generate_204, 认证流程永远排不上 (实测踩到过, 日志里一秒能刷几百行)。
+     *
+     * 新线程的语义是"从头开始", 这个标志到它启动时就该失效 —— 真正的重来由
+     * is_running / is_need_reauth 驱动**旧**线程退出、守护重新拉起新线程来完成。
+     */
+    g_prog_status[tl_thread_idx].runtime_status.is_need_reauth = false;
+
+    /**
+     * **只看, 不清** —— 真正的消费点在 run() 里 (见那里的注释)。
+     *
+     * 这里一旦清掉, run() 就看不到它, 于是又会掉进"已连接至互联网"分支、
+     * 认证根本不会发起。这个坑我踩了两次, 记在这里免得第三次:
+     * 标志的**消费点必须和使用点重合**。
+     */
+    const bool force_auth = g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_force;
+
+    if (force_auth)
+    {
+        /**
+         * 广东分支**做不到**强制认证, 明确拒绝而不是假装成功。
+         *
+         * discover_guangdong() 的端点与身份**全部**来自 last_location 里的门户页
+         * (campus.js 注释块、wlanacip 查询串)。跳过 get_last_location() 就没有
+         * last_location, 那一步必然失败 —— 与其打一条看不懂的"准备认证参数失败",
+         * 不如直说。
+         */
+        if (g_prog_status[tl_thread_idx].login_cfg.province != PROVINCE_HUNAN)
+        {
+            LOG_ERROR("强制认证仅支持湖南: 广东的端点与身份必须从门户页(302 注入的地址)发现, "
+                      "没有 302 就无法认证");
+            g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_force = false;
+            g_prog_status[tl_thread_idx].runtime_status.is_manual_auth_pending = false;
+            g_prog_status[tl_thread_idx].runtime_status.is_running = false;
+            return 0;
+        }
+
+        LOG_INFO("强制认证: 跳过等待门户注入 (接入设备不会在已在线时下发 302), 门户改用配置里的回退值");
+    }
+    else
+    {
+        if (get_last_location() == false) g_prog_status[tl_thread_idx].runtime_status.is_running = false; // 获取 last_location, 用于获取认证配置
+    }
+
+    /**
+     * 运行循环
+     * is_running 为真且 is_need_reset 为假时保持循环
+     * 正在运行且不需要重置时保持循环
+     * 如果不运行, 或者需要重置时退出循环
+     */
+    int exit_code = 0;
+    while (g_prog_status[tl_thread_idx].runtime_status.is_running && g_stop_requested == 0)
+    {
+        /**
+         * 打卡: 只作为兜底。
+         *
+         * 真正精确的打卡在两个地方 —— sleep_ms() 里 (每次睡眠按自己的时长打卡)
+         * 和 NetClient 的 get()/post() 里 (每次网络请求按连接+操作超时打卡)。
+         * 所有可能长时间阻塞的操作都从这两处过, 所以这里只要保证"一轮里
+         * 没被覆盖到的部分不会拖太久"就够了。
+         */
+        watchdog_pet_network();
+
+        if (supervisor_gone())
+        {
+            LOG_WARN("守护进程已退出, 本进程一并退出");
+            break;
+        }
+        /**
+         * 认证进程里没有独立的时间控制线程, 由本线程自己校正时间窗口
+         * 单进程模式下由时间控制线程统一校正, 这里不重复做
+         */
+        if (g_prog_role == ROLE_AUTH)
+        {
+            time_control_sync();
+        }
+
+        const RunStatus run_status = run();
+        // 如果 run 函数返回 RUN_FAILED 或需要重置, 则退出循环
+        if (run_status == RUN_FAILED)
+        {
+            LOG_ERROR("线程出现错误, 正在退出");
+            g_prog_status[tl_thread_idx].runtime_status.is_running = false;
+            exit_code = 1; // 认证进程据此退出, 交给外部监管者重新拉起
+            break;
+        }
+        if (g_prog_status[tl_thread_idx].runtime_status.is_need_reauth)
+        {
+            LOG_INFO("线程需要重置, 正在退出");
+            g_prog_status[tl_thread_idx].runtime_status.is_running = false;
+            break;
+        }
+    }
+
+    /**
+     * 线程退出时的操作
+     */
+    watchdog_stop(); // 关闭流程里主循环不再打卡, 别把它当成卡死
+    clean(); // 清除参数
+    return exit_code;
+}
+
+/**
+ * @brief 打印程序信息
+ */
+void print_banner()
+{
+    LOG_INFO("-------------------------------------------------------------------");
+    LOG_INFO(" - 程序版本: " PROGRAM_FULL_VERSION);
+    LOG_INFO(" - 本程序由 BadGhost 制作, 遵循 Apache-2.0 开源协议");
+    LOG_INFO(" - 项目地址: https://github.com/BadGhost520/ESurfingClient-CVersion");
+    LOG_INFO("-------------------------------------------------------------------");
+}
+
+#ifndef __OPENWRT__
+
+/**
+ * @brief Web 进程主流程
+ *
+ * 只提供网页服务, 不参与认证:
+ * - 配置由本进程自己读, 因此 /api/getConfigs 一类的接口两种模式下走的是同一段代码
+ * - 认证状态与"重新认证 / 应用新配置"通过控制通道交给认证进程
+ * - 不启动线程守护与时间控制线程
+ * @return 进程退出码
+ */
+static int work_web()
+{
+    g_thread_keep_alive = true;
+
+    g_prog_status = calloc(1, sizeof(prog_status_t));
+    init_shutdown_hook();
+
+    if (init_logger() == false) return 1;
+
+    print_banner();
+
+    if (load_cfg() == false) shut(1);
+
+    LOG_INFO("以 Web 进程运行, 展示配置 %" PRIu8, g_prog_status[0].login_cfg.idx);
+
+    if (start_web_server_remote() == false) shut(1);
+
+    // Web 服务在独立线程里跑, 主线程只等退出
+    while (g_need_exit == false && g_stop_requested == 0)
+    {
+        if (supervisor_gone()) break;
+        sleep_ms(1000, false);
+    }
+
+    LOG_INFO("Web 进程退出");
+    shut(0); // 停 Web 服务线程、收尾日志, 不会返回
+    return 0;
+}
+
+#endif
+
+/**
+ * @brief 让所有认证线程退出, 并等它们真的结束
+ *
+ * is_need_reauth 会让 run() 立刻返回、主循环随之跳出; sleep_ms(can_stop=true)
+ * 也会被它唤醒, 所以线程能很快收尾 (收尾里会跑 clean(), 也就是登出)。
+ *
+ * 必须 join: 线程还在跑的时候既不能重载配置, 也不能安全地重建线程 ——
+ * 而且 sim_thread 的资源要在这里回收。
+ */
+static void stop_all_dialer_threads()
+{
+    for (uint8_t i = 0; i < g_prog_cnt; i++)
+    {
+        g_prog_status[i].runtime_status.is_running = true;
+        g_prog_status[i].runtime_status.is_need_reauth = true;
+    }
+
+    for (uint8_t i = 0; i < g_prog_cnt; i++)
+    {
+        if (g_prog_status[i].thread != NULL)
+        {
+            int result_code = 0;
+            sim_thread_join(g_prog_status[i].thread, &result_code);
+            g_prog_status[i].thread = NULL;
+            LOG_INFO("认证线程 %" PRIu8 " 已停止 (退出码 %d)", i, result_code);
+        }
+    }
+}
+
+void work()
+{
+    /**
+     * 各角色走各自的流程
+     */
+    if (g_prog_role == ROLE_AUTH)
+    {
+        exit(work_auth());
+    }
+
+#ifndef __OPENWRT__
+
+    if (g_prog_role == ROLE_SUPERVISOR)
+    {
+        exit(work_supervisor());
+    }
+
+    if (g_prog_role == ROLE_WEB)
+    {
+        exit(work_web());
+    }
+
+#endif
+
+    g_thread_keep_alive = true;
+
+    g_prog_status = calloc(1, sizeof(prog_status_t)); // 初始化 g_prog_status 指针并分配 1 个空间
+
+    init_shutdown_hook(); // 初始化关闭钩子
+
+    if (init_logger() == false) return; // 初始化日志系统
+
+    print_banner();
+
+    /**
+     * 先加载配置, 再起 Web 服务 —— 顺序不能反:
+     * 监听端口与是否允许外部访问 (配置里的 web_port / web_external_acc)
+     * 要在绑端口之前就位, 反过来就只能按默认端口开出去了。
+     *
+     * 注意 load_cfg() 现在**不会**因为"没有配置文件 / 账号为空 / 被停用"而失败:
+     * 那几种情况都改用内置默认值继续跑, 由网页界面让用户把它填好。
+     * 只有真正致命的 (内存不足、连内置模板都解析不了) 才返回 false。
+     */
+    if (load_cfg() == false) shut(1); // 加载配置文件
+
+#ifndef __OPENWRT__
+    if (start_web_server() == false) shut(1); // 启动 Web 服务器线程
+#endif
+
+    time_control_sync(); // 冷启动时先按当前时间同步各账号的时间控制状态
+    if (time_control_init() == false) shut(1); // 启动时间控制定时线程
+
+    /**
+     * 认证阶段可以**反复进入 / 退出**: 用户可能在网页上停用认证, 或把账号清空。
+     * 每次回到阶段一时网页界面都保持在线, 所以永远有地方把它改回来。
+     */
+    for (;;)
+    {
+        /**
+         * ================= 阶段一: 等配置就绪 =================
+         *
+         * g_cfg_ready 为假 = 还没启用, 或账号密码还没填。这时**不发任何网络请求**,
+         * 但网页界面已经起来了 —— 用户打开浏览器就能填, 不需要手工编辑 JSON。
+         *
+         * 网页上点「保存并应用」会把 g_cfg_loaded 置为 false, 这里重新加载;
+         * 加载后配置齐了 (g_cfg_ready 为真) 就进入阶段二。
+         */
+        bool wait_notified = false;
+
+        while (g_cfg_ready == false && g_stop_requested == 0)
+        {
+            if (g_cfg_loaded == false)
+            {
+                LOG_INFO("收到网页提交的配置, 重新加载");
+                if (load_cfg() == false) shut(1);
+                wait_notified = false;
+                continue;
+            }
+
+            if (wait_notified == false)
+            {
+                LOG_INFO("【待配置】账号或省份尚未填好, 本程序只提供网页界面, 不会发起认证");
+                LOG_INFO("请在浏览器打开 http://127.0.0.1:%" PRIu16 " 填写账号密码与省份, 然后点「保存并应用」",
+                         g_web_port);
+                wait_notified = true;
+            }
+
+            sleep_ms(500, false);
+        }
+
+        if (g_stop_requested) break; // 等待期间收到退出请求
+
+        LOG_INFO("配置已就绪, 开始认证流程");
+
+        /**
+         * ================= 阶段二: 认证 =================
+         */
+        logout_previous_session(); // 前台模式的强杀登出流程
+
+        /**
+         * 检测网络状态, 进入需要认证的状态后才继续
+         */
+        const WaitResult wait_result = wait_need_auth();
+        if (wait_result == WAIT_CONFIG_CHANGED)
+        {
+            if (load_cfg() == false) shut(1);
+            continue;
+        }
+        if (wait_result == WAIT_RETRY_EXHAUSTED)
+        {
+            LOG_WARN("网络暂不可用，网页管理保持运行，5 秒后重试");
+            sleep_ms(5000, false);
+            if (g_cfg_loaded == false && load_cfg() == false) shut(1);
+            continue;
+        }
+
+        if (g_stop_requested) break; // 等待期间收到退出请求
+
+        /**
+         * 根据配置数创建相应数量的线程
+         */
+        LOG_DEBUG("开始创建认证线程");
+        for (uint8_t i = 0; i < g_prog_cnt; i++)
+        {
+            if (g_prog_status[i].runtime_status.is_time_disabled)
+            {
+                LOG_INFO("配置 %" PRIu8 " 当前不在允许时段，暂不启动认证线程", g_prog_status[i].login_cfg.idx);
+                continue;
+            }
+            g_prog_status[i].thread = sim_thread_create(dialer_app, (void*)(intptr_t)i);
+            uint8_t retry_ct = 1;
+            while (g_prog_status[i].thread == NULL)
+            {
+                if (retry_ct > 5)
+                {
+                    LOG_FATAL("超过重试次数, 退出程序");
+                    shut(1);
+                }
+                LOG_ERROR("认证线程 %" PRIu8 " 创建失败, 重试中, 重试次数: %" PRIu8 ", 最多 5 次", i, retry_ct);
+                g_prog_status[i].thread = sim_thread_create(dialer_app, (void*)(intptr_t)i);
+                retry_ct++;
+            }
+        }
+
+        /**
+         * 线程守护
+         * 登录时间检测
+         */
+        sleep_ms(5000, false);
+        LOG_INFO("线程守护开启");
+        uint64_t check_time = 0;
+
+        /**
+         * 循环条件里的 g_cfg_ready: 用户在网页上停用 / 清空账号时, 它会被置为假,
+         * 守护循环随即退出, 由下面统一把线程停干净并回到阶段一。
+         */
+        while (g_thread_keep_alive && g_stop_requested == 0 && g_cfg_ready)
+        {
+            /**
+             * 配置被改过 (网页「保存并应用」会把 g_cfg_loaded 置假):
+             * 先让所有认证线程退出, 再重新加载。加载后由外层判断
+             * "仍然就绪" → 重新走一遍认证; "已停用/已清空" → 回阶段一等。
+             */
+            if (g_cfg_loaded == false)
+            {
+                LOG_INFO("检测到配置变更, 正在重新加载");
+                stop_all_dialer_threads();
+                if (load_cfg() == false) shut(1);
+                break;
+            }
+
+            if (check_time > 299999)
+            {
+                check_time = 0;
+                LOG_INFO("线程守护持续运行中");
+            }
+        for (uint8_t i = 0; i < g_prog_cnt; i++)
+        {
+            /**
+             * 认证时间超过 172200000 毫秒 (1 天 23 时 50 分) 自动重启认证
+             */
+            if (g_prog_status[i].login_cfg.province != PROVINCE_HUNAN &&
+                get_cur_tm_ms() - g_prog_status[i].auth_cfg.auth_time >= 172200000 && g_prog_status[i].auth_cfg.auth_time != 0)
+            {
+                LOG_DEBUG("当前时间戳: %" PRIu64, get_cur_tm_ms());
+                LOG_WARN("认证时间超过 172200000 毫秒 (1 天 23 时 50 分), 为避免被远程服务器踢下线, 正在重新进行认证");
+                for (uint8_t j = 0; j < g_prog_cnt; j++)
+                {
+                    g_prog_status[j].runtime_status.is_need_reauth = true;
+                    uint8_t retry_wte = 1;
+                    while (g_prog_status[j].runtime_status.is_authed)
+                    {
+                        if (retry_wte > 5)
+                        {
+                            LOG_FATAL("超过重试次数, 强制退出线程");
+                            sim_thread_destroy(g_prog_status[j].thread);
+                        }
+                        LOG_DEBUG("等待配置 %" PRIu8 " 登出, 下标 %" PRIu8 ", 等待次数: %" PRIu8 ", 最多 5 次", g_prog_status[j].login_cfg.idx, j, retry_wte);
+                        retry_wte++;
+                        sleep_ms(2000, true);
+                    }
+                }
+            }
+
+            /**
+             * 线程守护
+             */
+            if (g_prog_status[i].runtime_status.is_running == false)
+            {
+                if (g_prog_status[i].thread != NULL)
+                {
+                    int result_code = 0;
+                    sim_thread_join(g_prog_status[i].thread, &result_code);
+                    g_prog_status[i].thread = NULL;
+                    LOG_INFO("认证线程 %" PRIu8 " 已结束", i);
+                }
+
+                if (g_prog_status[i].runtime_status.is_time_disabled)
+                {
+                    // 时间控制禁用中，不重启该线程；等时间控制线程在允许时段再放行
+                    continue;
+                }
+
+                if (g_prog_status[i].runtime_status.is_manual_offline)
+                {
+                    // 用户主动断开：不自作主张重连，等 Web 端下发「连接」后这里自然放行
+                    continue;
+                }
+
+                LOG_INFO("由于线程守护已开启，将会重新启动认证线程 %" PRIu8, i);
+                if (g_cfg_loaded == false)
+                {
+                    LOG_WARN("配置文件未完成加载, 令所有线程退出并加载");
+                    for (uint8_t j = 0; j < g_prog_cnt; j++)
+                    {
+                        g_prog_status[j].runtime_status.is_running = true;
+                        while (g_prog_status[j].runtime_status.is_authed == true)
+                        {
+                            sleep_ms(100, true);
+                        }
+                    }
+                    load_cfg();
+                }
+                g_prog_status[i].thread = sim_thread_create(dialer_app, (void*)(intptr_t)i);
+                uint8_t retry_ct = 1;
+                while (g_prog_status[i].thread == NULL)
+                {
+                    if (retry_ct > 5)
+                    {
+                        LOG_FATAL("超过重试次数, 退出程序");
+                        shut(1);
+                    }
+                    LOG_ERROR("认证线程 %" PRIu8 " 创建失败, 重试中, 重试次数: %" PRIu8 ", 最多 5 次", i, retry_ct);
+                    g_prog_status[i].thread = sim_thread_create(dialer_app, (void*)(intptr_t)i);
+                    retry_ct++;
+                }
+                while (g_prog_status[i].runtime_status.is_running == false)
+                {
+                    sleep_ms(100, false);
+                }
+            }
+        }
+        sleep_ms(10, false);
+        check_time += 10;
+        }
+
+        LOG_INFO("线程守护已关闭");
+
+        /**
+         * 退出守护循环的两种原因:
+         *   · g_stop_requested / g_thread_keep_alive 为假 → 程序要关了, 跳出阶段循环
+         *   · g_cfg_ready 为假            → 用户在网页上停用或清空了账号,
+         *                                    把线程停干净后回到阶段一继续等
+         */
+        if (g_stop_requested || g_thread_keep_alive == false) break;
+
+        stop_all_dialer_threads();
+        LOG_INFO("配置已停用或账号已清空, 认证线程已全部停止, 回到【待配置】状态, 网页界面继续提供服务");
+    }
+
+    // 收到退出请求: 走正常的关闭流程 (停子线程与 Web 服务、收尾日志、退出)
+    if (g_stop_requested) shut(0);
+
+    while (g_thread_keep_alive == false
+#ifdef _WIN32
+        && get_service_mode() == false
+#endif
+        )
+    {
+        sleep_ms(10000, false);
+    }
+}
+#endif /* NETWORK_RECOVERY_TEST */

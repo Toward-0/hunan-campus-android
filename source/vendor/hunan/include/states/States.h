@@ -1,0 +1,307 @@
+#ifndef ESURFINGCLIENT_STATES_H
+#define ESURFINGCLIENT_STATES_H
+
+#include "cipher/CipherInterface.h"
+
+#include "utils/sim/SimThread.h"
+
+#include <inttypes.h>
+#include <setjmp.h>
+#include <signal.h>
+
+#define SCHOOL_NETWORK_SYMBOL 8
+
+#define TICKET_URL_LEN 512
+#define USER_AGENT_LEN 32
+#define CLIENT_ID_LEN 40
+#define HOST_NAME_LEN 32
+#define KEEP_URL_LEN 256
+#define TERM_URL_LEN 256
+#define AUTH_URL_LEN 256
+#define MAC_ADDR_LEN 20
+#define TICKET_LEN 40
+#define OSTAG_LEN 32
+
+#define USR_LEN 16
+#define PWD_LEN 128
+
+#define WEEK_MINUTES 10080
+#define MAX_TIME_WINDOWS 16
+#define TIME_WINDOW_STR_LEN 32
+
+#define IP_LEN 16
+#define IF_LEN 16
+
+#define LOCATION_LEN 512
+#define LAST_LOCATION_LEN 1024
+
+/**
+ * 门户地址提示 (BAS 注入的 302 Location) 的缓冲长度。
+ * Modified 2026-10-12: retain the entire validated redirect, including identity
+ * parameters. A short snapshot can silently truncate mscgip on another campus.
+ */
+#define PORTAL_HINT_LEN 2048
+
+#define CONTROL_TOKEN_LEN 33
+
+#define CONTROL_TOKEN_ENV "ESURFING_CONTROL_TOKEN"
+
+#define DEFAULT_CONN_TIMEOUT 7
+
+#define DEFAULT_OP_TIMEOUT 10
+
+#define DEFAULT_CHANNEL 3
+
+#define DEFAULT_WEB_PORT 8888
+
+#define DEFAULT_WEB_EXTERNAL_ACC false
+
+/* ---- 省份 ---- */
+#define PROVINCE_GUANGDONG 0
+#define PROVINCE_HUNAN     1
+#define DEFAULT_PROVINCE   PROVINCE_GUANGDONG
+
+typedef enum
+{
+    GET_TICKET = 1,
+    LOGIN = 2,
+    HEART_BEAT = 3,
+    TERM = 4
+} XmlChoose;
+
+typedef enum
+{
+    CONSOLE_FORMAT = 1,
+    FILE_FORMAT = 2
+} TimeFormat;
+
+typedef struct
+{
+    uint8_t* data;
+    size_t len;
+} bytes_t;
+
+typedef enum
+{
+    ROLE_STANDALONE = 0,
+    ROLE_SUPERVISOR = 1,
+    ROLE_AUTH = 2,
+    ROLE_WEB = 3
+} prog_role_t;
+
+typedef struct
+{
+    char ticket_url[TICKET_URL_LEN];
+    char client_id[CLIENT_ID_LEN];
+    char host_name[HOST_NAME_LEN];
+    char ostag[OSTAG_LEN];
+    char keep_url[KEEP_URL_LEN];
+    char term_url[TERM_URL_LEN];
+    char auth_url[AUTH_URL_LEN];
+    char mac_addr[MAC_ADDR_LEN];
+    char algo_id[ALGO_ID_LEN];
+    char ticket[TICKET_LEN];
+    char client_ip[IP_LEN];
+    char ac_ip[IP_LEN];
+    bool dynamic;
+    cipher_interface_t* cipher;
+    ios_zsm_blob_t blob;
+    uint64_t keep_retry;
+    uint64_t auth_time;
+    uint64_t tick;
+    int8_t type;
+} auth_cfg_t;
+
+typedef struct
+{
+    uint16_t start_week_min;
+    uint16_t end_week_min;
+} time_window_t;
+
+typedef struct
+{
+    char usr[USR_LEN];
+    char pwd[PWD_LEN];
+    uint8_t chn;
+    char user_agent[USER_AGENT_LEN];
+    uint32_t mark;
+    bool use_cus_mark;
+    /* ---- 省份适配 ---- */
+    uint8_t province;      /* PROVINCE_* */
+    char portal[64];       /* 湖南用: 门户 IP (广东靠门户页发现, 用不到) */
+    uint16_t portal_port;  /* 湖南用: 门户端口 */
+    char mscgip[IP_LEN];   /* 湖南用: 接入设备地址, 拼进查询串 */
+    time_window_t time_windows[MAX_TIME_WINDOWS];
+    uint8_t time_window_count;
+    bool has_time_control;
+    uint8_t idx;
+} login_cfg_t;
+
+typedef struct
+{
+    bool is_initialized;
+    bool is_running;
+    bool is_authed;
+    bool is_need_reauth;
+    bool is_time_disabled;
+
+    /**
+     * 用户主动断开 (Web 端「断开连接」)。
+     *
+     * 语义是"登出之后不要自动重连", 直到用户点「连接」:
+     *   · 置上时同时置 is_need_reauth → 认证线程退出循环 → clean() 里跑 term() 登出
+     *   · clean() 会 memset 整个 runtime_status, 所以这个标志必须像 is_time_disabled
+     *     一样被显式保存/恢复, 否则线程守护会立刻把它重新拉起来 (等于没断开)
+     *   · 线程不再被重启, 因此断开期间**没有任何网络流量**
+     */
+    bool is_manual_offline;
+
+    /**
+     * 用户点了「重新认证」, 而当时**还没有会话** —— 请求挂在这里等主循环处理。
+     *
+     * 为什么需要它: 主循环只在探测到 302 (STATUS_NEED_AUTH) 时才创建认证线程。
+     * 接入设备在我们**已经在线**时不会注入 302, 于是程序一直判定 OK、从不认证;
+     * 而「重新认证」按钮又因为"没有线程在认证"被拒 (403)。用户如果处在
+     * "网络通、但本程序没有会话"的状态, 就没有任何办法把会话建起来。
+     *
+     * 为什么是**两个**标志, 而不是一个:
+     *   · is_manual_auth_force 给 wait_need_auth() 看, 让它跳过网络等待;
+     *   · is_manual_auth_pending 给主循环 / 线程守护看, 保证线程被真正拉起来。
+     * 只用一个不行 —— 认证线程退出时 clean() 会 memset 整个 runtime_status,
+     * 标志会在"线程已退出、新线程还没建"的空档里被抹掉, 于是这次请求白点。
+     * 这里用与 is_manual_offline 相同的模式: 标志活过 clean(), 由消费方清掉。
+     *
+     * 调用顺序 (并发约定): 先置 is_manual_auth_force, **再置** is_manual_auth_pending。
+     * 两个都是 bool 写, 顺序保证消费方看到 pending 时 force 一定已经可见。
+     * 反过来写会出现"线程被拉起来、却看不到 force、于是又去等 302"的窗口。
+     */
+    bool is_manual_auth_force;
+
+    /** 请求是否还没被消费掉 (见 is_manual_auth_force 的说明) */
+    bool is_manual_auth_pending;
+} runtime_status_t;
+
+typedef struct
+{
+    auth_cfg_t auth_cfg;
+    login_cfg_t login_cfg;
+    runtime_status_t runtime_status;
+    uint64_t thread_id;
+    sim_thread_t* thread;
+    char last_location[LAST_LOCATION_LEN * 2];
+    bool last_location_lock;
+
+    /**
+     * 判定"需要认证"那一刻的 Location 快照 —— 也就是 BAS 注入的那条门户 URL。
+     *
+     * 为什么不直接读 last_location: get_last_location() 会**跟随 302** 并不断覆盖
+     * last_location。今天湖南的门户页在未认证时返回 200, 所以那个循环不会跑,
+     * last_location 恰好停在注入地址上 —— 属于"碰巧对"。而实测已认证时同一个
+     * index.cgi 会 302 到一个被动态防护挡着的网页门户 (412/403), 一旦哪里先跳到
+     * 那里, last_location 就不再是能用的 API 基址了。快照让这件事变成"构造上对"。
+     *
+     * 放在 prog_status_t 而不是 auth_cfg_t: clean() 会 memset 掉 auth_cfg, 而
+     * reset() 恰好在 auth() 之前调用 (DialerClient.c 的 STATUS_NEED_AUTH 分支),
+     * 放 auth_cfg 里会被清空。
+     */
+    char portal_hint[PORTAL_HINT_LEN];
+
+    /**
+     * 上一次认证**实际采用**的门户地址 (见 DialerAuth.c 的 discover_hunan)。
+     *
+     * 为什么不直接把发现到的地址写回 login_cfg.portal:
+     *   /api/getConfigs 回给网页的正是 login_cfg.portal, 而网页保存是**原样写盘**
+     *   (Config.c 的 write_cfg_json)。一旦被运行时值污染, 用户点一次「保存」就会
+     *   把"接入设备当时下发的地址"固化成配置文件里的死值 —— 回退机制当场失效,
+     *   下次接入设备一换, 连退路都没有。所以运行时值必须另开一组字段。
+     *
+     * 语义: portal_source 非空时这两个字段才有意义。它们是**只读快照**, 只给
+     * 网页界面显示"程序到底在连哪"用。配置里的 portal/portal_port 则始终是
+     * 回退值, 由用户编辑。
+     */
+    char runtime_portal[64];
+    uint16_t runtime_portal_port;
+
+    /**
+     * 上面那个门户是哪来的:
+     *   "dhcp"   接入设备在 302 里下发的 (优先)
+     *   "config" 设备没下发, 回退到配置里的值
+     *   ""       还没判定过 (程序刚起来 / 本来就已认证, 没有 302 可看)
+     */
+    char portal_source[8];
+} prog_status_t;
+
+#ifdef _WIN32
+extern jmp_buf g_exit_jmp;
+#endif
+
+extern uint64_t g_start_run_tm;
+
+extern prog_role_t g_prog_role;
+
+extern uint8_t g_prog_account;
+
+extern uint16_t g_control_port;
+
+extern uint16_t g_web_port;
+
+extern bool g_web_external_acc;
+
+extern char g_control_token[CONTROL_TOKEN_LEN];
+
+extern int g_main_argc;
+
+extern char** g_main_argv;
+
+extern volatile sig_atomic_t g_stop_requested;
+
+extern int8_t g_prog_cnt;
+
+extern _Thread_local int8_t tl_thread_idx;
+
+extern _Thread_local const char* tl_thread_name;
+
+extern prog_status_t* g_prog_status;
+
+extern char g_school_network_symbol[SCHOOL_NETWORK_SYMBOL];
+
+extern bool g_thread_keep_alive;
+
+extern bool g_is_webserver_running;
+
+extern bool g_need_exit;
+
+extern bool g_prog_enabled;
+
+extern bool g_need_restart;
+
+extern bool g_cfg_loaded;
+
+/**
+ * 配置是否**就绪到可以认证** —— 即 enabled 为真, 且至少有一个账号的
+ * username / password 都非空。
+ *
+ * 为假时程序**只跑网页界面**, 不起认证线程: 首次运行、账号还没填、
+ * 用户在网页上点了"停用"都落在这里。用户不需要手工编辑配置文件 ——
+ * 在网页上填完点「保存并应用」, 这个标志就会翻成真, 主循环随即开始认证。
+ *
+ * 与 g_cfg_loaded 的区别: 那个只是"文件读过了", 这个才是"能拿去认证了"。
+ */
+extern bool g_cfg_ready;
+
+/**
+ * 配置文件存在, 但内容解析不了 (JSON 语法错误 / 被截断)。
+ *
+ * 这时程序改用内置默认值继续跑 (不再挂起或退出), 网页上会提示
+ * "原配置文件无法解析, 保存会覆盖它", 由用户决定是否覆盖。
+ */
+extern bool g_cfg_corrupt;
+
+extern long g_conn_timeout;
+
+extern long g_op_timeout;
+
+/** @brief 刷新状态函数 */
+void refresh_states();
+
+#endif

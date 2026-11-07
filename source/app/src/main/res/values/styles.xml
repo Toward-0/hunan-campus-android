@@ -1,0 +1,10 @@
+<resources>
+    <!-- Stable light-bar defaults also cover OEM/API variants where the first
+         WindowInsetsController callback is not available during attachment. -->
+    <style name="CampusThemeBase" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#F6F8F6</item>
+        <item name="android:navigationBarColor">#000000</item>
+    </style>
+    <style name="CampusTheme" parent="CampusThemeBase" />
+</resources>
