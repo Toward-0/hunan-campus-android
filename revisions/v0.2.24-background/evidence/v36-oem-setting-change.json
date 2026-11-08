@@ -1,0 +1,27 @@
+{
+  "testId": "REALME-OEM-BACKGROUND-POLICY",
+  "status": "PASS",
+  "versionCode": 36,
+  "package": "org.esurfing.hunan",
+  "device": "realme RMX3820 API34",
+  "settingPath": "应用详情 → 耗电管理 → 允许完全后台行为",
+  "beforeEnabled": false,
+  "afterEnabled": true,
+  "beforeAlarmAdjustmentMs": 259200000,
+  "afterAlarmAdjustmentMs": 0,
+  "standardBatteryExemptionBefore": true,
+  "exactPermissionBefore": true,
+  "foregroundServiceStateBefore": 4,
+  "autoStartChanged": false,
+  "associatedStartChanged": false,
+  "automaticLoginRequests": 0,
+  "evidence": [
+    "v36-runtime-stalled.json",
+    "v36-runtime-policy.json",
+    "v36-runtime-oem-allowed.json",
+    "oem-background-before.png",
+    "oem-background-after.png"
+  ],
+  "note": "此PASS仅指已观察到单应用开关变化与三天延期消失；锁屏心跳和长期稳定性分别验证。",
+  "time": "2026-11-08T23:07:58.2588328+08:00"
+}

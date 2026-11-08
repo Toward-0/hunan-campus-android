@@ -1,0 +1,720 @@
+diff --git a/source/app/build.gradle.kts b/source/app/build.gradle.kts
+index a8338d7..32ae686 100644
+--- a/source/app/build.gradle.kts
++++ b/source/app/build.gradle.kts
+@@ -9,8 +9,8 @@ android {
+         applicationId = "org.esurfing.hunan"
+         minSdk = 26
+         targetSdk = 35
+-        versionCode = 34
+-        versionName = "0.2.22-compat-s1"
++        versionCode = 36
++        versionName = "0.2.24-background"
+         externalNativeBuild { cmake { arguments += "-DANDROID_STL=none" } }
+     }
+     externalNativeBuild { cmake { path = file("src/main/cpp/CMakeLists.txt"); version = "3.22.1"; buildStagingDirectory = file("../../cxx") } }
+diff --git a/source/app/src/isolation/AndroidManifest.xml b/source/app/src/isolation/AndroidManifest.xml
+index f2ccbc1..e3b7acf 100644
+--- a/source/app/src/isolation/AndroidManifest.xml
++++ b/source/app/src/isolation/AndroidManifest.xml
+@@ -11,6 +11,9 @@
+     <instrumentation android:name="org.esurfing.hunan.AlarmProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated scheduler contract"/>
+     <instrumentation android:name="org.esurfing.hunan.SessionProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated simulated session lifecycle"/>
+     <application android:label="湖南校园网 · 隔离测试" tools:replace="android:label">
++        <service android:name="org.esurfing.hunan.IdleProbeService" android:exported="false" android:foregroundServiceType="specialUse">
++            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Synthetic idle scheduling test; no network requests"/>
++        </service>
+         <service android:name="org.esurfing.hunan.StabilityService" android:exported="false" android:foregroundServiceType="specialUse">
+             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Synthetic loopback stability regression"/>
+         </service>
+@@ -20,4 +23,5 @@
+         </service>
+     </application>
+     <instrumentation android:name="org.esurfing.hunan.StabilityProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic stability regression"/>
++    <instrumentation android:name="org.esurfing.hunan.IdleSchedulerProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic forced idle scheduler test"/>
+ </manifest>
+diff --git a/source/app/src/isolation/java/org/esurfing/hunan/AlarmProbe.kt b/source/app/src/isolation/java/org/esurfing/hunan/AlarmProbe.kt
+index 2920e99..3260dff 100644
+--- a/source/app/src/isolation/java/org/esurfing/hunan/AlarmProbe.kt
++++ b/source/app/src/isolation/java/org/esurfing/hunan/AlarmProbe.kt
+@@ -3,22 +3,61 @@ package org.esurfing.hunan
+ import android.app.Instrumentation
+ import android.content.Intent
+ import android.os.Bundle
+-import android.os.Process
++import android.os.SystemClock
+ import java.util.concurrent.CountDownLatch
+ import java.util.concurrent.Executors
++import java.util.concurrent.ScheduledFuture
++import java.util.concurrent.ScheduledThreadPoolExecutor
+ import java.util.concurrent.TimeUnit
+ import java.util.concurrent.atomic.AtomicInteger
+ import java.util.concurrent.atomic.AtomicLong
+ 
+-/** One-second diagnostic alarms test cancellation only; they are not protocol heartbeat intervals. */
++/** Synthetic scheduler callbacks only; no protocol requests or production credentials. */
+ class AlarmProbe : Instrumentation() {
++    private class RecordingWorker : ScheduledThreadPoolExecutor(1) {
++        @Volatile var lastTimer: Runnable? = null
++        init { removeOnCancelPolicy = true }
++        override fun schedule(command: Runnable, delay: Long, unit: TimeUnit): ScheduledFuture<*> {
++            if(delay > 0) lastTimer = command
++            return super.schedule(command, delay, unit)
++        }
++        fun drain() {
++            val drained = CountDownLatch(1)
++            execute { drained.countDown() }
++            check(drained.await(5, TimeUnit.SECONDS))
++        }
++    }
++    /** Capture the callback to simulate a broadcast already in flight, with no main-package hook. */
++    @Suppress("UNCHECKED_CAST")
++    private fun alarm(current: WakeupScheduler): () -> Unit {
++        val tickets = current.javaClass.getDeclaredField("tokens").apply { isAccessible = true }.get(current) as Map<*, *>
++        val ticket = checkNotNull(tickets[TaskKind.HEARTBEAT])
++        val nonce = ticket.javaClass.getDeclaredField("nonce").apply { isAccessible = true }.get(ticket) as String
++        val callbacks = WakeupDispatch.javaClass.getDeclaredField("callbacks").apply { isAccessible = true }
++            .get(WakeupDispatch) as Map<String, () -> Unit>
++        return checkNotNull(callbacks[nonce])
++    }
+     override fun onCreate(arguments: Bundle?) { super.onCreate(arguments); start() }
+     override fun onStart() {
+-        val worker = Executors.newSingleThreadScheduledExecutor()
++        val worker = RecordingWorker()
+         var scheduler: WakeupScheduler? = null
++        val unblock = CountDownLatch(1)
+         try {
+             val ctx = targetContext
+             check(ctx.packageName == "org.esurfing.hunan.isolation")
++            // Truth table: an installed alarm is preserved only for a non-exempt idle timer.
++            // In particular, a failed alarm registration must leave the timer fallback usable.
++            val deferred = mutableSetOf<String>()
++            var policyCases = 0
++            for(origin in listOf(TracePoint.ALARM_DELIVERY, TracePoint.TIMER_DELIVERY))
++                for(installed in listOf(false, true)) for(idle in listOf(false, true)) for(exempt in listOf(false, true)) {
++                    if(IdleDeliveryPolicy.deferToAlarm(origin, installed, idle, exempt))
++                        deferred.add("${origin.name}:$installed:$idle:$exempt")
++                    policyCases++
++                }
++            check(policyCases == 16 && deferred == setOf("TIMER_DELIVERY:true:true:false"))
++            for(origin in TracePoint.entries.filter { it != TracePoint.TIMER_DELIVERY })
++                check(!IdleDeliveryPolicy.deferToAlarm(origin, true, true, false))
+             ctx.startActivity(Intent(ctx, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+             Thread.sleep(1000)
+             SessionState.initialize(ctx)
+@@ -27,34 +66,61 @@ class AlarmProbe : Instrumentation() {
+             val current = WakeupScheduler(ctx, worker) { generation.get() == it }
+             scheduler = current
+             val fired = CountDownLatch(1)
+-            current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, 0, 1), 0, 1) { calls.incrementAndGet(); fired.countDown() }
+-            check(fired.await(15, TimeUnit.SECONDS))
+-            current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, 0, 1), 0, 1) { calls.incrementAndGet() }
++            val first = TimingTrace.plan(TaskKind.HEARTBEAT, 0, 1)
++            val latency = AtomicLong(-1)
++            current.schedule(first, 0, 1) { latency.set(SystemClock.elapsedRealtime() - first.dueElapsed); calls.incrementAndGet(); fired.countDown() }
++            check(fired.await(4, TimeUnit.SECONDS))
++            check(latency.get() in 0..3000)
++            worker.drain()
++            check(calls.get() == 1 && WakeupDispatch.size() == 0)
++
++            // Cancellation before either trigger; even already-captured callbacks are inert.
++            current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, 0, 3600), 0, 3600) { calls.incrementAndGet() }
++            val cancelledAlarm = alarm(current)
++            val cancelledTimer = checkNotNull(worker.lastTimer)
+             generation.incrementAndGet()
+             current.cancelAll()
+-            Thread.sleep(6500)
++            cancelledAlarm(); cancelledTimer.run(); worker.drain()
+             check(calls.get() == 1)
++
++            // A delivered task may still be queued behind other work when Stop is pressed.
+             val entered = CountDownLatch(1)
+-            val unblock = CountDownLatch(1)
+             worker.execute { entered.countDown(); unblock.await(25, TimeUnit.SECONDS) }
+             check(entered.await(1, TimeUnit.SECONDS))
+-            val timing = TimingTrace.plan(TaskKind.HEARTBEAT, 1, 1)
+-            current.schedule(timing, 1, 1) { calls.incrementAndGet() }
+-            var delivered = false
+-            val deadline = android.os.SystemClock.elapsedRealtime() + 15000
+-            while(!delivered && android.os.SystemClock.elapsedRealtime() < deadline) {
+-                delivered = TimingTrace.export().lineSequence().filter { it.startsWith("{") }.map { org.json.JSONObject(it) }
+-                    .any { it.optString("point") == "ALARM_DELIVERY" && it.optLong("task") == timing.number }
+-                if(!delivered) Thread.sleep(200)
+-            }
+-            check(delivered)
++            current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, 1, 3600), 1, 3600) { calls.incrementAndGet() }
++            alarm(current).invoke()
+             generation.incrementAndGet()
+             current.cancelAll()
+             unblock.countDown()
+-            Thread.sleep(500)
++            worker.drain()
+             check(calls.get() == 1)
++
+             val racers = Executors.newFixedThreadPool(2)
+             try {
++                // Both delivery closures have already escaped their platform queues.
++                // Race and replay them: only one worker task is permitted each time.
++                repeat(100) { index ->
++                    val id = generation.get()
++                    current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, id, 3600), id, 3600) { calls.incrementAndGet() }
++                    val broadcast = alarm(current)
++                    val timer = checkNotNull(worker.lastTimer)
++                    val go = CountDownLatch(1)
++                    val a = racers.submit { go.await(); broadcast() }
++                    val b = racers.submit { go.await(); timer.run() }
++                    go.countDown(); a.get(5, TimeUnit.SECONDS); b.get(5, TimeUnit.SECONDS)
++                    broadcast(); timer.run(); worker.drain()
++                    check(calls.get() == index + 2)
++                    check(WakeupDispatch.size() == 0)
++                }
++
++                val id = generation.get()
++                current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, id, 3600), id, 3600) { calls.incrementAndGet() }
++                val replacedAlarm = alarm(current)
++                val replacedTimer = checkNotNull(worker.lastTimer)
++                current.schedule(TimingTrace.plan(TaskKind.HEARTBEAT, id, 3600), id, 3600) { calls.incrementAndGet() }
++                replacedAlarm(); replacedTimer.run(); alarm(current).invoke(); worker.drain()
++                check(calls.get() == 102 && WakeupDispatch.size() == 0)
++
+                 repeat(200) {
+                     val id = generation.get()
+                     val go = CountDownLatch(1)
+@@ -64,11 +130,13 @@ class AlarmProbe : Instrumentation() {
+                     check(WakeupDispatch.size() == 0)
+                 }
+             } finally { racers.shutdownNow() }
+-            check(calls.get() == 1)
+-            finish(-1, Bundle().apply { putString("result", "PASS: alarm delivery; cancellation before delivery and before worker execution; 200 concurrent schedule/cancel races leave zero callbacks; diagnostic seconds are not heartbeat semantics") })
++            worker.drain()
++            check(calls.get() == 102)
++            check(worker.queue.isEmpty())
++            finish(-1, Bundle().apply { putString("result", "PASS: 16 idle-delivery policy combinations; awake delivery lateness=${latency.get()}ms <=3000ms; 100 dual-trigger races/replays execute once; cancel before delivery/queued execution and replacement; 200 schedule/cancel races; zero callbacks/queued timers; synthetic callbacks are not Doze or protocol validation") })
+         } catch(t: Throwable) {
+             finish(0, Bundle().apply { putString("result", "FAIL: ${t.javaClass.simpleName}; line=${t.stackTrace.firstOrNull { it.fileName == "AlarmProbe.kt" }?.lineNumber}") })
+-        } finally { scheduler?.cancelAll(); worker.shutdownNow() }
++        } finally { unblock.countDown(); scheduler?.cancelAll(); worker.shutdownNow() }
+     }
+ }
+ 
+diff --git a/source/app/src/isolation/java/org/esurfing/hunan/DiagnosticsRegression.kt b/source/app/src/isolation/java/org/esurfing/hunan/DiagnosticsRegression.kt
+index bb6ad15..af9d55e 100644
+--- a/source/app/src/isolation/java/org/esurfing/hunan/DiagnosticsRegression.kt
++++ b/source/app/src/isolation/java/org/esurfing/hunan/DiagnosticsRegression.kt
+@@ -33,6 +33,16 @@ internal object DiagnosticsRegression {
+             check(records.size == 1 && records[0].getInt("unreadableFiles") == 0)
+             check(parse(export("\n \r\n", "")).size == 1)
+         }
++        test("JSON-BACKGROUND-CAPABILITIES") {
++            val value = JSONObject(row(1)).put("batteryExempt", true).put("exactAllowed", false)
++                .put("notificationsAllowed", true).put("point", "TIMER_DELIVERY")
++                .put("schedulerMode", "INEXACT_IDLE_WITH_TIMER")
++            val result = parse(export(current = value.toString()))[1]
++            check(result.getBoolean("batteryExempt") && !result.getBoolean("exactAllowed"))
++            check(result.getString("point") == "TIMER_DELIVERY")
++            value.put("batteryExempt", "true")
++            check(parse(export(current = value.toString())).single().getInt("rejectedRecords") == 1)
++        }
+         test("JSON-SINGLE-DOUBLE-ORDER") {
+             check(parse(export(current = row(1) + "\n")).drop(1).single().getInt("number") == 1)
+             check(parse(export(row(1) + "\n", row(2) + "\n")).drop(1).map { it.getInt("number") } == listOf(1, 2))
+diff --git a/source/app/src/main/AndroidManifest.xml b/source/app/src/main/AndroidManifest.xml
+index ed54051..d6d834b 100644
+--- a/source/app/src/main/AndroidManifest.xml
++++ b/source/app/src/main/AndroidManifest.xml
+@@ -2,6 +2,7 @@
+     <uses-permission android:name="android.permission.INTERNET"/>
+     <uses-permission android:name="android.permission.WAKE_LOCK"/>
+     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
++    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+diff --git a/source/app/src/main/java/org/esurfing/hunan/DiagnosticJsonl.kt b/source/app/src/main/java/org/esurfing/hunan/DiagnosticJsonl.kt
+index bfb5350..4821747 100644
+--- a/source/app/src/main/java/org/esurfing/hunan/DiagnosticJsonl.kt
++++ b/source/app/src/main/java/org/esurfing/hunan/DiagnosticJsonl.kt
+@@ -12,7 +12,7 @@ internal object DiagnosticJsonl {
+         "error", "stop", "interactive", "idle", "lightIdle", "plugged", "battery", "temperatureDeciC", "sampleCostMs")
+     private val numbers = setOf("pid", "wall", "elapsed", "uptime", "nano", "tid", "generation", "retries",
+         "plugged", "battery", "temperatureDeciC", "sampleCostMs", "task", "dueWall", "dueElapsed", "dueUptime", "number", "historicalWall")
+-    private val booleans = setOf("desired", "interactive", "idle")
++    private val booleans = setOf("desired", "interactive", "idle", "batteryExempt", "exactAllowed", "notificationsAllowed")
+     private val enums = mapOf(
+         "point" to TracePoint.entries.map { it.name }.toSet(),
+         "kind" to TaskKind.entries.map { it.name }.toSet(),
+diff --git a/source/app/src/main/java/org/esurfing/hunan/MainActivity.kt b/source/app/src/main/java/org/esurfing/hunan/MainActivity.kt
+index 2a74059..b1f57f0 100644
+--- a/source/app/src/main/java/org/esurfing/hunan/MainActivity.kt
++++ b/source/app/src/main/java/org/esurfing/hunan/MainActivity.kt
+@@ -1,6 +1,5 @@
+ package org.esurfing.hunan
+ 
+-import android.Manifest
+ import android.app.Activity
+ import android.app.AlertDialog
+ import android.content.ClipData
+@@ -31,6 +30,9 @@ class MainActivity : Activity() {
+     private lateinit var stopButton: Button
+     private lateinit var statusNote: TextView
+     private lateinit var diagnosticState: TextView
++    private lateinit var backgroundStatus: TextView
++    private lateinit var backgroundReminder: TextView
++    private var backgroundDialog: AlertDialog? = null
+     @Volatile private var diagnosing = false
+     private val prefs by lazy { getSharedPreferences("settings", MODE_PRIVATE) }
+     private val refresh = object : Runnable {
+@@ -74,7 +76,6 @@ class MainActivity : Activity() {
+                 snapshot.phase == Phase.STOPPED -> "本机服务已停止，服务器会话未注销。"
+                 else -> snapshot.status
+             }
+-            if(active && Build.VERSION.SDK_INT >= 31 && !getSystemService(android.app.AlarmManager::class.java).canScheduleExactAlarms()) statusNote.append("\n后台定时未开启，可在“更多”中设置。")
+             diagnosticState.text = snapshot.display(now)
+             logs.text = SessionState.logs()
+             runtime.text = snapshot.details
+@@ -161,10 +162,22 @@ class MainActivity : Activity() {
+     }
+ 
+     private fun command(action: String) = startForegroundService(Intent(this, SessionService::class.java).setAction(action))
++    private fun refreshBackgroundAccess() {
++        val access = BackgroundAccess.read(this)
++        backgroundStatus.text = access.summary()
++        backgroundReminder.text = access.reminder()
++    }
++    private fun showBatteryPrompt() {
++        if(backgroundDialog?.isShowing == true) return
++        backgroundDialog = AlertDialog.Builder(this).setTitle("允许锁屏后台运行？")
++            .setMessage("校园网需要按服务器要求发送心跳。电池优化可能在长时间锁屏后限制网络和唤醒，使连接中断。允许后台运行可能增加待机耗电；仅在你手动连接后维持会话，不会自动开机登录。\n\n接下来由系统询问是否允许。你也可以暂不开启，仍可正常尝试连接。")
++            .setNegativeButton("暂不开启", null)
++            .setPositiveButton("允许后台运行") { _, _ -> BackgroundAccess.requestBatteryExemption(this) }
++            .create().also { it.show() }
++    }
+     override fun onCreate(savedInstanceState: Bundle?) {
+         super.onCreate(savedInstanceState)
+         SessionState.initialize(this)
+-        if(Build.VERSION.SDK_INT >= 33) requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),1)
+         val root=LinearLayout(this).apply { orientation=LinearLayout.VERTICAL; setBackgroundColor(Color.rgb(246,248,246)); setPadding(dp(20),dp(12),dp(20),0) }
+         label(root,"校园网",26f).setTypeface(null,Typeface.BOLD)
+         val tabs=LinearLayout(this); root.addView(tabs)
+@@ -185,6 +198,7 @@ class MainActivity : Activity() {
+             background=GradientDrawable().apply { setColor(Color.WHITE); cornerRadius=dp(16).toFloat() }
+         }
+         statusNote=label(home,"连接校园 Wi-Fi 后开始。",15f)
++        backgroundReminder = label(home, "", 13f)
+         repairButton = button(home,"修复连接") { showRepairPrompt() }
+             .apply { isEnabled = false; visibility=View.GONE }
+         label(settings,"校园网账号",22f)
+@@ -221,6 +235,7 @@ class MainActivity : Activity() {
+         }
+         stopButton=button(home,"停止连接") { command("stop") }
+         label(home,"账号和密码在“账号”页管理。",13f)
++        button(home,"检查后台运行设置") { showPage(3) }
+         button(columns[3],"修复网络") { showRepairPrompt() }
+         repairNote = label(columns[3], repairExplanation(SessionState.snapshot(), System.currentTimeMillis()), 13f)
+         logoutButton = button(columns[3],"注销并停止") {
+@@ -228,12 +243,16 @@ class MainActivity : Activity() {
+                 .setNegativeButton("取消",null).setPositiveButton("注销") { _,_ -> command("logout") }.show()
+         }
+         label(columns[3],"“停止连接”只停止本机服务，不注销服务器会话。",13f)
+-        button(columns[3],"后台定时权限") {
+-            if(Build.VERSION.SDK_INT >= 31) {
+-                startActivity(Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, android.net.Uri.parse("package:$packageName")))
+-                toast("更改后请停止并重新连接；开启权限后仍需验证锁屏表现")
+-            } else toast("当前系统不需要此项权限")
+-        }
++        label(columns[3],"后台运行",22f)
++        backgroundStatus = label(columns[3], "", 15f)
++        label(columns[3],"建议连接前检查以下设置。未开启仍可连接；精确定时和电池豁免也不能保证永久保活。",13f)
++        label(columns[3],"连接中修改权限后，新设置从后续任务计划生效；如需立即应用，请停止后手动连接。",13f)
++        button(columns[3],"后台定时权限") { BackgroundAccess.openExact(this) }
++        button(columns[3],"允许后台运行") { showBatteryPrompt() }
++        button(columns[3],"连接通知设置") { BackgroundAccess.requestNotifications(this) }
++        label(columns[3],"部分手机还需在系统应用详情中允许后台活动、取消省电限制，或在最近任务中锁定应用。realme、小米、vivo 等系统的名称及入口可能不同；应用无法读取这些厂商开关。",13f)
++        button(columns[3],"打开系统应用详情") { BackgroundAccess.openAppDetails(this) }
++        refreshBackgroundAccess()
+         button(columns[2],"检测 Wi-Fi（不登录）") {
+             if(diagnosing) toast("诊断正在进行") else {
+                 diagnosing=true; showPage(2)
+@@ -362,9 +381,13 @@ class MainActivity : Activity() {
+         setContentView(root); root.requestApplyInsets(); showPage(0)
+     }
+     private fun toast(text:String)=Toast.makeText(this,text,Toast.LENGTH_LONG).show()
+-    override fun onResume(){super.onResume();handler.post(refresh)}
++    override fun onResume(){super.onResume();refreshBackgroundAccess();handler.removeCallbacks(refresh);handler.post(refresh)}
++    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
++        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
++        if(requestCode == BackgroundAccess.NOTIFICATION_REQUEST) refreshBackgroundAccess()
++    }
+     override fun onPause(){handler.removeCallbacks(refresh);super.onPause()}
+-    override fun onDestroy(){repairDialog?.dismiss();repairDialog=null;super.onDestroy()}
++    override fun onDestroy(){repairDialog?.dismiss();repairDialog=null;backgroundDialog?.dismiss();backgroundDialog=null;super.onDestroy()}
+ }
+ 
+ 
+diff --git a/source/app/src/main/java/org/esurfing/hunan/SessionService.kt b/source/app/src/main/java/org/esurfing/hunan/SessionService.kt
+index 405dacc..365fa95 100644
+--- a/source/app/src/main/java/org/esurfing/hunan/SessionService.kt
++++ b/source/app/src/main/java/org/esurfing/hunan/SessionService.kt
+@@ -474,7 +474,7 @@ open class SessionService : Service() {
+                 if (!alive(id)) return@schedule
+                 failures = 0
+                 SessionState.change(id) { it.copy(phase = Phase.AUTHENTICATED, heartbeatAt = System.currentTimeMillis(), heartbeatResult = CheckResult.PASS,
+-                    error = ErrorKind.NONE, protocolCode = "none", retries = 0, nextRecoveryAt = 0, heartbeatDelayMs = maxOf(0, System.currentTimeMillis() - due), durationMs = SystemClock.elapsedRealtime() - started) }
++                    error = ErrorKind.NONE, protocolCode = "none", retries = 0, nextRecoveryAt = 0, heartbeatDelayMs = maxOf(0, started - timing.dueElapsed), durationMs = SystemClock.elapsedRealtime() - started) }
+                 TimingTrace.emit(TracePoint.FINISH, id, timing)
+                 scheduleKeep(engine, id, interval(result, id))
+             } catch (e: Exception) {
+diff --git a/source/app/src/main/java/org/esurfing/hunan/SessionSnapshot.kt b/source/app/src/main/java/org/esurfing/hunan/SessionSnapshot.kt
+index c78b428..55e83cd 100644
+--- a/source/app/src/main/java/org/esurfing/hunan/SessionSnapshot.kt
++++ b/source/app/src/main/java/org/esurfing/hunan/SessionSnapshot.kt
+@@ -4,7 +4,7 @@ enum class Phase { IDLE, WAITING_WIFI, DISCOVERING, LOGGING_OUT, AUTHENTICATING,
+ enum class CheckResult { UNKNOWN, PASS, FAIL }
+ enum class InternetEvidence { NOT_CHECKED, HTTPS_VERIFIED, PORTAL_REQUIRED, HTTPS_UNREACHABLE }
+ enum class ErrorKind { NONE, NETWORK, PROTOCOL, CREDENTIAL_STORAGE, CONFIGURATION, HEARTBEAT, PROCESS_INTERRUPTED, IDLE_WAIT }
+-enum class SchedulerMode { TIMER, EXACT_LISTENER, INEXACT_LISTENER, TIMER_FALLBACK, EXACT_IDLE_PENDING, INEXACT_IDLE_PENDING }
++enum class SchedulerMode { TIMER, EXACT_LISTENER, INEXACT_LISTENER, TIMER_FALLBACK, EXACT_IDLE_PENDING, INEXACT_IDLE_PENDING, EXACT_IDLE_WITH_TIMER, INEXACT_IDLE_WITH_TIMER }
+ 
+ data class SessionSnapshot(
+     val desired: Boolean = false,
+@@ -50,7 +50,7 @@ data class SessionSnapshot(
+             }
+         } else status
+         val heartFresh = heartbeatAt > 0 && now - heartbeatAt in 0..(heartbeatIntervalSeconds * 1000 + 60000)
+-        val scheduling = if(schedulerMode in listOf(SchedulerMode.INEXACT_LISTENER, SchedulerMode.TIMER_FALLBACK, SchedulerMode.INEXACT_IDLE_PENDING)) "后台调度已降级，保活时效未保证" else "后台调度仍需验收"
++        val scheduling = if(schedulerMode in listOf(SchedulerMode.INEXACT_LISTENER, SchedulerMode.TIMER_FALLBACK, SchedulerMode.INEXACT_IDLE_PENDING, SchedulerMode.INEXACT_IDLE_WITH_TIMER)) "后台调度已降级，保活时效未保证" else "后台调度仍需验收"
+         val repairHint = if(repairAvailable) "\n持续未放行，可点“一键修复连接”。" else ""
+         return "$online\n最近外网检测：${if (internetAt == 0L) "尚无" else java.util.Date(internetAt)}\n心跳最近完成：${if (heartbeatAt == 0L) "尚无" else java.util.Date(heartbeatAt)}\n心跳：$heartbeatResult（${if (heartFresh) "最近结果" else "已过期或未确认"}）；恢复次数：$retries\n$scheduling$repairHint"
+     }
+diff --git a/source/app/src/main/java/org/esurfing/hunan/TimingTrace.kt b/source/app/src/main/java/org/esurfing/hunan/TimingTrace.kt
+index ce18d51..90d5d3f 100644
+--- a/source/app/src/main/java/org/esurfing/hunan/TimingTrace.kt
++++ b/source/app/src/main/java/org/esurfing/hunan/TimingTrace.kt
+@@ -10,7 +10,7 @@ import java.io.File
+ import java.util.UUID
+ import java.util.concurrent.atomic.AtomicLong
+ 
+-enum class TracePoint { PROCESS_START, EXIT_HISTORY, PLAN, ENTER, FINISH, REQUEST_START, REQUEST_FINISH, CANCEL, CONTROL, INTERVAL, ALARM_DELIVERY, SCHEDULER, WIFI_REQUEST, DISCOVERY }
++enum class TracePoint { PROCESS_START, EXIT_HISTORY, PLAN, ENTER, FINISH, REQUEST_START, REQUEST_FINISH, CANCEL, CONTROL, INTERVAL, ALARM_DELIVERY, TIMER_DELIVERY, SCHEDULER, WIFI_REQUEST, DISCOVERY }
+ enum class TaskKind { NONE, AUTH, HEARTBEAT, INTERNET, MODULE, TICKET, LOGIN, STATE, LOGOUT, INITIAL_HEARTBEAT }
+ enum class StopReason { NONE, USER_STOP, USER_LOGOUT, NETWORK_LOST, REPLACED, SERVICE_DESTROYED, RETRIES_EXHAUSTED, USER_REPAIR }
+ data class TaskTiming(val number: Long, val kind: TaskKind, val dueWall: Long, val dueElapsed: Long, val dueUptime: Long)
+@@ -75,6 +75,9 @@ object TimingTrace {
+                 .put("plugged", battery?.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) ?: -1)
+                 .put("battery", battery?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1)
+                 .put("temperatureDeciC", battery?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1) ?: -1)
++                .put("batteryExempt", pm.isIgnoringBatteryOptimizations(ctx.packageName))
++                .put("exactAllowed", Build.VERSION.SDK_INT < 31 || ctx.getSystemService(android.app.AlarmManager::class.java).canScheduleExactAlarms())
++                .put("notificationsAllowed", ctx.getSystemService(android.app.NotificationManager::class.java).areNotificationsEnabled())
+             if (task != null) row.put("task", task.number).put("dueWall", task.dueWall).put("dueElapsed", task.dueElapsed).put("dueUptime", task.dueUptime)
+             if (numeric != null) row.put("number", numeric)
+             if (source != null) row.put("intervalSource", source.name)
+diff --git a/source/app/src/main/java/org/esurfing/hunan/WakeupScheduler.kt b/source/app/src/main/java/org/esurfing/hunan/WakeupScheduler.kt
+index 6f3c35c..d02cdf5 100644
+--- a/source/app/src/main/java/org/esurfing/hunan/WakeupScheduler.kt
++++ b/source/app/src/main/java/org/esurfing/hunan/WakeupScheduler.kt
+@@ -7,6 +7,7 @@ import android.content.Context
+ import android.content.Intent
+ import android.os.Build
+ import android.os.PowerManager
++import android.os.SystemClock
+ import java.util.UUID
+ import java.util.concurrent.ConcurrentHashMap
+ import java.util.concurrent.ScheduledExecutorService
+@@ -32,6 +33,12 @@ class WakeupReceiver : BroadcastReceiver() {
+     }
+ }
+ 
++/** An idle alarm grants a temporary execution window that an ordinary timer cannot supply. */
++internal object IdleDeliveryPolicy {
++    fun deferToAlarm(origin: TracePoint, alarmInstalled: Boolean, idle: Boolean, batteryExempt: Boolean): Boolean =
++        origin == TracePoint.TIMER_DELIVERY && alarmInstalled && idle && !batteryExempt
++}
++
+ /** Explicit capability checks; bounded request wake lock; no boot receiver or automatic authentication. */
+ class WakeupScheduler(context: Context, private val worker: ScheduledExecutorService, private val alive: (Long) -> Boolean) {
+     private val app = context.applicationContext
+@@ -41,15 +48,26 @@ class WakeupScheduler(context: Context, private val worker: ScheduledExecutorSer
+     private inner class Ticket(val timing: TaskTiming, val generation: Long) {
+         val nonce = UUID.randomUUID().toString()
+         val cancelled = AtomicBoolean()
++        val delivered = AtomicBoolean()
++        // Accessed only under the scheduler lock; a PendingIntent alone is not proof of registration.
++        var alarmInstalled = false
+         var pending: PendingIntent? = null
+         var future: ScheduledFuture<*>? = null
+         @Volatile var wake: PowerManager.WakeLock? = null
+         fun release() { val lock = wake; if(lock != null) synchronized(lock) { if(lock.isHeld) lock.release() } }
+-        fun cancel() {
+-            cancelled.set(true)
++        fun cancelTriggers() {
+             WakeupDispatch.cancel(nonce)
+-            pending?.let { alarms.cancel(it); it.cancel() }
++            pending?.let {
++                // OEM alarm services can disappear or reject cancellation. The local
++                // callback/claim guards still make any late broadcast harmless.
++                try { alarms.cancel(it) } catch (_: RuntimeException) { }
++                try { it.cancel() } catch (_: RuntimeException) { }
++            }
+             future?.cancel(false)
++        }
++        fun cancel() {
++            cancelled.set(true)
++            cancelTriggers()
+             release()
+         }
+     }
+@@ -60,10 +78,27 @@ class WakeupScheduler(context: Context, private val worker: ScheduledExecutorSer
+         if(!alive(generation)) return
+         val ticket = Ticket(timing, generation)
+         tokens.put(timing.kind, ticket)?.cancel()
+-        fun deliver() {
+-            WakeupDispatch.cancel(ticket.nonce)
+-            if(ticket.cancelled.get() || !alive(generation)) return
+-            TimingTrace.emit(TracePoint.ALARM_DELIVERY, generation, timing)
++        fun deliver(point: TracePoint) {
++            // Installation, replacement, cancellation and claiming share this lock.
++            // A timer and an already-in-flight broadcast must never run two requests.
++            synchronized(this@WakeupScheduler) {
++                if(ticket.cancelled.get() || !alive(generation)) return
++                if(point == TracePoint.TIMER_DELIVERY && ticket.alarmInstalled) {
++                    val defer = try {
++                        IdleDeliveryPolicy.deferToAlarm(point, ticket.alarmInstalled,
++                            power.isDeviceIdleMode, power.isIgnoringBatteryOptimizations(app.packageName))
++                    } catch (_: RuntimeException) {
++                        // If an OEM capability query fails, preserve the registered wake-up path.
++                        true
++                    }
++                    // Another app may briefly wake the CPU during Doze. Consuming our alarm
++                    // here would discard its execution window while our network is restricted.
++                    if(defer) return
++                }
++                if(!ticket.delivered.compareAndSet(false, true)) return
++                ticket.cancelTriggers()
++            }
++            TimingTrace.emit(point, generation, timing)
+             try {
+                 val lock = power.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "ESurfing:request")
+                 lock.setReferenceCounted(false)
+@@ -77,18 +112,35 @@ class WakeupScheduler(context: Context, private val worker: ScheduledExecutorSer
+                 TimingTrace.emit(TracePoint.FINISH, generation, timing, error = ErrorKind.NETWORK)
+             }
+         }
+-        WakeupDispatch.register(ticket.nonce) { deliver() }
+-        val intent = Intent(app, WakeupReceiver::class.java).setAction("org.esurfing.hunan.WAKE_TASK").putExtra("token", ticket.nonce)
+-        ticket.pending = PendingIntent.getBroadcast(app, timing.kind.ordinal + 100, intent, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE)
+-        val exact = Build.VERSION.SDK_INT < 31 || alarms.canScheduleExactAlarms()
+-        var mode = if(exact) SchedulerMode.EXACT_IDLE_PENDING else SchedulerMode.INEXACT_IDLE_PENDING
++        WakeupDispatch.register(ticket.nonce) { deliver(TracePoint.ALARM_DELIVERY) }
++        var exact = false
++        var mode = SchedulerMode.TIMER_FALLBACK
++        try {
++            val intent = Intent(app, WakeupReceiver::class.java).setAction("org.esurfing.hunan.WAKE_TASK").putExtra("token", ticket.nonce)
++            ticket.pending = PendingIntent.getBroadcast(app, timing.kind.ordinal + 100, intent, PendingIntent.FLAG_CANCEL_CURRENT or PendingIntent.FLAG_IMMUTABLE)
++            exact = Build.VERSION.SDK_INT < 31 || alarms.canScheduleExactAlarms()
++            mode = if(exact) SchedulerMode.EXACT_IDLE_WITH_TIMER else SchedulerMode.INEXACT_IDLE_WITH_TIMER
++            try {
++                if(exact) alarms.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timing.dueElapsed, ticket.pending!!)
++                else alarms.setAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timing.dueElapsed, ticket.pending!!)
++            } catch (_: SecurityException) {
++                mode = SchedulerMode.INEXACT_IDLE_WITH_TIMER
++                alarms.setAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timing.dueElapsed, ticket.pending!!)
++            }
++            ticket.alarmInstalled = true
++        } catch (_: RuntimeException) {
++            mode = SchedulerMode.TIMER_FALLBACK
++        }
+         try {
+-            if(exact) alarms.setExactAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timing.dueElapsed, ticket.pending!!)
+-            else alarms.setAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timing.dueElapsed, ticket.pending!!)
+-        } catch (_: SecurityException) {
+-            mode = SchedulerMode.INEXACT_IDLE_PENDING
+-            try { alarms.setAndAllowWhileIdle(AlarmManager.ELAPSED_REALTIME_WAKEUP, timing.dueElapsed, ticket.pending!!) }
+-            catch (_: RuntimeException) { mode = SchedulerMode.TIMER_FALLBACK; ticket.future = worker.schedule({ deliver() }, seconds, TimeUnit.SECONDS) }
++            // A normal timer avoids inexact-alarm batching while the CPU is awake.
++            // It cannot wake a sleeping CPU; the idle alarm remains the wake-up path.
++            // Use the original monotonic deadline, not time spent installing alarms.
++            val remaining = maxOf(0, timing.dueElapsed - SystemClock.elapsedRealtime())
++            ticket.future = worker.schedule(Runnable { deliver(TracePoint.TIMER_DELIVERY) }, remaining, TimeUnit.MILLISECONDS)
++        } catch (_: java.util.concurrent.RejectedExecutionException) {
++            tokens.remove(timing.kind, ticket); ticket.cancel()
++            TimingTrace.emit(TracePoint.FINISH, generation, timing, error = ErrorKind.NETWORK)
++            return
+         }
+         if(!alive(generation)) { tokens.remove(timing.kind, ticket); ticket.cancel() }
+         SessionState.change(generation) { it.copy(schedulerMode = mode) }
+diff --git a/source/app/src/isolation/java/org/esurfing/hunan/IdleSchedulerProbe.kt b/source/app/src/isolation/java/org/esurfing/hunan/IdleSchedulerProbe.kt
+new file mode 100644
+index 0000000..22fe1d6
+--- /dev/null
++++ b/source/app/src/isolation/java/org/esurfing/hunan/IdleSchedulerProbe.kt
+@@ -0,0 +1,74 @@
++package org.esurfing.hunan
++
++import android.app.*
++import android.content.Intent
++import android.os.*
++import org.json.JSONArray
++import org.json.JSONObject
++import java.io.File
++import java.util.concurrent.CountDownLatch
++import java.util.concurrent.ScheduledThreadPoolExecutor
++import java.util.concurrent.TimeUnit
++
++/** Synthetic timers only: no credentials, protocol, Wi-Fi changes or network requests. */
++class IdleProbeService : Service() {
++    override fun onBind(intent: Intent?) = null
++    override fun onCreate() {
++        super.onCreate()
++        check(packageName == "org.esurfing.hunan.isolation")
++        getSystemService(NotificationManager::class.java).createNotificationChannel(
++            NotificationChannel("idle-probe", "隔离锁屏调度测试", NotificationManager.IMPORTANCE_LOW))
++        startForeground(90, Notification.Builder(this, "idle-probe")
++            .setSmallIcon(android.R.drawable.stat_notify_sync).setContentTitle("隔离调度测试 · 无校园网请求").build())
++    }
++    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int) = START_NOT_STICKY
++}
++
++class IdleSchedulerProbe : Instrumentation() {
++    override fun onCreate(arguments: Bundle?) { super.onCreate(arguments); start() }
++    override fun onStart() {
++        val ctx = targetContext
++        val worker = ScheduledThreadPoolExecutor(1).apply { removeOnCancelPolicy = true }
++        var active = true
++        val scheduler = WakeupScheduler(ctx, worker) { active }
++        val samples = JSONArray()
++        val result = JSONObject().put("testId", "FORCED-IDLE-SCHEDULER").put("samples", samples)
++            .put("api", Build.VERSION.SDK_INT).put("status", "FAIL")
++        try {
++            check(ctx.packageName == "org.esurfing.hunan.isolation")
++            SessionState.initialize(ctx)
++            ctx.startActivity(Intent(ctx, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
++            Thread.sleep(1000)
++            ctx.startForegroundService(Intent(ctx, IdleProbeService::class.java))
++            val pm = ctx.getSystemService(PowerManager::class.java)
++            val am = ctx.getSystemService(AlarmManager::class.java)
++            result.put("batteryExempt", pm.isIgnoringBatteryOptimizations(ctx.packageName))
++                .put("exactAllowed", Build.VERSION.SDK_INT < 31 || am.canScheduleExactAlarms())
++            sendStatus(1, Bundle().apply { putString("result", "READY_FOR_IDLE") })
++            // The host forces idle after READY, restores it in a finally block.
++            Thread.sleep(12000)
++            repeat(3) {
++                val finished = CountDownLatch(1)
++                val timing = TimingTrace.plan(TaskKind.HEARTBEAT, 0, 30)
++                scheduler.schedule(timing, 0, 30) {
++                    samples.put(JSONObject().put("delayMs", (SystemClock.elapsedRealtime()-timing.dueElapsed).coerceAtLeast(0))
++                        .put("idle", pm.isDeviceIdleMode).put("interactive", pm.isInteractive))
++                    finished.countDown()
++                }
++                check(finished.await(75, TimeUnit.SECONDS))
++            }
++            check(samples.length() == 3)
++            repeat(samples.length()) { check(samples.getJSONObject(it).getBoolean("idle")); check(samples.getJSONObject(it).getLong("delayMs") <= 3000) }
++            result.put("status", "PASS")
++        } catch (t: Throwable) {
++            result.put("exception", t.javaClass.simpleName)
++        } finally {
++            active = false
++            scheduler.cancelAll(); worker.shutdownNow()
++            ctx.stopService(Intent(ctx, IdleProbeService::class.java))
++            result.put("callbacksAfter", WakeupDispatch.size())
++            File(ctx.filesDir, "idle-scheduler.json").writeText(result.toString())
++            finish(if(result.optString("status") == "PASS") -1 else 0, Bundle().apply { putString("result", result.toString()) })
++        }
++    }
++}
+diff --git a/source/app/src/main/java/org/esurfing/hunan/BackgroundAccess.kt b/source/app/src/main/java/org/esurfing/hunan/BackgroundAccess.kt
+new file mode 100644
+index 0000000..c868ac5
+--- /dev/null
++++ b/source/app/src/main/java/org/esurfing/hunan/BackgroundAccess.kt
+@@ -0,0 +1,89 @@
++package org.esurfing.hunan
++
++import android.Manifest
++import android.app.Activity
++import android.app.AlarmManager
++import android.app.NotificationManager
++import android.content.Context
++import android.content.Intent
++import android.content.pm.PackageManager
++import android.net.Uri
++import android.os.Build
++import android.os.PowerManager
++import android.provider.Settings
++import android.widget.Toast
++
++/** Capabilities only: opening settings never starts or reconnects a session. */
++object BackgroundAccess {
++    const val NOTIFICATION_REQUEST = 40
++    data class Snapshot(val exact: Boolean?, val batteryExempt: Boolean?, val notifications: Boolean?) {
++        private fun state(value: Boolean?, yes: String, no: String) = when(value) {
++            true -> yes
++            false -> no
++            null -> "暂时无法读取"
++        }
++        fun summary() = "后台定时：${state(exact, "可用", "未开启")}\n" +
++            "电池优化：${state(batteryExempt, "已豁免", "仍受限制")}\n" +
++            "连接通知：${state(notifications, "已开启", "未开启")}"
++        fun reminder() = when {
++            batteryExempt != true -> "长时间锁屏可能限制心跳，请在“更多 → 后台运行”检查电池优化。"
++            exact != true -> "后台定时受限，锁屏后心跳可能延后，可在“更多 → 后台运行”设置。"
++            notifications != true -> "连接通知未开启，可在“更多 → 后台运行”设置，便于查看或停止连接。"
++            else -> "后台运行权限已就绪；厂商省电策略仍可能影响锁屏连接。"
++        }
++    }
++
++    private fun readBoolean(block: () -> Boolean): Boolean? = try { block() } catch (_: RuntimeException) { null }
++    fun read(context: Context): Snapshot = Snapshot(
++        readBoolean { Build.VERSION.SDK_INT < 31 || context.getSystemService(AlarmManager::class.java).canScheduleExactAlarms() },
++        readBoolean { context.getSystemService(PowerManager::class.java).isIgnoringBatteryOptimizations(context.packageName) },
++        readBoolean {
++            val notifications = context.getSystemService(NotificationManager::class.java)
++            val channel = notifications.getNotificationChannel("session")
++            notifications.areNotificationsEnabled() && channel?.importance != NotificationManager.IMPORTANCE_NONE
++        }
++    )
++
++    private fun appDetails(activity: Activity) = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
++        Uri.parse("package:${activity.packageName}"))
++
++    private fun open(activity: Activity, vararg candidates: Intent) {
++        for(intent in candidates) {
++            try { activity.startActivity(intent); return }
++            catch (_: RuntimeException) { /* OEM settings may not implement the standard destination. */ }
++        }
++        Toast.makeText(activity, "系统未提供此设置入口，请在系统设置中查找本应用。", Toast.LENGTH_LONG).show()
++    }
++
++    fun openExact(activity: Activity) {
++        if(Build.VERSION.SDK_INT >= 31) open(activity,
++            Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, Uri.parse("package:${activity.packageName}")),
++            appDetails(activity))
++        else Toast.makeText(activity, "当前系统无需单独授予后台定时权限。", Toast.LENGTH_LONG).show()
++    }
++
++    // Called only after the user has read the purpose/cost explanation and tapped the positive button.
++    fun requestBatteryExemption(activity: Activity) {
++        if(read(activity).batteryExempt == true) {
++            open(activity, Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS), appDetails(activity))
++        } else open(activity,
++            Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:${activity.packageName}")),
++            Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS), appDetails(activity))
++    }
++
++    fun openAppDetails(activity: Activity) = open(activity, appDetails(activity))
++
++    fun requestNotifications(activity: Activity) {
++        val preferences = activity.getSharedPreferences("background-access", Context.MODE_PRIVATE)
++        if(Build.VERSION.SDK_INT >= 33 && activity.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED &&
++            (!preferences.getBoolean("notificationRequested", false) || activity.shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS))) {
++            preferences.edit().putBoolean("notificationRequested", true).apply()
++            try {
++                activity.requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS), NOTIFICATION_REQUEST)
++                return
++            } catch (_: RuntimeException) { /* Use the settings page if the runtime prompt is unavailable. */ }
++        }
++        open(activity, Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).putExtra(Settings.EXTRA_APP_PACKAGE, activity.packageName),
++            appDetails(activity))
++    }
++}

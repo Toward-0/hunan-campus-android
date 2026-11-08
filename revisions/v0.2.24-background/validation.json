@@ -1,0 +1,415 @@
+{
+  "schema": 1,
+  "createdAt": "2026-11-08T23:21:02.525680+08:00",
+  "scope": "Android background execution revision; historical stage1 gates remain unchanged",
+  "binding": {
+    "versionCode": 36,
+    "versionName": "0.2.24-background",
+    "baseCommit": "f8a8de2276ce267b79389c15ed99ad8067b19439",
+    "sourceManifestSha256": "9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0",
+    "buildInputManifestSha256": "9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0",
+    "sourceArchiveSha256": "5B7D0773603E6243B147CA03A3E9FA9CE88646B47CB3595E9FE9287888621FDB",
+    "expectedCertificateSha256": "2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229",
+    "apks": [
+      {
+        "file": "ESurfingHunan-0.2.24-background-candidate-phone.apk",
+        "sha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+        "bytes": 1722249
+      },
+      {
+        "file": "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+        "sha256": "EC745E71980C6B5A77C6480CFF6E1852E79109242D6FC2DE3250E12C677AB7BE",
+        "bytes": 1841835
+      },
+      {
+        "file": "ESurfingHunan-0.2.24-background-isolation-x86_64.apk",
+        "sha256": "4B07471F8D7D867CF2C21424065E91606407BA5E9E88B1D2B7672D66A99A4C1C",
+        "bytes": 1772122
+      }
+    ],
+    "sourceSnapshotMethod": "PRE_BUILD_SNAPSHOT",
+    "sourceSnapshotLimitation": "This is the v36 pre-build source snapshot. v35 artifacts and results remain preserved separately and are not current runtime evidence."
+  },
+  "environment": {
+    "designSupport": {
+      "minSdk": 26,
+      "targetSdk": 35,
+      "phoneAbis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ]
+    },
+    "tested": [
+      {
+        "device": "realme RMX3820",
+        "api": 34,
+        "processAbi": "arm64-v8a",
+        "pageSize": 4096
+      },
+      {
+        "device": "Android SDK built for x86_64",
+        "api": 26,
+        "processAbi": "x86_64",
+        "pageSize": 4096
+      },
+      {
+        "device": "sdk_gphone64_x86_64",
+        "api": 35,
+        "processAbi": "x86_64",
+        "pageSize": "not recorded by the current scheduler probe"
+      }
+    ]
+  },
+  "toolchain": {
+    "javaVersion": "openjdk version \"17.0.16\" 2025-07-15 LTS\r\nOpenJDK Runtime Environment Zulu17.60+17-CA (build 17.0.16+8-LTS)\r\nOpenJDK 64-Bit Server VM Zulu17.60+17-CA (build 17.0.16+8-LTS, mixed mode, sharing)",
+    "gradle": "8.11.1 (configured executable)",
+    "compileSdk": 35,
+    "ndk": "Pkg.Desc = Android NDK\nPkg.Revision = 28.0.13004108\nPkg.BaseRevision = 28.0.13004108\nPkg.ReleaseName = r28\n",
+    "rootBuildGradle": "plugins {\n    id(\"com.android.application\") version \"8.9.2\" apply false\n    id(\"org.jetbrains.kotlin.android\") version \"2.1.20\" apply false\n}\n"
+  },
+  "tests": [
+    {
+      "testId": "BUILD-DUAL-ARM",
+      "status": "PASS",
+      "expected": "主包及隔离包构建成功，保留 minSdk26 / targetSdk35 和双 ARM ABI",
+      "actual": "当前v36主包和隔离phone包构建成功，包含双ARM ABI；另构建x86_64隔离包。minSdk26 / targetSdk35保持。",
+      "evidence": [
+        "evidence/static-apk-verification.json",
+        "evidence/build-commands-public.json"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "SIGNATURE-ALIGNMENT",
+      "status": "PASS",
+      "expected": "签名等于既有测试证书；最终 APK 的 16KB ZIP 对齐检查成功",
+      "actual": "当前3个APK签名核验和ZIP 16KB对齐检查全部退出0，证书与既有测试证书一致；不能替代16KB实机运行。",
+      "evidence": [
+        "evidence/build-commands-public.json",
+        "evidence/static-apk-verification.json"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "LINT",
+      "status": "PASS",
+      "expected": "完成当前主包与隔离包 Lint，分别报告错误和警告数",
+      "actual": "当前v36主包0错误/16警告，隔离包0错误/36警告。BatteryLife警告对应主动请求电池优化豁免；零警告目标仍未通过。",
+      "evidence": [
+        "evidence/lint-summary.json",
+        "evidence/lint-results-candidate.txt",
+        "evidence/lint-results-isolation.txt"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk"
+      ]
+    },
+    {
+      "testId": "REALME-INSTALL",
+      "status": "PASS",
+      "expected": "在已连接 realme 同签名覆盖安装当前 APK，保留主应用数据",
+      "actual": "当前v36主包已同签名覆盖realme，安装后哈希BB2555…10CEA与交付一致；安装前已核对主服务停止，没有卸载或清除主应用。",
+      "evidence": [
+        "evidence/v36-main-install.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "realme RMX3820 / API34",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk"
+      ]
+    },
+    {
+      "testId": "ALARM-RACE-CANCEL",
+      "status": "PASS",
+      "expected": "定时器与闹钟只交付一次；取消及代次变化后不执行旧任务；无残留回调",
+      "actual": "当前v36在realme/API26/API35清醒态交付延迟分别25/5/18ms（<=3000ms）。每环境通过16种纯逻辑交付策略组合、100次双触发竞争及200次取消竞争，旧回调和定时器队列归零；纯逻辑组合不等于16组系统权限实测。",
+      "evidence": [
+        "evidence/v36-realme-regression.json",
+        "evidence/v36-api26-regression.json",
+        "evidence/v36-api35-scheduler.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "SCHEDULER-IDLE-MATRIX",
+      "status": "NOT_RUN",
+      "expected": "分别记录实际 Doze、权限、调度模式、样本数及延迟，不把定时器称为唤醒保证",
+      "actual": "完整系统权限/厂商Doze矩阵未完成。当前仅API35电池豁免+精确定时组合有独立PASS（见API35-FORCED-IDLE）；其他组合及v36 realme强制Doze未运行，不能转记v35结果。",
+      "evidence": [
+        "evidence/v36-api35-forced-idle.json",
+        "evidence/history-v35-realme-idle-failure.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "DIAGNOSTIC-EXPORT",
+      "status": "PASS",
+      "expected": "完整 JSON 白名单导出包含后台能力及实际交付来源",
+      "actual": "当前v36在realme和API26分别完成13项诊断回归，包括后台能力字段、完整JSON边界、白名单和实际复制入口。",
+      "evidence": [
+        "evidence/v36-realme-regression.json",
+        "evidence/v36-api26-regression.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "SESSION-SAFETY",
+      "status": "PASS",
+      "expected": "隔离包验证停止、代次取消及资源释放，不增加自动认证",
+      "actual": "当前v36在API26完成100次合成会话循环，耗时193.14秒，覆盖发现/认证/探测/计划心跳停止与迟到响应及慢响应预算。此结论只绑定API26/x86_64；没有转记v35 realme的100次会话。",
+      "evidence": [
+        "evidence/v36-api26-regression.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "API26 / x86_64 / pageSize4096",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "REAL-NETWORK-SHORT",
+      "status": "PASS",
+      "expected": "用户手动连接后取得观察窗内新增的心跳和外网证据",
+      "actual": "2026-11-08 23:06:00(+08:00)起311.81秒USB连接普通锁屏观察，经独立轮转补齐8项检查PASS：同一已认证generation1，锁屏新增1次成功心跳及1次成功外网检查，交付延迟13ms/6ms，interactive=false、idle=false。成功记录间隔250167ms/300303ms不作调度延迟；无重新认证、无额外主动探测。不代表连续外网或长期稳定。",
+      "evidence": [
+        "evidence/v36-realme-oem-allowed-reconciled.json",
+        "evidence/v36-realme-rotation-supplement.json",
+        "evidence/v36-realme-oem-allowed-short.json"
+      ],
+      "time": "2026-11-08T23:18:30.951934+08:00",
+      "environment": "realme RMX3820 / API34 / current v36 / same generation 1",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk"
+      ]
+    },
+    {
+      "testId": "NATURAL-LOCK-8H",
+      "status": "NOT_RUN",
+      "expected": "真实拔电自然锁屏至少8小时；报告心跳间隔、断线和耗电",
+      "actual": "本轮未运行；尚无v36拔电自然锁屏8小时及耗电证据。",
+      "evidence": [],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": []
+    },
+    {
+      "testId": "ARM64-JNI",
+      "status": "PASS",
+      "expected": "当前隔离包在实际ARM64进程完成异常输入、200次循环及句柄归零",
+      "actual": "当前v36在realme API34/4096页/64位进程加载arm64-v8a，182个畸形输入被拒绝，200次循环、9个合成算法、每算法20个分配失败位置，最终句柄0。未将构建双ARM当作当前ARM32运行通过。",
+      "evidence": [
+        "evidence/v36-realme-regression.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "realme RMX3820 / API34 / arm64-v8a / pageSize4096",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk"
+      ]
+    },
+    {
+      "testId": "MAIN-ISOLATION-EXCLUSION",
+      "status": "PASS",
+      "expected": "当前主包Manifest、DEX组件和原生库不含隔离测试入口",
+      "actual": "当前主包无instrumentation、隔离DEX组件或原生CompatProbe测试符号；隔离包对照存在这些入口。",
+      "evidence": [
+        "evidence/static-apk-verification.json"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk"
+      ]
+    },
+    {
+      "testId": "SOURCE-BUILD-BINDING",
+      "status": "PASS",
+      "expected": "最终源码与构建前清单一致，明确重构建与已测APK的哈希关系",
+      "actual": "v36构建前固定240文件清单，构建后逐项一致，所有输入mtime早于当前构建开始。v35 APK与证据已独立保留，不绑定为v36结果。",
+      "evidence": [
+        "evidence/source-snapshot-verification.json",
+        "evidence/static-apk-verification.json"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "ENVIRONMENT-RESTORATION",
+      "status": "PASS",
+      "expected": "强制休眠、隔离包电池豁免和屏幕状态按测试前状态恢复并记录退出码",
+      "actual": "当前v36 API35强制休眠测试结束后豁免/强制休眠核对恢复；API26专有模拟器身份核验后退出，进程退出码0且控制台/ADB端口已关闭。realme当前用户手动连接会话保留，未停止主应用。",
+      "evidence": [
+        "evidence/v36-api35-forced-idle.json",
+        "evidence/v36-api26-controller-public.json"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "PROTECTED-V34-BASELINE",
+      "status": "PASS",
+      "expected": "v34保护基线238个源码文件前后SHA256均不变",
+      "actual": "保护基线238文件逐项SHA256核对，差异0。",
+      "evidence": [
+        "evidence/v36-protected-baseline-check.json"
+      ],
+      "time": "2026-11-08T22:50:13.199174+08:00",
+      "environment": "see environment",
+      "buildBinding": "binding",
+      "testedApks": []
+    },
+    {
+      "testId": "API26-REGRESSION",
+      "status": "PASS",
+      "expected": "当前v36在API26隔离模拟器完成调度、诊断、100次会话循环和JNI回归",
+      "actual": "当前v36 API26/x86_64的Alarm、Diagnostics、Session和Compat四项均PASS，包括100会话循环和200次JNI循环，句柄归零。",
+      "evidence": [
+        "evidence/v36-api26-regression.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "API26 / Android SDK built for x86_64",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "API35-FORCED-IDLE",
+      "status": "PASS",
+      "expected": "当前v36在API35实际深度Doze下完成3个合成任务，逐样本延迟<=3000ms，回调归零且恢复设置",
+      "actual": "当前v36 API35仅电池豁免=true/精确定时=true组合：3个30秒合成任务在idle=true、interactive=false下延迟16/12/9ms（最大16ms），回调0，豁免和强制休眠均恢复。没有网络请求，不能当作真实校园网或长期保活验证。",
+      "evidence": [
+        "evidence/v36-api35-forced-idle.json"
+      ],
+      "time": "2026-11-08T22:55:55.558975+08:00",
+      "environment": "API35 / sdk_gphone64_x86_64 / synthetic callbacks",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+      ]
+    },
+    {
+      "testId": "REALME-OEM-BACKGROUND-POLICY",
+      "status": "PASS",
+      "expected": "同一应用后台行为开关前后核对OEM附加闹钟延期，设置结果与锁屏联网结果分开记录",
+      "actual": "标准电池豁免及精确定时已开启、前台服务存活时，realme独立“允许完全后台行为”仍关闭；两个闹钟被OEM adjustment额外延后259200000ms（三天）。仅开启本应用该开关后adjustment=--且whenElapsed=origWhen。设置/策略PASS与锁屏联网分别记录。",
+      "evidence": [
+        "evidence/v36-oem-setting-change.json",
+        "evidence/v36-runtime-policy.json",
+        "evidence/v36-runtime-oem-allowed.json",
+        "evidence/oem-background-before.png",
+        "evidence/oem-background-after.png"
+      ],
+      "time": "2026-11-08T23:18:30.951934+08:00",
+      "environment": "realme RMX3820 / API34 / current v36 / same generation 1",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk"
+      ]
+    },
+    {
+      "testId": "REAL-NETWORK-FIRST-ATTEMPT",
+      "status": "FAIL",
+      "expected": "保留OEM设置调整前的实际v36短测结果，不以复测覆盖原始失败",
+      "actual": "设置调整前的311.77秒USB连接普通锁屏观察没有新增成功心跳或外网结果；开始/结束记录相同，原始FAIL保持。这一失败未被后续复测覆盖。",
+      "evidence": [
+        "evidence/v36-realme-manual-short.json",
+        "evidence/v36-realme-manual-short-start.json",
+        "evidence/v36-realme-manual-short-end.json"
+      ],
+      "time": "2026-11-08T23:18:30.951934+08:00",
+      "environment": "realme RMX3820 / API34 / current v36 / same generation 1",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk"
+      ]
+    },
+    {
+      "testId": "REAL-NETWORK-RAW-COLLECTOR",
+      "status": "FAIL",
+      "expected": "保留OEM设置调整后原收集器的轮转漏采结果，补齐证据单独说明",
+      "actual": "设置调整后第二次311.81秒观察的原收集器只读取当前trace文件，漏掉已轮转心跳；其AssertionError/FAIL原样保留。新心跳和外网成功时间戳已增长；补齐两份trace的结论在REAL-NETWORK-SHORT单独记录。",
+      "evidence": [
+        "evidence/v36-realme-oem-allowed-short.json",
+        "evidence/v36-realme-oem-allowed-short-start.json",
+        "evidence/v36-realme-oem-allowed-short-end.json"
+      ],
+      "time": "2026-11-08T23:18:30.951934+08:00",
+      "environment": "realme RMX3820 / API34 / current v36 / same generation 1",
+      "buildBinding": "binding",
+      "testedApks": [
+        "ESurfingHunan-0.2.24-background-candidate-phone.apk"
+      ]
+    }
+  ],
+  "historyGaps": [
+    "v34 阶段1未通过；本专项不将历史测试结论改为当前版本通过。",
+    "ARM64 / 16KB 实机运行环境缺失；静态对齐不能替代运行验证。",
+    "既有大字体系统状态栏裁切、API矩阵和realme键盘视觉缺口不属于本次已解决结论。",
+    "8小时自然锁屏、全面厂商适配、全部进程生命周期及耗电仍须独立证据。"
+  ],
+  "limitations": [
+    "设计支持API26+不等于已验证大多数Android手机。当前实测设备/API/ABI：realme RMX3820 API34 ARM64，以及API26/API35 x86_64模拟器。其他品牌真机、API29/31/33/36没有本轮完整证据。",
+    "当前ARM32仅构建未实机运行；ARM64/16KB运行环境仍缺失。静态对齐不能替代16KB运行验证。",
+    "当前v36 API35强制Doze仅电池豁免+精确定时单组合3个合成样本；完整Doze权限/厂商矩阵NOT_RUN。v35 realme强制Doze零样本FAIL独立保留，不当作v36通过。",
+    "真实短测仅一次311.81秒USB供电普通锁屏，idle=false；8小时自然锁屏、拔掉USB的待机/深度Doze和耗电对照均未验证。",
+    "Lint主包0错误/16警告，隔离包0错误/36警告，零警告目标未通过；v34其他兼容性/UI缺口仍保留历史状态。",
+    "当前改动和交付仅本地保存，尚未推送GitHub或创建Release。手机保留用户当前会话。"
+  ],
+  "findings": [
+    "realme存在独立厂商限制：标准电池豁免、精确定时和最近任务锁定不能替代“允许完全后台行为”。关闭时两个已注册闹钟额外延期三天；开启后该延期立即消失。",
+    "本机实际入口：应用“更多”→“打开系统应用详情”→“耗电管理”→“允许完全后台行为”→允许。只改本应用此项，没有开启应用自启动或关联启动。其他品牌仅提供标准入口和设置参考，本轮未验证其具体路径。",
+    "调整后保留原手动登录会话，311.81秒USB连接普通锁屏中新增1次成功心跳及1次成功外网检查，交付延迟分别13ms和6ms。两次成功记录间隔分别250167ms和300303ms；样本仅各1次，不能作长期时延分布或持续外网结论。",
+    "设置前真实短测FAIL、设置后原收集器轮转漏采FAIL、独立补齐PASS分别留档；补齐仅使用原观察窗口同代次白名单记录，没有改写原始失败。"
+  ]
+}

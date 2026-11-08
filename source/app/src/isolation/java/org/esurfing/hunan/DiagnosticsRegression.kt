@@ -33,6 +33,16 @@ internal object DiagnosticsRegression {
             check(records.size == 1 && records[0].getInt("unreadableFiles") == 0)
             check(parse(export("\n \r\n", "")).size == 1)
         }
+        test("JSON-BACKGROUND-CAPABILITIES") {
+            val value = JSONObject(row(1)).put("batteryExempt", true).put("exactAllowed", false)
+                .put("notificationsAllowed", true).put("point", "TIMER_DELIVERY")
+                .put("schedulerMode", "INEXACT_IDLE_WITH_TIMER")
+            val result = parse(export(current = value.toString()))[1]
+            check(result.getBoolean("batteryExempt") && !result.getBoolean("exactAllowed"))
+            check(result.getString("point") == "TIMER_DELIVERY")
+            value.put("batteryExempt", "true")
+            check(parse(export(current = value.toString())).single().getInt("rejectedRecords") == 1)
+        }
         test("JSON-SINGLE-DOUBLE-ORDER") {
             check(parse(export(current = row(1) + "\n")).drop(1).single().getInt("number") == 1)
             check(parse(export(row(1) + "\n", row(2) + "\n")).drop(1).map { it.getInt("number") } == listOf(1, 2))

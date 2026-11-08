@@ -1,0 +1,72 @@
+{
+  "time": "2026-11-08T15:11:10.992405+00:00",
+  "device": "RMX3820",
+  "package": "org.esurfing.hunan",
+  "queries": [
+    {
+      "query": "model",
+      "exitCode": 0,
+      "value": "RMX3820"
+    },
+    {
+      "query": "api",
+      "exitCode": 0,
+      "value": "34"
+    },
+    {
+      "query": "abis",
+      "exitCode": 0,
+      "value": "arm64-v8a,armeabi-v7a,armeabi"
+    },
+    {
+      "query": "pageSize",
+      "exitCode": 0,
+      "value": "4096"
+    },
+    {
+      "query": "version",
+      "exitCode": 0,
+      "value": "versionCode=36\nversionName=0.2.24-background"
+    },
+    {
+      "query": "idle",
+      "exitCode": 0,
+      "value": "ACTIVE"
+    },
+    {
+      "query": "whitelisted",
+      "exitCode": 0,
+      "value": "true"
+    },
+    {
+      "query": "exact",
+      "exitCode": 0,
+      "value": "Uid mode: SCHEDULE_EXACT_ALARM: allow"
+    },
+    {
+      "query": "background",
+      "exitCode": 0,
+      "value": "RUN_ANY_IN_BACKGROUND: allow"
+    },
+    {
+      "query": "notifications",
+      "exitCode": 0,
+      "value": "No operations.\nDefault mode: allow"
+    },
+    {
+      "query": "service",
+      "exitCode": 0,
+      "value": "isForeground=true"
+    },
+    {
+      "query": "latestEvent",
+      "exitCode": 0,
+      "value": "1794150610337 1 AUTHENTICATED heartbeat=1794150540716:PASS internet=1794150610321:PASS"
+    },
+    {
+      "query": "timing",
+      "exitCode": 0,
+      "value": "\"point\":\"REQUEST_FINISH\" \"kind\":\"HEARTBEAT\" \"elapsed\":5570136194 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"FINISH\" \"kind\":\"HEARTBEAT\" \"elapsed\":5570136206 \"dueElapsed\":5570136051 \"task\":6 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"INTERVAL\" \"kind\":\"HEARTBEAT\" \"elapsed\":5570136214 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"number\":300 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"PLAN\" \"kind\":\"HEARTBEAT\" \"elapsed\":5570136222 \"dueElapsed\":5570386222 \"task\":8 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"SCHEDULER\" \"kind\":\"HEARTBEAT\" \"elapsed\":5570136237 \"dueElapsed\":5570386222 \"task\":8 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"schedulerMode\":\"EXACT_IDLE_WITH_TIMER\" \"error\":\"NONE\" \"number\":1 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"TIMER_DELIVERY\" \"kind\":\"INTERNET\" \"elapsed\":5570205516 \"dueElapsed\":5570205510 \"task\":7 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"ENTER\" \"kind\":\"INTERNET\" \"elapsed\":5570205533 \"dueElapsed\":5570205510 \"task\":7 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"REQUEST_START\" \"kind\":\"INTERNET\" \"elapsed\":5570205543 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"number\":0 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"REQUEST_FINISH\" \"kind\":\"INTERNET\" \"elapsed\":5570205639 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"number\":0 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"REQUEST_START\" \"kind\":\"INTERNET\" \"elapsed\":5570205655 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"number\":1 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"REQUEST_FINISH\" \"kind\":\"INTERNET\" \"elapsed\":5570205788 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"number\":1 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"FINISH\" \"kind\":\"INTERNET\" \"elapsed\":5570205800 \"dueElapsed\":5570205510 \"task\":7 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"PLAN\" \"kind\":\"INTERNET\" \"elapsed\":5570205811 \"dueElapsed\":5570505811 \"task\":9 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"error\":\"NONE\" \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true \n\"point\":\"SCHEDULER\" \"kind\":\"INTERNET\" \"elapsed\":5570205827 \"dueElapsed\":5570505811 \"task\":9 \"generation\":1 \"idle\":false \"interactive\":false \"plugged\":2 \"schedulerMode\":\"EXACT_IDLE_WITH_TIMER\" \"error\":\"NONE\" \"number\":1 \"batteryExempt\":true \"exactAllowed\":true \"notificationsAllowed\":true"
+    }
+  ]
+}

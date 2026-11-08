@@ -12,7 +12,7 @@ internal object DiagnosticJsonl {
         "error", "stop", "interactive", "idle", "lightIdle", "plugged", "battery", "temperatureDeciC", "sampleCostMs")
     private val numbers = setOf("pid", "wall", "elapsed", "uptime", "nano", "tid", "generation", "retries",
         "plugged", "battery", "temperatureDeciC", "sampleCostMs", "task", "dueWall", "dueElapsed", "dueUptime", "number", "historicalWall")
-    private val booleans = setOf("desired", "interactive", "idle")
+    private val booleans = setOf("desired", "interactive", "idle", "batteryExempt", "exactAllowed", "notificationsAllowed")
     private val enums = mapOf(
         "point" to TracePoint.entries.map { it.name }.toSet(),
         "kind" to TaskKind.entries.map { it.name }.toSet(),

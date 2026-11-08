@@ -1,0 +1,37 @@
+{
+  "time": "2026-11-08T14:46:56.566129+00:00",
+  "package": "org.esurfing.hunan.isolation",
+  "apkSha256": "EC745E71980C6B5A77C6480CFF6E1852E79109242D6FC2DE3250E12C677AB7BE",
+  "results": [
+    {
+      "probe": "AlarmProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 10.7,
+      "output": "INSTRUMENTATION_RESULT: result=PASS: 16 idle-delivery policy combinations; awake delivery lateness=25ms <=3000ms; 100 dual-trigger races/replays execute once; cancel before delivery/queued execution and replacement; 200 schedule/cancel races; zero callbacks/queued timers; synthetic callbacks are not Doze or protocol validation\nINSTRUMENTATION_CODE: -1"
+    },
+    {
+      "probe": "DiagnosticsProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 3.03,
+      "output": "INSTRUMENTATION_STATUS: case=JSON-ACTUAL-COPY-ENTRY\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_RESULT: result={\"testId\":\"S1-DIAGNOSTICS\",\"mode\":\"export\",\"status\":\"PASS\",\"api\":34,\"process64\":true,\"cases\":[{\"id\":\"JSON-EMPTY-MISSING\",\"status\":\"PASS\"},{\"id\":\"JSON-BACKGROUND-CAPABILITIES\",\"status\":\"PASS\"},{\"id\":\"JSON-SINGLE-DOUBLE-ORDER\",\"status\":\"PASS\"},{\"id\":\"JSON-NO-FINAL-NEWLINE\",\"status\":\"PASS\"},{\"id\":\"JSON-ROTATION-PARTIAL-RECORDS\",\"status\":\"PASS\"},{\"id\":\"JSON-INPUT-127999\",\"status\":\"PASS\"},{\"id\":\"JSON-INPUT-128000\",\"status\":\"PASS\"},{\"id\":\"JSON-INPUT-128001\",\"status\":\"PASS\"},{\"id\":\"JSON-BOUNDED-COMPLETE-TAIL\",\"status\":\"PASS\"},{\"id\":\"JSON-READ-FAILURE\",\"status\":\"PASS\"},{\"id\":\"JSON-WHITELIST-AND-TYPES\",\"status\":\"PASS\"},{\"id\":\"JSON-METADATA\",\"status\":\"PASS\"},{\"id\":\"JSON-ACTUAL-COPY-ENTRY\",\"status\":\"PASS\"}]}\nINSTRUMENTATION_CODE: -1"
+    },
+    {
+      "probe": "CompatProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 0.78,
+      "output": "INSTRUMENTATION_RESULT: result={\"testId\":\"S1-JNI\",\"api\":34,\"manufacturer\":\"realme\",\"model\":\"RMX3820\",\"supportedAbis\":\"arm64-v8a,armeabi-v7a,armeabi\",\"process64\":true,\"pageSize\":4096,\"nativeBits\":64,\"loadedAbi\":\"arm64-v8a\",\"malformedRejected\":182,\"cycles\":200,\"syntheticAlgorithms\":9,\"allocationFailurePositionsPerAlgorithm\":20,\"handlesAfter\":0,\"status\":\"PASS\"}\nINSTRUMENTATION_CODE: -1"
+    }
+  ],
+  "api": "34",
+  "model": "RMX3820",
+  "install": {
+    "exitCode": 0,
+    "result": "Success"
+  },
+  "cleanup": {
+    "forceStopExit": 0
+  }
+}

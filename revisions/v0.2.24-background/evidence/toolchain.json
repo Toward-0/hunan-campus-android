@@ -1,0 +1,7 @@
+{
+  "javaVersion": "openjdk version \"17.0.16\" 2025-07-15 LTS\r\nOpenJDK Runtime Environment Zulu17.60+17-CA (build 17.0.16+8-LTS)\r\nOpenJDK 64-Bit Server VM Zulu17.60+17-CA (build 17.0.16+8-LTS, mixed mode, sharing)",
+  "gradle": "8.11.1 (configured executable)",
+  "compileSdk": 35,
+  "ndk": "Pkg.Desc = Android NDK\nPkg.Revision = 28.0.13004108\nPkg.BaseRevision = 28.0.13004108\nPkg.ReleaseName = r28\n",
+  "rootBuildGradle": "plugins {\n    id(\"com.android.application\") version \"8.9.2\" apply false\n    id(\"org.jetbrains.kotlin.android\") version \"2.1.20\" apply false\n}\n"
+}

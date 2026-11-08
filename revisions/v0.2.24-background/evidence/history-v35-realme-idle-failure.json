@@ -1,0 +1,24 @@
+{
+  "scope": "Historical v35 only; NOT current v36 runtime evidence",
+  "versionCode": 35,
+  "versionName": "0.2.23-realme-bg",
+  "apkSha256": "A46D8EB080468F3690A68C68AE8C5A2274D7F2484646079077FCA764EE2950EC",
+  "time": "2026-11-08T14:36:35.756720+00:00",
+  "status": "FAIL",
+  "api": "34",
+  "model": "RMX3820",
+  "firstAlarmVerifiedArmed": true,
+  "result": {
+    "testId": "FORCED-IDLE-SCHEDULER",
+    "samples": [],
+    "api": 34,
+    "status": "FAIL",
+    "batteryExempt": true,
+    "exactAllowed": true,
+    "exception": "IllegalStateException",
+    "callbacksAfter": 0
+  },
+  "restoredExemption": true,
+  "restoredIdle": true,
+  "limitation": "Zero callbacks despite exact alarm and battery exemption in this synthetic forced-idle run. Root cause is not proven. This failure must not be relabeled as v36 PASS."
+}

@@ -1,0 +1,36 @@
+{
+  "time": "2026-11-08T14:58:32.791196+00:00",
+  "package": "org.esurfing.hunan",
+  "queries": [
+    {
+      "query": "pid",
+      "exitCode": 0,
+      "value": "22701"
+    },
+    {
+      "query": "process-state",
+      "exitCode": 0,
+      "value": "Name:\t.esurfing.hunan\nState:\tS (sleeping)\nUid:\t10381\t10381\t10381\t10381\nThreads:\t27"
+    },
+    {
+      "query": "process-runtime",
+      "exitCode": 0,
+      "value": "curProcState=4 mRepProcState=4 setProcState=4 lastStateTime=-9m25s102ms\n    cached=false empty=false"
+    },
+    {
+      "query": "runtime-clock",
+      "exitCode": 0,
+      "value": "5569510.12 4829485.26"
+    },
+    {
+      "query": "alarms",
+      "exitCode": 0,
+      "value": "ELAPSED_WAKEUP #129: Alarm{e8e08af type 2 origWhen 5569228641 whenElapsed 5828428641 org.esurfing.hunan} uid 10381 whenElapsed 5828428641 windowLength 187490 maxWhenElapsed 5828428641 repeatInterval 0 action org.esurfing.hunan.WAKE_TASK component ComponentInfo{org.esurfing.hunan/org.esurfing.hunan.WakeupReceiver} flags 0x8 procName org.esurfing.hunan\n      operation=PendingIntent{f7934bc: PendingIntentRecord{a14ec45 org.esurfing.hunan broadcastIntent}}\n    ELAPSED_WAKEUP #130: Alarm{d43cf9a type 2 origWhen 5569278797 whenElapsed 5828478797 org.esurfing.hunan} uid 10381 whenElapsed 5828478797 windowLength 224987 maxWhenElapsed 5828478797 repeatInterval 0 action org.esurfing.hunan.WAKE_TASK component ComponentInfo{org.esurfing.hunan/org.esurfing.hunan.WakeupReceiver} flags 0x8 procName org.esurfing.hunan\n      operation=PendingIntent{a3c80cb: PendingIntentRecord{302e0a8 org.esurfing.hunan broadcastIntent}}"
+    },
+    {
+      "query": "power",
+      "exitCode": 0,
+      "value": "mWakefulness=Dozing\n  mWakefulnessChanging=false\n  mIsPowered=true\n  mLightDeviceIdleMode=false\n  mDeviceIdleMode=false\n  mIsPowered=true"
+    }
+  ]
+}

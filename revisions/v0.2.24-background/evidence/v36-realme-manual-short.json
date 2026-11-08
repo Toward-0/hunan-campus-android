@@ -1,0 +1,57 @@
+{
+  "testId": "REAL-NETWORK-SHORT",
+  "apkSha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+  "package": "org.esurfing.hunan",
+  "time": "2026-11-08T14:50:58.557978+00:00",
+  "status": "FAIL",
+  "automaticAuthRequests": 0,
+  "additionalNetworkProbes": 0,
+  "observation": "USB-connected screen-off; only start/end whitelisted snapshots",
+  "startEvent": [
+    "1794149383327",
+    "1",
+    "AUTHENTICATED",
+    "1794149383143",
+    "PASS",
+    "1794149383307",
+    "PASS"
+  ],
+  "batteryExempt": true,
+  "endEvent": [
+    "1794149383327",
+    "1",
+    "AUTHENTICATED",
+    "1794149383143",
+    "PASS",
+    "1794149383307",
+    "PASS"
+  ],
+  "durationSeconds": 311.77,
+  "deliveries": [
+    {
+      "point": "ALARM_DELIVERY",
+      "kind": "HEARTBEAT",
+      "elapsed": 5567240569,
+      "dueElapsed": 5567053049,
+      "task": 18,
+      "generation": 9,
+      "idle": false,
+      "interactive": true,
+      "plugged": 2,
+      "error": "NONE"
+    },
+    {
+      "point": "ALARM_DELIVERY",
+      "kind": "INTERNET",
+      "elapsed": 5567240597,
+      "dueElapsed": 5567103300,
+      "task": 19,
+      "generation": 9,
+      "idle": false,
+      "interactive": true,
+      "plugged": 2,
+      "error": "NONE"
+    }
+  ],
+  "errorType": "AssertionError"
+}

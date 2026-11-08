@@ -4,7 +4,7 @@ enum class Phase { IDLE, WAITING_WIFI, DISCOVERING, LOGGING_OUT, AUTHENTICATING,
 enum class CheckResult { UNKNOWN, PASS, FAIL }
 enum class InternetEvidence { NOT_CHECKED, HTTPS_VERIFIED, PORTAL_REQUIRED, HTTPS_UNREACHABLE }
 enum class ErrorKind { NONE, NETWORK, PROTOCOL, CREDENTIAL_STORAGE, CONFIGURATION, HEARTBEAT, PROCESS_INTERRUPTED, IDLE_WAIT }
-enum class SchedulerMode { TIMER, EXACT_LISTENER, INEXACT_LISTENER, TIMER_FALLBACK, EXACT_IDLE_PENDING, INEXACT_IDLE_PENDING }
+enum class SchedulerMode { TIMER, EXACT_LISTENER, INEXACT_LISTENER, TIMER_FALLBACK, EXACT_IDLE_PENDING, INEXACT_IDLE_PENDING, EXACT_IDLE_WITH_TIMER, INEXACT_IDLE_WITH_TIMER }
 
 data class SessionSnapshot(
     val desired: Boolean = false,
@@ -50,7 +50,7 @@ data class SessionSnapshot(
             }
         } else status
         val heartFresh = heartbeatAt > 0 && now - heartbeatAt in 0..(heartbeatIntervalSeconds * 1000 + 60000)
-        val scheduling = if(schedulerMode in listOf(SchedulerMode.INEXACT_LISTENER, SchedulerMode.TIMER_FALLBACK, SchedulerMode.INEXACT_IDLE_PENDING)) "后台调度已降级，保活时效未保证" else "后台调度仍需验收"
+        val scheduling = if(schedulerMode in listOf(SchedulerMode.INEXACT_LISTENER, SchedulerMode.TIMER_FALLBACK, SchedulerMode.INEXACT_IDLE_PENDING, SchedulerMode.INEXACT_IDLE_WITH_TIMER)) "后台调度已降级，保活时效未保证" else "后台调度仍需验收"
         val repairHint = if(repairAvailable) "\n持续未放行，可点“一键修复连接”。" else ""
         return "$online\n最近外网检测：${if (internetAt == 0L) "尚无" else java.util.Date(internetAt)}\n心跳最近完成：${if (heartbeatAt == 0L) "尚无" else java.util.Date(heartbeatAt)}\n心跳：$heartbeatResult（${if (heartFresh) "最近结果" else "已过期或未确认"}）；恢复次数：$retries\n$scheduling$repairHint"
     }

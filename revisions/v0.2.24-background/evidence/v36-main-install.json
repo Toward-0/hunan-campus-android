@@ -1,0 +1,52 @@
+{
+  "testId": "REALME-INSTALL",
+  "time": "2026-11-08T14:48:36.211149+00:00",
+  "apkSha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+  "package": "org.esurfing.hunan",
+  "status": "PASS",
+  "commands": [
+    {
+      "id": "model",
+      "exitCode": 0
+    },
+    {
+      "id": "stopped-state",
+      "exitCode": 0
+    },
+    {
+      "id": "service-absent",
+      "exitCode": 0
+    },
+    {
+      "id": "stopped-state",
+      "exitCode": 0
+    },
+    {
+      "id": "service-absent",
+      "exitCode": 0
+    },
+    {
+      "id": "install-r",
+      "exitCode": 0
+    },
+    {
+      "id": "installed-path",
+      "exitCode": 0
+    },
+    {
+      "id": "installed-sha",
+      "exitCode": 0
+    },
+    {
+      "id": "version",
+      "exitCode": 0
+    },
+    {
+      "id": "remove-upload",
+      "exitCode": 0
+    }
+  ],
+  "installedSha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+  "version": "versionCode=36\nversionName=0.2.24-background",
+  "cleanup": ""
+}

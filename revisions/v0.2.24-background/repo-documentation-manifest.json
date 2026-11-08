@@ -1,0 +1,13 @@
+{
+  "scope": "Repository documentation only; not APK source inputs",
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "A50B093187009E529771018C2D176E5C388716EB2FBD72996FF0F0B910558349"
+    },
+    {
+      "path": "docs/BACKGROUND_KEEPALIVE.md",
+      "sha256": "5E6090E0882AF106DCD4B6FE6EDACBD560EC9366DC4D106FC1479477F5CCEF01"
+    }
+  ]
+}

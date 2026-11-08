@@ -1,0 +1,26 @@
+{
+  "candidate": {
+    "errors": 0,
+    "warnings": 16,
+    "rules": [
+      "ApplySharedPref",
+      "BatteryLife",
+      "ChromeOsAbiSupport",
+      "MissingApplicationIcon",
+      "StaticFieldLeak"
+    ]
+  },
+  "isolation": {
+    "errors": 0,
+    "warnings": 36,
+    "rules": [
+      "ApplySharedPref",
+      "BatteryLife",
+      "ChromeOsAbiSupport",
+      "ImplicitSamInstance",
+      "MissingApplicationIcon",
+      "SetTextI18n",
+      "StaticFieldLeak"
+    ]
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "testId": "ENV-API26",
+  "status": "PASS",
+  "serial": "<EMULATOR_SERIAL>",
+  "avdName": "<AVD_NAME>",
+  "avd": "<RUN>/avd/<AVD_NAME>.avd",
+  "image": "<SDK>/system-images/android-26/google_apis/x86_64",
+  "api": 26,
+  "startedAt": "2026-11-08T14:43:14.528947+00:00",
+  "toolEvents": [
+    "INFO         |   Checking: hasCompatibleHypervisor",
+    "INFO         |      Ok: Hypervisor compatibility to run avd: `<AVD_NAME>` are met",
+    "WHPX on Windows 10.0.26100 detected.",
+    "Windows Hypervisor Platform accelerator is operational",
+    "INFO         | Boot completed in 33435 ms"
+  ],
+  "imagePropertiesSha256": "7359E05A9D54B107581DBC530391985AC414E28828484AA4487B4E070D62AAED",
+  "command": [
+    "<SDK>/emulator/emulator.exe",
+    "-avd",
+    "<AVD_NAME>",
+    "-port",
+    "<PORT>",
+    "-no-window",
+    "-no-audio",
+    "-no-boot-anim",
+    "-no-snapshot",
+    "-gpu",
+    "swiftshader_indirect",
+    "-accel",
+    "on",
+    "-datadir",
+    "<RUN>/avd/<AVD_NAME>.avd",
+    "-data",
+    "<RUN>/avd/<AVD_NAME>.avd\\userdata-qemu.img",
+    "-cache",
+    "<RUN>/avd/<AVD_NAME>.avd\\cache.img"
+  ],
+  "runtimeIdentity": {
+    "api": "26",
+    "qemu": "1",
+    "avdName": "<AVD_NAME>"
+  },
+  "abi": "x86_64,x86",
+  "pageSizeEvidence": {
+    "pageSize": 4096,
+    "method": "auxv-AT_PAGESZ-u64",
+    "attempts": [
+      {
+        "query": "getconf-PAGE_SIZE",
+        "exitCode": 127,
+        "status": "FAIL",
+        "failureKind": "nonzero-exit"
+      },
+      {
+        "query": "getconf-PAGESIZE",
+        "exitCode": 127,
+        "status": "FAIL",
+        "failureKind": "nonzero-exit"
+      },
+      {
+        "query": "auxv-AT_PAGESZ-u64",
+        "exitCode": 0,
+        "valueBytes": 4096,
+        "status": "PASS"
+      }
+    ]
+  },
+  "state": "STOPPED",
+  "stopRequested": true,
+  "cleanup": {
+    "identityVerified": true,
+    "powerOffClosedConnection": true,
+    "popenExitCode": 0,
+    "consolePortClosed": true,
+    "adbPortClosed": true,
+    "status": "PASS"
+  },
+  "publication": {
+    "sourceScriptSha256": "8A5FF4AF00743DFEE9B3A74AF36F0CAB38A6C3E71F5902BC1765920242BCA5C1",
+    "publicScriptSha256": "E386D6F70C0BCBE2C32A24BF3BF8FF3824854B7E88D31A524E6B4DDAE38D55C6",
+    "scriptChange": "External SDK/run directory/port parameters replace local paths and fixed emulator identity. Public derivative was syntax-checked, not re-executed.",
+    "evidenceChange": "Local paths, emulator identity and console port replaced by placeholders; host PID omitted; statuses and exit codes retained."
+  }
+}

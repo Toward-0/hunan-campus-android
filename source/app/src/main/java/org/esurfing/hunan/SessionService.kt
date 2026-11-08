@@ -474,7 +474,7 @@ open class SessionService : Service() {
                 if (!alive(id)) return@schedule
                 failures = 0
                 SessionState.change(id) { it.copy(phase = Phase.AUTHENTICATED, heartbeatAt = System.currentTimeMillis(), heartbeatResult = CheckResult.PASS,
-                    error = ErrorKind.NONE, protocolCode = "none", retries = 0, nextRecoveryAt = 0, heartbeatDelayMs = maxOf(0, System.currentTimeMillis() - due), durationMs = SystemClock.elapsedRealtime() - started) }
+                    error = ErrorKind.NONE, protocolCode = "none", retries = 0, nextRecoveryAt = 0, heartbeatDelayMs = maxOf(0, started - timing.dueElapsed), durationMs = SystemClock.elapsedRealtime() - started) }
                 TimingTrace.emit(TracePoint.FINISH, id, timing)
                 scheduleKeep(engine, id, interval(result, id))
             } catch (e: Exception) {

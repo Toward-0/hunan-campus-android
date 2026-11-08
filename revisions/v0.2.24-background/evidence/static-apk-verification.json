@@ -1,0 +1,140 @@
+{
+  "status": "PASS",
+  "apks": [
+    {
+      "file": "ESurfingHunan-0.2.24-background-candidate-phone.apk",
+      "sha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+      "bytes": 1722249,
+      "package": "org.esurfing.hunan",
+      "versionCode": 36,
+      "versionName": "0.2.24-background",
+      "minSdk": 26,
+      "targetSdk": 35,
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ],
+      "metadataExitCodes": {
+        "badging": 0,
+        "manifest": 0
+      },
+      "buildId": "build-phone-20261108-224401-674",
+      "sourceInputBinding": {
+        "method": "PRE_BUILD_SNAPSHOT",
+        "sourceManifestSha256": "9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0",
+        "lateMtimeFiles": []
+      },
+      "isolationHooks": {
+        "expectedComponentCount": 16,
+        "includedComponents": [],
+        "nativeHookLibraries": [],
+        "instrumentationManifestPresent": false
+      },
+      "mainIsolationExclusionStatus": "PASS",
+      "status": "PASS"
+    },
+    {
+      "file": "ESurfingHunan-0.2.24-background-isolation-phone.apk",
+      "sha256": "EC745E71980C6B5A77C6480CFF6E1852E79109242D6FC2DE3250E12C677AB7BE",
+      "bytes": 1841835,
+      "package": "org.esurfing.hunan.isolation",
+      "versionCode": 36,
+      "versionName": "0.2.24-background-isolation",
+      "minSdk": 26,
+      "targetSdk": 35,
+      "abis": [
+        "arm64-v8a",
+        "armeabi-v7a"
+      ],
+      "metadataExitCodes": {
+        "badging": 0,
+        "manifest": 0
+      },
+      "buildId": "build-phone-20261108-224401-674",
+      "sourceInputBinding": {
+        "method": "PRE_BUILD_SNAPSHOT",
+        "sourceManifestSha256": "9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0",
+        "lateMtimeFiles": []
+      },
+      "isolationHooks": {
+        "expectedComponentCount": 16,
+        "includedComponents": [
+          "org.esurfing.hunan.AlarmProbe",
+          "org.esurfing.hunan.CancelProbe",
+          "org.esurfing.hunan.CompatProbe",
+          "org.esurfing.hunan.CredentialProbe",
+          "org.esurfing.hunan.DiagnosticsProbe",
+          "org.esurfing.hunan.DiscoveryProbe",
+          "org.esurfing.hunan.FixtureActivity",
+          "org.esurfing.hunan.IdleProbeService",
+          "org.esurfing.hunan.IdleSchedulerProbe",
+          "org.esurfing.hunan.InternetProbe",
+          "org.esurfing.hunan.MockSessionService",
+          "org.esurfing.hunan.RepairMenuProbe",
+          "org.esurfing.hunan.SessionProbe",
+          "org.esurfing.hunan.StabilityProbe",
+          "org.esurfing.hunan.StabilityService",
+          "org.esurfing.hunan.UiProbe"
+        ],
+        "nativeHookLibraries": [
+          "lib/arm64-v8a/libhunan_core.so",
+          "lib/armeabi-v7a/libhunan_core.so"
+        ],
+        "instrumentationManifestPresent": true
+      },
+      "status": "PASS"
+    },
+    {
+      "file": "ESurfingHunan-0.2.24-background-isolation-x86_64.apk",
+      "sha256": "4B07471F8D7D867CF2C21424065E91606407BA5E9E88B1D2B7672D66A99A4C1C",
+      "bytes": 1772122,
+      "package": "org.esurfing.hunan.isolation",
+      "versionCode": 36,
+      "versionName": "0.2.24-background-isolation",
+      "minSdk": 26,
+      "targetSdk": 35,
+      "abis": [
+        "x86_64"
+      ],
+      "metadataExitCodes": {
+        "badging": 0,
+        "manifest": 0
+      },
+      "buildId": "build-x86_64-20261108-224708-013",
+      "sourceInputBinding": {
+        "method": "PRE_BUILD_SNAPSHOT",
+        "sourceManifestSha256": "9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0",
+        "lateMtimeFiles": []
+      },
+      "isolationHooks": {
+        "expectedComponentCount": 16,
+        "includedComponents": [
+          "org.esurfing.hunan.AlarmProbe",
+          "org.esurfing.hunan.CancelProbe",
+          "org.esurfing.hunan.CompatProbe",
+          "org.esurfing.hunan.CredentialProbe",
+          "org.esurfing.hunan.DiagnosticsProbe",
+          "org.esurfing.hunan.DiscoveryProbe",
+          "org.esurfing.hunan.FixtureActivity",
+          "org.esurfing.hunan.IdleProbeService",
+          "org.esurfing.hunan.IdleSchedulerProbe",
+          "org.esurfing.hunan.InternetProbe",
+          "org.esurfing.hunan.MockSessionService",
+          "org.esurfing.hunan.RepairMenuProbe",
+          "org.esurfing.hunan.SessionProbe",
+          "org.esurfing.hunan.StabilityProbe",
+          "org.esurfing.hunan.StabilityService",
+          "org.esurfing.hunan.UiProbe"
+        ],
+        "nativeHookLibraries": [
+          "lib/x86_64/libhunan_core.so"
+        ],
+        "instrumentationManifestPresent": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "limitations": [
+    "Static package/class/native-symbol inspection does not replace runtime validation."
+  ]
+}

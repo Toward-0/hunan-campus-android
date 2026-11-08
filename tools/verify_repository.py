@@ -17,10 +17,22 @@ for line in (root/'SHA256SUMS.txt').read_text(encoding='utf-8').splitlines():
         raise SystemExit('SHA256 mismatch: '+name)
     count += 1
 
-manifest = json.loads((root/'evidence/source-manifest.json').read_text(encoding='utf-8-sig'))
-assert len(manifest) == 233
-for item in manifest:
+current = json.loads((root/'CURRENT_DELIVERY.json').read_text(encoding='utf-8-sig'))
+delivery = (root/current['delivery']).resolve()
+assert delivery.is_relative_to(root)
+manifest_path = delivery/'source-manifest.json'
+assert digest(manifest_path) == current['sourceManifestSha256']
+manifest = json.loads(manifest_path.read_text(encoding='utf-8-sig'))
+assert manifest['versionCode'] == current['versionCode']
+for item in manifest['files']:
     assert digest(root/'source'/item['path']) == item['sha256'], item['path']
+
+validation = json.loads((delivery/'validation.json').read_text(encoding='utf-8-sig'))
+assert validation['binding']['versionCode'] == current['versionCode']
+for apk in validation['binding']['apks']:
+    assert digest(delivery/apk['file']) == apk['sha256'], apk['file']
+main_apks = [apk for apk in validation['binding']['apks'] if '-candidate-phone.apk' in apk['file']]
+assert len(main_apks) == 1 and main_apks[0]['sha256'] == current['mainApkSha256']
 
 original = root/'evidence/original-source-manifest.json'
 assert digest(original) == 'C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA'
@@ -28,4 +40,6 @@ binding = json.loads((root/'evidence/original-build-binding.json').read_text(enc
 for apk in binding['apks']:
     kind = 'main' if '-candidate-' in apk['file'] else 'isolation'
     assert digest(root/'artifacts'/kind/apk['file']) == apk['sha256']
-print(json.dumps({'status':'PASS','filesVerified':count,'sourceFiles':len(manifest),'apksVerified':len(binding['apks']),'androidTestsRun':False}))
+print(json.dumps({'status':'PASS','filesVerified':count,'versionCode':current['versionCode'],
+                  'sourceFiles':len(manifest['files']),'currentApksVerified':len(validation['binding']['apks']),
+                  'historicalApksVerified':len(binding['apks']),'androidTestsRun':False}))

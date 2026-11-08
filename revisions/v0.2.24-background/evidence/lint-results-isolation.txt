@@ -1,0 +1,190 @@
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CancelProbe.kt:41: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                        .putString("mac", "00-11-22-33-44-55").putLong("configRevision", cycle.toLong()).commit()
+                                                                                                         ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CancelProbe.kt:60: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            ctx.getSharedPreferences("settings", 0).edit().clear().commit()
+                                                                   ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt:39: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            vault.edit().putString("cipher", "corrupted-fixture").commit()
+                                                                  ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt:50: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            vault.edit().remove("iv").commit()
+                                      ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt:61: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                .putString("mac", "00-11-22-33-44-55").commit()
+                                                       ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt:81: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            ctx.getSharedPreferences("settings", 0).edit().clear().commit()
+                                                                   ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\Credentials.kt:48: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+    fun clear() { prefs.edit().clear().commit() }
+                                       ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt:13: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            .putLong("observed",System.currentTimeMillis()).commit()
+                                                            ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt:26: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+    fun clear(context: Context) { context.getSharedPreferences("identity-cache",0).edit().clear().commit() }
+                                                                                                  ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\MainActivity.kt:337: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                    command("stop"); Credentials(this).clear(); IdentityCache.clear(this); prefs.edit().clear().commit()
+                                                                                                                ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\SessionProbe.kt:106: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                    .putString("mac", "00-11-22-33-44-55").putLong("configRevision", ++revision).commit()
+                                                                                                 ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\SessionProbe.kt:154: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            Credentials(ctx).clear(); prefs.edit().clear().commit(); IdentityCache.clear(ctx)
+                                                           ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:93: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+        prefs.edit().putBoolean("manualOff", true).commit()
+                                                   ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:160: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                prefs.edit().putBoolean("manualOff", false).commit()
+                                                            ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:173: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                prefs.edit().putBoolean("manualOff", true).commit()
+                                                           ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:191: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                prefs.edit().putBoolean("manualOff", true).commit()
+                                                           ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:217: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+        prefs.edit().putBoolean("manualOff", true).commit()
+                                                   ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:310: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+        prefs.edit().putBoolean("manualOff", true).commit()
+                                                   ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:178: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                    .putString("mac", if(discovery) "" else "00-11-22-33-44-55").commit()
+                                                                                 ~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:429: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            Credentials(ctx).clear(); prefs.edit().clear().commit(); IdentityCache.clear(ctx)
+                                                           ~~~~~~~~
+
+   Explanation for issues of type "ApplySharedPref":
+   Consider using apply() instead of commit on shared preferences. Whereas
+   commit blocks and writes its data to persistent storage immediately, apply
+   will handle it in the background.
+
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\DiagnosticsProbe.kt:182: Warning: This argument is a new instance so stopService will not remove anything [ImplicitSamInstance]
+                    runOnMainSync { targetContext.stopService(Intent(targetContext, StabilityService::class.java)) }
+                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\IdleSchedulerProbe.kt:68: Warning: This argument is a new instance so stopService will not remove anything [ImplicitSamInstance]
+            ctx.stopService(Intent(ctx, IdleProbeService::class.java))
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:267: Warning: This argument is a new instance so stopService will not remove anything [ImplicitSamInstance]
+                    if(action == "service-end") runOnMainSync { ctx.stopService(Intent(ctx, StabilityService::class.java)) }
+                                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:364: Warning: This argument is a new instance so stopService will not remove anything [ImplicitSamInstance]
+                            runOnMainSync { ctx.stopService(Intent(ctx, StabilityService::class.java)) }; stopped()
+                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:408: Warning: This argument is a new instance so stopService will not remove anything [ImplicitSamInstance]
+                    if(action=="service-end") runOnMainSync { ctx.stopService(Intent(ctx, StabilityService::class.java)) } else command(action)
+                                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ImplicitSamInstance":
+   Kotlin's support for SAM (single abstract method) interfaces lets you pass
+   a lambda to the interface. This will create a new instance on the fly even
+   though there is no explicit constructor call. If you pass one of these
+   lambdas or method references into a method which (for example) stores or
+   compares the object identity, unexpected results may happen.
+
+   In particular, passing a lambda variable in as a listener, and then later
+   attempting to remove the listener will not work because a different
+   instance is passed in.
+
+   https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions
+
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\BackgroundAccess.kt:70: Warning: Use of REQUEST_IGNORE_BATTERY_OPTIMIZATIONS violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html [BatteryLife]
+            Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:${activity.packageName}")),
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "BatteryLife":
+   This issue flags code that either
+   * negatively affects battery life, or
+   * uses APIs that have recently changed behavior to prevent background tasks
+   from consuming memory and battery excessively.
+
+   Generally, you should be using WorkManager instead.
+
+   For more details on how to update your code, please see
+   https://developer.android.com/topic/performance/background-optimization
+
+
+<STAGE>\source\app\build.gradle.kts:20: Warning: Missing x86_64 ABI support for ChromeOS [ChromeOsAbiSupport]
+        debug { signingConfig = null; ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") } }
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\build.gradle.kts:21: Warning: Missing x86_64 ABI support for ChromeOS [ChromeOsAbiSupport]
+        release { isMinifyEnabled = false; ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") } }
+                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ChromeOsAbiSupport":
+   To properly support ChromeOS, your Android application should have an x86
+   and/or x86_64 binary as part of the build configuration. To fix the issue,
+   ensure your files are properly optimized for ARM; the binary translator
+   will then ensure compatibility with x86. Alternatively, add an abiSplit for
+   x86 within your build.gradle file and create the required x86
+   dependencies.
+
+   https://developer.android.com/ndk/guides/abis
+
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt:18: Warning: Do not place Android context classes in static fields (static reference to TimingTrace which has field context pointing to Context); this is a memory leak [StaticFieldLeak]
+/** Fixed schema only: never accepts exception text, URLs, identities, response bodies or credentials. */
+^
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt:22: Warning: Do not place Android context classes in static fields; this is a memory leak [StaticFieldLeak]
+    private var context: Context? = null
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "StaticFieldLeak":
+   A static field will leak contexts.
+
+   Non-static inner classes have an implicit reference to their outer class.
+   If that outer class is for example a Fragment or Activity, then this
+   reference means that the long-running handler/loader/task will hold a
+   reference to the activity which prevents it from getting garbage
+   collected.
+
+   Similarly, direct field references to activities and fragments from these
+   longer running instances can cause leaks.
+
+   ViewModel classes should never point to Views or non-application Contexts.
+
+<STAGE>\source\app\src\main\AndroidManifest.xml:12: Warning: Should explicitly set android:icon, there is no default [MissingApplicationIcon]
+    <application android:label="湖南校园网 · 测试版" android:theme="@style/CampusTheme" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:usesCleartextTraffic="true" android:supportsRtl="true">
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "MissingApplicationIcon":
+   You should set an icon for the application as whole because there is no
+   default. This attribute must be set as a reference to a drawable resource
+   containing the image (for example @drawable/icon).
+
+   https://developer.android.com/studio/publish/preparing#publishing-configure
+
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt:75: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                password.setText("isolated-ui-new")
+                                  ~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:216: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        user.setText("isolated-new-account"); password.setText("isolated-new-password")
+                                      ~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:216: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                        user.setText("isolated-new-account"); password.setText("isolated-new-password")
+                                                                                ~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:284: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    user.setText("isolated-new-account"); password.setText("isolated-new-password")
+                                  ~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt:284: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    user.setText("isolated-new-account"); password.setText("isolated-new-password")
+                                                                            ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 36 warnings

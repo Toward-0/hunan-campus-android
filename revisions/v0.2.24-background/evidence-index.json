@@ -1,0 +1,192 @@
+{
+  "files": [
+    {
+      "file": "evidence/build-commands-public.json",
+      "sha256": "95C87A994B6FF367550E3223F206D3C5810B860ABA686EDA0F20D0FBAD2499E4"
+    },
+    {
+      "file": "evidence/build-phone-20261108-224401-674-signature-candidate.txt",
+      "sha256": "3D0EBDAAF2741218A81176EC6235B7219E0544220756CFCFCA0982C5A910AB67"
+    },
+    {
+      "file": "evidence/build-phone-20261108-224401-674-signature-isolation.txt",
+      "sha256": "3D0EBDAAF2741218A81176EC6235B7219E0544220756CFCFCA0982C5A910AB67"
+    },
+    {
+      "file": "evidence/build-phone-20261108-224401-674-zipalign-candidate.txt",
+      "sha256": "9C3246930EEC087338A7D2A8EC79137DA55AC549DEDE1B9939C1C4A228FC8449"
+    },
+    {
+      "file": "evidence/build-phone-20261108-224401-674-zipalign-isolation.txt",
+      "sha256": "A784542F91DB70D83AAE080D8CB640CF9C425B94FDA33700D4B2B618EBB67C41"
+    },
+    {
+      "file": "evidence/build-x86_64-20261108-224708-013-signature-isolation.txt",
+      "sha256": "3D0EBDAAF2741218A81176EC6235B7219E0544220756CFCFCA0982C5A910AB67"
+    },
+    {
+      "file": "evidence/build-x86_64-20261108-224708-013-zipalign-isolation.txt",
+      "sha256": "07292358D338F3D1F4C8167363DCA2D8C57C9A7D9267543CE3C6308E1F791A5B"
+    },
+    {
+      "file": "evidence/ESurfingHunan-0.2.24-background-candidate-phone-badging.txt",
+      "sha256": "B193B8CB99E5676B0D7A0037B14488D215DB7C857D52E142B360E3FCC15F2CCA"
+    },
+    {
+      "file": "evidence/ESurfingHunan-0.2.24-background-candidate-phone-manifest.txt",
+      "sha256": "A815D6686D970D996C8865E2D58B9C65E156931335A60FE896CD5991802D6F45"
+    },
+    {
+      "file": "evidence/ESurfingHunan-0.2.24-background-isolation-phone-badging.txt",
+      "sha256": "52621F327F79977C1D3C62A34798FB816E3791D1B1CF387F64F716B16B3E38D1"
+    },
+    {
+      "file": "evidence/ESurfingHunan-0.2.24-background-isolation-phone-manifest.txt",
+      "sha256": "89162A2A63B74F43367AB92F50B7EB4D65AACDE029DA37369DB7C3D9C731B784"
+    },
+    {
+      "file": "evidence/ESurfingHunan-0.2.24-background-isolation-x86_64-badging.txt",
+      "sha256": "716F1E3C0E000D3BC67489CFC68955C9FB51A1C6C757C8F9A4ED323EE1463585"
+    },
+    {
+      "file": "evidence/ESurfingHunan-0.2.24-background-isolation-x86_64-manifest.txt",
+      "sha256": "89162A2A63B74F43367AB92F50B7EB4D65AACDE029DA37369DB7C3D9C731B784"
+    },
+    {
+      "file": "evidence/history-v35-realme-idle-failure.json",
+      "sha256": "7F5DB04F2424AB5767A2315FA0164C9B24BB3324E919C1FAFFE09C13B9E8F2EA"
+    },
+    {
+      "file": "evidence/lint-results-candidate.html",
+      "sha256": "2BF7090B38C8005A62D4CBA4F24B7DAC520E6027A89ADF7B2F6471A0CA3F473D"
+    },
+    {
+      "file": "evidence/lint-results-candidate.txt",
+      "sha256": "4985C5342F7B62ED9898ED0BC4620CE0714FBCAB475670017FC17C115F3005F3"
+    },
+    {
+      "file": "evidence/lint-results-candidate.xml",
+      "sha256": "ABDB5FC371248B2D385431177E22C984C5F92AEFEC8BB94ECF0E046A3C109495"
+    },
+    {
+      "file": "evidence/lint-results-isolation.html",
+      "sha256": "C63E408E2EEC6237AFB49FCAB6FCED28AA3ADE180A07935CF3EDC171D4314B64"
+    },
+    {
+      "file": "evidence/lint-results-isolation.txt",
+      "sha256": "1D2DA6B030E1219432378BD27EA06B28F0F4D06A14B7EBA2E8430977686C7BBB"
+    },
+    {
+      "file": "evidence/lint-results-isolation.xml",
+      "sha256": "537D7DC48FDC68BBD2D0CC17724DD26B2CAE53A566730757960D16F308C78ED1"
+    },
+    {
+      "file": "evidence/lint-summary.json",
+      "sha256": "DD3971AF7139BF592A66C539FA5BF6DD87C56CDB360795508BB595BF44F5BE06"
+    },
+    {
+      "file": "evidence/oem-background-after.png",
+      "sha256": "24417574FFC6E49A569057ED4BF8803E2314A9E12FD7FF64AEFAF6C36E7EAAF8"
+    },
+    {
+      "file": "evidence/oem-background-before.png",
+      "sha256": "0E28348E07556EC8E1C53A81820967FA85B01A57D5F99AA63D33AD957F298BFC"
+    },
+    {
+      "file": "evidence/public-file-transformations.json",
+      "sha256": "26A86DEBD8D1FAC406CFEA18C30444DB62CBDAB4D99057530D7BAF0552A8FAA7"
+    },
+    {
+      "file": "evidence/source-diff-at-verification.diff",
+      "sha256": "A75AE6649BF1A07683E63A7CF90DC948E5DF2AF11090D9CACF5F64D8F1A6EF8B"
+    },
+    {
+      "file": "evidence/source-snapshot-verification.json",
+      "sha256": "1C68DDE8142EEC8AE363209831428576A4B2272A1337E2BE138A72E1F21B5EB3"
+    },
+    {
+      "file": "evidence/static-apk-verification.json",
+      "sha256": "DB5D88F1E35BFDFB7BE57B0F6479DA03E5C0E41BAA62BEB7EC8A6DD1C332CB1A"
+    },
+    {
+      "file": "evidence/toolchain.json",
+      "sha256": "3FBF12E2CB85B47109F27BE1F38C3F1DEABD74FB5CDC776273F860D9A1887270"
+    },
+    {
+      "file": "evidence/v36-api26-controller-public.json",
+      "sha256": "AC7666A8B6F8990F40CCD1788D78A26A7FCD63805BB5ADC18C6CFF18EECDE806"
+    },
+    {
+      "file": "evidence/v36-api26-regression.json",
+      "sha256": "DB3981709CA4C1AD1245AF8B54295228052CAF7D68BDF5EF6D2A5D7384E5C906"
+    },
+    {
+      "file": "evidence/v36-api35-forced-idle.json",
+      "sha256": "B930C7B756DBECF558AF3C2D0E6260515C7FE4A766F31E789FE4F6C9253BF508"
+    },
+    {
+      "file": "evidence/v36-api35-scheduler.json",
+      "sha256": "2757B33395777A0173876A348970A06396377208F0D1D34CA663A075A7D7AA0E"
+    },
+    {
+      "file": "evidence/v36-main-install.json",
+      "sha256": "267A76F2F361646AA3A05C3082DFB346380C53653B7D9EF3E5A77296DA599532"
+    },
+    {
+      "file": "evidence/v36-oem-setting-change.json",
+      "sha256": "687EB536F5945B189F66B43086BCE5255F70AE3AF38760630779570E14BE2D1E"
+    },
+    {
+      "file": "evidence/v36-protected-baseline-check.json",
+      "sha256": "7134F2415AF7A3FF6333164AA1D8D4EB8F2C99B02EA52260FF028B4A509F0633"
+    },
+    {
+      "file": "evidence/v36-realme-manual-short-end.json",
+      "sha256": "87224A2E59B5B15A7E2EA5CF25E7577F3759AC840A957B0FC9BE5C6CF32C44EB"
+    },
+    {
+      "file": "evidence/v36-realme-manual-short-start.json",
+      "sha256": "3EA40A95B08D6E60483BB6EB5D763210145EF0E1ED9C091A708CFF7EAF4CAB8E"
+    },
+    {
+      "file": "evidence/v36-realme-manual-short.json",
+      "sha256": "011847B9F70ADD5AED5D2ED99C1972F298F53312F81A77B93CA77B5365635B27"
+    },
+    {
+      "file": "evidence/v36-realme-oem-allowed-reconciled.json",
+      "sha256": "191F77DAD344E63B39D77DFC7B351082C2F0779978CB81841ABA663486DC076A"
+    },
+    {
+      "file": "evidence/v36-realme-oem-allowed-short-end.json",
+      "sha256": "83DB4A59A05F734A222AE253A20CDBF3B29EC1201BD54A80BBEB815C33A77F85"
+    },
+    {
+      "file": "evidence/v36-realme-oem-allowed-short-start.json",
+      "sha256": "492DC0505F70EC1475C707DE7C0B7500487C72BFF430FC83E1938024DCD46CD6"
+    },
+    {
+      "file": "evidence/v36-realme-oem-allowed-short.json",
+      "sha256": "4BD4ACF9A2D72BB8C5304411D5750BE4ECD1A57C0070EDA262E7E16196339BFB"
+    },
+    {
+      "file": "evidence/v36-realme-regression.json",
+      "sha256": "C27DB602F5611492E8E792E5CE0869922D6413353C45213F83B0CC11E433D2D1"
+    },
+    {
+      "file": "evidence/v36-realme-rotation-supplement.json",
+      "sha256": "B8494C32B59957F07A4013CE94010964323D2A4C74C9B2B09A21FBCC89DBB66D"
+    },
+    {
+      "file": "evidence/v36-runtime-oem-allowed.json",
+      "sha256": "0AA9449A00A27575CF41A5FA4A2DFACA24BB6CA12C87E8D886D4BAEDD8631FAA"
+    },
+    {
+      "file": "evidence/v36-runtime-policy.json",
+      "sha256": "8F7361231CEF5D35046FF7CD878818B770D3309CCCCA7EA833865E87FD97B715"
+    },
+    {
+      "file": "evidence/v36-runtime-stalled.json",
+      "sha256": "F023F353632E0AAFFA51A134852B22094933E9ED2FF92DA0D291591E61802B69"
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+[
+  {
+    "source": "evidence/build-phone-20261108-224401-674/signature-candidate.txt",
+    "file": "build-phone-20261108-224401-674-signature-candidate.txt",
+    "sourceSha256": "46840553842449E6645435626B4333A5C9DF9477B63CD2B453ECE3CE4ADA6CF7",
+    "publicSha256": "3D0EBDAAF2741218A81176EC6235B7219E0544220756CFCFCA0982C5A910AB67",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "evidence/build-phone-20261108-224401-674/zipalign-candidate.txt",
+    "file": "build-phone-20261108-224401-674-zipalign-candidate.txt",
+    "sourceSha256": "F3D7D0AB194BAF82C90D29062E09B58EED5F9BB29D6C577F3B7746281A4DF07E",
+    "publicSha256": "9C3246930EEC087338A7D2A8EC79137DA55AC549DEDE1B9939C1C4A228FC8449",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "evidence/build-phone-20261108-224401-674/signature-isolation.txt",
+    "file": "build-phone-20261108-224401-674-signature-isolation.txt",
+    "sourceSha256": "46840553842449E6645435626B4333A5C9DF9477B63CD2B453ECE3CE4ADA6CF7",
+    "publicSha256": "3D0EBDAAF2741218A81176EC6235B7219E0544220756CFCFCA0982C5A910AB67",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "evidence/build-phone-20261108-224401-674/zipalign-isolation.txt",
+    "file": "build-phone-20261108-224401-674-zipalign-isolation.txt",
+    "sourceSha256": "C3912DCF3610B4FDFECD04577B8D2AF02E258C152F60730FE5407BBA0A6D5ED9",
+    "publicSha256": "A784542F91DB70D83AAE080D8CB640CF9C425B94FDA33700D4B2B618EBB67C41",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "evidence/build-x86_64-20261108-224708-013/signature-isolation.txt",
+    "file": "build-x86_64-20261108-224708-013-signature-isolation.txt",
+    "sourceSha256": "46840553842449E6645435626B4333A5C9DF9477B63CD2B453ECE3CE4ADA6CF7",
+    "publicSha256": "3D0EBDAAF2741218A81176EC6235B7219E0544220756CFCFCA0982C5A910AB67",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "evidence/build-x86_64-20261108-224708-013/zipalign-isolation.txt",
+    "file": "build-x86_64-20261108-224708-013-zipalign-isolation.txt",
+    "sourceSha256": "B90C253E293AF6E64D34BFAAD1CDADC4A9780DD768A4AF05F04598D317130C8B",
+    "publicSha256": "07292358D338F3D1F4C8167363DCA2D8C57C9A7D9267543CE3C6308E1F791A5B",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "source/app/build/reports/lint-results-candidate.txt",
+    "file": "lint-results-candidate.txt",
+    "sourceSha256": "E36CDC250BA916CC2F07CEE68FDDC74C040F2FAB36D194402A115A058369964E",
+    "publicSha256": "4985C5342F7B62ED9898ED0BC4620CE0714FBCAB475670017FC17C115F3005F3",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "source/app/build/reports/lint-results-candidate.xml",
+    "file": "lint-results-candidate.xml",
+    "sourceSha256": "080E27E3F840C50973A6B35088F8B847661D3FB5FDBA0C22730F1E8C2F5D1B27",
+    "publicSha256": "ABDB5FC371248B2D385431177E22C984C5F92AEFEC8BB94ECF0E046A3C109495",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "source/app/build/reports/lint-results-candidate.html",
+    "file": "lint-results-candidate.html",
+    "sourceSha256": "90DCF8DC68DB0D451B50F5FA9F04783FB78ED63F0D60F804976330F97A8D2D82",
+    "publicSha256": "2BF7090B38C8005A62D4CBA4F24B7DAC520E6027A89ADF7B2F6471A0CA3F473D",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "source/app/build/reports/lint-results-isolation.txt",
+    "file": "lint-results-isolation.txt",
+    "sourceSha256": "7FB23AA3357F14F7F382827FA9F8F1B77589A081F8020C312B6E29719CDE096D",
+    "publicSha256": "1D2DA6B030E1219432378BD27EA06B28F0F4D06A14B7EBA2E8430977686C7BBB",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "source/app/build/reports/lint-results-isolation.xml",
+    "file": "lint-results-isolation.xml",
+    "sourceSha256": "2F7C0CF2098316B7052D3FDDFAF1D97BE4969524EA772415B2EEA4400079B10C",
+    "publicSha256": "537D7DC48FDC68BBD2D0CC17724DD26B2CAE53A566730757960D16F308C78ED1",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  },
+  {
+    "source": "source/app/build/reports/lint-results-isolation.html",
+    "file": "lint-results-isolation.html",
+    "sourceSha256": "7022A1BC00E194043E2DC11F371BF59659BFADE72138C9C3A01D4F42157B2F9D",
+    "publicSha256": "C63E408E2EEC6237AFB49FCAB6FCED28AA3ADE180A07935CF3EDC171D4314B64",
+    "transformation": "Full text retained; only local paths replaced with placeholders"
+  }
+]

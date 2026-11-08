@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.9.2">
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="    fun clear() { prefs.edit().clear().commit() }"
+        errorLine2="                                       ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\Credentials.kt"
+            line="48"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            .putLong(&quot;observed&quot;,System.currentTimeMillis()).commit()"
+        errorLine2="                                                            ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt"
+            line="13"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="    fun clear(context: Context) { context.getSharedPreferences(&quot;identity-cache&quot;,0).edit().clear().commit() }"
+        errorLine2="                                                                                                  ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt"
+            line="26"
+            column="99"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                    command(&quot;stop&quot;); Credentials(this).clear(); IdentityCache.clear(this); prefs.edit().clear().commit()"
+        errorLine2="                                                                                                                ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\MainActivity.kt"
+            line="337"
+            column="113"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="        prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="93"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                prefs.edit().putBoolean(&quot;manualOff&quot;, false).commit()"
+        errorLine2="                                                            ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="160"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                           ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="173"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                           ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="191"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="        prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="217"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="        prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="310"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="BatteryLife"
+        severity="Warning"
+        message="Use of `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html"
+        category="Correctness"
+        priority="5"
+        summary="Battery Life Issues"
+        explanation="This issue flags code that either&#xA;* negatively affects battery life, or&#xA;* uses APIs that have recently changed behavior to prevent background tasks from consuming memory and battery excessively.&#xA;&#xA;Generally, you should be using `WorkManager` instead.&#xA;&#xA;For more details on how to update your code, please see https://developer.android.com/topic/performance/background-optimization"
+        url="https://developer.android.com/topic/performance/background-optimization"
+        urls="https://developer.android.com/topic/performance/background-optimization"
+        errorLine1="            Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse(&quot;package:${activity.packageName}&quot;)),"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\BackgroundAccess.kt"
+            line="70"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="ChromeOsAbiSupport"
+        severity="Warning"
+        message="Missing x86_64 ABI support for ChromeOS"
+        category="Correctness:Chrome OS"
+        priority="4"
+        summary="Missing ABI Support for ChromeOS"
+        explanation="To properly support ChromeOS, your Android application should have an x86 and/or x86_64 binary as part of the build configuration. To fix the issue, ensure your files are properly optimized for ARM; the binary translator will then ensure compatibility with x86. Alternatively, add an `abiSplit` for x86 within your `build.gradle` file and create the required x86 dependencies."
+        url="https://developer.android.com/ndk/guides/abis"
+        urls="https://developer.android.com/ndk/guides/abis"
+        errorLine1="        debug { signingConfig = null; ndk { abiFilters += listOf(&quot;arm64-v8a&quot;, &quot;armeabi-v7a&quot;) } }"
+        errorLine2="                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\build.gradle.kts"
+            line="20"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="ChromeOsAbiSupport"
+        severity="Warning"
+        message="Missing x86_64 ABI support for ChromeOS"
+        category="Correctness:Chrome OS"
+        priority="4"
+        summary="Missing ABI Support for ChromeOS"
+        explanation="To properly support ChromeOS, your Android application should have an x86 and/or x86_64 binary as part of the build configuration. To fix the issue, ensure your files are properly optimized for ARM; the binary translator will then ensure compatibility with x86. Alternatively, add an `abiSplit` for x86 within your `build.gradle` file and create the required x86 dependencies."
+        url="https://developer.android.com/ndk/guides/abis"
+        urls="https://developer.android.com/ndk/guides/abis"
+        errorLine1="        release { isMinifyEnabled = false; ndk { abiFilters += listOf(&quot;arm64-v8a&quot;, &quot;armeabi-v7a&quot;) } }"
+        errorLine2="                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\build.gradle.kts"
+            line="21"
+            column="64"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        severity="Warning"
+        message="Do not place Android context classes in static fields (static reference to `TimingTrace` which has field `context` pointing to `Context`); this is a memory leak"
+        category="Performance"
+        priority="6"
+        summary="Static Field Leaks"
+        explanation="A static field will leak contexts.&#xA;&#xA;Non-static inner classes have an implicit reference to their outer class. If that outer class is for example a `Fragment` or `Activity`, then this reference means that the long-running handler/loader/task will hold a reference to the activity which prevents it from getting garbage collected.&#xA;&#xA;Similarly, direct field references to activities and fragments from these longer running instances can cause leaks.&#xA;&#xA;ViewModel classes should never point to Views or non-application Contexts."
+        errorLine1="/** Fixed schema only: never accepts exception text, URLs, identities, response bodies or credentials. */"
+        errorLine2="^">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        severity="Warning"
+        message="Do not place Android context classes in static fields; this is a memory leak"
+        category="Performance"
+        priority="6"
+        summary="Static Field Leaks"
+        explanation="A static field will leak contexts.&#xA;&#xA;Non-static inner classes have an implicit reference to their outer class. If that outer class is for example a `Fragment` or `Activity`, then this reference means that the long-running handler/loader/task will hold a reference to the activity which prevents it from getting garbage collected.&#xA;&#xA;Similarly, direct field references to activities and fragments from these longer running instances can cause leaks.&#xA;&#xA;ViewModel classes should never point to Views or non-application Contexts."
+        errorLine1="    private var context: Context? = null"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt"
+            line="22"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="MissingApplicationIcon"
+        severity="Warning"
+        message="Should explicitly set `android:icon`, there is no default"
+        category="Usability:Icons"
+        priority="5"
+        summary="Missing application icon"
+        explanation="You should set an icon for the application as whole because there is no default. This attribute must be set as a reference to a drawable resource containing the image (for example `@drawable/icon`)."
+        url="https://developer.android.com/studio/publish/preparing#publishing-configure"
+        urls="https://developer.android.com/studio/publish/preparing#publishing-configure"
+        errorLine1="    &lt;application android:label=&quot;湖南校园网 · 测试版&quot; android:theme=&quot;@style/CampusTheme&quot; android:allowBackup=&quot;false&quot; android:fullBackupContent=&quot;false&quot; android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot; android:usesCleartextTraffic=&quot;true&quot; android:supportsRtl=&quot;true&quot;>"
+        errorLine2="     ~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\AndroidManifest.xml"
+            line="12"
+            column="6"/>
+    </issue>
+
+</issues>

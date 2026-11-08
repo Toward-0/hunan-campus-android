@@ -1,0 +1,48 @@
+{
+  "testId": "REAL-NETWORK-SHORT",
+  "apkSha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+  "package": "org.esurfing.hunan",
+  "time": "2026-11-08T15:06:00.095964+00:00",
+  "status": "FAIL",
+  "automaticAuthRequests": 0,
+  "additionalNetworkProbes": 0,
+  "observation": "USB-connected screen-off; only start/end whitelisted snapshots",
+  "startEvent": [
+    "1794150310050",
+    "1",
+    "AUTHENTICATED",
+    "1794150290549",
+    "PASS",
+    "1794150310018",
+    "PASS"
+  ],
+  "batteryExempt": true,
+  "endEvent": [
+    "1794150610337",
+    "1",
+    "AUTHENTICATED",
+    "1794150540716",
+    "PASS",
+    "1794150610321",
+    "PASS"
+  ],
+  "durationSeconds": 311.81,
+  "deliveries": [
+    {
+      "point": "TIMER_DELIVERY",
+      "kind": "INTERNET",
+      "elapsed": 5570205516,
+      "dueElapsed": 5570205510,
+      "task": 7,
+      "generation": 1,
+      "idle": false,
+      "interactive": false,
+      "plugged": 2,
+      "error": "NONE",
+      "batteryExempt": true,
+      "exactAllowed": true,
+      "notificationsAllowed": true
+    }
+  ],
+  "errorType": "AssertionError"
+}

@@ -1,5 +1,17 @@
 # 构建、安装与复现
 
+当前候选为 **0.2.24-background / versionCode 36**。本次同步已审核固定交付，不为上传重新构建APK或创建新Release。当前[手机主APK](../revisions/v0.2.24-background/ESurfingHunan-0.2.24-background-candidate-phone.apk?raw=true)、[源码包](../revisions/v0.2.24-background/source.zip?raw=true)、[240文件清单](../revisions/v0.2.24-background/source-manifest.json)、[公开构建命令](../revisions/v0.2.24-background/evidence/build-commands-public.json)、[验证记录](../revisions/v0.2.24-background/validation.json)和[校验和](../revisions/v0.2.24-background/SHA256SUMS.txt)绑定同一v36交付。仓库source保持实际构建输入字节。
+
+主APK SHA256为`BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA`；源码清单SHA256为`9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0`。仍使用既有测试证书；同签名覆盖安装保留数据，更新后由用户手动连接。名称含isolation的包只用于隔离测试，不安装为普通用户主包，不清除/卸载主应用绕过安装失败。
+
+公开脚本在[tools/v36-background](../tools/v36-background/)，与固定交付scripts.zip的11个文件逐字节一致。构建工具配置和签名密码继续外置；设备脚本要求显式序列号，真实账号操作不由脚本代替。API26控制器公开副本将SDK、运行目录与端口参数化，其实际运行与退出证据见归档；不把衍生脚本语法检查说成再次执行。用于轮转补齐的reconcile_rotation.py拒绝覆盖既有证据。
+
+设计支持Android8.0/API26起、targetSdk35、手机双ARM；本轮实际范围与16 PASS/2 FAIL/2 NOT_RUN见validation，不能把构建成功当作多品牌运行或8小时锁屏通过。realme还需检查独立的“允许完全后台行为”，见[后台运行说明](BACKGROUND_KEEPALIVE.md)。归档报告中的“未推送/仅本地”为构建交付时历史快照，保持原件。
+
+以下保留v34构建交接历史；通用的独立工作目录、工具链与签名保护仍适用，但旧版本/下载入口/本次同步措辞仅指v34。
+
+## v34构建交接历史
+
 当前候选为阶段1修订`s1-json-ui-20261108-01`最终r9、0.2.22-compat-s1 /34，阶段1仍未通过。本次GitHub同步只复制已有固定交付，无新构建、安装、Android源码修改或新Release。旧v33 Release、原APK和233文件绑定继续保留。固定归档内“未发布”“未推送”是构建交付时历史快照，不改写。不得在基线或封存目录直接运行下面脚本。
 
 [下载v34手机主APK](../revisions/v0.2.22-compat-s1/ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk?raw=true)，SHA256为`DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795`。238文件[源码清单](../revisions/v0.2.22-compat-s1/source-manifest.json) SHA256为`85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9`，仓库source每字节一致；全部文件见[校验和](../revisions/v0.2.22-compat-s1/SHA256SUMS.txt)。

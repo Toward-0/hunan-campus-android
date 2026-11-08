@@ -1,0 +1,281 @@
+[
+  {
+    "buildId": "build-phone-20261108-224401-674",
+    "command": {
+      "environment": {
+        "avd": "<STAGE>\\avd",
+        "sdk": "<STAGE>\\sdk",
+        "gradle": "<STAGE>\\gradle-user",
+        "android": "<STAGE>\\android-user",
+        "javaOptions": "-XX:-UsePerfData -Djava.io.tmpdir=\"<STAGE>\\tmp\" -Djdk.net.unixdomain.tmpdir=\"<STAGE>\\tmp\" -Duser.home=\"<STAGE>\\java-user\" -XX:ErrorFile=\"<STAGE>/tmp/hs_err_pid%p.log\"",
+        "temp": "<STAGE>\\tmp"
+      },
+      "arguments": [
+        "-p",
+        "<STAGE>\\source",
+        "--offline",
+        "--no-daemon",
+        "--project-cache-dir",
+        "<STAGE>\\gradle-project",
+        "-PtestAbi=phone",
+        ":app:assembleIsolation",
+        ":app:assembleCandidate",
+        ":app:lintCandidate",
+        ":app:lintIsolation"
+      ],
+      "time": "2026-11-08T22:44:01.7157438+08:00",
+      "versionName": "0.2.24-background",
+      "versionCode": 36,
+      "command": "<TOOLCHAIN>/gradle/bin/gradle.bat"
+    },
+    "result": {
+      "exitCode": 0,
+      "time": "2026-11-08T22:45:39.1010856+08:00"
+    },
+    "packaging": {
+      "candidate": {
+        "commands": [
+          {
+            "command": "<STAGE>\\sdk/build-tools/35.0.0/zipalign.exe",
+            "arguments": [
+              "-f",
+              "-P",
+              "16",
+              "4",
+              "<STAGE>\\source\\app\\build\\outputs\\apk\\candidate\\app-candidate-unsigned.apk",
+              "<STAGE>\\pack\\candidate-phone-20261108-224401-674-aligned.apk"
+            ]
+          },
+          {
+            "command": "<TOOLCHAIN>/jdk/bin/java.exe",
+            "arguments": [
+              "-jar",
+              "<STAGE>\\sdk/build-tools/35.0.0/lib/apksigner.jar",
+              "sign",
+              "--ks",
+              "<EXISTING_TEST_KEYSTORE>",
+              "--ks-pass",
+              "env:HUNAN_TEST_KEY_PASSWORD",
+              "--out",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-candidate-phone.apk",
+              "<STAGE>\\pack\\candidate-phone-20261108-224401-674-aligned.apk"
+            ]
+          },
+          {
+            "command": "<TOOLCHAIN>/jdk/bin/java.exe",
+            "arguments": [
+              "-jar",
+              "<STAGE>\\sdk/build-tools/35.0.0/lib/apksigner.jar",
+              "verify",
+              "--verbose",
+              "--print-certs",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-candidate-phone.apk"
+            ]
+          },
+          {
+            "command": "<STAGE>\\sdk/build-tools/35.0.0/zipalign.exe",
+            "arguments": [
+              "-c",
+              "-P",
+              "16",
+              "-v",
+              "4",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-candidate-phone.apk"
+            ]
+          }
+        ],
+        "exits": [
+          {
+            "step": "zipalign",
+            "exitCode": 0
+          },
+          {
+            "step": "sign",
+            "exitCode": 0
+          },
+          {
+            "step": "verify",
+            "exitCode": 0
+          },
+          {
+            "step": "final-zipalign",
+            "exitCode": 0
+          }
+        ]
+      },
+      "isolation": {
+        "commands": [
+          {
+            "command": "<STAGE>\\sdk/build-tools/35.0.0/zipalign.exe",
+            "arguments": [
+              "-f",
+              "-P",
+              "16",
+              "4",
+              "<STAGE>\\source\\app\\build\\outputs\\apk\\isolation\\app-isolation-unsigned.apk",
+              "<STAGE>\\pack\\isolation-phone-20261108-224401-674-aligned.apk"
+            ]
+          },
+          {
+            "command": "<TOOLCHAIN>/jdk/bin/java.exe",
+            "arguments": [
+              "-jar",
+              "<STAGE>\\sdk/build-tools/35.0.0/lib/apksigner.jar",
+              "sign",
+              "--ks",
+              "<EXISTING_TEST_KEYSTORE>",
+              "--ks-pass",
+              "env:HUNAN_TEST_KEY_PASSWORD",
+              "--out",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-isolation-phone.apk",
+              "<STAGE>\\pack\\isolation-phone-20261108-224401-674-aligned.apk"
+            ]
+          },
+          {
+            "command": "<TOOLCHAIN>/jdk/bin/java.exe",
+            "arguments": [
+              "-jar",
+              "<STAGE>\\sdk/build-tools/35.0.0/lib/apksigner.jar",
+              "verify",
+              "--verbose",
+              "--print-certs",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-isolation-phone.apk"
+            ]
+          },
+          {
+            "command": "<STAGE>\\sdk/build-tools/35.0.0/zipalign.exe",
+            "arguments": [
+              "-c",
+              "-P",
+              "16",
+              "-v",
+              "4",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-isolation-phone.apk"
+            ]
+          }
+        ],
+        "exits": [
+          {
+            "step": "zipalign",
+            "exitCode": 0
+          },
+          {
+            "step": "sign",
+            "exitCode": 0
+          },
+          {
+            "step": "verify",
+            "exitCode": 0
+          },
+          {
+            "step": "final-zipalign",
+            "exitCode": 0
+          }
+        ]
+      }
+    }
+  },
+  {
+    "buildId": "build-x86_64-20261108-224708-013",
+    "command": {
+      "versionName": "0.2.24-background",
+      "command": "<TOOLCHAIN>/gradle/bin/gradle.bat",
+      "time": "2026-11-08T22:47:08.0498628+08:00",
+      "versionCode": 36,
+      "arguments": [
+        "-p",
+        "<STAGE>\\source",
+        "--offline",
+        "--no-daemon",
+        "--project-cache-dir",
+        "<STAGE>\\gradle-project",
+        "-PtestAbi=x86_64",
+        ":app:assembleIsolation"
+      ],
+      "environment": {
+        "temp": "<STAGE>\\tmp",
+        "javaOptions": "-XX:-UsePerfData -Djava.io.tmpdir=\"<STAGE>\\tmp\" -Djdk.net.unixdomain.tmpdir=\"<STAGE>\\tmp\" -Duser.home=\"<STAGE>\\java-user\" -XX:ErrorFile=\"<STAGE>/tmp/hs_err_pid%p.log\"",
+        "gradle": "<STAGE>\\gradle-user",
+        "sdk": "<STAGE>\\sdk",
+        "avd": "<STAGE>\\avd",
+        "android": "<STAGE>\\android-user"
+      }
+    },
+    "result": {
+      "time": "2026-11-08T22:47:33.3493621+08:00",
+      "exitCode": 0
+    },
+    "packaging": {
+      "isolation": {
+        "commands": [
+          {
+            "arguments": [
+              "-f",
+              "-P",
+              "16",
+              "4",
+              "<STAGE>\\source\\app\\build\\outputs\\apk\\isolation\\app-isolation-unsigned.apk",
+              "<STAGE>\\pack\\isolation-x86_64-20261108-224708-013-aligned.apk"
+            ],
+            "command": "<STAGE>\\sdk/build-tools/35.0.0/zipalign.exe"
+          },
+          {
+            "arguments": [
+              "-jar",
+              "<STAGE>\\sdk/build-tools/35.0.0/lib/apksigner.jar",
+              "sign",
+              "--ks",
+              "<EXISTING_TEST_KEYSTORE>",
+              "--ks-pass",
+              "env:HUNAN_TEST_KEY_PASSWORD",
+              "--out",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-isolation-x86_64.apk",
+              "<STAGE>\\pack\\isolation-x86_64-20261108-224708-013-aligned.apk"
+            ],
+            "command": "<TOOLCHAIN>/jdk/bin/java.exe"
+          },
+          {
+            "arguments": [
+              "-jar",
+              "<STAGE>\\sdk/build-tools/35.0.0/lib/apksigner.jar",
+              "verify",
+              "--verbose",
+              "--print-certs",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+            ],
+            "command": "<TOOLCHAIN>/jdk/bin/java.exe"
+          },
+          {
+            "arguments": [
+              "-c",
+              "-P",
+              "16",
+              "-v",
+              "4",
+              "<OUTPUT>\\ESurfingHunan-0.2.24-background-isolation-x86_64.apk"
+            ],
+            "command": "<STAGE>\\sdk/build-tools/35.0.0/zipalign.exe"
+          }
+        ],
+        "exits": [
+          {
+            "step": "zipalign",
+            "exitCode": 0
+          },
+          {
+            "step": "sign",
+            "exitCode": 0
+          },
+          {
+            "step": "verify",
+            "exitCode": 0
+          },
+          {
+            "step": "final-zipalign",
+            "exitCode": 0
+          }
+        ]
+      }
+    }
+  }
+]

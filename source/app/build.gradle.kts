@@ -9,8 +9,8 @@ android {
         applicationId = "org.esurfing.hunan"
         minSdk = 26
         targetSdk = 35
-        versionCode = 34
-        versionName = "0.2.22-compat-s1"
+        versionCode = 36
+        versionName = "0.2.24-background"
         externalNativeBuild { cmake { arguments += "-DANDROID_STL=none" } }
     }
     externalNativeBuild { cmake { path = file("src/main/cpp/CMakeLists.txt"); version = "3.22.1"; buildStagingDirectory = file("../../cxx") } }

@@ -1,0 +1,44 @@
+{
+  "time": "2026-11-08T14:48:24.571021+00:00",
+  "package": "org.esurfing.hunan.isolation",
+  "apkSha256": "4B07471F8D7D867CF2C21424065E91606407BA5E9E88B1D2B7672D66A99A4C1C",
+  "results": [
+    {
+      "probe": "AlarmProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 2.77,
+      "output": "INSTRUMENTATION_RESULT: result=PASS: 16 idle-delivery policy combinations; awake delivery lateness=5ms <=3000ms; 100 dual-trigger races/replays execute once; cancel before delivery/queued execution and replacement; 200 schedule/cancel races; zero callbacks/queued timers; synthetic callbacks are not Doze or protocol validation\nINSTRUMENTATION_CODE: -1"
+    },
+    {
+      "probe": "DiagnosticsProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 0.64,
+      "output": "INSTRUMENTATION_STATUS: case=JSON-ACTUAL-COPY-ENTRY\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_RESULT: result={\"testId\":\"S1-DIAGNOSTICS\",\"mode\":\"export\",\"status\":\"PASS\",\"api\":26,\"process64\":true,\"cases\":[{\"id\":\"JSON-EMPTY-MISSING\",\"status\":\"PASS\"},{\"id\":\"JSON-BACKGROUND-CAPABILITIES\",\"status\":\"PASS\"},{\"id\":\"JSON-SINGLE-DOUBLE-ORDER\",\"status\":\"PASS\"},{\"id\":\"JSON-NO-FINAL-NEWLINE\",\"status\":\"PASS\"},{\"id\":\"JSON-ROTATION-PARTIAL-RECORDS\",\"status\":\"PASS\"},{\"id\":\"JSON-INPUT-127999\",\"status\":\"PASS\"},{\"id\":\"JSON-INPUT-128000\",\"status\":\"PASS\"},{\"id\":\"JSON-INPUT-128001\",\"status\":\"PASS\"},{\"id\":\"JSON-BOUNDED-COMPLETE-TAIL\",\"status\":\"PASS\"},{\"id\":\"JSON-READ-FAILURE\",\"status\":\"PASS\"},{\"id\":\"JSON-WHITELIST-AND-TYPES\",\"status\":\"PASS\"},{\"id\":\"JSON-METADATA\",\"status\":\"PASS\"},{\"id\":\"JSON-ACTUAL-COPY-ENTRY\",\"status\":\"PASS\"}]}\nINSTRUMENTATION_CODE: -1"
+    },
+    {
+      "probe": "SessionProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 193.14,
+      "output": "INSTRUMENTATION_STATUS: phase=PASS synthetic discovery cancellation\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: phase=PASS synthetic auth cancellation\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: phase=PASS synthetic probe cancellation\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: phase=PASS synthetic heartbeat cancellation\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=1\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=11\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=21\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=31\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=41\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=51\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=61\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=71\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=81\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_STATUS: completedSyntheticSessions=91\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_RESULT: result=PASS: isolated simulated discovery/auth/probe/scheduled-heartbeat stop + late results, slow-body request budget, 100 auth/initial-heartbeat/probe/stop cycles; NOT real-campus or background endurance\nINSTRUMENTATION_RESULT: resources_cycle_threads_nativeBytes=1:15:17620752,26:16:18216264,51:16:17788224,76:15:17514752,100:15:17582544,idle3s:15:17582352,forcedGC:15:17556912\nINSTRUMENTATION_CODE: -1"
+    },
+    {
+      "probe": "CompatProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 0.41,
+      "output": "INSTRUMENTATION_RESULT: result={\"testId\":\"S1-JNI\",\"api\":26,\"manufacturer\":\"unknown\",\"model\":\"Android SDK built for x86_64\",\"supportedAbis\":\"x86_64,x86\",\"process64\":true,\"pageSize\":4096,\"nativeBits\":64,\"loadedAbi\":\"x86_64\",\"malformedRejected\":182,\"cycles\":200,\"syntheticAlgorithms\":9,\"allocationFailurePositionsPerAlgorithm\":20,\"handlesAfter\":0,\"status\":\"PASS\"}\nINSTRUMENTATION_CODE: -1"
+    }
+  ],
+  "api": "26",
+  "model": "Android SDK built for x86_64",
+  "install": {
+    "exitCode": 0,
+    "result": "Success"
+  },
+  "cleanup": {
+    "forceStopExit": 0
+  }
+}

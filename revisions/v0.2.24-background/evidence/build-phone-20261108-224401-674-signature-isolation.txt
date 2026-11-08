@@ -1,0 +1,18 @@
+Picked up JAVA_TOOL_OPTIONS: -XX:-UsePerfData -Djava.io.tmpdir="<STAGE>\tmp" -Djdk.net.unixdomain.tmpdir="<STAGE>\tmp" -Duser.home="<STAGE>\java-user" -XX:ErrorFile="<STAGE>/tmp/hs_err_pid%p.log"
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): true
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Android Debug, O=Android, C=US
+Signer #1 certificate SHA-256 digest: 2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229
+Signer #1 certificate SHA-1 digest: fd0c7341203bde34262c4a0bee130b3ce1e50dc2
+Signer #1 certificate MD5 digest: 69182b1e05cacd24e8e0728c7dc43673
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 2048
+Signer #1 public key SHA-256 digest: 4bf005181477d73cc9e189ff6f0fa1f8e0659ebd72e6ed345bf710452eaa6040
+Signer #1 public key SHA-1 digest: 72865d5c27117e846963b0ce2ee9abeaff0248ce
+Signer #1 public key MD5 digest: f2523829c0380235ee9a9987068f82aa

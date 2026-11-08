@@ -1,0 +1,110 @@
+{
+  "base": "v34 / f8a8de2",
+  "versionCode": 36,
+  "changes": [
+    {
+      "path": "app/build.gradle.kts",
+      "change": "modified",
+      "beforeSha256": "BF8970B6CAA04DAD547188924FBC2B00C7CA2B358C425BACCACCA70DA3753734",
+      "afterSha256": "E5DBD41778E550599C8141A8B73A6246B8DB808DA10C242386E2327BF532AF25",
+      "beforeBytes": 1720,
+      "afterBytes": 1721
+    },
+    {
+      "path": "app/src/isolation/AndroidManifest.xml",
+      "change": "modified",
+      "beforeSha256": "4D0A008502926B1A130FA415251AD0E64C1B8F9CD0218D00212393005872B48A",
+      "afterSha256": "8BC013689ADD41864004A18B62EB3173A84D6EBC0F0447214F02856E70D3E97E",
+      "beforeBytes": 2962,
+      "afterBytes": 3456
+    },
+    {
+      "path": "app/src/isolation/java/org/esurfing/hunan/AlarmProbe.kt",
+      "change": "modified",
+      "beforeSha256": "537A1A19FBCA58F2F507D9CF4AD08FA9D88A13CCADFFD3EBB90609B56FECE407",
+      "afterSha256": "ABB91FEFA0AF7682F66C4C0D75DD22E08FDBAEE9DD102B41A75A1D76B7C3D107",
+      "beforeBytes": 4114,
+      "afterBytes": 8322
+    },
+    {
+      "path": "app/src/isolation/java/org/esurfing/hunan/DiagnosticsRegression.kt",
+      "change": "modified",
+      "beforeSha256": "ABB70B94623C26BE70A014145574091C9B29E2546BF52991FD5D8C3C66C372C6",
+      "afterSha256": "E7E9F35065139C408B801A54AC9FD9C5167DC47F74710367DEAD56CDB22E6F06",
+      "beforeBytes": 5954,
+      "afterBytes": 6630
+    },
+    {
+      "path": "app/src/isolation/java/org/esurfing/hunan/IdleSchedulerProbe.kt",
+      "change": "added",
+      "beforeSha256": null,
+      "afterSha256": "1DEFEB82C411CD97A64664B1875B724D331E994966C8EF0B9AAB204621BFEFE6",
+      "beforeBytes": null,
+      "afterBytes": 3894
+    },
+    {
+      "path": "app/src/main/AndroidManifest.xml",
+      "change": "modified",
+      "beforeSha256": "F67AE5869EBEE289580D8F180966D8E7B4D5C79316608B19E502124ECE729791",
+      "afterSha256": "0BB2D441454E32D3030E10CBD4CD098352BA8C047E9C2F3E4CD45E2571DB3C77",
+      "beforeBytes": 1771,
+      "afterBytes": 1866
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/BackgroundAccess.kt",
+      "change": "added",
+      "beforeSha256": null,
+      "afterSha256": "6FFA0329C82C85D80C58937716C84737F941DED661438AA2BF511E931D8919A8",
+      "beforeBytes": null,
+      "afterBytes": 4969
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/DiagnosticJsonl.kt",
+      "change": "modified",
+      "beforeSha256": "C6B8335CD5FD8814222FA108789FCA11BAB80BF691B6A9513EC7E2604A259831",
+      "afterSha256": "480C6C40CC2EDCA7D31991303886DDF61CF121A1A639F8DA8C060DA561D29D6D",
+      "beforeBytes": 5133,
+      "afterBytes": 5190
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/MainActivity.kt",
+      "change": "modified",
+      "beforeSha256": "B1997EC60BE868C48848D2151C15048E181A3D3AE5F7D7C4E71E2C2E278DF905",
+      "afterSha256": "7E445118BAAC6F43220C851A7FA5E56A1B9B85CE8533807C1CFE8E5A59359C63",
+      "beforeBytes": 24830,
+      "afterBytes": 26766
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/SessionService.kt",
+      "change": "modified",
+      "beforeSha256": "E5F6EE40540445C15B24E8D3508636C70DB8B07A65A719F8558136BFC9411CE9",
+      "afterSha256": "5A632FF1FE39F8FBB01C44A76E3BD49B184F7ED2E304114C1C4907358BEF9908",
+      "beforeBytes": 34032,
+      "afterBytes": 34027
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/SessionSnapshot.kt",
+      "change": "modified",
+      "beforeSha256": "4FD3A6E29A54AF0F7FF9CB4923789968B933B03C1C94708796F23603E0C720E1",
+      "afterSha256": "F72FDC544BB3A4B497483C0748EE202BF7745D5D6CB960631548B1F30956553D",
+      "beforeBytes": 5446,
+      "afterBytes": 5533
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/TimingTrace.kt",
+      "change": "modified",
+      "beforeSha256": "7D7147BAD0D1AE8FBD8659C5BBD43CB66AB0BD8DA870E2CA385FF689B84957B1",
+      "afterSha256": "FFC986F5876841091DDD510665367162D93BCA34AC9185727AA89D90721E3B7C",
+      "beforeBytes": 6397,
+      "afterBytes": 6796
+    },
+    {
+      "path": "app/src/main/java/org/esurfing/hunan/WakeupScheduler.kt",
+      "change": "modified",
+      "beforeSha256": "7F05F6FEB912AB0C5362DB9CEB2DCD71311B65C00C1744648D1DC65798330B44",
+      "afterSha256": "550E15ECA9FC33D3C2EA7F401EC0511403BD068E5CD32AF3E42DE724BEBE609D",
+      "beforeBytes": 5331,
+      "afterBytes": 8228
+    }
+  ]
+}

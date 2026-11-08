@@ -1,0 +1,51 @@
+{
+  "time": "2026-11-08T15:05:15.859104+00:00",
+  "package": "org.esurfing.hunan",
+  "queries": [
+    {
+      "query": "pid",
+      "exitCode": 0,
+      "value": "22701"
+    },
+    {
+      "query": "process-state",
+      "exitCode": 0,
+      "value": "Name:\t.esurfing.hunan\nState:\tS (sleeping)\nUid:\t10381\t10381\t10381\t10381\nThreads:\t29"
+    },
+    {
+      "query": "process-runtime",
+      "exitCode": 0,
+      "value": "curProcState=4 mRepProcState=4 setProcState=4 lastStateTime=-16m7s928ms\n    cached=false empty=true"
+    },
+    {
+      "query": "runtime-clock",
+      "exitCode": 0,
+      "value": "5569912.94 4832387.36"
+    },
+    {
+      "query": "standby-bucket",
+      "exitCode": 0,
+      "value": "5"
+    },
+    {
+      "query": "power-saver",
+      "exitCode": 0,
+      "value": "0"
+    },
+    {
+      "query": "alarm-policy",
+      "exitCode": 0,
+      "value": "policyWhenElapsed: requester=+3m42s852ms app_standby=-27s137ms device_idle=-- battery_saver=-27s137ms tare=-27s137ms adjustment=--\n      policyWhenElapsed: requester=+4m52s311ms app_standby=-7s662ms device_idle=-- battery_saver=-7s662ms tare=-7s662ms adjustment=--"
+    },
+    {
+      "query": "alarms",
+      "exitCode": 0,
+      "value": "ELAPSED_WAKEUP #15: Alarm{92a3526 type 2 origWhen 5570136051 whenElapsed 5570136051 org.esurfing.hunan} uid 10381 whenElapsed 5570136051 windowLength 187492 maxWhenElapsed 5570323543 repeatInterval 0 action org.esurfing.hunan.WAKE_TASK component ComponentInfo{org.esurfing.hunan/org.esurfing.hunan.WakeupReceiver} flags 0x8 procName org.esurfing.hunan\n      operation=PendingIntent{48e6567: PendingIntentRecord{830bf14 org.esurfing.hunan broadcastIntent}}\n    ELAPSED_WAKEUP #19: Alarm{a91f103 type 2 origWhen 5570205510 whenElapsed 5570205510 org.esurfing.hunan} uid 10381 whenElapsed 5570205510 windowLength 224982 maxWhenElapsed 5570430492 repeatInterval 0 action org.esurfing.hunan.WAKE_TASK component ComponentInfo{org.esurfing.hunan/org.esurfing.hunan.WakeupReceiver} flags 0x8 procName org.esurfing.hunan\n      operation=PendingIntent{2e4b880: PendingIntentRecord{e99beb9 org.esurfing.hunan broadcastIntent}}"
+    },
+    {
+      "query": "power",
+      "exitCode": 0,
+      "value": "mWakefulness=Awake\n  mWakefulnessChanging=false\n  mIsPowered=true\n  mLightDeviceIdleMode=false\n  mDeviceIdleMode=false\n  mIsPowered=true"
+    }
+  ]
+}

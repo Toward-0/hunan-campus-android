@@ -1,0 +1,107 @@
+{
+  "testId": "REAL-NETWORK-SHORT-ROTATION-RECONCILIATION",
+  "time": "2026-11-08T15:15:39.647289+00:00",
+  "status": "PASS",
+  "apkSha256": "BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA",
+  "package": "org.esurfing.hunan",
+  "observationStart": "2026-11-08T15:06:00.095964+00:00",
+  "durationSeconds": 311.81,
+  "automaticAuthRequests": 0,
+  "additionalNetworkProbes": 0,
+  "originalCollectorStatus": "FAIL",
+  "reason": "Original collector read only current trace.jsonl; heartbeat delivery had moved to trace.previous.jsonl. Reconcile only the original observation window using both files; original FAIL is preserved unchanged.",
+  "observation": "USB connected; normal screen-off, not forced idle. Existing manually established session; no reconnect.",
+  "elapsedWindowExclusiveStartInclusiveEnd": [
+    5569905540,
+    5570205827
+  ],
+  "startEvent": [
+    "1794150310050",
+    "1",
+    "AUTHENTICATED",
+    "1794150290549",
+    "PASS",
+    "1794150310018",
+    "PASS"
+  ],
+  "endEvent": [
+    "1794150610337",
+    "1",
+    "AUTHENTICATED",
+    "1794150540716",
+    "PASS",
+    "1794150610321",
+    "PASS"
+  ],
+  "checks": {
+    "sameAuthenticatedGeneration": true,
+    "newSuccessfulHeartbeat": true,
+    "newSuccessfulInternet": true,
+    "screenOffHeartbeatDelivery": true,
+    "screenOffInternetDelivery": true,
+    "screenOffHeartbeatFinished": true,
+    "screenOffInternetFinished": true,
+    "noTimingErrors": true
+  },
+  "deliveries": [
+    {
+      "point": "TIMER_DELIVERY",
+      "kind": "HEARTBEAT",
+      "elapsed": 5570136064,
+      "dueElapsed": 5570136051,
+      "task": 6,
+      "generation": 1,
+      "idle": false,
+      "interactive": false,
+      "plugged": 2,
+      "error": "NONE",
+      "batteryExempt": true,
+      "exactAllowed": true,
+      "notificationsAllowed": true
+    },
+    {
+      "point": "TIMER_DELIVERY",
+      "kind": "INTERNET",
+      "elapsed": 5570205516,
+      "dueElapsed": 5570205510,
+      "task": 7,
+      "generation": 1,
+      "idle": false,
+      "interactive": false,
+      "plugged": 2,
+      "error": "NONE",
+      "batteryExempt": true,
+      "exactAllowed": true,
+      "notificationsAllowed": true
+    }
+  ],
+  "deliveryLatenessMs": {
+    "HEARTBEAT": 13,
+    "INTERNET": 6
+  },
+  "successfulHeartbeatTimestampAdvanceMs": 250167,
+  "successfulInternetTimestampAdvanceMs": 300303,
+  "inputs": [
+    {
+      "file": "v36-realme-oem-allowed-short.json",
+      "sha256": "4BD4ACF9A2D72BB8C5304411D5750BE4ECD1A57C0070EDA262E7E16196339BFB"
+    },
+    {
+      "file": "v36-realme-oem-allowed-short-start.json",
+      "sha256": "492DC0505F70EC1475C707DE7C0B7500487C72BFF430FC83E1938024DCD46CD6"
+    },
+    {
+      "file": "v36-realme-oem-allowed-short-end.json",
+      "sha256": "83DB4A59A05F734A222AE253A20CDBF3B29EC1201BD54A80BBEB815C33A77F85"
+    },
+    {
+      "file": "v36-realme-rotation-supplement.json",
+      "sha256": "B8494C32B59957F07A4013CE94010964323D2A4C74C9B2B09A21FBCC89DBB66D"
+    }
+  ],
+  "limitations": [
+    "One 311.81 second normal lockscreen observation with USB power.",
+    "No eight-hour endurance or unplugged physical-device Doze validation.",
+    "No other physical phone brand tested."
+  ]
+}

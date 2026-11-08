@@ -1,0 +1,156 @@
+{
+  "testId": "FORCED-IDLE-SCHEDULER",
+  "time": "2026-11-08T14:51:46.258340+00:00",
+  "apkSha256": "4B07471F8D7D867CF2C21424065E91606407BA5E9E88B1D2B7672D66A99A4C1C",
+  "package": "org.esurfing.hunan.isolation",
+  "commands": [
+    {
+      "id": "package-path",
+      "exitCode": 0
+    },
+    {
+      "id": "apk-hash",
+      "exitCode": 0
+    },
+    {
+      "id": "api",
+      "exitCode": 0
+    },
+    {
+      "id": "model",
+      "exitCode": 0
+    },
+    {
+      "id": "initial-idle",
+      "exitCode": 0
+    },
+    {
+      "id": "not-forced",
+      "exitCode": 0
+    },
+    {
+      "id": "initial-screen",
+      "exitCode": 0
+    },
+    {
+      "id": "initial-exemption",
+      "exitCode": 0
+    },
+    {
+      "id": "exempt-isolation",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-for-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-during-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-during-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-during-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-during-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-during-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "wake-during-setup",
+      "exitCode": 0
+    },
+    {
+      "id": "verify-first-alarm-armed",
+      "exitCode": 0
+    },
+    {
+      "id": "screen-off",
+      "exitCode": 0
+    },
+    {
+      "id": "force-idle",
+      "exitCode": 0
+    },
+    {
+      "id": "actual-idle",
+      "exitCode": 0
+    },
+    {
+      "id": "instrument",
+      "exitCode": 0
+    },
+    {
+      "id": "unforce-idle",
+      "exitCode": 0
+    },
+    {
+      "id": "stop-isolation",
+      "exitCode": 0
+    },
+    {
+      "id": "unforce-final",
+      "exitCode": 0
+    },
+    {
+      "id": "stop-final",
+      "exitCode": 0
+    },
+    {
+      "id": "restore-exemption",
+      "exitCode": 0
+    },
+    {
+      "id": "restore-screen",
+      "exitCode": 0
+    },
+    {
+      "id": "verify-exemption",
+      "exitCode": 0
+    },
+    {
+      "id": "verify-unforced",
+      "exitCode": 0
+    }
+  ],
+  "status": "PASS",
+  "api": "35",
+  "model": "sdk_gphone64_x86_64",
+  "forcedIdle": "Now forced in to deep idle mode",
+  "output": "INSTRUMENTATION_STATUS: result=READY_FOR_IDLE\nINSTRUMENTATION_STATUS_CODE: 1\nINSTRUMENTATION_RESULT: result={\"testId\":\"FORCED-IDLE-SCHEDULER\",\"samples\":[{\"delayMs\":16,\"idle\":true,\"interactive\":false},{\"delayMs\":12,\"idle\":true,\"interactive\":false},{\"delayMs\":9,\"idle\":true,\"interactive\":false}],\"api\":35,\"status\":\"PASS\",\"batteryExempt\":true,\"exactAllowed\":true,\"callbacksAfter\":0}\nINSTRUMENTATION_CODE: -1",
+  "result": {
+    "testId": "FORCED-IDLE-SCHEDULER",
+    "samples": [
+      {
+        "delayMs": 16,
+        "idle": true,
+        "interactive": false
+      },
+      {
+        "delayMs": 12,
+        "idle": true,
+        "interactive": false
+      },
+      {
+        "delayMs": 9,
+        "idle": true,
+        "interactive": false
+      }
+    ],
+    "api": 35,
+    "status": "PASS",
+    "batteryExempt": true,
+    "exactAllowed": true,
+    "callbacksAfter": 0
+  },
+  "restoredExemption": true,
+  "restoredIdle": true
+}

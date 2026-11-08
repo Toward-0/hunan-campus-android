@@ -1,0 +1,102 @@
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\Credentials.kt:48: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+    fun clear() { prefs.edit().clear().commit() }
+                                       ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt:13: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+            .putLong("observed",System.currentTimeMillis()).commit()
+                                                            ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt:26: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+    fun clear(context: Context) { context.getSharedPreferences("identity-cache",0).edit().clear().commit() }
+                                                                                                  ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\MainActivity.kt:337: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                    command("stop"); Credentials(this).clear(); IdentityCache.clear(this); prefs.edit().clear().commit()
+                                                                                                                ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:93: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+        prefs.edit().putBoolean("manualOff", true).commit()
+                                                   ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:160: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                prefs.edit().putBoolean("manualOff", false).commit()
+                                                            ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:173: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                prefs.edit().putBoolean("manualOff", true).commit()
+                                                           ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:191: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+                prefs.edit().putBoolean("manualOff", true).commit()
+                                                           ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:217: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+        prefs.edit().putBoolean("manualOff", true).commit()
+                                                   ~~~~~~~~
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt:310: Warning: Consider using apply() instead; commit writes its data to persistent storage immediately, whereas apply will handle it in the background [ApplySharedPref]
+        prefs.edit().putBoolean("manualOff", true).commit()
+                                                   ~~~~~~~~
+
+   Explanation for issues of type "ApplySharedPref":
+   Consider using apply() instead of commit on shared preferences. Whereas
+   commit blocks and writes its data to persistent storage immediately, apply
+   will handle it in the background.
+
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\BackgroundAccess.kt:70: Warning: Use of REQUEST_IGNORE_BATTERY_OPTIMIZATIONS violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html [BatteryLife]
+            Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse("package:${activity.packageName}")),
+                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "BatteryLife":
+   This issue flags code that either
+   * negatively affects battery life, or
+   * uses APIs that have recently changed behavior to prevent background tasks
+   from consuming memory and battery excessively.
+
+   Generally, you should be using WorkManager instead.
+
+   For more details on how to update your code, please see
+   https://developer.android.com/topic/performance/background-optimization
+
+
+<STAGE>\source\app\build.gradle.kts:20: Warning: Missing x86_64 ABI support for ChromeOS [ChromeOsAbiSupport]
+        debug { signingConfig = null; ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") } }
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+<STAGE>\source\app\build.gradle.kts:21: Warning: Missing x86_64 ABI support for ChromeOS [ChromeOsAbiSupport]
+        release { isMinifyEnabled = false; ndk { abiFilters += listOf("arm64-v8a", "armeabi-v7a") } }
+                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ChromeOsAbiSupport":
+   To properly support ChromeOS, your Android application should have an x86
+   and/or x86_64 binary as part of the build configuration. To fix the issue,
+   ensure your files are properly optimized for ARM; the binary translator
+   will then ensure compatibility with x86. Alternatively, add an abiSplit for
+   x86 within your build.gradle file and create the required x86
+   dependencies.
+
+   https://developer.android.com/ndk/guides/abis
+
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt:18: Warning: Do not place Android context classes in static fields (static reference to TimingTrace which has field context pointing to Context); this is a memory leak [StaticFieldLeak]
+/** Fixed schema only: never accepts exception text, URLs, identities, response bodies or credentials. */
+^
+<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt:22: Warning: Do not place Android context classes in static fields; this is a memory leak [StaticFieldLeak]
+    private var context: Context? = null
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "StaticFieldLeak":
+   A static field will leak contexts.
+
+   Non-static inner classes have an implicit reference to their outer class.
+   If that outer class is for example a Fragment or Activity, then this
+   reference means that the long-running handler/loader/task will hold a
+   reference to the activity which prevents it from getting garbage
+   collected.
+
+   Similarly, direct field references to activities and fragments from these
+   longer running instances can cause leaks.
+
+   ViewModel classes should never point to Views or non-application Contexts.
+
+<STAGE>\source\app\src\main\AndroidManifest.xml:12: Warning: Should explicitly set android:icon, there is no default [MissingApplicationIcon]
+    <application android:label="湖南校园网 · 测试版" android:theme="@style/CampusTheme" android:allowBackup="false" android:fullBackupContent="false" android:dataExtractionRules="@xml/data_extraction_rules" android:usesCleartextTraffic="true" android:supportsRtl="true">
+     ~~~~~~~~~~~
+
+   Explanation for issues of type "MissingApplicationIcon":
+   You should set an icon for the application as whole because there is no
+   default. This attribute must be set as a reference to a drawable resource
+   containing the image (for example @drawable/icon).
+
+   https://developer.android.com/studio/publish/preparing#publishing-configure
+
+0 errors, 16 warnings

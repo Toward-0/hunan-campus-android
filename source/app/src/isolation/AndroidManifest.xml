@@ -11,6 +11,9 @@
     <instrumentation android:name="org.esurfing.hunan.AlarmProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated scheduler contract"/>
     <instrumentation android:name="org.esurfing.hunan.SessionProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated simulated session lifecycle"/>
     <application android:label="湖南校园网 · 隔离测试" tools:replace="android:label">
+        <service android:name="org.esurfing.hunan.IdleProbeService" android:exported="false" android:foregroundServiceType="specialUse">
+            <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Synthetic idle scheduling test; no network requests"/>
+        </service>
         <service android:name="org.esurfing.hunan.StabilityService" android:exported="false" android:foregroundServiceType="specialUse">
             <property android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE" android:value="Synthetic loopback stability regression"/>
         </service>
@@ -20,4 +23,5 @@
         </service>
     </application>
     <instrumentation android:name="org.esurfing.hunan.StabilityProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic stability regression"/>
+    <instrumentation android:name="org.esurfing.hunan.IdleSchedulerProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic forced idle scheduler test"/>
 </manifest>

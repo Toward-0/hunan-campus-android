@@ -1,5 +1,17 @@
 # 下一轮接续
 
+当前起点是 **0.2.24-background / versionCode 36**，不是下文历史v34。先核对[当前状态](CURRENT_STATUS.md)、[后台运行说明](BACKGROUND_KEEPALIVE.md)、[v36 validation](../revisions/v0.2.24-background/validation.json)、[v36源码清单](../revisions/v0.2.24-background/source-manifest.json)和[校验和](../revisions/v0.2.24-background/SHA256SUMS.txt)，再按用户本轮实际授权确定范围；已确认范围不重复索要授权。先只读检查远端更新，不覆盖或强推其他修改。
+
+v36主APK SHA256为`BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA`；240文件源码清单SHA256为`9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0`。仓库source保持构建输入字节，顶层同步说明不属于APK输入。后续代码修订使用新work/output并将versionCode递增到36以上，不改写固定revisions归档。
+
+已验证的是通用调度/取消回归、当前API26/API35模拟器及API34 realme的相应用例，以及realme调整“允许完全后台行为”后的311.81秒USB连接普通锁屏短测。20项记录为16 PASS/2 FAIL/2 NOT_RUN，两条原始FAIL及补齐PASS独立保留；不得删除原失败或将成功记录间隔当作调度延迟。源代码与权限设置均不能据此宣称多品牌或长期稳定。
+
+待验证事项包括完整Doze权限/厂商矩阵、拔电8小时自然锁屏与耗电、其他真机及当前ARM32/ARM64-16KB运行；原阶段1兼容性缺口继续保留。真实认证、注销、修复仍由用户手动进行；不要为补表格自动停止当前会话或重新登录。厂商“完全后台行为”与标准电池豁免是不同开关，realme具体路径见后台说明；其他厂商路径未实测。
+
+本次GitHub同步归档65个固定文件及11个公开脚本，没有为上传重新构建APK或创建新Release。归档报告中的“未推送/仅本地”保留为构建交付时快照。以下为v34接续历史，只用于追溯，不覆盖上述v36起点与当前用户授权。
+
+## v34接续历史
+
 请继续湖南校园网Android项目，先只读核对[validation](../revisions/v0.2.22-compat-s1/validation.json)、[中文报告](../revisions/v0.2.22-compat-s1/阶段1验收报告.txt)、[源码清单](../revisions/v0.2.22-compat-s1/source-manifest.json)、[变化清单](../revisions/v0.2.22-compat-s1/changes.json)、[源流记录](../revisions/v0.2.22-compat-s1/source-lineage.json)、[校验和](../revisions/v0.2.22-compat-s1/SHA256SUMS.txt)和[构建记录](../revisions/v0.2.22-compat-s1/build-commands-public.json)，再提出5—8行下一修订计划，等用户确认后修改或构建。已确认范围内连续完成可自主执行事项，不重复索要相同授权。
 
 当前仓库同步候选为`s1-json-ui-20261108-01`最终r9、`0.2.22-compat-s1 / 34`。开始时只读检查远端是否更新，不能盲目覆盖或强推。主APK SHA256为`DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795`，238文件源码清单SHA256为`85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9`。根README及实际绑定优先于source内历史README。旧v33 Release和原始233文件清单、脱敏发布清单分别保留，不互相替代。

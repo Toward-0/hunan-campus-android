@@ -1,0 +1,23 @@
+{
+  "time": "2026-11-08T14:51:29.025356+00:00",
+  "package": "org.esurfing.hunan.isolation",
+  "apkSha256": "4B07471F8D7D867CF2C21424065E91606407BA5E9E88B1D2B7672D66A99A4C1C",
+  "results": [
+    {
+      "probe": "AlarmProbe",
+      "status": "PASS",
+      "exitCode": 0,
+      "durationSeconds": 5.28,
+      "output": "INSTRUMENTATION_RESULT: result=PASS: 16 idle-delivery policy combinations; awake delivery lateness=18ms <=3000ms; 100 dual-trigger races/replays execute once; cancel before delivery/queued execution and replacement; 200 schedule/cancel races; zero callbacks/queued timers; synthetic callbacks are not Doze or protocol validation\nINSTRUMENTATION_CODE: -1"
+    }
+  ],
+  "api": "35",
+  "model": "sdk_gphone64_x86_64",
+  "install": {
+    "exitCode": 0,
+    "result": "Success"
+  },
+  "cleanup": {
+    "forceStopExit": 0
+  }
+}

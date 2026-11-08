@@ -1,5 +1,29 @@
 # 湖南校园网 Android
 
+当前候选为 **0.2.24-background / versionCode 36**，处理通用 Android 后台心跳调度与权限提示，设计支持 **Android 8.0 / API26 起**。本次同步源码、已审核的65文件固定交付及11个公开复现脚本，不创建新Release。设计支持范围不等于多品牌手机已经验证；已有兼容性缺口和长期锁屏测试仍按实际状态保留。
+
+[下载v36手机主APK](revisions/v0.2.24-background/ESurfingHunan-0.2.24-background-candidate-phone.apk?raw=true) · [中文报告](revisions/v0.2.24-background/保活专项报告.txt) · [validation](revisions/v0.2.24-background/validation.json) · [全部校验和](revisions/v0.2.24-background/SHA256SUMS.txt) · [源码清单](revisions/v0.2.24-background/source-manifest.json) · [源码包](revisions/v0.2.24-background/source.zip?raw=true) · [复现脚本](tools/v36-background/)
+
+普通使用者安装名称含`candidate-phone`的主包；`isolation`包只用于开发测试。同签名覆盖保留本地数据，更新后由用户手动连接，不通过卸载或清数据绕过安装问题。
+
+| v36绑定项 | SHA256 |
+|---|---|
+| 手机主APK | `BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA` |
+| 240文件源码清单 | `9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0` |
+| 既有测试签名证书 | `2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229` |
+
+本轮在 realme RMX3820/API34 发现，独立的“允许完全后台行为”关闭时，系统把本应用两个闹钟额外延后三天；开启后附加延期消失。随后保留原会话完成 311.81 秒 USB 连接下的普通锁屏观察，取得同代次新增成功心跳与外网结果，交付延迟分别 13ms、6ms。初次真实短测失败、复测原收集器漏采轮转记录的失败及补齐后的通过分别保留。尚未验证拔电待机、8小时自然锁屏或其他品牌真机。
+
+realme本机实测入口：应用“更多”→“打开系统应用详情”→“耗电管理”→“允许完全后台行为”→允许。标准电池豁免、精确定时和最近任务锁定不能替代这个独立开关。其他品牌的具体入口未实机验证，详见[后台保活修订](docs/BACKGROUND_KEEPALIVE.md)。
+
+本轮20项记录为**16 PASS / 2 FAIL / 2 NOT_RUN**：两条FAIL分别保留初次真实短测及复测原收集器漏采记录；补齐轮转证据后的短测独立PASS。完整Doze矩阵和8小时自然锁屏未运行。实际覆盖API34 realme ARM64及API26/API35 x86_64模拟器；当前ARM32运行、ARM64/16KB、拔电待机和其他品牌真机未验证。Lint主包0错误/16警告，隔离包0错误/36警告。
+
+仓库`source/`的240文件保持v36构建输入原字节；本次顶层说明和同步不重新构建APK。`revisions/v0.2.24-background/`保留固定交付原件，其中“未推送”“仅本地”等文字描述构建交付当时的快照；本次同步不改写这些历史原件。v34固定归档也保持不变。当前状态与接续要求见[当前状态](docs/CURRENT_STATUS.md)和[下一轮接续](docs/NEXT_PROMPT.md)。
+
+## v34 历史发布说明
+
+以下保留v34发布时的说明，其中“当前”“本轮”、下载入口和测试结论仅指v34，不代表当前v36源码与交付。
+
 使用校园网账号密码连接湖南校园网，查看连接和外网状态，并在条件满足时由用户确认修复。保留简约四页界面。
 
 当前仓库候选是经用户确认的**阶段1修订 `s1-json-ui-20261108-01`**，版本 **0.2.22-compat-s1 / versionCode 34**，最终迭代r9。**阶段1未通过，不进入阶段2、3或4。** 本次按用户要求同步已有源码、APK、脚本和证据；不重新构建、不安装、不修改Android源码，也不创建新Release。

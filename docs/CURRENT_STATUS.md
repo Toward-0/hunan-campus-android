@@ -1,4 +1,20 @@
-# 当前状态：v34候选，阶段1未通过
+# 当前状态：v36后台运行候选，完整稳定性未验收
+
+当前源码与交付为 **0.2.24-background / versionCode 36**。本次同步已审核的65文件固定交付和11个公开脚本，不重新构建、不创建新Release。`source/`的240文件保持[构建源码清单](../revisions/v0.2.24-background/source-manifest.json)原字节；v34固定归档保持不变。
+
+[v36手机主APK](../revisions/v0.2.24-background/ESurfingHunan-0.2.24-background-candidate-phone.apk?raw=true) · [validation](../revisions/v0.2.24-background/validation.json) · [中文报告](../revisions/v0.2.24-background/保活专项报告.txt) · [校验和](../revisions/v0.2.24-background/SHA256SUMS.txt) · [后台运行说明](BACKGROUND_KEEPALIVE.md)
+
+主APK SHA256：`BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA`。240文件清单SHA256：`9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0`。
+
+本轮20项记录为 **16 PASS / 2 FAIL / 2 NOT_RUN**。初次真实短测没有新增成功记录，保留FAIL；设置后复测原收集器漏采轮转心跳，也保留原FAIL。独立补齐原观察窗口后确认同代次新增1次成功心跳及1次成功外网检查，311.81秒USB连接普通锁屏中交付延迟13ms/6ms。该PASS不等于持续外网、拔电待机或8小时保活通过。
+
+realme RMX3820/API34的“允许完全后台行为”关闭时，OEM策略将本应用两个已注册闹钟额外延后三天；开启后附加延期消失。标准电池豁免和精确定时不能替代这个独立厂商开关，实测路径见[后台运行说明](BACKGROUND_KEEPALIVE.md)。
+
+设计支持Android8.0/API26起；本轮实际验证仅API34 realme ARM64与API26/API35 x86_64模拟器。完整Doze矩阵和8小时自然锁屏NOT_RUN；当前ARM32运行、ARM64/16KB、拔电待机、耗电对照及其他品牌真机未验证。Lint主包0错误/16警告、隔离包0错误/36警告。原阶段1兼容性/UI等缺口没有转记通过。
+
+固定v36报告中的“未推送”“仅本地”等文字是构建交付当时快照；本次同步保留65文件原件，不改写历史。以下v34表格及“本轮”措辞仅属于历史状态。
+
+## v34历史状态：阶段1未通过
 
 本轮标识为 `s1-json-ui-20261108-01`，版本 **0.2.22-compat-s1 / versionCode 34**。阶段1结论仍为**未通过**，默认留在阶段1。阶段2、3、4没有因为旧版GitHub发布或本次本地构建自动获得授权。
 

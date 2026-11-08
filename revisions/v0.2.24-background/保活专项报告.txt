@@ -1,0 +1,72 @@
+湖南校园网 Android：后台运行专项
+
+当前版本：0.2.24-background / versionCode 36
+生成时间：2026-11-08T23:21:02.525680+08:00
+交付状态：仅本地开发与验证，尚未推送GitHub或创建Release。
+源码清单 SHA256：9A8F5E695648415AB6DC93042EFC818A1606E73099F616C35EF0297244EF79C0
+
+本次修改
+1. 每个任务同时安排进程内定时器和系统闹钟，共用一次性交付与取消保护；CPU运行时避免单纯依赖非精确闹钟批处理。
+2. 处于Doze且未获电池豁免时，定时器让已注册的闹钟交付，避免抢占后取消闹钟的临时执行机会；定时器不能唤醒深度休眠CPU或绕过Doze配额。
+3. 增加后台能力检查与用户主动设置入口，诊断记录权限和真实任务交付来源；权限不是登录硬门槛。
+4. 心跳延迟改用单调时钟；保持手动认证、代次取消和有界请求唤醒锁。
+
+当前 APK
+ESurfingHunan-0.2.24-background-candidate-phone.apk
+SHA256：BB2555F46E14A06D22B00E961F4BDE03D914BDEF5DB5A0D7CD29F842E2F10CEA
+ESurfingHunan-0.2.24-background-isolation-phone.apk
+SHA256：EC745E71980C6B5A77C6480CFF6E1852E79109242D6FC2DE3250E12C677AB7BE
+ESurfingHunan-0.2.24-background-isolation-x86_64.apk
+SHA256：4B07471F8D7D867CF2C21424065E91606407BA5E9E88B1D2B7672D66A99A4C1C
+
+本轮现场发现
+realme存在独立厂商限制：标准电池豁免、精确定时和最近任务锁定不能替代“允许完全后台行为”。关闭时两个已注册闹钟额外延期三天；开启后该延期立即消失。
+本机实际入口：应用“更多”→“打开系统应用详情”→“耗电管理”→“允许完全后台行为”→允许。只改本应用此项，没有开启应用自启动或关联启动。其他品牌仅提供标准入口和设置参考，本轮未验证其具体路径。
+调整后保留原手动登录会话，311.81秒USB连接普通锁屏中新增1次成功心跳及1次成功外网检查，交付延迟分别13ms和6ms。两次成功记录间隔分别250167ms和300303ms；样本仅各1次，不能作长期时延分布或持续外网结论。
+设置前真实短测FAIL、设置后原收集器轮转漏采FAIL、独立补齐PASS分别留档；补齐仅使用原观察窗口同代次白名单记录，没有改写原始失败。
+
+本轮验证（仅按当前证据填写）
+[PASS] BUILD-DUAL-ARM：当前v36主包和隔离phone包构建成功，包含双ARM ABI；另构建x86_64隔离包。minSdk26 / targetSdk35保持。
+[PASS] SIGNATURE-ALIGNMENT：当前3个APK签名核验和ZIP 16KB对齐检查全部退出0，证书与既有测试证书一致；不能替代16KB实机运行。
+[PASS] LINT：当前v36主包0错误/16警告，隔离包0错误/36警告。BatteryLife警告对应主动请求电池优化豁免；零警告目标仍未通过。
+[PASS] REALME-INSTALL：当前v36主包已同签名覆盖realme，安装后哈希BB2555…10CEA与交付一致；安装前已核对主服务停止，没有卸载或清除主应用。
+[PASS] ALARM-RACE-CANCEL：当前v36在realme/API26/API35清醒态交付延迟分别25/5/18ms（<=3000ms）。每环境通过16种纯逻辑交付策略组合、100次双触发竞争及200次取消竞争，旧回调和定时器队列归零；纯逻辑组合不等于16组系统权限实测。
+[NOT_RUN] SCHEDULER-IDLE-MATRIX：完整系统权限/厂商Doze矩阵未完成。当前仅API35电池豁免+精确定时组合有独立PASS（见API35-FORCED-IDLE）；其他组合及v36 realme强制Doze未运行，不能转记v35结果。
+[PASS] DIAGNOSTIC-EXPORT：当前v36在realme和API26分别完成13项诊断回归，包括后台能力字段、完整JSON边界、白名单和实际复制入口。
+[PASS] SESSION-SAFETY：当前v36在API26完成100次合成会话循环，耗时193.14秒，覆盖发现/认证/探测/计划心跳停止与迟到响应及慢响应预算。此结论只绑定API26/x86_64；没有转记v35 realme的100次会话。
+[PASS] REAL-NETWORK-SHORT：2026-11-08 23:06:00(+08:00)起311.81秒USB连接普通锁屏观察，经独立轮转补齐8项检查PASS：同一已认证generation1，锁屏新增1次成功心跳及1次成功外网检查，交付延迟13ms/6ms，interactive=false、idle=false。成功记录间隔250167ms/300303ms不作调度延迟；无重新认证、无额外主动探测。不代表连续外网或长期稳定。
+[NOT_RUN] NATURAL-LOCK-8H：本轮未运行；尚无v36拔电自然锁屏8小时及耗电证据。
+[PASS] ARM64-JNI：当前v36在realme API34/4096页/64位进程加载arm64-v8a，182个畸形输入被拒绝，200次循环、9个合成算法、每算法20个分配失败位置，最终句柄0。未将构建双ARM当作当前ARM32运行通过。
+[PASS] MAIN-ISOLATION-EXCLUSION：当前主包无instrumentation、隔离DEX组件或原生CompatProbe测试符号；隔离包对照存在这些入口。
+[PASS] SOURCE-BUILD-BINDING：v36构建前固定240文件清单，构建后逐项一致，所有输入mtime早于当前构建开始。v35 APK与证据已独立保留，不绑定为v36结果。
+[PASS] ENVIRONMENT-RESTORATION：当前v36 API35强制休眠测试结束后豁免/强制休眠核对恢复；API26专有模拟器身份核验后退出，进程退出码0且控制台/ADB端口已关闭。realme当前用户手动连接会话保留，未停止主应用。
+[PASS] PROTECTED-V34-BASELINE：保护基线238文件逐项SHA256核对，差异0。
+[PASS] API26-REGRESSION：当前v36 API26/x86_64的Alarm、Diagnostics、Session和Compat四项均PASS，包括100会话循环和200次JNI循环，句柄归零。
+[PASS] API35-FORCED-IDLE：当前v36 API35仅电池豁免=true/精确定时=true组合：3个30秒合成任务在idle=true、interactive=false下延迟16/12/9ms（最大16ms），回调0，豁免和强制休眠均恢复。没有网络请求，不能当作真实校园网或长期保活验证。
+[PASS] REALME-OEM-BACKGROUND-POLICY：标准电池豁免及精确定时已开启、前台服务存活时，realme独立“允许完全后台行为”仍关闭；两个闹钟被OEM adjustment额外延后259200000ms（三天）。仅开启本应用该开关后adjustment=--且whenElapsed=origWhen。设置/策略PASS与锁屏联网分别记录。
+[FAIL] REAL-NETWORK-FIRST-ATTEMPT：设置调整前的311.77秒USB连接普通锁屏观察没有新增成功心跳或外网结果；开始/结束记录相同，原始FAIL保持。这一失败未被后续复测覆盖。
+[FAIL] REAL-NETWORK-RAW-COLLECTOR：设置调整后第二次311.81秒观察的原收集器只读取当前trace文件，漏掉已轮转心跳；其AssertionError/FAIL原样保留。新心跳和外网成功时间戳已增长；补齐两份trace的结论在REAL-NETWORK-SHORT单独记录。
+
+支持范围与限制
+设计基线：Android API26起，targetSdk35，arm64-v8a及armeabi-v7a；当前实测范围以validation.json的environment和tests为准。
+v34 阶段1未通过；本专项不将历史测试结论改为当前版本通过。
+ARM64 / 16KB 实机运行环境缺失；静态对齐不能替代运行验证。
+既有大字体系统状态栏裁切、API矩阵和realme键盘视觉缺口不属于本次已解决结论。
+8小时自然锁屏、全面厂商适配、全部进程生命周期及耗电仍须独立证据。
+设计支持API26+不等于已验证大多数Android手机。当前实测设备/API/ABI：realme RMX3820 API34 ARM64，以及API26/API35 x86_64模拟器。其他品牌真机、API29/31/33/36没有本轮完整证据。
+当前ARM32仅构建未实机运行；ARM64/16KB运行环境仍缺失。静态对齐不能替代16KB运行验证。
+当前v36 API35强制Doze仅电池豁免+精确定时单组合3个合成样本；完整Doze权限/厂商矩阵NOT_RUN。v35 realme强制Doze零样本FAIL独立保留，不当作v36通过。
+真实短测仅一次311.81秒USB供电普通锁屏，idle=false；8小时自然锁屏、拔掉USB的待机/深度Doze和耗电对照均未验证。
+Lint主包0错误/16警告，隔离包0错误/36警告，零警告目标未通过；v34其他兼容性/UI缺口仍保留历史状态。
+当前改动和交付仅本地保存，尚未推送GitHub或创建Release。手机保留用户当前会话。
+
+使用说明
+覆盖安装候选主APK后，由用户打开应用并手动连接。在“更多”检查后台定时、电池优化和通知能力，根据手机实际页面允许后台运行。
+网络丢失或身份变化、进程终止、强制停止及重启后等待手动连接；本专项不增加自动账号提交。
+自然锁屏长测未通过前，不宣称长期保活或8小时稳定性已验证。
+
+复现资料
+source.zip 为当前源码输入副本；changes.json与changes.diff列出相对v34的源码修改。scripts.zip仅含审查后的工具白名单。
+repo-documentation.zip及对应diff是仓库顶层README与后台运行说明，不属于APK源码输入，不改动source.zip。
+源码中的历史文档按原字节保留，其旧版本与旧验收不能替代本报告和validation.json。
+私有tools.local.json、签名密钥、工具链缓存、设备标识和原始设备日志不包含在交付包中。

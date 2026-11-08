@@ -1,0 +1,608 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 8.9.2">
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                        .putString(&quot;mac&quot;, &quot;00-11-22-33-44-55&quot;).putLong(&quot;configRevision&quot;, cycle.toLong()).commit()"
+        errorLine2="                                                                                                         ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CancelProbe.kt"
+            line="41"
+            column="106"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            ctx.getSharedPreferences(&quot;settings&quot;, 0).edit().clear().commit()"
+        errorLine2="                                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CancelProbe.kt"
+            line="60"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            vault.edit().putString(&quot;cipher&quot;, &quot;corrupted-fixture&quot;).commit()"
+        errorLine2="                                                                  ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt"
+            line="39"
+            column="67"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            vault.edit().remove(&quot;iv&quot;).commit()"
+        errorLine2="                                      ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt"
+            line="50"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                .putString(&quot;mac&quot;, &quot;00-11-22-33-44-55&quot;).commit()"
+        errorLine2="                                                       ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt"
+            line="61"
+            column="56"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            ctx.getSharedPreferences(&quot;settings&quot;, 0).edit().clear().commit()"
+        errorLine2="                                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt"
+            line="81"
+            column="68"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="    fun clear() { prefs.edit().clear().commit() }"
+        errorLine2="                                       ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\Credentials.kt"
+            line="48"
+            column="40"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            .putLong(&quot;observed&quot;,System.currentTimeMillis()).commit()"
+        errorLine2="                                                            ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt"
+            line="13"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="    fun clear(context: Context) { context.getSharedPreferences(&quot;identity-cache&quot;,0).edit().clear().commit() }"
+        errorLine2="                                                                                                  ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\IdentityCache.kt"
+            line="26"
+            column="99"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                    command(&quot;stop&quot;); Credentials(this).clear(); IdentityCache.clear(this); prefs.edit().clear().commit()"
+        errorLine2="                                                                                                                ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\MainActivity.kt"
+            line="337"
+            column="113"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                    .putString(&quot;mac&quot;, &quot;00-11-22-33-44-55&quot;).putLong(&quot;configRevision&quot;, ++revision).commit()"
+        errorLine2="                                                                                                 ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\SessionProbe.kt"
+            line="106"
+            column="98"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            Credentials(ctx).clear(); prefs.edit().clear().commit(); IdentityCache.clear(ctx)"
+        errorLine2="                                                           ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\SessionProbe.kt"
+            line="154"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="        prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="93"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                prefs.edit().putBoolean(&quot;manualOff&quot;, false).commit()"
+        errorLine2="                                                            ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="160"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                           ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="173"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                           ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="191"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="        prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="217"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="        prefs.edit().putBoolean(&quot;manualOff&quot;, true).commit()"
+        errorLine2="                                                   ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\SessionService.kt"
+            line="310"
+            column="52"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="                    .putString(&quot;mac&quot;, if(discovery) &quot;&quot; else &quot;00-11-22-33-44-55&quot;).commit()"
+        errorLine2="                                                                                 ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="178"
+            column="82"/>
+    </issue>
+
+    <issue
+        id="ApplySharedPref"
+        severity="Warning"
+        message="Consider using `apply()` instead; `commit` writes its data to persistent storage immediately, whereas `apply` will handle it in the background"
+        category="Correctness"
+        priority="6"
+        summary="Use `apply()` on `SharedPreferences`"
+        explanation="Consider using `apply()` instead of `commit` on shared preferences. Whereas `commit` blocks and writes its data to persistent storage immediately, `apply` will handle it in the background."
+        errorLine1="            Credentials(ctx).clear(); prefs.edit().clear().commit(); IdentityCache.clear(ctx)"
+        errorLine2="                                                           ~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="429"
+            column="60"/>
+    </issue>
+
+    <issue
+        id="ImplicitSamInstance"
+        severity="Warning"
+        message="This argument is a new instance so `stopService` will not remove anything"
+        category="Correctness"
+        priority="6"
+        summary="Implicit SAM Instances"
+        explanation="Kotlin&apos;s support for SAM (single abstract method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.&#xA;&#xA;In particular, passing a lambda variable in as a listener, and then later attempting to remove the listener will not work because a different instance is passed in."
+        url="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        urls="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        errorLine1="                    runOnMainSync { targetContext.stopService(Intent(targetContext, StabilityService::class.java)) }"
+        errorLine2="                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\DiagnosticsProbe.kt"
+            line="182"
+            column="63"/>
+    </issue>
+
+    <issue
+        id="ImplicitSamInstance"
+        severity="Warning"
+        message="This argument is a new instance so `stopService` will not remove anything"
+        category="Correctness"
+        priority="6"
+        summary="Implicit SAM Instances"
+        explanation="Kotlin&apos;s support for SAM (single abstract method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.&#xA;&#xA;In particular, passing a lambda variable in as a listener, and then later attempting to remove the listener will not work because a different instance is passed in."
+        url="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        urls="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        errorLine1="            ctx.stopService(Intent(ctx, IdleProbeService::class.java))"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\IdleSchedulerProbe.kt"
+            line="68"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="ImplicitSamInstance"
+        severity="Warning"
+        message="This argument is a new instance so `stopService` will not remove anything"
+        category="Correctness"
+        priority="6"
+        summary="Implicit SAM Instances"
+        explanation="Kotlin&apos;s support for SAM (single abstract method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.&#xA;&#xA;In particular, passing a lambda variable in as a listener, and then later attempting to remove the listener will not work because a different instance is passed in."
+        url="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        urls="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        errorLine1="                    if(action == &quot;service-end&quot;) runOnMainSync { ctx.stopService(Intent(ctx, StabilityService::class.java)) }"
+        errorLine2="                                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="267"
+            column="81"/>
+    </issue>
+
+    <issue
+        id="ImplicitSamInstance"
+        severity="Warning"
+        message="This argument is a new instance so `stopService` will not remove anything"
+        category="Correctness"
+        priority="6"
+        summary="Implicit SAM Instances"
+        explanation="Kotlin&apos;s support for SAM (single abstract method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.&#xA;&#xA;In particular, passing a lambda variable in as a listener, and then later attempting to remove the listener will not work because a different instance is passed in."
+        url="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        urls="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        errorLine1="                            runOnMainSync { ctx.stopService(Intent(ctx, StabilityService::class.java)) }; stopped()"
+        errorLine2="                                                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="364"
+            column="61"/>
+    </issue>
+
+    <issue
+        id="ImplicitSamInstance"
+        severity="Warning"
+        message="This argument is a new instance so `stopService` will not remove anything"
+        category="Correctness"
+        priority="6"
+        summary="Implicit SAM Instances"
+        explanation="Kotlin&apos;s support for SAM (single abstract method) interfaces lets you pass a lambda to the interface. This will create a new instance on the fly even though there is no explicit constructor call. If you pass one of these lambdas or method references into a method which (for example) stores or compares the object identity, unexpected results may happen.&#xA;&#xA;In particular, passing a lambda variable in as a listener, and then later attempting to remove the listener will not work because a different instance is passed in."
+        url="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        urls="https://kotlinlang.org/docs/fun-interfaces.html#sam-conversions"
+        errorLine1="                    if(action==&quot;service-end&quot;) runOnMainSync { ctx.stopService(Intent(ctx, StabilityService::class.java)) } else command(action)"
+        errorLine2="                                                                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="408"
+            column="79"/>
+    </issue>
+
+    <issue
+        id="BatteryLife"
+        severity="Warning"
+        message="Use of `REQUEST_IGNORE_BATTERY_OPTIMIZATIONS` violates the Play Store Content Policy regarding acceptable use cases, as described in https://developer.android.com/training/monitoring-device-state/doze-standby.html"
+        category="Correctness"
+        priority="5"
+        summary="Battery Life Issues"
+        explanation="This issue flags code that either&#xA;* negatively affects battery life, or&#xA;* uses APIs that have recently changed behavior to prevent background tasks from consuming memory and battery excessively.&#xA;&#xA;Generally, you should be using `WorkManager` instead.&#xA;&#xA;For more details on how to update your code, please see https://developer.android.com/topic/performance/background-optimization"
+        url="https://developer.android.com/topic/performance/background-optimization"
+        urls="https://developer.android.com/topic/performance/background-optimization"
+        errorLine1="            Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, Uri.parse(&quot;package:${activity.packageName}&quot;)),"
+        errorLine2="                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\BackgroundAccess.kt"
+            line="70"
+            column="29"/>
+    </issue>
+
+    <issue
+        id="ChromeOsAbiSupport"
+        severity="Warning"
+        message="Missing x86_64 ABI support for ChromeOS"
+        category="Correctness:Chrome OS"
+        priority="4"
+        summary="Missing ABI Support for ChromeOS"
+        explanation="To properly support ChromeOS, your Android application should have an x86 and/or x86_64 binary as part of the build configuration. To fix the issue, ensure your files are properly optimized for ARM; the binary translator will then ensure compatibility with x86. Alternatively, add an `abiSplit` for x86 within your `build.gradle` file and create the required x86 dependencies."
+        url="https://developer.android.com/ndk/guides/abis"
+        urls="https://developer.android.com/ndk/guides/abis"
+        errorLine1="        debug { signingConfig = null; ndk { abiFilters += listOf(&quot;arm64-v8a&quot;, &quot;armeabi-v7a&quot;) } }"
+        errorLine2="                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\build.gradle.kts"
+            line="20"
+            column="59"/>
+    </issue>
+
+    <issue
+        id="ChromeOsAbiSupport"
+        severity="Warning"
+        message="Missing x86_64 ABI support for ChromeOS"
+        category="Correctness:Chrome OS"
+        priority="4"
+        summary="Missing ABI Support for ChromeOS"
+        explanation="To properly support ChromeOS, your Android application should have an x86 and/or x86_64 binary as part of the build configuration. To fix the issue, ensure your files are properly optimized for ARM; the binary translator will then ensure compatibility with x86. Alternatively, add an `abiSplit` for x86 within your `build.gradle` file and create the required x86 dependencies."
+        url="https://developer.android.com/ndk/guides/abis"
+        urls="https://developer.android.com/ndk/guides/abis"
+        errorLine1="        release { isMinifyEnabled = false; ndk { abiFilters += listOf(&quot;arm64-v8a&quot;, &quot;armeabi-v7a&quot;) } }"
+        errorLine2="                                                               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\build.gradle.kts"
+            line="21"
+            column="64"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        severity="Warning"
+        message="Do not place Android context classes in static fields (static reference to `TimingTrace` which has field `context` pointing to `Context`); this is a memory leak"
+        category="Performance"
+        priority="6"
+        summary="Static Field Leaks"
+        explanation="A static field will leak contexts.&#xA;&#xA;Non-static inner classes have an implicit reference to their outer class. If that outer class is for example a `Fragment` or `Activity`, then this reference means that the long-running handler/loader/task will hold a reference to the activity which prevents it from getting garbage collected.&#xA;&#xA;Similarly, direct field references to activities and fragments from these longer running instances can cause leaks.&#xA;&#xA;ViewModel classes should never point to Views or non-application Contexts."
+        errorLine1="/** Fixed schema only: never accepts exception text, URLs, identities, response bodies or credentials. */"
+        errorLine2="^">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt"
+            line="18"
+            column="1"/>
+    </issue>
+
+    <issue
+        id="StaticFieldLeak"
+        severity="Warning"
+        message="Do not place Android context classes in static fields; this is a memory leak"
+        category="Performance"
+        priority="6"
+        summary="Static Field Leaks"
+        explanation="A static field will leak contexts.&#xA;&#xA;Non-static inner classes have an implicit reference to their outer class. If that outer class is for example a `Fragment` or `Activity`, then this reference means that the long-running handler/loader/task will hold a reference to the activity which prevents it from getting garbage collected.&#xA;&#xA;Similarly, direct field references to activities and fragments from these longer running instances can cause leaks.&#xA;&#xA;ViewModel classes should never point to Views or non-application Contexts."
+        errorLine1="    private var context: Context? = null"
+        errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\java\org\esurfing\hunan\TimingTrace.kt"
+            line="22"
+            column="5"/>
+    </issue>
+
+    <issue
+        id="MissingApplicationIcon"
+        severity="Warning"
+        message="Should explicitly set `android:icon`, there is no default"
+        category="Usability:Icons"
+        priority="5"
+        summary="Missing application icon"
+        explanation="You should set an icon for the application as whole because there is no default. This attribute must be set as a reference to a drawable resource containing the image (for example `@drawable/icon`)."
+        url="https://developer.android.com/studio/publish/preparing#publishing-configure"
+        urls="https://developer.android.com/studio/publish/preparing#publishing-configure"
+        errorLine1="    &lt;application android:label=&quot;湖南校园网 · 测试版&quot; android:theme=&quot;@style/CampusTheme&quot; android:allowBackup=&quot;false&quot; android:fullBackupContent=&quot;false&quot; android:dataExtractionRules=&quot;@xml/data_extraction_rules&quot; android:usesCleartextTraffic=&quot;true&quot; android:supportsRtl=&quot;true&quot;>"
+        errorLine2="     ~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\main\AndroidManifest.xml"
+            line="12"
+            column="6"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                password.setText(&quot;isolated-ui-new&quot;)"
+        errorLine2="                                  ~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\CredentialProbe.kt"
+            line="75"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                        user.setText(&quot;isolated-new-account&quot;); password.setText(&quot;isolated-new-password&quot;)"
+        errorLine2="                                      ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="216"
+            column="39"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                        user.setText(&quot;isolated-new-account&quot;); password.setText(&quot;isolated-new-password&quot;)"
+        errorLine2="                                                                                ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="216"
+            column="81"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                    user.setText(&quot;isolated-new-account&quot;); password.setText(&quot;isolated-new-password&quot;)"
+        errorLine2="                                  ~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="284"
+            column="35"/>
+    </issue>
+
+    <issue
+        id="SetTextI18n"
+        severity="Warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead."
+        category="Internationalization"
+        priority="6"
+        summary="TextView Internationalization"
+        explanation="When calling `TextView#setText`&#xA;* Never call `Number#toString()` to format numbers; it will not handle fraction separators and locale-specific digits properly. Consider using `String#format` with proper format specifications (`%d` or `%f`) instead.&#xA;* Do not pass a string literal (e.g. &quot;Hello&quot;) to display text. Hardcoded text can not be properly translated to other languages. Consider using Android resource strings instead.&#xA;* Do not build messages by concatenating text chunks. Such messages can not be properly translated."
+        url="https://developer.android.com/guide/topics/resources/localization.html"
+        urls="https://developer.android.com/guide/topics/resources/localization.html"
+        errorLine1="                    user.setText(&quot;isolated-new-account&quot;); password.setText(&quot;isolated-new-password&quot;)"
+        errorLine2="                                                                            ~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="<STAGE>\source\app\src\isolation\java\org\esurfing\hunan\StabilityProbe.kt"
+            line="284"
+            column="77"/>
+    </issue>
+
+</issues>

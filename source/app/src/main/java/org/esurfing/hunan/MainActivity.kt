@@ -1,6 +1,5 @@
 package org.esurfing.hunan
 
-import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
 import android.content.ClipData
@@ -31,6 +30,9 @@ class MainActivity : Activity() {
     private lateinit var stopButton: Button
     private lateinit var statusNote: TextView
     private lateinit var diagnosticState: TextView
+    private lateinit var backgroundStatus: TextView
+    private lateinit var backgroundReminder: TextView
+    private var backgroundDialog: AlertDialog? = null
     @Volatile private var diagnosing = false
     private val prefs by lazy { getSharedPreferences("settings", MODE_PRIVATE) }
     private val refresh = object : Runnable {
@@ -74,7 +76,6 @@ class MainActivity : Activity() {
                 snapshot.phase == Phase.STOPPED -> "本机服务已停止，服务器会话未注销。"
                 else -> snapshot.status
             }
-            if(active && Build.VERSION.SDK_INT >= 31 && !getSystemService(android.app.AlarmManager::class.java).canScheduleExactAlarms()) statusNote.append("\n后台定时未开启，可在“更多”中设置。")
             diagnosticState.text = snapshot.display(now)
             logs.text = SessionState.logs()
             runtime.text = snapshot.details
@@ -161,10 +162,22 @@ class MainActivity : Activity() {
     }
 
     private fun command(action: String) = startForegroundService(Intent(this, SessionService::class.java).setAction(action))
+    private fun refreshBackgroundAccess() {
+        val access = BackgroundAccess.read(this)
+        backgroundStatus.text = access.summary()
+        backgroundReminder.text = access.reminder()
+    }
+    private fun showBatteryPrompt() {
+        if(backgroundDialog?.isShowing == true) return
+        backgroundDialog = AlertDialog.Builder(this).setTitle("允许锁屏后台运行？")
+            .setMessage("校园网需要按服务器要求发送心跳。电池优化可能在长时间锁屏后限制网络和唤醒，使连接中断。允许后台运行可能增加待机耗电；仅在你手动连接后维持会话，不会自动开机登录。\n\n接下来由系统询问是否允许。你也可以暂不开启，仍可正常尝试连接。")
+            .setNegativeButton("暂不开启", null)
+            .setPositiveButton("允许后台运行") { _, _ -> BackgroundAccess.requestBatteryExemption(this) }
+            .create().also { it.show() }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SessionState.initialize(this)
-        if(Build.VERSION.SDK_INT >= 33) requestPermissions(arrayOf(Manifest.permission.POST_NOTIFICATIONS),1)
         val root=LinearLayout(this).apply { orientation=LinearLayout.VERTICAL; setBackgroundColor(Color.rgb(246,248,246)); setPadding(dp(20),dp(12),dp(20),0) }
         label(root,"校园网",26f).setTypeface(null,Typeface.BOLD)
         val tabs=LinearLayout(this); root.addView(tabs)
@@ -185,6 +198,7 @@ class MainActivity : Activity() {
             background=GradientDrawable().apply { setColor(Color.WHITE); cornerRadius=dp(16).toFloat() }
         }
         statusNote=label(home,"连接校园 Wi-Fi 后开始。",15f)
+        backgroundReminder = label(home, "", 13f)
         repairButton = button(home,"修复连接") { showRepairPrompt() }
             .apply { isEnabled = false; visibility=View.GONE }
         label(settings,"校园网账号",22f)
@@ -221,6 +235,7 @@ class MainActivity : Activity() {
         }
         stopButton=button(home,"停止连接") { command("stop") }
         label(home,"账号和密码在“账号”页管理。",13f)
+        button(home,"检查后台运行设置") { showPage(3) }
         button(columns[3],"修复网络") { showRepairPrompt() }
         repairNote = label(columns[3], repairExplanation(SessionState.snapshot(), System.currentTimeMillis()), 13f)
         logoutButton = button(columns[3],"注销并停止") {
@@ -228,12 +243,16 @@ class MainActivity : Activity() {
                 .setNegativeButton("取消",null).setPositiveButton("注销") { _,_ -> command("logout") }.show()
         }
         label(columns[3],"“停止连接”只停止本机服务，不注销服务器会话。",13f)
-        button(columns[3],"后台定时权限") {
-            if(Build.VERSION.SDK_INT >= 31) {
-                startActivity(Intent(android.provider.Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM, android.net.Uri.parse("package:$packageName")))
-                toast("更改后请停止并重新连接；开启权限后仍需验证锁屏表现")
-            } else toast("当前系统不需要此项权限")
-        }
+        label(columns[3],"后台运行",22f)
+        backgroundStatus = label(columns[3], "", 15f)
+        label(columns[3],"建议连接前检查以下设置。未开启仍可连接；精确定时和电池豁免也不能保证永久保活。",13f)
+        label(columns[3],"连接中修改权限后，新设置从后续任务计划生效；如需立即应用，请停止后手动连接。",13f)
+        button(columns[3],"后台定时权限") { BackgroundAccess.openExact(this) }
+        button(columns[3],"允许后台运行") { showBatteryPrompt() }
+        button(columns[3],"连接通知设置") { BackgroundAccess.requestNotifications(this) }
+        label(columns[3],"部分手机还需在系统应用详情中允许后台活动、取消省电限制，或在最近任务中锁定应用。realme、小米、vivo 等系统的名称及入口可能不同；应用无法读取这些厂商开关。",13f)
+        button(columns[3],"打开系统应用详情") { BackgroundAccess.openAppDetails(this) }
+        refreshBackgroundAccess()
         button(columns[2],"检测 Wi-Fi（不登录）") {
             if(diagnosing) toast("诊断正在进行") else {
                 diagnosing=true; showPage(2)
@@ -362,9 +381,13 @@ class MainActivity : Activity() {
         setContentView(root); root.requestApplyInsets(); showPage(0)
     }
     private fun toast(text:String)=Toast.makeText(this,text,Toast.LENGTH_LONG).show()
-    override fun onResume(){super.onResume();handler.post(refresh)}
+    override fun onResume(){super.onResume();refreshBackgroundAccess();handler.removeCallbacks(refresh);handler.post(refresh)}
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == BackgroundAccess.NOTIFICATION_REQUEST) refreshBackgroundAccess()
+    }
     override fun onPause(){handler.removeCallbacks(refresh);super.onPause()}
-    override fun onDestroy(){repairDialog?.dismiss();repairDialog=null;super.onDestroy()}
+    override fun onDestroy(){repairDialog?.dismiss();repairDialog=null;backgroundDialog?.dismiss();backgroundDialog=null;super.onDestroy()}
 }
 
 

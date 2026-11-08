@@ -10,7 +10,7 @@ import java.io.File
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicLong
 
-enum class TracePoint { PROCESS_START, EXIT_HISTORY, PLAN, ENTER, FINISH, REQUEST_START, REQUEST_FINISH, CANCEL, CONTROL, INTERVAL, ALARM_DELIVERY, SCHEDULER, WIFI_REQUEST, DISCOVERY }
+enum class TracePoint { PROCESS_START, EXIT_HISTORY, PLAN, ENTER, FINISH, REQUEST_START, REQUEST_FINISH, CANCEL, CONTROL, INTERVAL, ALARM_DELIVERY, TIMER_DELIVERY, SCHEDULER, WIFI_REQUEST, DISCOVERY }
 enum class TaskKind { NONE, AUTH, HEARTBEAT, INTERNET, MODULE, TICKET, LOGIN, STATE, LOGOUT, INITIAL_HEARTBEAT }
 enum class StopReason { NONE, USER_STOP, USER_LOGOUT, NETWORK_LOST, REPLACED, SERVICE_DESTROYED, RETRIES_EXHAUSTED, USER_REPAIR }
 data class TaskTiming(val number: Long, val kind: TaskKind, val dueWall: Long, val dueElapsed: Long, val dueUptime: Long)
@@ -75,6 +75,9 @@ object TimingTrace {
                 .put("plugged", battery?.getIntExtra(BatteryManager.EXTRA_PLUGGED, -1) ?: -1)
                 .put("battery", battery?.getIntExtra(BatteryManager.EXTRA_LEVEL, -1) ?: -1)
                 .put("temperatureDeciC", battery?.getIntExtra(BatteryManager.EXTRA_TEMPERATURE, -1) ?: -1)
+                .put("batteryExempt", pm.isIgnoringBatteryOptimizations(ctx.packageName))
+                .put("exactAllowed", Build.VERSION.SDK_INT < 31 || ctx.getSystemService(android.app.AlarmManager::class.java).canScheduleExactAlarms())
+                .put("notificationsAllowed", ctx.getSystemService(android.app.NotificationManager::class.java).areNotificationsEnabled())
             if (task != null) row.put("task", task.number).put("dueWall", task.dueWall).put("dueElapsed", task.dueElapsed).put("dueUptime", task.dueUptime)
             if (numeric != null) row.put("number", numeric)
             if (source != null) row.put("intervalSource", source.name)
