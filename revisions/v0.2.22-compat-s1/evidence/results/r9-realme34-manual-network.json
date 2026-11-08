@@ -1,0 +1,138 @@
+{
+  "testId": "r9-realme34-manual-network",
+  "status": "BLOCKED",
+  "kind": "manual-network",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": null,
+  "time": "2026-11-08T04:06:57.228668+00:00",
+  "expected": "At least one newly recorded scheduled heartbeat and HTTPS sample inside the bounded observation window.",
+  "actual": {
+    "testId": "MAIN-NETWORK-OBSERVATION",
+    "kind": "manual-network",
+    "label": "r9-realme34-manual-network",
+    "package": "org.esurfing.hunan",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+    "versionCode": 34,
+    "status": "BLOCKED",
+    "api": 34,
+    "pageSize": 4096,
+    "startedAt": "2026-11-08T03:57:48.675378+00:00",
+    "finishedAt": "2026-11-08T04:01:59.623025+00:00",
+    "time": "2026-11-08T04:06:57.228668+00:00",
+    "rules": {
+      "maxLoginCount": 1,
+      "maxLogoutCount": 0,
+      "maxRepairCount": 0,
+      "probeIntervalSeconds": 60,
+      "maxObservationSeconds": 300
+    },
+    "counts": {
+      "automaticLoginCount": 0,
+      "automaticLogoutCount": 0,
+      "automaticRepairCount": 0,
+      "userLoginCount": 1,
+      "userLogoutCount": 0,
+      "userRepairCount": 0,
+      "observationSeconds": 250.953,
+      "additionalNetworkProbeCount": 0,
+      "snapshotCount": 5,
+      "newDistinctEventsAfterInitialSnapshot": 0
+    },
+    "userActions": [
+      {
+        "actor": "user",
+        "action": "manual-login",
+        "time": "2026-11-08T03:57:48.675378+00:00",
+        "timeBasis": "observation-start-after-user-report; actual authentication time was not captured",
+        "confirmationSource": "user-report"
+      }
+    ],
+    "stopConditions": [
+      "User stops, network/session generation changes, failed snapshot, or monotonic 300-second maximum."
+    ],
+    "failureHandling": [
+      "Do not authenticate, log out, repair, or repeat network requests; record limitations and return control."
+    ],
+    "results": {
+      "whitelistCollection": "PASS",
+      "reportedManualLogin": "PASS",
+      "newHeartbeatInWindow": "BLOCKED",
+      "newHttpsInWindow": "BLOCKED"
+    },
+    "limitations": [
+      "Snapshots do not prove uninterrupted Internet between samples",
+      "Selected network identity is not exported; changes are detected through application phase/error/generation",
+      "User-reported login count is not a measured authentication-request counter",
+      "All five snapshots retained identical event wall/heartbeat/internet timestamps. Stored success predates host observation start; no paired clock anchors were taken during the window.",
+      "One outside-window clock pair found device approximately 1.407 to 2.474 seconds ahead of host; it does not establish clock stability throughout the earlier window."
+    ],
+    "observation": "Five whitelist snapshots were collected over 250.953 seconds at intervals of at least 60 seconds. All retained identical stored event timestamps and row count. No newly recorded heartbeat or HTTPS success was captured in the window. The user reported one successful manual connection; stored success flags do not establish subsequent or continuous connectivity.",
+    "expected": "At least one newly recorded scheduled heartbeat and HTTPS sample inside the bounded observation window.",
+    "actual": "Five whitelist snapshots were collected over 250.953 seconds at intervals of at least 60 seconds. All retained identical stored event timestamps and row count. No newly recorded heartbeat or HTTPS success was captured in the window. The user reported one successful manual connection; stored success flags do not establish subsequent or continuous connectivity."
+  },
+  "children": [
+    {
+      "testId": "r9-realme34-live-00",
+      "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+      "evidence": {
+        "archivePath": "evidence/r9-realme34-live-00/result.json",
+        "sha256": "40709C198DB99D60ECC495E8BEADC988DF7CF32D23E763AF7AA1A45A9A5D9DCA",
+        "role": "selected result",
+        "includedOriginal": false
+      }
+    },
+    {
+      "testId": "r9-realme34-live-01",
+      "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+      "evidence": {
+        "archivePath": "evidence/r9-realme34-live-01/result.json",
+        "sha256": "F28928EF9DFA74D071FE582545553C9DF15C2D53D14E9390470B80B8020C2340",
+        "role": "selected result",
+        "includedOriginal": false
+      }
+    },
+    {
+      "testId": "r9-realme34-live-02",
+      "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+      "evidence": {
+        "archivePath": "evidence/r9-realme34-live-02/result.json",
+        "sha256": "96274EFC951BF6B070EB89662593159FBC98746D22C78C49BDA7C3166BA9038B",
+        "role": "selected result",
+        "includedOriginal": false
+      }
+    },
+    {
+      "testId": "r9-realme34-live-03",
+      "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+      "evidence": {
+        "archivePath": "evidence/r9-realme34-live-03/result.json",
+        "sha256": "96DF919C7534D08B24AB9E5BAE552CFDC3B8E12DA4638972AC4FDE0933109359",
+        "role": "selected result",
+        "includedOriginal": false
+      }
+    },
+    {
+      "testId": "r9-realme34-live-04",
+      "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+      "evidence": {
+        "archivePath": "evidence/r9-realme34-live-04/result.json",
+        "sha256": "85B1903F87DFDC4D6E968D9040F01E0FE7057E97B3107E309C7CB096FA91081F",
+        "role": "selected result",
+        "includedOriginal": false
+      }
+    }
+  ],
+  "evidence": {
+    "archivePath": "evidence/r9-realme-manual-network/aggregate.json",
+    "sha256": "50B93B28A5D59436FA0EA7D026E3D69A2E9A0098C0EC182548A57BCD655264C8",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  "scope": "current-source-bound-aggregate"
+}

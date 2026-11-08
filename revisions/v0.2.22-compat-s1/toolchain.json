@@ -1,0 +1,32 @@
+{
+  "jdk": "17.0.16",
+  "gradle": "8.11.1",
+  "agp": "8.9.2",
+  "kotlin": "2.1.20",
+  "components": [
+    {
+      "name": "Android Build Tools",
+      "version": "35.0.0",
+      "sourcePropertiesSha256": "084847D70ABC41284FEEE7EA717E7C92EAB0D1BE05F048C27445A359CFE109D8"
+    },
+    {
+      "name": "NDK",
+      "version": "28.0.13004108",
+      "sourcePropertiesSha256": "4F060F28F653CB492FDFBF48D7C4777399574BD2E4C14090141D2DB770EEF129"
+    },
+    {
+      "name": "CMake",
+      "version": "3.22.1",
+      "sourcePropertiesSha256": "3F61A0382A6C9D14B1D2BBEF580F5C058B9281BABBC0D36B18E5C36AA9A0B5DC"
+    },
+    {
+      "name": "Android Platform Tools",
+      "version": "37.0.1",
+      "sourcePropertiesSha256": "2DCCD788C0234D8CF7F7457377E57F57527A86A629C6ED54FEB8AF0F549DAC38"
+    }
+  ],
+  "compileSdk": 35,
+  "minSdk": 26,
+  "targetSdk": 35,
+  "testCertificateSha256": "2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229"
+}

@@ -40,3 +40,10 @@ secrets.txt
 *.iml
 .DS_Store
 Thumbs.db
+tools.local.json
+gradle-project/
+local-appdata/
+appdata/
+pack/
+jvm-tools/
+evidence/build-*/

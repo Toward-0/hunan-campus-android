@@ -1,0 +1,586 @@
+{
+  "testId": "r9-api26-ui-font2-current-none",
+  "probe": "S1-UI",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:46:24.781957+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "S1-UI",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "versionCode": 34,
+    "package": "org.esurfing.hunan.isolation",
+    "fontRequested": "2.0",
+    "navigationRequested": "current",
+    "cutoutRequested": "none",
+    "time": "2026-11-08T03:46:24.781957+00:00",
+    "restoration": [
+      {
+        "id": "restore-font_scale",
+        "status": "PASS"
+      },
+      {
+        "id": "verify-font_scale",
+        "status": "PASS"
+      },
+      {
+        "id": "verify-show_ime_with_hard_keyboard",
+        "status": "PASS"
+      },
+      {
+        "id": "verify-overlays",
+        "status": "PASS"
+      }
+    ],
+    "api": 26,
+    "model": "Android SDK built for x86_64",
+    "abis": [
+      "x86_64",
+      "x86"
+    ],
+    "pageSize": 4096,
+    "installedPrimaryAbi": "x86_64",
+    "instrumentationExitSuccess": true,
+    "result": {
+      "testId": "S1-UI",
+      "api": 26,
+      "model": "Android SDK built for x86_64",
+      "fontScale": 2,
+      "status": "PASS",
+      "sessionServicesCreated": 0,
+      "businessClicks": 0,
+      "fullVisualAcceptance": "NOT_RUN",
+      "systemBarVisualReviewRequired": true,
+      "popupDebug": {
+        "createdRows": [],
+        "actualRows": [],
+        "actualCandidates": [],
+        "substep": "complete",
+        "originatingWindowId": 1,
+        "windowId": 9,
+        "packageMatches": true,
+        "options": [
+          {
+            "label": "iOS 兼容通道 · 优先验证",
+            "matchCount": 1,
+            "visibleCount": 1,
+            "nodes": [
+              {
+                "visible": true,
+                "bounds": "[72,1239][1008,1558]",
+                "insideSafeBounds": true
+              }
+            ]
+          },
+          {
+            "label": "旧 Windows 通道 · 未通过放行验收",
+            "matchCount": 1,
+            "visibleCount": 1,
+            "nodes": [
+              {
+                "visible": true,
+                "bounds": "[72,1558][1008,1877]",
+                "insideSafeBounds": true
+              }
+            ]
+          }
+        ]
+      },
+      "independentFailures": [],
+      "screens": [
+        {
+          "name": "page0",
+          "pageIndex": 0,
+          "pageTitle": "连接",
+          "contentMarker": "账号和密码在“账号”页管理。",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page0.png",
+          "sha256": "38ADEF0F6D0A7D19D4DDE43E1CD8A1319170F81936777CC17D79B5378D6F55F4",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page0-bottom",
+          "pageIndex": 0,
+          "pageTitle": "连接",
+          "contentMarker": "账号和密码在“账号”页管理。",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page0-bottom.png",
+          "sha256": "FC2D15013AD576E11C41E4CFB2885B2A8E6E69E22019276A5844F29E5896973B",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page1",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page1.png",
+          "sha256": "CC3B79F908CA7C11A2CCB787A8E4C4230AB58897994E481AF1B6B1AD4B9FB41D",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page1-bottom",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page1-bottom.png",
+          "sha256": "F3ADEBADC17E2B12859BE731B52023F7DB4BC6EB70537B45722F62449A90E8F0",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "keyboard",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,1449]",
+          "screenshot": "ui-keyboard.png",
+          "sha256": "26D4551F2AA172043ACD0817ECD6BB2F7FC0C1F0A04C656244D41D86CE2429C6",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "keyboard-password",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,1449]",
+          "screenshot": "ui-keyboard-password.png",
+          "sha256": "5F6534F8C816E9487D9BD7559388E7160A6CB6CD80D7A95189077F3D9A22B935",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "dropdown",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 9,
+          "screenshot": "ui-dropdown.png",
+          "sha256": "6764C537F06F9DAC5AC80B9965B234ED9DBF590FBCC8D26DEFA64E01C2469C2D",
+          "captureKind": "channel-dropdown",
+          "textLayoutStatus": "NOT_RUN",
+          "manualVisualRequired": true,
+          "adapterUnchanged": true,
+          "popupOptions": [
+            {
+              "label": "iOS 兼容通道 · 优先验证",
+              "bounds": "[72,1239][1008,1558]",
+              "safeBounds": "[0,72][1080,2196]",
+              "fullyVisible": true,
+              "textLayoutStatus": "NOT_RUN",
+              "manualVisualRequired": true
+            },
+            {
+              "label": "旧 Windows 通道 · 未通过放行验收",
+              "bounds": "[72,1558][1008,1877]",
+              "safeBounds": "[0,72][1080,2196]",
+              "fullyVisible": true,
+              "textLayoutStatus": "NOT_RUN",
+              "manualVisualRequired": true
+            }
+          ]
+        },
+        {
+          "name": "advanced-first",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-advanced-first.png",
+          "sha256": "7E34CD0D0017B5085CBA14109D42A7EF8DABB7048CB9FB7945A417614E514ECC",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "advanced-first-keyboard",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,1449]",
+          "screenshot": "ui-advanced-first-keyboard.png",
+          "sha256": "D4E414A3E488778E67608EBB044B0F66AEDD1042CB47C387BD53BB8F2A1BAA84",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "advanced-last",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-advanced-last.png",
+          "sha256": "EECD7660652CFB903D333FF8260FBBEA6717BAF7972BADC86AD0D32FE1303FB1",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "advanced-last-keyboard",
+          "pageIndex": 1,
+          "pageTitle": "账号",
+          "contentMarker": "校园网账号",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,1449]",
+          "screenshot": "ui-advanced-last-keyboard.png",
+          "sha256": "0A73ACEBDAEB6AEDA104DEE96270495C7A46A3043D70574C89DAE5C33E41C95F",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page2",
+          "pageIndex": 2,
+          "pageTitle": "诊断",
+          "contentMarker": "诊断日志",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page2.png",
+          "sha256": "B3030FDCED7006D7101542B428809E60DF85B8FEF8CCAF7BF5DF7C76EB7DA2EB",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page2-bottom",
+          "pageIndex": 2,
+          "pageTitle": "诊断",
+          "contentMarker": "诊断日志",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page2-bottom.png",
+          "sha256": "9D97C507D40BC69E0B1294A358B07874A75D169E72D6EB0DBA4E56F2964A42E5",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page3",
+          "pageIndex": 3,
+          "pageTitle": "更多",
+          "contentMarker": "修复网络",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page3.png",
+          "sha256": "CE33A1C6CB937DC6579B0D3090A8664C0C98FC548C2A7AF848FEA5905575324E",
+          "displayBounds": "[0,0][1080,2340]"
+        },
+        {
+          "name": "page3-bottom",
+          "pageIndex": 3,
+          "pageTitle": "更多",
+          "contentMarker": "修复网络",
+          "activity": "org.esurfing.hunan.MainActivity",
+          "activityInstance": 247698956,
+          "foregroundPackage": "org.esurfing.hunan.isolation",
+          "windowId": 1,
+          "safeBounds": "[0,72][1080,2196]",
+          "screenshot": "ui-page3-bottom.png",
+          "sha256": "56CB0143FDAF18D7366A8AECCE4F634050FBF6B9787E51A7F363990F00600750",
+          "displayBounds": "[0,0][1080,2340]"
+        }
+      ],
+      "controls": [
+        {
+          "label": "连接校园网",
+          "bounds": "[72,1262][1008,1463]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 0,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "保存并连接",
+          "bounds": "[72,1836][1008,2037]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "高级设置  ＋",
+          "bounds": "[72,1995][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "账号输入",
+          "bounds": "[72,809][1008,1017]",
+          "safeBounds": "[0,72][1080,1449]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "focus-with-visible-keyboard"
+        },
+        {
+          "label": "密码输入",
+          "bounds": "[72,1192][1008,1400]",
+          "safeBounds": "[0,72][1080,1449]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "focus-with-visible-keyboard"
+        },
+        {
+          "label": "认证通道当前选项",
+          "bounds": "[72,1877][864,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": false,
+          "pageIndex": 1,
+          "interaction": "selected-option-text-without-ellipsis"
+        },
+        {
+          "label": "认证通道下拉选项",
+          "pageIndex": 1,
+          "interaction": "open-original-popup-and-back-cancel",
+          "businessClickInvoked": false,
+          "selectedIndexBefore": 0,
+          "selectedIndexAfter": 0,
+          "textLayoutStatus": "NOT_RUN",
+          "manualVisualRequired": true
+        },
+        {
+          "label": "门户覆盖输入",
+          "bounds": "[72,1988][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "scrolled-into-safe-area"
+        },
+        {
+          "label": "门户覆盖输入",
+          "bounds": "[72,1241][1008,1449]",
+          "safeBounds": "[0,72][1080,1449]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "focus-with-visible-keyboard"
+        },
+        {
+          "label": "IPv4输入",
+          "bounds": "[72,1624][1008,1832]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "scrolled-into-safe-area"
+        },
+        {
+          "label": "默认网关输入",
+          "bounds": "[72,1988][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "scrolled-into-safe-area"
+        },
+        {
+          "label": "MAC输入",
+          "bounds": "[72,1988][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "scrolled-into-safe-area"
+        },
+        {
+          "label": "mscgip输入",
+          "bounds": "[72,1988][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "scrolled-into-safe-area"
+        },
+        {
+          "label": "主机名输入",
+          "bounds": "[72,1988][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "scrolled-into-safe-area"
+        },
+        {
+          "label": "主机名输入",
+          "bounds": "[72,1241][1008,1449]",
+          "safeBounds": "[0,72][1080,1449]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 1,
+          "interaction": "focus-with-visible-keyboard"
+        },
+        {
+          "label": "检测 Wi-Fi（不登录）",
+          "bounds": "[72,590][1008,903]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 2,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "复制脱敏诊断",
+          "bounds": "[72,1995][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 2,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "修复网络",
+          "bounds": "[72,590][1008,791]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 3,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "注销并停止",
+          "bounds": "[72,1168][1008,1369]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 3,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "后台定时权限",
+          "bounds": "[72,1655][1008,1856]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 3,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "清除本机账号密码和设置",
+          "bounds": "[72,1883][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 3,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        },
+        {
+          "label": "查看开源许可",
+          "bounds": "[72,1995][1008,2196]",
+          "safeBounds": "[0,72][1080,2196]",
+          "fullyVisible": true,
+          "textFits": true,
+          "enabled": true,
+          "clickable": true,
+          "pageIndex": 3,
+          "interaction": "touch-down-cancel",
+          "businessClickInvoked": false
+        }
+      ]
+    },
+    "status": "PASS"
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/result.json",
+    "sha256": "78F85B5B07A97719A14108AB54CFF90A9B4CFEB7FB51EC7F8A68A9FBF996BDD0",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

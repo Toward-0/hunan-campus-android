@@ -1,0 +1,60 @@
+{
+  "testId": "r9-realme34-ui-font2-gesture",
+  "probe": "S1-UI",
+  "status": "FAIL",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:26:47.851127+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "S1-UI",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "versionCode": 34,
+    "package": "org.esurfing.hunan.isolation",
+    "fontRequested": "2.0",
+    "navigationRequested": "gesture",
+    "cutoutRequested": "current",
+    "time": "2026-11-08T04:26:47.851127+00:00",
+    "restoration": [
+      {
+        "id": "restore-font_scale",
+        "status": "FAIL"
+      },
+      {
+        "id": "verify-font_scale",
+        "status": "PASS"
+      },
+      {
+        "id": "verify-show_ime_with_hard_keyboard",
+        "status": "PASS"
+      },
+      {
+        "id": "verify-overlays",
+        "status": "PASS"
+      },
+      {
+        "id": "verify-notification",
+        "status": "PASS"
+      }
+    ],
+    "api": 34,
+    "model": "RMX3820",
+    "abis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "installedPrimaryAbi": "arm64-v8a",
+    "status": "FAIL",
+    "exception": "RuntimeError"
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-ui-font2-gesture/result.json",
+    "sha256": "F48D53CDD23BBDEA9A1AEE104C441CB7A5A8134569E38318B12E3781943B111E",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

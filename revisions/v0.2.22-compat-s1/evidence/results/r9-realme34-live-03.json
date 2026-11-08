@@ -1,0 +1,73 @@
+{
+  "testId": "r9-realme34-live-03",
+  "probe": "MAIN-SNAPSHOT",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+  "time": "2026-11-08T04:00:55.730183+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "MAIN-SNAPSHOT",
+    "time": "2026-11-08T04:00:55.730183+00:00",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "package": "org.esurfing.hunan",
+    "targetVersion": 34,
+    "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+    "status": "PASS",
+    "automaticLoginCount": 0,
+    "automaticLogoutCount": 0,
+    "automaticRepairCount": 0,
+    "additionalNetworkProbeCount": 0,
+    "mainForceStopCount": 0,
+    "mainDataClearCount": 0,
+    "model": "RMX3820",
+    "api": 34,
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "beforeInstall": {
+      "versionCode": 34,
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795"
+    },
+    "installed": {
+      "versionCode": 34,
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795"
+    },
+    "snapshot": {
+      "manualOff": "false",
+      "sessionServicePresent": true,
+      "events": {
+        "validRowsInCurrentFile": 383,
+        "invalidRowsInCurrentFile": 0,
+        "lastEvent": {
+          "wall": 1794110107592,
+          "desired": true,
+          "generation": 1,
+          "phase": "AUTHENTICATED",
+          "heartbeatAt": 1794110107392,
+          "heartbeatResult": "PASS",
+          "internetAt": 1794110107525,
+          "internetResult": "PASS",
+          "error": "NONE",
+          "retries": 0,
+          "nextRecoveryAt": 0,
+          "heartbeatDueAt": 1794110357399,
+          "heartbeatDelayMs": 0,
+          "durationMs": 0,
+          "internetEvidence": "HTTPS_VERIFIED"
+        }
+      }
+    },
+    "finishedAt": "2026-11-08T04:00:57.525904+00:00"
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-live-03/result.json",
+    "sha256": "96DF919C7534D08B24AB9E5BAE552CFDC3B8E12DA4638972AC4FDE0933109359",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

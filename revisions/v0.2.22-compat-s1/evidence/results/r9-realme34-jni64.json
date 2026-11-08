@@ -1,0 +1,66 @@
+{
+  "testId": "r9-realme34-jni64",
+  "probe": "CompatProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:07:43.343378+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "CompatProbe",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T04:07:43.343378+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 34,
+    "model": "RMX3820",
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "installSuccess": true,
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "result": {
+      "handlesAfter": 0,
+      "status": "PASS",
+      "allocationFailurePositionsPerAlgorithm": 20,
+      "testId": "S1-JNI",
+      "syntheticAlgorithms": 9,
+      "nativeBits": 64,
+      "pageSize": 4096,
+      "model": "RMX3820",
+      "supportedAbis": [
+        "arm64-v8a",
+        "armeabi-v7a",
+        "armeabi"
+      ],
+      "malformedRejected": 182,
+      "loadedAbi": "arm64-v8a",
+      "cycles": 200,
+      "api": 34,
+      "process64": true,
+      "manufacturer": "realme"
+    },
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-jni64/result.json",
+    "sha256": "E4C7360AA962B1759DB6017232AC6FBAE0A5A1D01E5D35BE9F1072BE1A4F0B75",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

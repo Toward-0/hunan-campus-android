@@ -1,0 +1,31 @@
+{
+  "testId": "r9-realme34-ui-font2-three",
+  "probe": "S1-UI",
+  "status": "NOT_RUN",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:28:32.000265+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "S1-UI",
+    "label": "r9-realme34-ui-font2-three",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "versionCode": 34,
+    "package": "org.esurfing.hunan.isolation",
+    "status": "NOT_RUN",
+    "fontRequested": "2.0",
+    "navigationRequested": "three",
+    "cutoutRequested": "current",
+    "time": "2026-11-08T04:28:32.000265+00:00",
+    "expected": "Four-page UI and screenshots align; font/navigation combination verified; settings restored.",
+    "actual": "Not executed. Prior font2/gesture set-font_scale and restore-font_scale commands returned 255, so subsequent UI mutations were paused. Planned environment is a target only, not a new observed run."
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-ui-font2-three/result.json",
+    "sha256": "C0400552F0C6B85D2A68D7CF1F581EC1E760E6039559E8B1C045B7C80090F2C2",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

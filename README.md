@@ -1,64 +1,49 @@
 # 湖南校园网 Android
 
-在安卓手机上使用校园网账号和密码连接湖南校园网，查看连接状态，并在需要时手动修复网络。
+使用校园网账号密码连接湖南校园网，查看连接和外网状态，并在条件满足时由用户确认修复。保留简约四页界面。
 
-当前交付版本为 **0.2.21-compat-s1（33）**，已有 realme 和 iQOO 真机联网成功记录。可下载安装使用，更多系统和长期后台表现仍在持续验证。
+当前仓库候选是经用户确认的**阶段1修订 `s1-json-ui-20261108-01`**，版本 **0.2.22-compat-s1 / versionCode 34**，最终迭代r9。**阶段1未通过，不进入阶段2、3或4。** 本次按用户要求同步已有源码、APK、脚本和证据；不重新构建、不安装、不修改Android源码，也不创建新Release。
 
-**[下载手机 APK](https://github.com/Toward-0/hunan-campus-android/raw/6e832752c7b14d4997b141c16c65657897d5d97e/artifacts/main/ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk)** · [版本说明](https://github.com/Toward-0/hunan-campus-android/releases/tag/v0.2.21-compat-s1) · [使用指南](docs/USER_GUIDE.md)
+[下载v34手机主APK](revisions/v0.2.22-compat-s1/ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk?raw=true)。名称含`isolation`的APK只用于开发测试。[旧v33 Release](https://github.com/Toward-0/hunan-campus-android/releases/tag/v0.2.21-compat-s1)、旧APK及旧证据继续保留，不以本次同步覆盖。历史[使用指南](docs/USER_GUIDE.md)明确适用v33，其下载与哈希不能替代本页v34入口。
 
-## 开始使用
+| 绑定项 | SHA256 |
+|---|---|
+| v34主APK | `DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795` |
+| 本轮238文件源码清单 | `85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9` |
+| 既有测试签名证书 | `2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229` |
 
-1. 下载并安装上面的手机 APK；已有同签名版本可尝试直接覆盖安装，保留应用数据。
-2. 在系统中直接连接校园 Wi-Fi。
-3. 打开应用，在账号页输入账号、密码，先保持高级参数为空。
-4. 点击一次“保存并连接”，查看连接状态及外网检测结果。
+[全部校验和](revisions/v0.2.22-compat-s1/SHA256SUMS.txt) · [源码清单](revisions/v0.2.22-compat-s1/source-manifest.json) · [源码包](revisions/v0.2.22-compat-s1/source.zip?raw=true) · [脚本包](revisions/v0.2.22-compat-s1/scripts.zip?raw=true) · [中文验收报告](revisions/v0.2.22-compat-s1/阶段1验收报告.txt) · [validation](revisions/v0.2.22-compat-s1/validation.json)
 
-**更换手机前，在原手机仍连接校园 Wi-Fi 时点击“注销并停止”，确认注销成功后，再用新手机连接。** “停止连接”或断开 Wi-Fi 不等于注销服务器会话。
+## 本轮修改
 
-## 当前功能
+- 诊断导出改为按完整 JSON 记录裁切并重新执行字段白名单校验；输出元数据也使用 JSON，不再产生首条半记录。
+- 当前错误状态在新会话和成功心跳后清除；本轮历史失败仍保留，不改变认证协议和调度策略。
+- 高级设置的认证通道选项支持大字体换行，保留完整的未验收提示。
+- 隔离 UI 探针绑定前台 Activity、选中页面、内容标识、截图哈希和真实键盘状态，检查业务控件触达时不触发认证操作。
+- 构建和测试的可写目录参数化，所有缓存、AVD、日志及产物限制在本轮工作区。
 
-- 账号密码登录与校园门户自动发现。
-- 已认证会话的心跳维护、连接状态与外网可用性检测。
-- “更多 → 修复网络”常驻入口：条件满足后，由用户确认执行修复。
-- 网络丢失或身份变化后停止连接；进程终止、强制停止或重启后等待手动连接。
-- 简洁四页界面，手机安装包同时包含 32 位和 64 位 ARM 原生库。
+## 使用与边界
 
-## 支持与验证范围
+普通使用者只安装 `ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk`；名称含 `isolation` 的包仅供开发测试。覆盖前核对交付哈希和既有测试签名。不要卸载或清除主应用数据来绕过安装失败。
 
-**设计支持**：Android 8.0 / API 26 起，targetSdk 35；手机 ABI 为 `arm64-v8a` 与 `armeabi-v7a`。设计范围不代表其中每个系统和机型都已验证。
+直接连接校园 Wi-Fi 后，在账号页手动点击一次“保存并连接”。真实登录、注销和修复由用户操作。网络丢失或身份变化后停止，进程终止、force-stop、重启后不自动认证。修复仍需确认，仅自身注销成功后按客户端100秒等待策略至多重登一次，取消保护保持。
 
-**当前版本已验证**：
+更换手机前应在旧手机仍有会话时手动“注销并停止”；停止连接不等于服务端注销。
 
-| 设备 / 环境 | 系统 | ABI / 页大小 | 已有结果 |
-|---|---|---|---|
-| realme RMX3820 | Android 14 / API 34 | ARM64、ARM32 / 4KB | 主包安装与实网成功；同版本隔离包 ARM64、ARM32 JNI 通过 |
-| iQOO 12（设备型号 V2307A） | Android 15 / API 35 | ARM64 / 4KB | 主包安装、仅账号密码实网连接成功；同版本隔离包 ARM64 JNI 通过 |
-| Android Emulator | API 35 | x86_64 / 4KB | 隔离包专项测试；不作为手机 ARM 兼容证明 |
+## 支持与证据
 
-**当前不足与未验证范围**：
+设计基线保持 **minSdk26、targetSdk35、手机双 ARM ABI**。x86_64仅用于隔离模拟器。本次实际运行证据限API26/35 x86_64模拟器及API34 realme RMX3820 ARM64/ARM32进程，页大小均4096；用例与限制逐项见[validation](revisions/v0.2.22-compat-s1/validation.json)。iQOO本轮未连接；v33或中间迭代通过不转记最终APK通过，不能宣称“大部分安卓手机”已验证。
 
-- 尚未完成 ARM64 / 16KB 页大小设备的实际运行验证；静态对齐检查通过不能替代真机结果。
-- API 35 下两倍字体仍有状态栏顶部裁切，四页的全部刘海、导航、键盘与大字体组合尚未验收完毕。
-- 当前版本的旧 Android 系统完整回归矩阵仍待补齐，其他厂商和型号需逐台验证。
-- 尚未完成 Doze 组合及 8 小时自然锁屏测试，不能保证所有手机在省电限制下持续准时心跳。
-- 诊断导出的完整性和部分测试记录仍需完善。
+ARM64 / 16KB 实际运行环境仍缺失，保持 BLOCKED。API35 大字体系统状态栏字形裁切有系统设置页对照；最终截图中部分组合仍存在裁切，系统栏视觉门槛保留 FAIL，不能用应用控件几何检查代替。静态 ELF/ZIP 对齐不等于16KB运行通过。API29 环境启动及进程核验受阻，API31/33/36 未完成本轮矩阵。Doze组合、8小时自然锁屏、全面厂商适配和完整进程生命周期没有在本轮自动获得授权。
 
-当前使用既有**测试签名**。将来迁移正式签名时，安装方式与数据迁移可能需要调整，不能保证换签后直接覆盖安装。
+现用测试签名，不生成或接管正式密钥；未来换签不保证直接覆盖。反馈只提供型号、系统、应用版本和操作现象，不提交账号、密码、票据、密钥、完整抓包或完整设备日志。
 
-## 下载与反馈
+## 开发与归档
 
-普通使用者只需安装 `ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk`。名称含 `isolation` 的 APK 仅用于开发测试。
+工程在`source/`，238文件严格保持[本轮清单](revisions/v0.2.22-compat-s1/source-manifest.json)每字节一致；`tools/v34-s1/`对应固定脚本包16文件。历史源码内旧README不是当前版本依据。原v33 APK仍绑定原始233文件清单C83DFE…DEA，发布副本的一处文档脱敏不能倒签原APK输入。
 
-主包 SHA256：
+`revisions/v0.2.22-compat-s1/`为固定交付243文件的逐字节副本。其中“未推送”“未发布”等措辞是**构建交付时的历史快照**，本次同步不改写这些文件。顶层文档说明本次同步，独立于Android构建输入。
 
-```text
-7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D
-```
+19项门槛详见[当前状态表](docs/CURRENT_STATUS.md)，仍有FAIL、BLOCKED及NOT_RUN。除上述系统栏和矩阵缺口外，realme密码键盘截图内容区全黑、人工视觉BLOCKED；font2设置及恢复写入255保留FAIL，三键两项NOT_RUN。约251秒5次白名单快照未取得观察窗内新增心跳/HTTPS，短测BLOCKED。模拟器退出核验仍受阻，开发work未封存。Lint实际主包0错误/15警告、隔离包0错误/34警告，不能宣称零警告。
 
-反馈时请说明手机型号、Android 版本、应用版本、操作顺序和页面提示。不要提交账号、密码、票据、完整抓包或未经检查的完整日志。可通过 [Issues](https://github.com/Toward-0/hunan-campus-android/issues) 记录使用问题与改进建议。
-
-## 开发与持续完善
-
-源码位于 [`source/`](source/)，构建入口和工具使用说明见 [构建文档](docs/BUILD_AND_INSTALL.md)，完整开发流程见 [FULL_WORKFLOW.md](docs/FULL_WORKFLOW.md)，验证资料见 [`evidence/`](evidence/)。本次发布沿用已验证的同一 APK，没有重建或变更应用版本。
-
-后续优先完善界面适配、旧系统与 16KB 运行验证、后台调度和长期锁屏表现。源码目录内部分说明属于历史版本，以仓库首页及本次版本说明为当前使用入口。第三方代码的原有许可和来源说明保留在源码中。
+先读 [当前状态](docs/CURRENT_STATUS.md)、[构建与安装](docs/BUILD_AND_INSTALL.md)、[接续要求](docs/NEXT_PROMPT.md)和[完整流程](docs/FULL_WORKFLOW.md)。封存后再改必须另起工作及输出目录。第三方许可和来源说明均保留。

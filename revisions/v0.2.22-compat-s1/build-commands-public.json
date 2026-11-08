@@ -1,0 +1,486 @@
+{
+  "pathPlaceholders": [
+    "<ANDROID_SDK>",
+    "<EXISTING_TEST_KEYSTORE>",
+    "<GRADLE_EXECUTABLE>",
+    "<JDK>",
+    "<OUTPUT>",
+    "<SOURCE>",
+    "<STAGE>",
+    "<SIGNING_PASSWORD_ENV>"
+  ],
+  "note": "完整原始命令仅保留本地引用与哈希；对外参数显式映射路径，不包含口令值。构建目录由审查者显式选择，版本相同不能单独证明构建输入。",
+  "records": [
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-x86_64-20261108-114228-439/build-command.json",
+        "sha256": "4BC1EBC5CFE1E2071743EB52F3F528A828E0F398D3D98DDE25C4D87C348489DE",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": {
+        "time": "2026-11-08T11:42:28.4687599+08:00",
+        "arguments": [
+          "-p",
+          "<SOURCE>",
+          "--offline",
+          "--no-daemon",
+          "--project-cache-dir",
+          "<STAGE>\\gradle-project",
+          "-PtestAbi=x86_64",
+          ":app:assembleIsolation"
+        ],
+        "command": "<GRADLE_EXECUTABLE>",
+        "versionName": "0.2.22-compat-s1",
+        "versionCode": 34,
+        "environment": {
+          "sdk": "<ANDROID_SDK>",
+          "avd": "<STAGE>\\avd",
+          "temp": "<STAGE>\\tmp",
+          "android": "<STAGE>\\android-user",
+          "gradle": "<STAGE>\\gradle-user",
+          "javaOptions": "-XX:-UsePerfData -Djava.io.tmpdir=\"<STAGE>\\tmp\" -Djdk.net.unixdomain.tmpdir=\"<STAGE>\\tmp\" -Duser.home=\"<STAGE>\\java-user\" -XX:ErrorFile=\"<STAGE>/tmp/hs_err_pid%p.log\""
+        }
+      }
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-x86_64-20261108-114228-439/build-exit.json",
+        "sha256": "FB3081A482B2447167B8E393328813FC2878F7CFC4E5B63614D4DE09C0E19D35",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": {
+        "time": "2026-11-08T11:43:21.8608450+08:00",
+        "exitCode": 0
+      }
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-x86_64-20261108-114228-439/packaging-commands-isolation.json",
+        "sha256": "CEDAC2811E1EA8EAC61337EF3D60DFDEEB6DA4B8C54003B08A83E68960252ECB",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "arguments": [
+            "-f",
+            "-P",
+            "16",
+            "4",
+            "<SOURCE>\\app\\build\\outputs\\apk\\isolation\\app-isolation-unsigned.apk",
+            "<STAGE>\\pack\\isolation-x86_64-20261108-114228-439-aligned.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "sign",
+            "--ks",
+            "<EXISTING_TEST_KEYSTORE>",
+            "--ks-pass",
+            "env:<SIGNING_PASSWORD_ENV>",
+            "--out",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-x86_64.apk",
+            "<STAGE>\\pack\\isolation-x86_64-20261108-114228-439-aligned.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "verify",
+            "--verbose",
+            "--print-certs",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-x86_64.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-c",
+            "-P",
+            "16",
+            "-v",
+            "4",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-x86_64.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-x86_64-20261108-114228-439/packaging-exits-isolation.json",
+        "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "step": "zipalign",
+          "exitCode": 0
+        },
+        {
+          "step": "sign",
+          "exitCode": 0
+        },
+        {
+          "step": "verify",
+          "exitCode": 0
+        },
+        {
+          "step": "final-zipalign",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-phone-20261108-114331-004/build-command.json",
+        "sha256": "A703429C189C1826DFC0B2D021F4ABE346F8184A137E73BBE930766FE86943DB",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": {
+        "time": "2026-11-08T11:43:31.0229876+08:00",
+        "arguments": [
+          "-p",
+          "<SOURCE>",
+          "--offline",
+          "--no-daemon",
+          "--project-cache-dir",
+          "<STAGE>\\gradle-project",
+          "-PtestAbi=phone",
+          ":app:assembleIsolation",
+          ":app:assembleCandidate",
+          ":app:lintCandidate",
+          ":app:lintIsolation"
+        ],
+        "command": "<GRADLE_EXECUTABLE>",
+        "versionName": "0.2.22-compat-s1",
+        "versionCode": 34,
+        "environment": {
+          "sdk": "<ANDROID_SDK>",
+          "avd": "<STAGE>\\avd",
+          "temp": "<STAGE>\\tmp",
+          "android": "<STAGE>\\android-user",
+          "gradle": "<STAGE>\\gradle-user",
+          "javaOptions": "-XX:-UsePerfData -Djava.io.tmpdir=\"<STAGE>\\tmp\" -Djdk.net.unixdomain.tmpdir=\"<STAGE>\\tmp\" -Duser.home=\"<STAGE>\\java-user\" -XX:ErrorFile=\"<STAGE>/tmp/hs_err_pid%p.log\""
+        }
+      }
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-phone-20261108-114331-004/build-exit.json",
+        "sha256": "C5BE4AB9EE6A7A33981C92AF5F5BB1656E40C47F5FADD8ACD6C9B4866B03A4E5",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": {
+        "time": "2026-11-08T11:44:42.4160345+08:00",
+        "exitCode": 0
+      }
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-phone-20261108-114331-004/packaging-commands-candidate.json",
+        "sha256": "B1D346C4ECD63FB25C9CCE97429C014B387830F76F505008DFFE45C0C177AA61",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "arguments": [
+            "-f",
+            "-P",
+            "16",
+            "4",
+            "<SOURCE>\\app\\build\\outputs\\apk\\candidate\\app-candidate-unsigned.apk",
+            "<STAGE>\\pack\\candidate-phone-20261108-114331-004-aligned.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "sign",
+            "--ks",
+            "<EXISTING_TEST_KEYSTORE>",
+            "--ks-pass",
+            "env:<SIGNING_PASSWORD_ENV>",
+            "--out",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk",
+            "<STAGE>\\pack\\candidate-phone-20261108-114331-004-aligned.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "verify",
+            "--verbose",
+            "--print-certs",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-c",
+            "-P",
+            "16",
+            "-v",
+            "4",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-phone-20261108-114331-004/packaging-commands-isolation.json",
+        "sha256": "DC8604DACCC997DF1438C4CDC08C118F87BE1C81BB17E0FE9DD9F3243459DFE0",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "arguments": [
+            "-f",
+            "-P",
+            "16",
+            "4",
+            "<SOURCE>\\app\\build\\outputs\\apk\\isolation\\app-isolation-unsigned.apk",
+            "<STAGE>\\pack\\isolation-phone-20261108-114331-004-aligned.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "sign",
+            "--ks",
+            "<EXISTING_TEST_KEYSTORE>",
+            "--ks-pass",
+            "env:<SIGNING_PASSWORD_ENV>",
+            "--out",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-phone.apk",
+            "<STAGE>\\pack\\isolation-phone-20261108-114331-004-aligned.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "verify",
+            "--verbose",
+            "--print-certs",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-phone.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-c",
+            "-P",
+            "16",
+            "-v",
+            "4",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-phone.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-phone-20261108-114331-004/packaging-exits-candidate.json",
+        "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "step": "zipalign",
+          "exitCode": 0
+        },
+        {
+          "step": "sign",
+          "exitCode": 0
+        },
+        {
+          "step": "verify",
+          "exitCode": 0
+        },
+        {
+          "step": "final-zipalign",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-phone-20261108-114331-004/packaging-exits-isolation.json",
+        "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "step": "zipalign",
+          "exitCode": 0
+        },
+        {
+          "step": "sign",
+          "exitCode": 0
+        },
+        {
+          "step": "verify",
+          "exitCode": 0
+        },
+        {
+          "step": "final-zipalign",
+          "exitCode": 0
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-arm32-20261108-114500-545/build-command.json",
+        "sha256": "5FF365D199A59A10F3DE6EC3307EB74FEC9D9EBE5C594F60CEEB3A12666B9670",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": {
+        "time": "2026-11-08T11:45:00.5632606+08:00",
+        "arguments": [
+          "-p",
+          "<SOURCE>",
+          "--offline",
+          "--no-daemon",
+          "--project-cache-dir",
+          "<STAGE>\\gradle-project",
+          "-PtestAbi=arm32",
+          ":app:assembleIsolation"
+        ],
+        "command": "<GRADLE_EXECUTABLE>",
+        "versionName": "0.2.22-compat-s1",
+        "versionCode": 34,
+        "environment": {
+          "sdk": "<ANDROID_SDK>",
+          "avd": "<STAGE>\\avd",
+          "temp": "<STAGE>\\tmp",
+          "android": "<STAGE>\\android-user",
+          "gradle": "<STAGE>\\gradle-user",
+          "javaOptions": "-XX:-UsePerfData -Djava.io.tmpdir=\"<STAGE>\\tmp\" -Djdk.net.unixdomain.tmpdir=\"<STAGE>\\tmp\" -Duser.home=\"<STAGE>\\java-user\" -XX:ErrorFile=\"<STAGE>/tmp/hs_err_pid%p.log\""
+        }
+      }
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-arm32-20261108-114500-545/build-exit.json",
+        "sha256": "5FDBC58E89A039089EA67A10226CDEFEB93BDFAA5DFE8896281A58E3B044F7A7",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": {
+        "time": "2026-11-08T11:45:28.5951763+08:00",
+        "exitCode": 0
+      }
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-arm32-20261108-114500-545/packaging-commands-isolation.json",
+        "sha256": "FA493DF0F1D64599C2CCDE8799C8B8988301E0050733518BA22B1A7DE6E6F37D",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "arguments": [
+            "-f",
+            "-P",
+            "16",
+            "4",
+            "<SOURCE>\\app\\build\\outputs\\apk\\isolation\\app-isolation-unsigned.apk",
+            "<STAGE>\\pack\\isolation-arm32-20261108-114500-545-aligned.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "sign",
+            "--ks",
+            "<EXISTING_TEST_KEYSTORE>",
+            "--ks-pass",
+            "env:<SIGNING_PASSWORD_ENV>",
+            "--out",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-arm32.apk",
+            "<STAGE>\\pack\\isolation-arm32-20261108-114500-545-aligned.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-jar",
+            "<ANDROID_SDK>/build-tools/35.0.0/lib/apksigner.jar",
+            "verify",
+            "--verbose",
+            "--print-certs",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-arm32.apk"
+          ],
+          "command": "<JDK>/bin/java.exe"
+        },
+        {
+          "arguments": [
+            "-c",
+            "-P",
+            "16",
+            "-v",
+            "4",
+            "<OUTPUT>\\ESurfingHunan-0.2.22-compat-s1-isolation-arm32.apk"
+          ],
+          "command": "<ANDROID_SDK>/build-tools/35.0.0/zipalign.exe"
+        }
+      ]
+    },
+    {
+      "localOriginal": {
+        "archivePath": "evidence/build-arm32-20261108-114500-545/packaging-exits-isolation.json",
+        "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+        "role": "raw build command/exit retained locally",
+        "includedOriginal": false
+      },
+      "publicRecord": [
+        {
+          "step": "zipalign",
+          "exitCode": 0
+        },
+        {
+          "step": "sign",
+          "exitCode": 0
+        },
+        {
+          "step": "verify",
+          "exitCode": 0
+        },
+        {
+          "step": "final-zipalign",
+          "exitCode": 0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "testId": "r9-api26-repair-menu",
+  "probe": "RepairMenuProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:47:24.421411+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "RepairMenuProbe",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T03:47:24.421411+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 26,
+    "model": "Android SDK built for x86_64",
+    "supportedAbis": [
+      "x86_64",
+      "x86"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "x86_64"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "result": {
+      "serviceCommands": 0,
+      "api": 26,
+      "model": "Android SDK built for x86_64",
+      "status": "PASS",
+      "cases": []
+    },
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api26-repair-menu/result.json",
+    "sha256": "A02CD14AFF133390B679C5DE6C0A37F6349E5186F00696EB07863EE9C86BE09F",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

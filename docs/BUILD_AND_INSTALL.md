@@ -1,50 +1,56 @@
-# 构建、安装与复现入口
+# 构建、安装与复现
 
-此交接没有重建 APK，没有手机操作。现有 APK 与原始 v33 源码清单绑定；发布源码只对一份历史说明替换了设备序列号。不要直接在仓库基线执行构建或测试。
+当前候选为阶段1修订`s1-json-ui-20261108-01`最终r9、0.2.22-compat-s1 /34，阶段1仍未通过。本次GitHub同步只复制已有固定交付，无新构建、安装、Android源码修改或新Release。旧v33 Release、原APK和233文件绑定继续保留。固定归档内“未发布”“未推送”是构建交付时历史快照，不改写。不得在基线或封存目录直接运行下面脚本。
 
-## 准备新修订
+[下载v34手机主APK](../revisions/v0.2.22-compat-s1/ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk?raw=true)，SHA256为`DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795`。238文件[源码清单](../revisions/v0.2.22-compat-s1/source-manifest.json) SHA256为`85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9`，仓库source每字节一致；全部文件见[校验和](../revisions/v0.2.22-compat-s1/SHA256SUMS.txt)。
 
-1. 阅读当前状态，提交5—8行实施计划，经用户确认后开始。
-2. 创建新的 `work/<唯一阶段名>/source/` 与 `outputs/<同名>/`，复制 `source/`。先核对 `evidence/source-manifest.json`，保留原始构建绑定和本次发布差异。
-3. 原脚本含历史工具链引用，必须在新副本中参数化 JDK、Gradle、SDK 和测试签名位置；核查所有写入路径。工具链/已有测试签名可只读复用；Gradle缓存、SDK可写部分、Android/Java用户目录、临时目录、AVD、CMake/Gradle输出及日志都进入新阶段，不能用可写链接指回封存目录。
-4. 工具链记录为 JDK17.0.16、Gradle8.11.1、AGP8.9.2、Kotlin2.1.20、NDK28.0.13004108、CMake3.22.1、Build Tools35.0.0。需要本地提供依赖缓存/SDK；仓库没有这些大文件。不得为构建方便整体升级依赖。
-5. 测试签名私钥由用户本地保管，本仓库不含密钥。不生成替代测试密钥冒充同签名。正式签名只制定密钥自持方案。
+[源码包](../revisions/v0.2.22-compat-s1/source.zip?raw=true)、[工具链](../revisions/v0.2.22-compat-s1/toolchain.json)、[validation](../revisions/v0.2.22-compat-s1/validation.json)、[证据索引](../revisions/v0.2.22-compat-s1/evidence-index.json)和[中文报告](../revisions/v0.2.22-compat-s1/阶段1验收报告.txt)均保留固定原件。19门槛及主要缺口见[当前状态](CURRENT_STATUS.md)。顶层同步文档不属于Android构建输入。
 
-既有构建入口位于 `source/build-stage.ps1` 和 `source/stage-env.ps1`。参数化完成后的命令形态为：
+## 在下一份新副本准备环境
+
+先只读核对README、CURRENT_STATUS、FULL_WORKFLOW、AGENTS和最终validation；确认具体计划后，创建新的work/<唯一修订>与outputs/<同名>。复制清单内源码及经审核支持脚本，工具链和现有测试签名允许只读复用。
+
+按source/stage-tools.example.json建立不公开的tools.local.json，配置JDK、Gradle、当前阶段SDK、模拟器工具、已有测试证书、签名环境变量名、输出根及保护根。所有Gradle缓存、SDK可写组件、Android/Java用户目录、临时目录、AVD、CXX/Gradle输出、日志和截图均在新阶段。禁止指向旧目录的可写链接或硬链接。stage-env.ps1校验目录及封存标记；stage_guard.py的明确保护范围必须适配下一修订，不能原封不动指向本轮后继续写入。
+
+保留实际工具链：JDK17.0.16、Gradle8.11.1、AGP8.9.2、Kotlin2.1.20、NDK28.0.13004108、CMake3.22.1、Build Tools35.0.0；minSdk26、targetSdk35。先确认依赖和磁盘可用，再执行离线构建，不升级整套依赖来掩盖问题。既有测试密钥不随交付打包，不生成替代密钥。
+
+## 构建命令形态
+
+签名口令只由用户环境注入配置指定的进程环境变量，不写进脚本、报告或命令行明文。完整参数、环境路径映射、退出码、签名与对齐结果见[公开构建记录](../revisions/v0.2.22-compat-s1/build-commands-public.json)；本地原始记录的哈希在证据索引。以下仅说明经批准的新副本中的命令形态，本次GitHub同步没有执行。
 
 ```powershell
-$ErrorActionPreference = 'Stop'
-# $Stage 和 $Output 是经确认的新目录绝对路径，不是归档源码目录。
+$ErrorActionPreference='Stop'
+# $Stage、$Output均为新的、经检查的绝对路径。
+. "$Stage/source/stage-env.ps1"
 & "$Stage/source/build-stage.ps1" -OutputRoot $Output -BuildAbi phone
-if ($LASTEXITCODE -ne 0) { throw 'phone 构建失败，停止后续步骤' }
 & "$Stage/source/build-stage.ps1" -OutputRoot $Output -BuildAbi arm32 -IsolationOnly -SkipLint
-if ($LASTEXITCODE -ne 0) { throw 'arm32 构建失败' }
 & "$Stage/source/build-stage.ps1" -OutputRoot $Output -BuildAbi x86_64 -IsolationOnly -SkipLint
-if ($LASTEXITCODE -ne 0) { throw 'x86_64 构建失败' }
 ```
 
-原入口执行 `--offline --no-daemon`，记录完整命令/环境/退出码，zipalign、测试签名、签名验证及最终 `zipalign -c -P 16 -v 4`。完整原构建命令的筛选记录见 evidence；没有在本次交接重新执行。ELF LOAD 对齐、最终ZIP对齐与实际16KB环境运行必须分别验收。
+脚本使用--offline、--no-daemon和当前阶段project-cache；每个外部步骤显式检查退出码，失败抛错中止。输出存在时拒绝覆盖。当前未封存修订内迭代也要保留上一迭代APK、idsig、源码输入及测试记录；封存后必须另起修订。新代码交付code递增，文档归档不增code。
 
-## 脚本边界
+手机主包仅双ARM，x86_64仅隔离构建。最终静态审计分别检查身份、签名、ABI、主包隔离入口排除、适用64位ELF LOAD对齐与最终zipalign16KB；实际ARM64/16KB运行仍须单独环境，不可替代。
 
-`source/tests/device/Verify-Compatibility.ps1` 与 `Restore-Compatibility.ps1` 接受显式 Adb、Aapt、Serial、Package、Apk、EvidenceDirectory，限制隔离包并检查退出码、超时、ABI和哈希。先 Environment，再决定是否安装32位包；不能在只支持arm64的iQOO上制造v7a通过结果。
+## 测试脚本与设备
 
-`tools/v33-history/` 是经过审核的历史脚本备份，不是无需配置的通用工具。`SEALED` 禁止原位执行。按需复制到**新的阶段根**，而不是其 source 子目录，保留明确的设备参数；新阶段配置 sdk/、source/、evidence/、pack/ 及对应 outputs/。`stage_guard.py` 的保护根需在新副本中扩展为实际历史根，保留SEALED检查。v33专项文件名与审计断言也必须匹配目标版本，不得盲目替换版本后沿用旧结论。
+[scripts.zip](../revisions/v0.2.22-compat-s1/scripts.zip?raw=true)仅含明确审核的16个支持文件，[script-manifest.json](../revisions/v0.2.22-compat-s1/script-manifest.json)记录哈希；原字节亦位于[tools/v34-s1](../tools/v34-s1/)。不得直接运行带旧阶段绑定的脚本；先适配新修订保护范围。全部设备动作显式传serial、包名、APK和SHA256、源码标识与版本，设备重新核对，不能默认上一台仍在线。
 
-`adb_client.py` 连接已经运行的本机ADB服务127.0.0.1:5037，不创建ADB凭据；使用带必填serial的上层工具，不直接调用其未强制serial的CLI push分支。`run_device.py` 只执行隔离探针，`run_ui.py` 仅操作隔离UI并记录/恢复字体等设置，`device_main.py` 仅安装或读固定字段，不发连接/注销/修复命令。该脚本只覆盖审核过的v33升级路径，不支持任意来源旧APK。
+- run_device.py：仅隔离包，安装/探针有超时，真实进程位数与JNI句柄释放写入证据；退出清理隔离包，不触碰主应用。
+- run_ui.py：仅隔离UI，先记录再恢复字体、导航/刘海覆盖、键盘与隔离通知状态；截图需逐张人工检查，自动PASS不是系统栏视觉通过。
+- matrix-suite.py、run_realme_batch.py：串行编排已约定用例，清理或恢复无法证明成功时停止后续，缺证据保留NOT_RUN/BLOCKED。
+- main-device.py：只读预检、同签名覆盖安装和白名单快照。覆盖前两次核对manualOff、desired、phase及服务不存在；不调用真实连接、停止、注销或修复。
+- restore_revision.py / emulator_process_guard.py：根据匹配的本轮记录恢复隔离测试状态；模拟器退出必须核对serial、qemu、AVD及当前阶段路径，ADB断开与实际进程树退出分别证明。不关闭全局ADB、不删除历史AVD，身份查询拒绝后不得换工具绕过。
 
-未上传一次性报告编排器、包含历史设备基线路径的清理器、含个人解释器路径的启动脚本或原 scripts.zip。它们可能把固定结论写成新结果，不能用来生成未来“通过”记录。
+API29环境及模拟器退出核验仍受阻，API31/33/36未运行；旧API26停机记录缺少进程树退出证据，交付保留原声明及哈希并归一化BLOCKED。realme字体写入255保留FAIL，后续只读恢复核对一致另列；密码键盘截图全黑的视觉BLOCKED不由自动几何PASS替代。当前开发work因此未封存，不影响固定交付的独立哈希绑定。
 
-## 安装、停止和回退
+adb_client.py复用已运行的本机ADB服务127.0.0.1:5037，不创建ADB凭据。测试回环服务器在设备内部，设备127.0.0.1不是主机127.0.0.1；本轮隔离测试不需要adb reverse，不回退生产端点。若将来改用主机服务器，必须先明确reverse映射、超时和退出清理。
 
-安装前指定 `$DeviceSerial`、`$Package`、`$Apk` 和SDK工具路径，核对设备online/authorized、supported ABIs、API、PAGE_SIZE、APK SHA256、包名、版本和签名。保留设备原应用数据；只使用同签名的 `install -r`，安装失败停止，不自动卸载、清数据或使用降级参数。任何安装会中断进程，应选择用户可接受的窗口。
+真实认证始终由用户操作。短时实网方案：登录最多1次、注销0次、修复0次，观察最多5分钟；只保留正常心跳和既有预算探测，代理额外网络探测0次，白名单状态快照间隔至少60秒。认证失败、网络/身份变化、用户停止或到时结束观察；不自动重登、注销或修复，不因失败追加次数。此观察不能证明持续外网、Doze或8小时锁屏表现。
 
-当前主包证书SHA256：`2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229`。换正式签名未必能覆盖测试签名；旧versionCode回退也受Android和数据格式限制，不承诺无损降级。
+## 安装和恢复边界
 
-隔离测试每项使用既有脚本的超时及失败即停止策略。停止/恢复只针对隔离包和本轮已记录的设置，不停止主应用会话，不清除其数据。模拟器停止需核对serial及 `ro.kernel.qemu=1`；不关全局ADB服务，不按名称批量杀进程。
+同签名install -r保留主应用数据，安装失败停止，不自动卸载、清数据或加降级参数。主包测试证书SHA256：2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229。正式签名迁移和低code回退不保证覆盖或无损数据迁移。
 
-真实认证始终由用户操作。短时连接方案应预先规定：本轮登录≤1、注销0、修复0，最多观察5分钟；保留正常心跳与既有有预算探测，不增加轮询。失败或超时由用户停止连接，读字段白名单后分析，不连续重试。需要注销或修复的方案另行明确次数、停止条件与失败处理。
+破坏性和故障注入只作用隔离包。不要导出主应用凭据、完整日志或抓包；从入口就使用字段白名单。用户已归因于旧客户端未注销的换机事件不重新列为APK缺陷，原始历史证据不倒改。
 
-## 许可证和来源
-
-保留 vendor/hunan 的 LICENSE/NOTICE、cJSON许可头、LZMA声明、OkHttp/Okio许可和 provenance。上游NOTICE中的旧Windows凭据格式说明及git历史描述属于上游历史；本Android凭据使用Keystore，新仓库没有导入该旧git历史。仓库没有为全部代码新增统一许可证。
+第三方LICENSE、NOTICE、来源及cJSON/LZMA/OkHttp/Okio声明保留。当前源码清单仅绑定source/实际输入；顶层说明和支持脚本使用独立supplement/script清单，不能混淆成原v33构建输入。

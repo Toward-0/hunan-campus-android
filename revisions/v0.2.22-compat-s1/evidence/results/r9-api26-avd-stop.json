@@ -1,0 +1,39 @@
+{
+  "testId": "r9-api26-avd-stop",
+  "probe": "RESTORE-EMULATOR",
+  "status": "BLOCKED",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:49:48.387095+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "RESTORE-EMULATOR",
+    "time": "2026-11-08T03:49:48.387095+00:00",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "package": "org.esurfing.hunan.isolation",
+    "status": "BLOCKED",
+    "checks": [
+      {
+        "id": "emulator-disconnected",
+        "status": "PASS"
+      }
+    ],
+    "mainApplicationActions": 0,
+    "historicalAvdDeletes": 0,
+    "globalAdbServerActions": 0,
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "api": 26,
+    "model": "Android SDK built for x86_64",
+    "finishedAt": "2026-11-08T03:49:52.796733+00:00",
+    "declaredStatus": "PASS"
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api26-avd-stop/result.json",
+    "sha256": "F5C474C2D751CC5368905C33F703F86EB9C4C6F14651304614AEFA40BBA3B5BB",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "declaredStatus": "PASS",
+  "assessmentCorrection": "原始恢复记录只证明ADB已断开，未包含emulator-process-tree-exited或实际进程退出核验。保留原记录及其哈希；交付审查归一化为BLOCKED，不补造已退出证据。API26独立用例结果及其UI设置恢复不由此改写。",
+  "scope": "current-final-build"
+}

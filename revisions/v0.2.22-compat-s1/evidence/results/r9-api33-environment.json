@@ -1,0 +1,34 @@
+{
+  "testId": "r9-api33-environment",
+  "probe": "MATRIX-ENVIRONMENT-LIMITATION",
+  "status": "NOT_RUN",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T04:07:09.613022+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "MATRIX-ENVIRONMENT-LIMITATION",
+    "label": "r9-api33-environment",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "package": "org.esurfing.hunan.isolation",
+    "time": "2026-11-08T04:07:09.613022+00:00",
+    "status": "NOT_RUN",
+    "expected": "API33当前APK安装、JNI、诊断、修复入口、账号保护及受影响布局测试",
+    "actual": "API29启动后ADB状态offline后absent，存在当前修订的残留模拟器进程。随后系统拒绝Get-CimInstance读取进程身份，无法可靠核验并关闭残留。未更换工具或路径绕过；本API未获得当前APK测试结果。",
+    "environment": {
+      "api": 33
+    },
+    "observation": "environment.api是计划目标，不代表本轮APK已在该系统实际运行；API36仅为补充。进程查询拒绝来自Windows命令返回，未收到自动批准审查的拒绝。",
+    "automaticLoginCount": 0,
+    "automaticLogoutCount": 0,
+    "automaticRepairCount": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api33-environment/result.json",
+    "sha256": "DDF756E932DCE3A5EA442838B6257EDC9323EEF36427DA7A9D4C431B8A8E3282",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

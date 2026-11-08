@@ -1,0 +1,102 @@
+{
+  "testId": "r9-realme34-diagnostics-export64",
+  "probe": "DiagnosticsProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:08:54.240560+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "DiagnosticsProbe",
+    "mode": "export",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T04:08:54.240560+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 34,
+    "model": "RMX3820",
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "result": {
+      "mode": "export",
+      "cases": [
+        {
+          "id": "JSON-EMPTY-MISSING",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-SINGLE-DOUBLE-ORDER",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-NO-FINAL-NEWLINE",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-ROTATION-PARTIAL-RECORDS",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-INPUT-127999",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-INPUT-128000",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-INPUT-128001",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-BOUNDED-COMPLETE-TAIL",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-READ-FAILURE",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-WHITELIST-AND-TYPES",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-METADATA",
+          "status": "PASS"
+        },
+        {
+          "id": "JSON-ACTUAL-COPY-ENTRY",
+          "status": "PASS"
+        }
+      ],
+      "status": "PASS",
+      "api": 34,
+      "process64": true,
+      "testId": "S1-DIAGNOSTICS"
+    },
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-diagnostics-export64/result.json",
+    "sha256": "53E6F9722A36A9E09C0844E5620981B890E3CE038450608287527DDFB51B3E18",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

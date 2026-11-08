@@ -1,0 +1,39 @@
+{
+  "testId": "r9-realme34-live-observation",
+  "probe": "MAIN-NETWORK-OBSERVATION",
+  "status": "BLOCKED",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+  "time": null,
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "MAIN-NETWORK-OBSERVATION",
+    "kind": "manual-network",
+    "package": "org.esurfing.hunan",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+    "versionCode": 34,
+    "api": 34,
+    "pageSize": 4096,
+    "startedAt": "2026-11-08T03:57:48.675378+00:00",
+    "status": "BLOCKED",
+    "automaticLoginCount": 0,
+    "automaticLogoutCount": 0,
+    "automaticRepairCount": 0,
+    "additionalNetworkProbeCount": 0,
+    "limitations": [
+      "Snapshots do not prove uninterrupted Internet between samples",
+      "Selected network identity is not exported; changes are detected through application phase/error/generation",
+      "User-reported login count is not a measured authentication-request counter"
+    ],
+    "finishedAt": "2026-11-08T04:01:59.623025+00:00",
+    "snapshotCount": 5
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-live-observation/result.json",
+    "sha256": "7B3A1C4F26B22EC6F038FD48E8CEBD3BDF1D5458FF2455C0F3176A7E02C24CD0",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

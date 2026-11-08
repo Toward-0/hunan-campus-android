@@ -21,9 +21,19 @@ object TimingTrace {
     private val sequence = AtomicLong()
     private var context: Context? = null
     private var directory: File? = null
+    private var versionName = "unknown"
+    private var versionCode = 0L
     @Synchronized fun initialize(ctx: Context) {
         if (context != null) return
         context = ctx.applicationContext
+        try {
+            @Suppress("DEPRECATION")
+            val installed = ctx.packageManager.getPackageInfo(ctx.packageName, 0)
+            versionName = installed.versionName ?: "unknown"
+            @Suppress("DEPRECATION")
+            versionCode = if (Build.VERSION.SDK_INT >= 28) installed.longVersionCode else installed.versionCode.toLong()
+        } catch (_: android.content.pm.PackageManager.NameNotFoundException) { /* Metadata remains explicitly unknown. */ }
+          catch (_: RuntimeException) { /* Diagnostics cannot prevent a connection. */ }
         directory = File(ctx.noBackupFilesDir, "timing-v2").apply { mkdirs() }
         emit(TracePoint.PROCESS_START)
         if (Build.VERSION.SDK_INT >= 30) try {
@@ -84,9 +94,9 @@ object TimingTrace {
         } catch (_: Exception) { /* Diagnostics must never break a session. */ }
     }
     @Synchronized fun export(): String {
-        val dir = directory ?: return ""
-        return listOf("trace.previous.jsonl", "trace.jsonl").joinToString("") { name ->
-            try { File(dir,name).takeIf { it.isFile }?.readText().orEmpty() } catch (_: java.io.IOException) { "" }
-        }.takeLast(128000)
+        val dir = directory
+        return DiagnosticJsonl.export(versionName, versionCode) { name ->
+            dir?.let { File(it, name) }?.takeIf { it.isFile }?.readText()
+        }
     }
 }

@@ -51,7 +51,7 @@ object SessionState {
     }
     @Synchronized fun logs() = lines.joinToString("\n")
     @Synchronized fun export(): String {
-        return "0.2.21-compat-s1 | timing schema=2 (discovery fields)\n" + TimingTrace.export()
+        return TimingTrace.export()
     }
 }
 

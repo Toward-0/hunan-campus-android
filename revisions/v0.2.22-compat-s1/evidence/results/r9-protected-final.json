@@ -1,0 +1,45 @@
+{
+  "testId": "r9-protected-final",
+  "status": "PASS",
+  "kind": "protected-baseline",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": null,
+  "time": "2026-11-08T04:33:25.240362+00:00",
+  "expected": "The same 1442 files in four sealed roots, with identical SHA256 and no added/deleted files",
+  "actual": {
+    "kind": "protected-baseline",
+    "testId": "r9-protected-final",
+    "status": "PASS",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T04:33:25.240362+00:00",
+    "expected": "The same 1442 files in four sealed roots, with identical SHA256 and no added/deleted files",
+    "actual": "All file hashes and the complete root inventory compared; private absolute paths remain local",
+    "comparison": {
+      "fileCount": 1442,
+      "matchedFiles": 1442,
+      "changedFiles": 0,
+      "missingFiles": 0,
+      "addedFiles": 0
+    },
+    "before": {
+      "archivePath": "evidence/protected-before.json",
+      "sha256": "2618538C1A6858D7869C62256FF961B958B01DC3D07988C0F3ED45C667C6DCAB",
+      "role": "protected snapshot: paths withheld, hashes compared",
+      "includedOriginal": false
+    },
+    "after": {
+      "archivePath": "evidence/r9-protected-final-after.json",
+      "sha256": "66EC74DEB9AF87CAACF89BAE2E21A32AD7CFB45D1E50CAF2A4A427E12E73C7A1",
+      "role": "protected snapshot: paths withheld, hashes compared",
+      "includedOriginal": false
+    }
+  },
+  "children": [],
+  "evidence": {
+    "archivePath": "evidence/r9-protected-final.json",
+    "sha256": "7D3ADFFE642284EA8AF5EA5B8EF418520119AED6D1CD131CDEF511CCE317EE0C",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  "scope": "current-source-bound-aggregate"
+}

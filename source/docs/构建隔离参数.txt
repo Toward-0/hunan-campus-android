@@ -1,0 +1,21 @@
+阶段1 JSON/UI修订的构建隔离入口
+
+将 stage-tools.example.json 复制为当前阶段根的 tools.local.json，填写实际工具位置、输出目录和所有历史保护根。该本地配置不进入源码发布。
+JDK17.0.16、Gradle8.11.1和已有测试签名只读复用；AndroidSdk必须是当前阶段内部的独立副本，构建不启动SDK manager，不自动升级组件。
+本轮仅独立复制构建所需SDK组件和Gradle缓存。禁止复制整套旧AVD，禁止使用硬链接或可写联接指向封存目录。模拟器程序及系统镜像可只读复用，AVD数据只能在新阶段avd目录。
+
+初始化：
+. "$Stage/source/stage-env.ps1"
+
+环境入口拒绝阶段外写入、历史保护根、SEALED/SEALED.json祖先及任何已存在的重解析点祖先。Gradle缓存、项目缓存、Android/Java用户目录、TEMP、AVD、CMake、构建、签名中间产物及日志均定位当前阶段；正式交付只写配置指定的当前outputs目录。
+调用者不得修改HOME或CODEX_HOME，不得将用户全局Android/Gradle目录作为可写缓存。不要运行封存目录中的脚本。
+
+签名密码仅通过SigningPasswordVariable指定的进程环境变量提供。配置、命令记录和报告只记录该变量名称，不记录值。沿用已有测试证书，不生成新密钥；脚本验证最终证书SHA256与封存证书一致。
+
+构建（由主任务核对源码准备就绪后运行）：
+& "$Stage/source/build-stage.ps1" -OutputRoot $StageOutputRoot -BuildAbi phone
+& "$Stage/source/build-stage.ps1" -OutputRoot $StageOutputRoot -BuildAbi arm32 -IsolationOnly -SkipLint
+& "$Stage/source/build-stage.ps1" -OutputRoot $StageOutputRoot -BuildAbi x86_64 -IsolationOnly -SkipLint
+
+脚本使用offline/no-daemon，从app/build.gradle.kts读取版本并生成文件名。每次命令、退出码及签名/zipalign结果写入evidence/build-ABI-时间戳。已有APK不静默覆盖；当前阶段迭代须先明确保留上次产物，再重新构建。封存后必须另起修订。
+本环境准备不代表构建、模拟器启动、JNI、实网或16KB运行已通过；各项另按实际执行结果记录。

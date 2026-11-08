@@ -1,0 +1,160 @@
+{
+  "testId": "r9-api35-repair",
+  "probe": "StabilityProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:56:44.340907+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "StabilityProbe",
+    "mode": "repair",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T03:56:44.340907+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 35,
+    "model": "sdk_gphone64_x86_64",
+    "supportedAbis": [
+      "x86_64",
+      "arm64-v8a"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "x86_64"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "cases": [
+      {
+        "handles": 0,
+        "case": "JNI synthetic 200 valid/short malformed lifecycles",
+        "elapsed": 9807519
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17022288,
+        "fd": 116,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-unconfirmed",
+        "elapsed": 9848925
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17057728,
+        "fd": 116,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-stop",
+        "elapsed": 9890317
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17101056,
+        "fd": 116,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-fixture-loss",
+        "elapsed": 9931863
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17138176,
+        "fd": 116,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-fixture-identity",
+        "elapsed": 9973423
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17171344,
+        "fd": 116,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-service-end",
+        "elapsed": 10015066
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17343552,
+        "fd": 116,
+        "loginRequests": 2,
+        "logoutRequests": 1,
+        "case": "repair-success",
+        "elapsed": 10158540
+      },
+      {
+        "threadsTotal": 22,
+        "threadsWithoutFixture": 20,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 0,
+        "nativeBytes": 17338656,
+        "fd": 116,
+        "case": "PASS",
+        "elapsed": 10158576
+      }
+    ],
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api35-repair/result.json",
+    "sha256": "6C34A7C9473303C8FC9E3762CD42DF6D25A5AFA217130FEE22CF53702A225445",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

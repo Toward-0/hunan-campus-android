@@ -53,6 +53,9 @@ internal object StabilityFixture {
     @Volatile var responseGate: CountDownLatch? = null
     @Volatile var clientIp = "127.0.0.2"
     @Volatile var discoveryUnavailable = false
+    // Only DiagnosticsProbe enables this bounded synthetic protocol failure.
+    @Volatile var protocolErrorPath = ""
+    val protocolErrorsRemaining = AtomicInteger()
     val counts = ConcurrentHashMap<String, AtomicInteger>()
     val sockets = ConcurrentHashMap.newKeySet<Socket>()
     val acceptedSockets = AtomicInteger()
@@ -112,7 +115,8 @@ internal object StabilityFixture {
                     else -> cipher.crypt("<response>$fields</response>", false).toByteArray(Charsets.US_ASCII)
                 }
                 val location = if(path == "/portal") "Location: http://127.0.0.1:$port/index.cgi?wlanuserip=$clientIp&wlanusermac=001122334455&mscgip=127.0.0.1\r\n" else ""
-                output.write("HTTP/1.1 $status Fixture\r\nError-Code: ${if(isModule) 200 else 0}\r\n${location}Content-Length: ${body.size}\r\nConnection: ${if(persistent) "keep-alive" else "close"}\r\n\r\n".toByteArray())
+                val syntheticFailure = path == protocolErrorPath && protocolErrorsRemaining.getAndUpdate { maxOf(0, it - 1) } > 0
+                output.write("HTTP/1.1 $status Fixture\r\nError-Code: ${if(syntheticFailure) 777 else if(isModule) 200 else 0}\r\n${location}Content-Length: ${body.size}\r\nConnection: ${if(persistent) "keep-alive" else "close"}\r\n\r\n".toByteArray())
                 output.write(body); output.flush()
                 if(!persistent) return
             }
@@ -162,6 +166,7 @@ class StabilityProbe : Instrumentation() {
                 StabilityFixture.primaryTimeout = false; StabilityFixture.delayPath = ""
                 StabilityFixture.responseGate = null
                 StabilityFixture.discoveryUnavailable = false
+                StabilityFixture.protocolErrorPath = ""; StabilityFixture.protocolErrorsRemaining.set(0)
                 StabilityFixture.counts.clear()
                 val connectivity = ctx.getSystemService(ConnectivityManager::class.java)
                 val wifi = connectivity.allNetworks.first { connectivity.getNetworkCapabilities(it)?.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) == true }

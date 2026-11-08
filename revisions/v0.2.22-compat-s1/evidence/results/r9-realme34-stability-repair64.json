@@ -1,0 +1,162 @@
+{
+  "testId": "r9-realme34-stability-repair64",
+  "probe": "StabilityProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:19:36.020867+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "StabilityProbe",
+    "mode": "repair",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T04:19:36.020867+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 34,
+    "model": "RMX3820",
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "cases": [
+      {
+        "handles": 0,
+        "case": "JNI synthetic 200 valid/short malformed lifecycles",
+        "elapsed": 5531175771
+      },
+      {
+        "threadsTotal": 25,
+        "threadsWithoutFixture": 23,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 9271928,
+        "fd": 125,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-unconfirmed",
+        "elapsed": 5531217712
+      },
+      {
+        "threadsTotal": 25,
+        "threadsWithoutFixture": 23,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 9570536,
+        "fd": 125,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-stop",
+        "elapsed": 5531259757
+      },
+      {
+        "threadsTotal": 25,
+        "threadsWithoutFixture": 23,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 9847768,
+        "fd": 125,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-fixture-loss",
+        "elapsed": 5531301863
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 24,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 9559032,
+        "fd": 125,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-fixture-identity",
+        "elapsed": 5531343909
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 24,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 9799592,
+        "fd": 125,
+        "loginRequests": 1,
+        "logoutRequests": 1,
+        "case": "repair-service-end",
+        "elapsed": 5531385888
+      },
+      {
+        "threadsTotal": 27,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 9533864,
+        "fd": 125,
+        "loginRequests": 2,
+        "logoutRequests": 1,
+        "case": "repair-success",
+        "elapsed": 5531530215
+      },
+      {
+        "threadsTotal": 27,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 0,
+        "nativeBytes": 9536104,
+        "fd": 125,
+        "case": "PASS",
+        "elapsed": 5531530233
+      }
+    ],
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-stability-repair64/result.json",
+    "sha256": "1BA059187321CABC7D48A0AB684482F734DD505CEC0BB76B05D5C7F87B11C9FA",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

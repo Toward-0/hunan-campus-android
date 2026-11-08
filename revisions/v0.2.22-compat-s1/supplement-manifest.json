@@ -1,0 +1,142 @@
+{
+  "notBuildInputs": true,
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "371D8A0F9669199D3269DAAB38EEBCAF4665630B09A4A42899B4EFDC8835FD96",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "47B5C2A36E735ABD9B3EAA1AEC93383301F0421C43AFDD992FEAD89098FF287C",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "3ECFE7CEAB92B22A74906570EF4EEBB07AD1F9752F663B67B53DB6A291BFD6B6",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "docs/CURRENT_STATUS.md",
+      "sha256": "F0503A45065CD8C35BC5CC735FBD08088D944B2797F9672D379C5992212774BF",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "docs/NEXT_PROMPT.md",
+      "sha256": "9E2898DF2608442AB234DCEC5B9EDE68940E6F7D0102D1D0A5E5A60EBD2071E4",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "docs/BUILD_AND_INSTALL.md",
+      "sha256": "6AACCBEF888077690DC19552D0219BEB2E08E2DEAAA271B651846B46037158F9",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "docs/FULL_WORKFLOW.md",
+      "sha256": "1F07E6DD49ECB3408FBA5ADE74A7851A4E8BD2A97EF98B92CAC5A8E7300349E6",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "docs/USER_GUIDE.md",
+      "sha256": "8E7A8C359A3B7CD5915DCA9D4AC85E4C96BE8B475ADE7BA531576166A4B98AFF",
+      "scope": "delivery-docs-outside-build-input"
+    },
+    {
+      "path": "support/DEVICE_AND_RECOVERY.txt",
+      "archiveMember": "scripts.zip/DEVICE_AND_RECOVERY.txt",
+      "sha256": "D61361F08C15C237ACF9661A2949AA4230135274A3D28118C221E6AAF9E84A4A",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/adb_client.py",
+      "archiveMember": "scripts.zip/adb_client.py",
+      "sha256": "7A5D379E44063E54F255AC7E44293BE1BFC767BC7F87ABF6C96548E66CD01966",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/audit_artifacts.py",
+      "archiveMember": "scripts.zip/audit_artifacts.py",
+      "sha256": "60EDB17F186CBB9EDC82869624DA3DDD9978D76B27718237C6B2FA97663A595E",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/emulator_process_guard.py",
+      "archiveMember": "scripts.zip/emulator_process_guard.py",
+      "sha256": "BC56E9B10B813E6DA3AE6FC776A85942122780A18DE58C85493325A0B09777B0",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/main-device.py",
+      "archiveMember": "scripts.zip/main-device.py",
+      "sha256": "A15C76FDC90455390627AD5ACBAE806D70C560BD95C0C78F48C9B5C5B0B22AFA",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/matrix-suite.py",
+      "archiveMember": "scripts.zip/matrix-suite.py",
+      "sha256": "CF02820556719A825A0D3ADB2B262BC1FDB467A50D26EC38322AC99B088A6245",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/package_revision.py",
+      "archiveMember": "scripts.zip/package_revision.py",
+      "sha256": "A35BA9DE942FCDF9911FAFEA9A7B62B02A5E555852B90D3A64B989838B1A620B",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/record_visual_review.py",
+      "archiveMember": "scripts.zip/record_visual_review.py",
+      "sha256": "C2D8937A622CD72A401B44B11AF64D68601A1F2F268EA7675E0DD6B32897C0C0",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/restore_revision.py",
+      "archiveMember": "scripts.zip/restore_revision.py",
+      "sha256": "86B8888E0B56BFE1C5F0B2EF76E591B05578163FFFA73EA0BF9EE2F86D61E412",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/run_device.py",
+      "archiveMember": "scripts.zip/run_device.py",
+      "sha256": "AFD62AD34D88B86DEEDE1DCC95EDBC291350A4028D2335B8127B92250CC072A6",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/run_realme_batch.py",
+      "archiveMember": "scripts.zip/run_realme_batch.py",
+      "sha256": "D89B10BD3D9F76F46D1BE3DF7221402A4ED25E5E3D95780081A3BAA671108F43",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/run_remaining_matrix.py",
+      "archiveMember": "scripts.zip/run_remaining_matrix.py",
+      "sha256": "797CBAAF877A4E9BEF6D2AA8D79C858FB98E7BA45E73CB573487518E7B7CB8FB",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/run_ui.py",
+      "archiveMember": "scripts.zip/run_ui.py",
+      "sha256": "9A6AA5052D75E3D978BCA2BB0E8B0CF8DFE3EA03D276AB0CCE924DCBF36B53C5",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/stage_guard.py",
+      "archiveMember": "scripts.zip/stage_guard.py",
+      "sha256": "258CAF363D52C7E928200A925C63BCFFD1DAA2DB0142BA6AAE13241CE566690B",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/start_emulator.py",
+      "archiveMember": "scripts.zip/start_emulator.py",
+      "sha256": "5C62DC9A0BDB482490811FB99C8D4E7BB76D815B88F16B3D6794FB25C22201D9",
+      "scope": "support-script-outside-build-input"
+    },
+    {
+      "path": "support/verify-protected.py",
+      "archiveMember": "scripts.zip/verify-protected.py",
+      "sha256": "5BB2B2523F42DEED2DB0E724D20EF33A483B306B359341AFB2F1039FC539BC54",
+      "scope": "support-script-outside-build-input"
+    }
+  ],
+  "note": "顶层说明/支持脚本的交付清单；source-manifest.json仍只含实际Android构建输入。生成的BUILD_INPUT_BOUNDARY及清单本身不包含于自身哈希。"
+}

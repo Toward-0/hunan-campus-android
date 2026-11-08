@@ -1,43 +1,65 @@
-param([Parameter(Mandatory)][string]$OutputRoot,[ValidateSet('phone','arm32','x86_64')][string]$BuildAbi='phone',[switch]$SkipLint,[switch]$IsolationOnly)
+param([Parameter(Mandatory)][string]$OutputRoot,[ValidateSet('phone','arm32','x86_64')][string]$BuildAbi='phone',[switch]$SkipLint,[switch]$IsolationOnly,[string]$ToolsConfig)
 $ErrorActionPreference='Stop'
-. "$PSScriptRoot/stage-env.ps1"
-$OutputRoot=[IO.Path]::GetFullPath($OutputRoot)
-if(Test-Path (Join-Path $OutputRoot 'SEALED')){throw 'Output is sealed'}
-foreach($protected in @('D:/codex/2026-11-05/jian/work','D:/codex/2026-11-05/jian/outputs')) {
- $protected=[IO.Path]::GetFullPath($protected).TrimEnd('\')
- if($OutputRoot -eq $protected -or $OutputRoot.StartsWith($protected+'\',[StringComparison]::OrdinalIgnoreCase)){throw 'Historical output root is protected'}
-}
-New-Item -ItemType Directory -Force -Path $OutputRoot,"$StageRoot/evidence","$StageRoot/pack"|Out-Null
-$runStamp=Get-Date -Format 'yyyyMMdd-HHmmss'
-foreach($name in @("build-$BuildAbi.log","build-command-$BuildAbi.json","build-exit-$BuildAbi.json")){
- $previous=Join-Path "$StageRoot/evidence" $name
- if(Test-Path -LiteralPath $previous){Copy-Item -LiteralPath $previous -Destination "$StageRoot/evidence/$runStamp-previous-$name"}
-}
-('sdk.dir='+$env:ANDROID_HOME.Replace('\','/'))|Set-Content "$PSScriptRoot/local.properties" -Encoding ascii
+. "$PSScriptRoot/stage-env.ps1" -ToolsConfig $ToolsConfig
+$OutputRoot=Assert-StageWritePath $OutputRoot
+if($OutputRoot.TrimEnd('\','/') -ne $StageOutputRoot){throw 'OutputRoot must match current-stage configuration'}
+if(!$IsolationOnly -and $BuildAbi -ne 'phone'){throw 'Main APK is phone ABI only'}
+$passwordVariable=[string]$StageTools.SigningPasswordVariable
+if($passwordVariable -notmatch '^[A-Za-z_][A-Za-z0-9_]*$'){throw 'Invalid signing environment variable name'}
+if(![Environment]::GetEnvironmentVariable($passwordVariable,'Process')){throw 'Signing password environment variable missing; do not store its value in reports'}
+$gradleFile=Get-Content -LiteralPath "$PSScriptRoot/app/build.gradle.kts" -Raw -Encoding UTF8
+$nameMatch=[regex]::Match($gradleFile,'versionName\s*=\s*"([A-Za-z0-9._-]+)"')
+$codeMatch=[regex]::Match($gradleFile,'versionCode\s*=\s*(\d+)')
+if(!$nameMatch.Success -or !$codeMatch.Success){throw 'Cannot read version from actual build input'}
+$versionName=$nameMatch.Groups[1].Value
+$versionCode=[int]$codeMatch.Groups[1].Value
+if($versionCode -le 33){throw 'New code delivery versionCode must exceed 33'}
+$runStamp=Get-Date -Format 'yyyyMMdd-HHmmss-fff'
+$runRoot=Assert-StageWritePath (Join-Path $StageRoot "evidence/build-$BuildAbi-$runStamp")
+New-Item -ItemType Directory -Path $runRoot|Out-Null
+$localProperties=Assert-StageWritePath (Join-Path $PSScriptRoot 'local.properties')
+('sdk.dir='+$env:ANDROID_HOME.Replace('\','/'))|Set-Content -LiteralPath $localProperties -Encoding ascii
 $tasks=@(':app:assembleIsolation')
-if(!$IsolationOnly){if($BuildAbi -ne 'phone'){throw 'Main APK is phone ABI only'}; $tasks+=':app:assembleCandidate'}
-if(!$SkipLint){$tasks+=':app:lintCandidate';$tasks+=':app:lintIsolation'}
-$gradle='D:/codex/2026-10-30/ke-y/work/toolchain/gradle/gradle-8.11.1/bin/gradle.bat'
-$argsList=@('-p',$PSScriptRoot,'--offline','--no-daemon',"-PtestAbi=$BuildAbi")+$tasks
-@{command=$gradle;arguments=$argsList;environment=@{gradle=$env:GRADLE_USER_HOME;sdk=$env:ANDROID_HOME;android=$env:ANDROID_USER_HOME;avd=$env:ANDROID_AVD_HOME;temp=$env:TEMP;javaOptions=$env:JAVA_TOOL_OPTIONS};time=(Get-Date).ToString('o')}|ConvertTo-Json -Depth 5|Set-Content "$StageRoot/evidence/build-command-$BuildAbi.json"
-& $gradle @argsList 2>&1|Tee-Object "$StageRoot/evidence/build-$BuildAbi.log"
+if(!$IsolationOnly){$tasks+=':app:assembleCandidate'}
+if(!$SkipLint){if(!$IsolationOnly){$tasks+=':app:lintCandidate'};$tasks+=':app:lintIsolation'}
+$gradle=$StageTools.GradleExecutable
+$argsList=@('-p',$PSScriptRoot,'--offline','--no-daemon','--project-cache-dir',(Join-Path $StageRoot 'gradle-project'),"-PtestAbi=$BuildAbi")+$tasks
+@{command=$gradle;arguments=$argsList;versionName=$versionName;versionCode=$versionCode;environment=@{gradle=$env:GRADLE_USER_HOME;sdk=$env:ANDROID_HOME;android=$env:ANDROID_USER_HOME;avd=$env:ANDROID_AVD_HOME;temp=$env:TEMP;javaOptions=$env:JAVA_TOOL_OPTIONS};time=(Get-Date).ToString('o')}|ConvertTo-Json -Depth 6|Set-Content -LiteralPath "$runRoot/build-command.json" -Encoding UTF8
+& $gradle @argsList 2>&1|Tee-Object -FilePath "$runRoot/build.log"
 $buildExit=$LASTEXITCODE
-@{exitCode=$buildExit;time=(Get-Date).ToString('o')}|ConvertTo-Json|Set-Content "$StageRoot/evidence/build-exit-$BuildAbi.json"
+@{exitCode=$buildExit;time=(Get-Date).ToString('o')}|ConvertTo-Json|Set-Content -LiteralPath "$runRoot/build-exit.json" -Encoding UTF8
 if($buildExit -ne 0){throw "Build failed: $buildExit"}
-$key='D:/codex/2026-10-30/ke-y/work/toolchain/android-user/debug.keystore'
-if(!(Test-Path -LiteralPath $key)){throw 'Existing test key missing'}
 $variants=@('isolation');if(!$IsolationOnly){$variants+='candidate'}
 foreach($variant in $variants){
- $inputApk="$PSScriptRoot/app/build/outputs/apk/$variant/app-$variant-unsigned.apk"
- $aligned="$StageRoot/pack/$variant-$BuildAbi-aligned.apk"
- $apk=Join-Path $OutputRoot "ESurfingHunan-0.2.21-compat-s1-$variant-$BuildAbi.apk"
+ $inputApk=Assert-StageWritePath "$PSScriptRoot/app/build/outputs/apk/$variant/app-$variant-unsigned.apk"
+ if(!(Test-Path -LiteralPath $inputApk -PathType Leaf)){throw "Unsigned APK missing: $variant"}
+ $aligned=Assert-StageWritePath "$StageRoot/pack/$variant-$BuildAbi-$runStamp-aligned.apk"
+ $apk=Assert-StageWritePath (Join-Path $OutputRoot "ESurfingHunan-$versionName-$variant-$BuildAbi.apk")
+ if(Test-Path -LiteralPath $apk){throw 'APK output exists; preserve the current-stage iteration explicitly before rebuilding'}
+ @(
+  @{command="$env:ANDROID_HOME/build-tools/35.0.0/zipalign.exe";arguments=@('-f','-P','16','4',$inputApk,$aligned)},
+  @{command="$env:JAVA_HOME/bin/java.exe";arguments=@('-jar',"$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar",'sign','--ks',$StageTools.TestKeystore,'--ks-pass',"env:$passwordVariable",'--out',$apk,$aligned)},
+  @{command="$env:JAVA_HOME/bin/java.exe";arguments=@('-jar',"$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar",'verify','--verbose','--print-certs',$apk)},
+  @{command="$env:ANDROID_HOME/build-tools/35.0.0/zipalign.exe";arguments=@('-c','-P','16','-v','4',$apk)}
+ )|ConvertTo-Json -Depth 6|Set-Content -LiteralPath "$runRoot/packaging-commands-$variant.json" -Encoding UTF8
+ $steps=@()
  & "$env:ANDROID_HOME/build-tools/35.0.0/zipalign.exe" -f -P 16 4 $inputApk $aligned
- if($LASTEXITCODE){throw 'zipalign failed'}
- & "$env:JAVA_HOME/bin/java.exe" -jar "$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" sign --ks $key --ks-pass pass:android --out $apk $aligned
- if($LASTEXITCODE){throw 'Signing failed'}
- & "$env:JAVA_HOME/bin/java.exe" -jar "$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify --verbose --print-certs $apk 2>&1|Tee-Object "$StageRoot/evidence/signature-$variant-$BuildAbi.txt"
- if($LASTEXITCODE){throw 'Signature verification failed'}
- & "$env:ANDROID_HOME/build-tools/35.0.0/zipalign.exe" -c -P 16 -v 4 $apk 2>&1|Tee-Object "$StageRoot/evidence/zipalign-$variant-$BuildAbi.txt"
- if($LASTEXITCODE){throw 'Final APK alignment failed'}
+ $code=$LASTEXITCODE;$steps+=@{step='zipalign';exitCode=$code}
+ $steps|ConvertTo-Json -Depth 4|Set-Content -LiteralPath "$runRoot/packaging-exits-$variant.json" -Encoding UTF8
+ if($code -ne 0){throw "zipalign failed: $code"}
+ & "$env:JAVA_HOME/bin/java.exe" -jar "$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" sign --ks $StageTools.TestKeystore --ks-pass "env:$passwordVariable" --out $apk $aligned
+ $code=$LASTEXITCODE;$steps+=@{step='sign';exitCode=$code}
+ $steps|ConvertTo-Json -Depth 4|Set-Content -LiteralPath "$runRoot/packaging-exits-$variant.json" -Encoding UTF8
+ if($code -ne 0){throw "Signing failed: $code"}
+ & "$env:JAVA_HOME/bin/java.exe" -jar "$env:ANDROID_HOME/build-tools/35.0.0/lib/apksigner.jar" verify --verbose --print-certs $apk 2>&1|Tee-Object -FilePath "$runRoot/signature-$variant.txt"
+ $code=$LASTEXITCODE;$steps+=@{step='verify';exitCode=$code}
+ $steps|ConvertTo-Json -Depth 4|Set-Content -LiteralPath "$runRoot/packaging-exits-$variant.json" -Encoding UTF8
+ if($code -ne 0){throw "Signature verification failed: $code"}
+ $signatureText=Get-Content -LiteralPath "$runRoot/signature-$variant.txt" -Raw -Encoding UTF8
+ if($signatureText -notmatch 'certificate SHA-256 digest:\s*2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229'){throw 'APK certificate does not match the existing test certificate'}
+ & "$env:ANDROID_HOME/build-tools/35.0.0/zipalign.exe" -c -P 16 -v 4 $apk 2>&1|Tee-Object -FilePath "$runRoot/zipalign-$variant.txt"
+ $code=$LASTEXITCODE;$steps+=@{step='final-zipalign';exitCode=$code}
+ $steps|ConvertTo-Json -Depth 4|Set-Content -LiteralPath "$runRoot/packaging-exits-$variant.json" -Encoding UTF8
+ if($code -ne 0){throw "Final APK alignment failed: $code"}
  Get-FileHash -LiteralPath $apk -Algorithm SHA256|Select-Object Path,Hash
 }

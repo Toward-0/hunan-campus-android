@@ -1,0 +1,219 @@
+{
+  "testId": "r9-api35-diagnostics-session",
+  "probe": "DiagnosticsProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:53:03.778122+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "DiagnosticsProbe",
+    "mode": "session",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T03:53:03.778122+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 35,
+    "model": "sdk_gphone64_x86_64",
+    "supportedAbis": [
+      "x86_64",
+      "arm64-v8a"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "x86_64"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "result": {
+      "observedHeartbeatFailure": {
+        "phase": "RECOVERING",
+        "error": "PROTOCOL",
+        "protocolCode": "777",
+        "heartbeatResult": "FAIL",
+        "internetEvidence": "HTTPS_VERIFIED",
+        "retries": 1,
+        "desired": true,
+        "heartbeatIntervalSeconds": 25,
+        "heartbeatDueInMs": 14989,
+        "heartbeatAgeMs": 11,
+        "schedulerMode": "INEXACT_IDLE_PENDING",
+        "exactAlarmCapable": false,
+        "interactive": true,
+        "idle": false,
+        "loginRequests": 2,
+        "keepRequests": 2,
+        "logoutRequests": 0,
+        "syntheticErrorsRemaining": 0,
+        "historyStartWall": 1794109984304,
+        "currentRunFailureEvents": 7,
+        "waitBudgetMs": 150000,
+        "waitElapsedMs": 43703
+      },
+      "cases": [
+        {
+          "id": "STATE-EFFECTIVE-FAILURE-RETAINED",
+          "status": "PASS",
+          "expected": {
+            "phase": "NEEDS_INPUT",
+            "protocolCode": "777",
+            "error": "PROTOCOL",
+            "loginRequests": 1
+          },
+          "actual": {
+            "phase": "NEEDS_INPUT",
+            "error": "PROTOCOL",
+            "protocolCode": "777",
+            "heartbeatResult": "UNKNOWN",
+            "internetEvidence": "NOT_CHECKED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 250,
+            "heartbeatDueInMs": null,
+            "heartbeatAgeMs": null,
+            "schedulerMode": "TIMER",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 1,
+            "keepRequests": 0,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794109984304,
+            "currentRunFailureEvents": 3,
+            "waitBudgetMs": 15000,
+            "waitElapsedMs": 11
+          }
+        },
+        {
+          "id": "STATE-FAILED-LOGIN-THEN-SUCCESS",
+          "status": "PASS",
+          "expected": {
+            "phase": "AUTHENTICATED",
+            "protocolCode": "none",
+            "error": "NONE",
+            "loginRequests": 2,
+            "minimumCurrentRunFailureEvents": 3
+          },
+          "actual": {
+            "phase": "AUTHENTICATED",
+            "error": "NONE",
+            "protocolCode": "none",
+            "heartbeatResult": "PASS",
+            "internetEvidence": "HTTPS_VERIFIED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 25,
+            "heartbeatDueInMs": 24934,
+            "heartbeatAgeMs": 67,
+            "schedulerMode": "INEXACT_IDLE_PENDING",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 2,
+            "keepRequests": 1,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794109984304,
+            "currentRunFailureEvents": 3,
+            "waitBudgetMs": 15000,
+            "waitElapsedMs": 1281
+          }
+        },
+        {
+          "id": "STATE-HEARTBEAT-FAILURE-THEN-SUCCESS",
+          "status": "PASS",
+          "expected": {
+            "phase": "AUTHENTICATED",
+            "protocolCode": "none",
+            "error": "NONE",
+            "retries": 0,
+            "loginRequests": 2,
+            "logoutRequests": 0,
+            "waitBudgetMs": 150000,
+            "minimumCurrentRunFailureEvents": 7
+          },
+          "actual": {
+            "phase": "AUTHENTICATED",
+            "error": "NONE",
+            "protocolCode": "none",
+            "heartbeatResult": "PASS",
+            "internetEvidence": "HTTPS_VERIFIED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 25,
+            "heartbeatDueInMs": -11271,
+            "heartbeatAgeMs": 8,
+            "schedulerMode": "INEXACT_IDLE_PENDING",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 2,
+            "keepRequests": 3,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794109984304,
+            "currentRunFailureEvents": 7,
+            "waitBudgetMs": 150000,
+            "waitElapsedMs": 26260
+          }
+        },
+        {
+          "id": "STATE-STALE-GENERATION-REJECTED",
+          "status": "PASS",
+          "expected": {
+            "snapshotUnchanged": true,
+            "loginRequests": 2,
+            "logoutRequests": 0
+          },
+          "actual": {
+            "phase": "AUTHENTICATED",
+            "error": "NONE",
+            "protocolCode": "none",
+            "heartbeatResult": "PASS",
+            "internetEvidence": "HTTPS_VERIFIED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 25,
+            "heartbeatDueInMs": -11274,
+            "heartbeatAgeMs": 11,
+            "schedulerMode": "INEXACT_IDLE_PENDING",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 2,
+            "keepRequests": 3,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794109984304,
+            "currentRunFailureEvents": 7,
+            "waitBudgetMs": 150000,
+            "waitElapsedMs": 26263
+          }
+        }
+      ],
+      "logoutRequests": 0,
+      "process64": true,
+      "mode": "session",
+      "handlesAfter": 0,
+      "loginRequests": 2,
+      "testId": "S1-DIAGNOSTICS",
+      "api": 35,
+      "status": "PASS"
+    },
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api35-diagnostics-session/result.json",
+    "sha256": "1730199BF48807F4B8CC74642100262821C2273BEBCD4E9F42968C07062B5DCB",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

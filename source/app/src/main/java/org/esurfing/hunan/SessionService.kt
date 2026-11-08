@@ -158,7 +158,7 @@ open class SessionService : Service() {
                 if (running || loggingOut) return START_NOT_STICKY
                 configRevision = revision
                 prefs.edit().putBoolean("manualOff", false).commit()
-                SessionState.change { it.copy(desired = true, phase = Phase.WAITING_WIFI, error = ErrorKind.NONE, retries = 0) }
+                SessionState.change { it.copy(desired = true, phase = Phase.WAITING_WIFI, error = ErrorKind.NONE, protocolCode = "none", retries = 0) }
                 running = true
                 holdWifi()
                 examinedNetworks.clear()
@@ -293,7 +293,7 @@ open class SessionService : Service() {
         fingerprint = key
         examinedNetworks.add(network)
         val id = invalidate()
-        SessionState.change(id) { it.copy(network = network.toString(), phase = Phase.DISCOVERING, error = ErrorKind.NONE) }
+        SessionState.change(id) { it.copy(network = network.toString(), phase = Phase.DISCOVERING, error = ErrorKind.NONE, protocolCode = "none") }
         ticket = ""
         // Coalesce link setup callbacks; no authentication for IPv6/DNS-only changes.
         val scope = requests
@@ -413,7 +413,8 @@ open class SessionService : Service() {
             val keep = engine.call(3, ticket)
             if (!alive(id)) return
             failures = 0
-            SessionState.change(id) { it.copy(heartbeatAt = System.currentTimeMillis(), heartbeatResult = CheckResult.PASS) }
+            SessionState.change(id) { it.copy(heartbeatAt = System.currentTimeMillis(), heartbeatResult = CheckResult.PASS,
+                error = ErrorKind.NONE, protocolCode = "none") }
             scheduleKeep(engine, id, interval(keep, id))
             update("认证端点通过，正在检测 Wi-Fi 外网", id)
             val evidence = InternetCheck.inspect(network, scope) { alive(id) }
@@ -473,7 +474,7 @@ open class SessionService : Service() {
                 if (!alive(id)) return@schedule
                 failures = 0
                 SessionState.change(id) { it.copy(phase = Phase.AUTHENTICATED, heartbeatAt = System.currentTimeMillis(), heartbeatResult = CheckResult.PASS,
-                    error = ErrorKind.NONE, retries = 0, nextRecoveryAt = 0, heartbeatDelayMs = maxOf(0, System.currentTimeMillis() - due), durationMs = SystemClock.elapsedRealtime() - started) }
+                    error = ErrorKind.NONE, protocolCode = "none", retries = 0, nextRecoveryAt = 0, heartbeatDelayMs = maxOf(0, System.currentTimeMillis() - due), durationMs = SystemClock.elapsedRealtime() - started) }
                 TimingTrace.emit(TracePoint.FINISH, id, timing)
                 scheduleKeep(engine, id, interval(result, id))
             } catch (e: Exception) {

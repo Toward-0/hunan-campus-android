@@ -1,0 +1,221 @@
+{
+  "testId": "r9-realme34-diagnostics-session64",
+  "probe": "DiagnosticsProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:08:58.336786+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "DiagnosticsProbe",
+    "mode": "session",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T04:08:58.336786+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 34,
+    "model": "RMX3820",
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "result": {
+      "process64": true,
+      "testId": "S1-DIAGNOSTICS",
+      "api": 34,
+      "observedHeartbeatFailure": {
+        "phase": "RECOVERING",
+        "error": "PROTOCOL",
+        "protocolCode": "777",
+        "heartbeatResult": "FAIL",
+        "internetEvidence": "HTTPS_VERIFIED",
+        "retries": 1,
+        "desired": true,
+        "heartbeatIntervalSeconds": 25,
+        "heartbeatDueInMs": -18842,
+        "heartbeatAgeMs": 28,
+        "schedulerMode": "INEXACT_IDLE_PENDING",
+        "exactAlarmCapable": false,
+        "interactive": true,
+        "idle": false,
+        "loginRequests": 2,
+        "keepRequests": 2,
+        "logoutRequests": 0,
+        "syntheticErrorsRemaining": 0,
+        "historyStartWall": 1794110940819,
+        "currentRunFailureEvents": 6,
+        "waitBudgetMs": 150000,
+        "waitElapsedMs": 43716
+      },
+      "status": "PASS",
+      "logoutRequests": 0,
+      "cases": [
+        {
+          "id": "STATE-EFFECTIVE-FAILURE-RETAINED",
+          "status": "PASS",
+          "expected": {
+            "phase": "NEEDS_INPUT",
+            "protocolCode": "777",
+            "error": "PROTOCOL",
+            "loginRequests": 1
+          },
+          "actual": {
+            "phase": "NEEDS_INPUT",
+            "error": "PROTOCOL",
+            "protocolCode": "777",
+            "heartbeatResult": "UNKNOWN",
+            "internetEvidence": "NOT_CHECKED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 250,
+            "heartbeatDueInMs": null,
+            "heartbeatAgeMs": null,
+            "schedulerMode": "TIMER",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 1,
+            "keepRequests": 0,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794110940819,
+            "currentRunFailureEvents": 3,
+            "waitBudgetMs": 15000,
+            "waitElapsedMs": 31
+          }
+        },
+        {
+          "id": "STATE-FAILED-LOGIN-THEN-SUCCESS",
+          "status": "PASS",
+          "expected": {
+            "phase": "AUTHENTICATED",
+            "protocolCode": "none",
+            "error": "NONE",
+            "loginRequests": 2,
+            "minimumCurrentRunFailureEvents": 2
+          },
+          "actual": {
+            "phase": "AUTHENTICATED",
+            "error": "NONE",
+            "protocolCode": "none",
+            "heartbeatResult": "PASS",
+            "internetEvidence": "HTTPS_VERIFIED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 25,
+            "heartbeatDueInMs": 24872,
+            "heartbeatAgeMs": 137,
+            "schedulerMode": "INEXACT_IDLE_PENDING",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 2,
+            "keepRequests": 1,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794110940819,
+            "currentRunFailureEvents": 3,
+            "waitBudgetMs": 15000,
+            "waitElapsedMs": 1499
+          }
+        },
+        {
+          "id": "STATE-HEARTBEAT-FAILURE-THEN-SUCCESS",
+          "status": "PASS",
+          "expected": {
+            "phase": "AUTHENTICATED",
+            "protocolCode": "none",
+            "error": "NONE",
+            "retries": 0,
+            "loginRequests": 2,
+            "logoutRequests": 0,
+            "waitBudgetMs": 150000,
+            "minimumCurrentRunFailureEvents": 5
+          },
+          "actual": {
+            "phase": "AUTHENTICATED",
+            "error": "NONE",
+            "protocolCode": "none",
+            "heartbeatResult": "PASS",
+            "internetEvidence": "HTTPS_VERIFIED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 25,
+            "heartbeatDueInMs": 24956,
+            "heartbeatAgeMs": 52,
+            "schedulerMode": "INEXACT_IDLE_PENDING",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 2,
+            "keepRequests": 3,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794110940819,
+            "currentRunFailureEvents": 7,
+            "waitBudgetMs": 150000,
+            "waitElapsedMs": 26315
+          }
+        },
+        {
+          "id": "STATE-STALE-GENERATION-REJECTED",
+          "status": "PASS",
+          "expected": {
+            "snapshotUnchanged": true,
+            "loginRequests": 2,
+            "logoutRequests": 0
+          },
+          "actual": {
+            "phase": "AUTHENTICATED",
+            "error": "NONE",
+            "protocolCode": "none",
+            "heartbeatResult": "PASS",
+            "internetEvidence": "HTTPS_VERIFIED",
+            "retries": 0,
+            "desired": true,
+            "heartbeatIntervalSeconds": 25,
+            "heartbeatDueInMs": 24936,
+            "heartbeatAgeMs": 72,
+            "schedulerMode": "INEXACT_IDLE_PENDING",
+            "exactAlarmCapable": false,
+            "interactive": true,
+            "idle": false,
+            "loginRequests": 2,
+            "keepRequests": 3,
+            "logoutRequests": 0,
+            "syntheticErrorsRemaining": 0,
+            "historyStartWall": 1794110940819,
+            "currentRunFailureEvents": 7,
+            "waitBudgetMs": 150000,
+            "waitElapsedMs": 26330
+          }
+        }
+      ],
+      "handlesAfter": 0,
+      "mode": "session",
+      "loginRequests": 2
+    },
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-diagnostics-session64/result.json",
+    "sha256": "ABFC750044888C2E9D1CDEF48517AAC05E5268BF6F71408C6FF0DFDFB4F7273B",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

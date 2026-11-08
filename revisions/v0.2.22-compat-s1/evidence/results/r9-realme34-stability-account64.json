@@ -1,0 +1,220 @@
+{
+  "testId": "r9-realme34-stability-account64",
+  "probe": "StabilityProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+  "time": "2026-11-08T04:10:34.074408+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "StabilityProbe",
+    "mode": "account",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T04:10:34.074408+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 34,
+    "model": "RMX3820",
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "arm64-v8a",
+      "armeabi-v7a"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "cases": [
+      {
+        "handles": 0,
+        "case": "JNI synthetic 200 valid/short malformed lifecycles",
+        "elapsed": 5530633562
+      },
+      {
+        "case": "waiting-account-change-rejected-true",
+        "elapsed": 5530635530
+      },
+      {
+        "threadsTotal": 27,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 12792008,
+        "fd": 129,
+        "discoveryRequests": 9,
+        "loginRequests": 0,
+        "case": "discovery-exhausted-true",
+        "elapsed": 5530676903
+      },
+      {
+        "case": "authenticated-account-change-rejected-true",
+        "elapsed": 5530679267
+      },
+      {
+        "case": "logout-account-change-rejected-true",
+        "elapsed": 5530679748
+      },
+      {
+        "threadsTotal": 34,
+        "threadsWithoutFixture": 32,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 15545960,
+        "fd": 168,
+        "case": "manual-retry-and-explicit-logout-true",
+        "elapsed": 5530679860
+      },
+      {
+        "case": "waiting-account-change-rejected-false",
+        "elapsed": 5530681724
+      },
+      {
+        "threadsTotal": 29,
+        "threadsWithoutFixture": 27,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 15120136,
+        "fd": 130,
+        "discoveryRequests": 9,
+        "loginRequests": 0,
+        "case": "discovery-exhausted-false",
+        "elapsed": 5530723044
+      },
+      {
+        "case": "authenticated-account-change-rejected-false",
+        "elapsed": 5530725425
+      },
+      {
+        "case": "logout-account-change-rejected-false",
+        "elapsed": 5530726245
+      },
+      {
+        "threadsTotal": 35,
+        "threadsWithoutFixture": 33,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 17495024,
+        "fd": 173,
+        "case": "manual-retry-and-explicit-logout-false",
+        "elapsed": 5530726411
+      },
+      {
+        "threadsTotal": 29,
+        "threadsWithoutFixture": 28,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 16054424,
+        "fd": 129,
+        "case": "cancel-discovery-stop",
+        "elapsed": 5530738691
+      },
+      {
+        "threadsTotal": 29,
+        "threadsWithoutFixture": 28,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 16087232,
+        "fd": 129,
+        "case": "cancel-discovery-fixture-loss",
+        "elapsed": 5530750998
+      },
+      {
+        "threadsTotal": 29,
+        "threadsWithoutFixture": 28,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 16140344,
+        "fd": 129,
+        "case": "cancel-discovery-fixture-identity",
+        "elapsed": 5530763277
+      },
+      {
+        "threadsTotal": 29,
+        "threadsWithoutFixture": 28,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 16180512,
+        "fd": 129,
+        "case": "cancel-discovery-service-end",
+        "elapsed": 5530775579
+      },
+      {
+        "threadsTotal": 31,
+        "threadsWithoutFixture": 30,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 14752400,
+        "fd": 131,
+        "case": "stopped-ui-save-once-no-implicit-login",
+        "elapsed": 5530777635
+      },
+      {
+        "threadsTotal": 31,
+        "threadsWithoutFixture": 30,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 0,
+        "nativeBytes": 14752400,
+        "fd": 131,
+        "case": "PASS",
+        "elapsed": 5530777654
+      }
+    ],
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-stability-account64/result.json",
+    "sha256": "2918405CFD7B305ED55822D993A3D80A5A0750AD04A6331939FB566B9522706F",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

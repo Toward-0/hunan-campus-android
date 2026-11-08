@@ -1,0 +1,2828 @@
+[
+  {
+    "archivePath": "evidence/r9-review-corrections.json",
+    "sha256": "469E59680A019FEFC6F63C8EACA6C35D3A52120D5CEA8491788FB8F9DDFF90B6",
+    "role": "explicit reviewed status corrections; original records preserved",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r1-api35-diagnostics-export/result.json",
+    "sha256": "31B5C682ADE6A8E8F4B00DD1BDBA1766EF92F099E92EA749B32C55A4A3374E30",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r1-api35-diagnostics-export-r2/result.json",
+    "sha256": "FF5DFAC54AF878A1918202A9BDF0CA3EEEC76C86B5FD96EE064B9399ADE3CBB9",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r1-api35-diagnostics-session/result.json",
+    "sha256": "6394036D48737BED353FF9FA07480BD59CB378A13A3BED0AE3C0418B9448F1AD",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r1-api35-font2/result.json",
+    "sha256": "64FF5D5B17BCC9DB19CBDD84B4AB850DF8BB16AAF94CAA7711DE7E30954AD9AB",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r1-api35-install-jni/result.json",
+    "sha256": "2FF79BA81F7CA8DFC573DB08467C4478117CB66D0354D4216FCEA72693B8E7DD",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-diagnostics-export/result.json",
+    "sha256": "9ED176D5F8BA2E5851A0E1D8E41EF85744A2AE9315A2DD1D3F6D85ADA679B53C",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-diagnostics-session/result.json",
+    "sha256": "00145C060C8A066CC3A3BD576E69762002F73917F903D3D7E4156E74DA86FCFA",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f1-gesture-none/result.json",
+    "sha256": "D1F0DE724ED436416A6C72D0792B03404AD0AE7F68E60B56421C2207487C548B",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f1-gesture-tall/result.json",
+    "sha256": "64260649AD01CA866A7564812DA3B46617C939B355B4BA9E5C72DF15EF1DBED6",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f1-three-none/result.json",
+    "sha256": "A4B88D6C4A5C61ED937615A7118B48A6A2EB19F6F5B81D17419FA60F8FB82D2C",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f1-three-tall/result.json",
+    "sha256": "A3FB670180DEE655C2C932F2E075ACEF5EE5EF37C92EE70C9B541A97E3BCBF8C",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f2-gesture-tall/result.json",
+    "sha256": "5AD0A5EBDBFFFB7B4A46739E0706D32C61E12BF53DB679E8D37F2FC0AB27D328",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f2-three-none/result.json",
+    "sha256": "9E747A8E85209496B729F87A5675E455B8B75BAC7F024F6F49D151F166625FCF",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-f2-three-tall/result.json",
+    "sha256": "21422F3BB98CADB3660AA8DC52131C499F9A7CE7D9933E4415084D1444B3678E",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-font2/result.json",
+    "sha256": "21ACD28C0308BB4FC830C5069FDF2EC1E2D8AF2B0C99F57009C035D217D3335C",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-api35-install-jni/result.json",
+    "sha256": "8D183FA7622F094FCAE400EFE34874533E9720F225CBB02F72F0F7871FF8E7F0",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r2-realme34-main-preflight-01/result.json",
+    "sha256": "5324C66663C63F762A4D3830536E27FD262DE21B005C9DD08E40F2D4F6B4312B",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-diagnostics-export/result.json",
+    "sha256": "8A88334E2CE32C523DD12FCE49E0D0ABCBF78E25F70BA3CA3737791550799F30",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-diagnostics-session/result.json",
+    "sha256": "2DF844E3453D27B4C22DD58789037A6A1E096E67358DBEDA15DF0E7642416591",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f1-gesture-none/result.json",
+    "sha256": "6DC9F494583B5157014DFD20D74B03308E350C067FC3800285C4DA856F7F0506",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f1-gesture-tall/result.json",
+    "sha256": "50EAB06C18C63A4FC7924BC4711C324FFCF1653F485C2621F8E0BEF2288DE07D",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f1-three-none/result.json",
+    "sha256": "9159DC0485743F37E3D0FE93CE6E023D4BEA34A253D3857BEA2EE998E45A37B3",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f1-three-tall/result.json",
+    "sha256": "468D630A82648BC2A166BE6604321D503E8FA3A633C21FC169B3D82AAAC9DEA9",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f2-gesture-none/result.json",
+    "sha256": "E3183871D79D3A6441035A590190774E9447618D34FA4DEE8A340D093098275F",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f2-gesture-tall/result.json",
+    "sha256": "7D6B6A57F9AFD1632A0ADD8AE49F9053E9828EB1A652BB5C39E28FCE7007DA9D",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f2-three-none/result.json",
+    "sha256": "DCBF23F966BA0BF545FECDEBB4CF963A284FFD1F00D75BB1E67CFD5F1BDB764F",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-f2-three-tall/result.json",
+    "sha256": "522229E1916720901589036F0CD0143FFDF21058C34D731EE9EEC28C2B673F62",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-install-jni/result.json",
+    "sha256": "AED64239EAB6556B561E86B407231F3DC327BDDD3E40057AB081838C4B6704C2",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-menu/result.json",
+    "sha256": "7D720D00311D61059AEC39176DA23F5C0434EAA60BD5676B6A7E68E4CB902024",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-safety-account/result.json",
+    "sha256": "6D17503E0CA9356F7D5E67E160E516AE7F4F80AD17262AD6C2B910D60B0989B1",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-safety-lifecycle/result.json",
+    "sha256": "8CBADE37D1FCC748A13ED082BDC570EFF7EF9A9E5A4ECD1122003DD5E8BFED1F",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r3-api35-safety-repair/result.json",
+    "sha256": "F5EA69CB1997F16A8C590C02200547D08BC75D1F887C65C08D05FA48181554F7",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-api26-early-f2-current/result.json",
+    "sha256": "D098557CAE0CA963AD19C522D0230F17A2F144D211C89F1C71B96CFC0AA27F7C",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-api26-early-jni/result.json",
+    "sha256": "9B28BF17E1B7EC8AB21B006CB50A062742B0A1CF303F18B97D7C6DE3AE7DF661",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-api26-popup-debug/result.json",
+    "sha256": "867E5BB8FDADF5F134D11B95FD98AFD20E5D8576EE34F9AD38747B4346FE68EF",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-api35-f2-gesture-none/result.json",
+    "sha256": "0D25B612C842912D3D3607E1707DBB745076E6945DD35B0E657ED0FDD0C60519",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-api35-jni/result.json",
+    "sha256": "6752A2B688051F66BA0683B006EF7AF58694AD6792A7202E5A04F62022CE91F4",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-manual-popup/result.json",
+    "sha256": "09EFED9824EEE08C7FD347E3670C8C0098F70B71AE702AA36443BD98C50D0D14",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r4-realme-preflight/result.json",
+    "sha256": "75EC195ECD6E38CBAE3A2AD34C727EFA229E6B02A02868BB14C53D2AD39B835E",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api26-diagnostics-export/result.json",
+    "sha256": "2703550EC27B34A9241622E350D6D8F8E220F70A3F9C886BEC0C74DE1D003BDB",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api26-install-jni/result.json",
+    "sha256": "77A2937424D73BD21FD48CF0965C2BEB8C16D9E521AE9692BAB22A9D895F975D",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api26-repair-menu/result.json",
+    "sha256": "40B89C5A9C5B83C1820AB59E4FFEA65B33A553E7F342AF72A92B08A1811CC586",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api26-stability-account/result.json",
+    "sha256": "531A565406EB10F925878D1AB36F1EA2530AB973B5857A69BD4915F66ADA5CAF",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api26-ui-font1-current-none/result.json",
+    "sha256": "5E7BBB9E4240FA5111665EFE10074F58BBA93CBDD8231B47AE6795423B49DF0A",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api35-f2-gesture-none/result.json",
+    "sha256": "E1C764603895F184458D0F0942C363A511B284374A1FEA8E545D971B20C2E909",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r5-api35-jni/result.json",
+    "sha256": "BDF1C91D6D002A56B5396E1F3D37D782E80DB60274A75AC1A06B9C72FC62C847",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api26-diagnostics-export/result.json",
+    "sha256": "4D40F2E58442ABF10FD8178C4F5B56C9950AEB8432028B6282BCA424B57657CB",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api26-install-jni/result.json",
+    "sha256": "1AE9CF8FBC23F1A86CF36CBE1206E96401FA2CB7A16EDFECBA617453E813C3D8",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api26-repair-menu/result.json",
+    "sha256": "02BDB8A32FB587A881A791F1337F5BBECEA379B03F6C041B141E81AA346D36BE",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api26-stability-account/result.json",
+    "sha256": "0F9D98D5DCB3117857028330218680662768493370AD1726571E00157D73A53A",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api26-ui-font1-current-none/result.json",
+    "sha256": "5B79437D40EFB2A24B06EAAC2B02D30B90A3DBC05593E3209827023B8AEDFD1B",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api26-ui-font2-current-none/result.json",
+    "sha256": "DEF771300BC405CE63761C83CCAABA0BA4AA9ACDF721C650E3D57EE446A3FE7E",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api35-f2-gesture-none/result.json",
+    "sha256": "3D5044722AC61F4516F86825D4BB573998144D4A7CED87FB660B4B900CDC5461",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r6-api35-jni/result.json",
+    "sha256": "329720FBFAD7CECC2AD29A09B600461EC2DAF674A458962451571F77C4ACB53B",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r7-api35-diagnostics-export/result.json",
+    "sha256": "D8DAB246793AC3157578D4B25C0F45561E538D1A58118242CE311903E179309A",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r7-api35-f2-gesture-none/result.json",
+    "sha256": "DD2F50CEBF5BD5D80C048ECECDAC08347273F767F999F090263BCBB020643A35",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r7-api35-jni/result.json",
+    "sha256": "380994B2EBAA9FF142CD7B63CCF236301185133B5C031E4CD820A5846ACEFE67",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r7-api35-repair-menu/result.json",
+    "sha256": "F2C229A65A39618A0B48A08A7B3B91683795439E6D34EFAC49990AF92A2FFA06",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-avd-stop/result.json",
+    "sha256": "C8BBAF5A82E6BECF155FE581E9BE9B4D9ACFF808F878882E087CA515C994C0E9",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-diagnostics-export/result.json",
+    "sha256": "2A19FA8B8970A9C3D18015A952A92BBE912698E73CAF2F25E0AEED711900FCAF",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-install-jni/result.json",
+    "sha256": "0EDAE145F911F9A4C8138BAF85C349921CD2982EE2F67EE97443AF2CAEA07B2B",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-repair-menu/result.json",
+    "sha256": "8EDB715F29355DF7E02A931F98B5B67D3F2C57915DE507D4C216F7FB0AECF2BE",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-stability-account/result.json",
+    "sha256": "12785F659150E3EB71DE1F383A133ACCDBE086C83ABD695BF3433961078D2791",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-ui-font1-current-none/result.json",
+    "sha256": "BCEE045FEA154F377B3E3978F0C478D47DB774A9B5C4F1D78AC3C542DACD21EF",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api26-ui-font2-current-none/result.json",
+    "sha256": "53699EBB3E7A966AAA956CF3A62CC34E06C1349CD9F90F520F4381D9EB3AE7EB",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api35-f2-gesture-none/result.json",
+    "sha256": "DD57A0264E2BAE09035D48AE667613690E907DEC8F3AAC6D7920C395219E0684",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r8-api35-jni/result.json",
+    "sha256": "7BF92113DA7FE0B1F1132670CD42DE29F03F3F97CFB4862535301C3BBCF74B21",
+    "role": "historical result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-avd-stop/result.json",
+    "sha256": "F5C474C2D751CC5368905C33F703F86EB9C4C6F14651304614AEFA40BBA3B5BB",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-diagnostics-export/result.json",
+    "sha256": "4D65AA5B9F0BABF850BF7B3D69D85281CFAA7290D43C187107CDB2279F4AEFFA",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-install-jni/result.json",
+    "sha256": "A1CCE842E2A51A9DCAEC88D4A9C3F63119431DBDE82F5B7C5587B472C598A692",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-repair-menu/result.json",
+    "sha256": "A02CD14AFF133390B679C5DE6C0A37F6349E5186F00696EB07863EE9C86BE09F",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-stability-account/result.json",
+    "sha256": "18BC0039A0AD6577B519A8E39C74A434F1AB79286A4A014DA37C53B4A427A7B7",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/result.json",
+    "sha256": "468C8E7A3AD34A76249E82947D56953A15D72C56944438DC4D91AB87989FD1E6",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page0.png",
+    "sha256": "21DC729680B7C1FAB5FFC49DEAB65689828B225B5733A4AFDD837D3D211B1D0E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page0-bottom.png",
+    "sha256": "F4911D75FA1A8CB25A26A74A119DCE318F9319A8AADAE252AC21BBFD9C2397DB",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page1.png",
+    "sha256": "D587B8EA702B2FF0D9AC87663166B26D16BF390CC423B96AC36C39D29A962E93",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page1-bottom.png",
+    "sha256": "24859D56B20DC18C568AE91F2A92B24D57F99BEC0DB9833CB0AE5B15EA8EBF59",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/keyboard.png",
+    "sha256": "112BDC52FEF3300330B75A4D6E200149361792C1718EA4F608EAE2AB235E67EB",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/keyboard-password.png",
+    "sha256": "A765D9DC565BF01337820AC996F23DCACD1D037DBCCD76C744B9561FE6371257",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/dropdown.png",
+    "sha256": "6692E3B1222D7EB9D63CAA299F3515726AAC797135E0F944AD42BA2B47DBED00",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-first.png",
+    "sha256": "E3C2F7C976D28A8A83D2F34EC49BB092AE074298FB470C0A330501D6E97A74D9",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-first-keyboard.png",
+    "sha256": "93832163B64613E4F89E005DD285372E72E059B21A16AF10B9C9E0F6C6B16A5F",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-last.png",
+    "sha256": "7F7BC871D9C16E8BD84601D4F45EA6926344371D0D105E74672317067C0BF3DC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-last-keyboard.png",
+    "sha256": "DFD76A5D5DBA323EA2581DC4853158E143550B098631C151991FFBE8F63DBD56",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page2.png",
+    "sha256": "FE5CB5243B0B9A3D99561FCB09A95B2C4F8BF9F9C002CD432022A578A8252ADA",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page2-bottom.png",
+    "sha256": "EF15E74B6B6BD3BBBCEDE3B8BBF65DEE376F1132A779E5E9AB5CF7AB43A35BBD",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page3.png",
+    "sha256": "C9FDA6531E8604D33182CE18939CF071AC33CDB1D6CD06144150A4BC696AEDEC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page3-bottom.png",
+    "sha256": "DA9379C228EB77CE3FE2F2D8EFC0E761E925344B93DFACD67BF6AF32D994C573",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/result.json",
+    "sha256": "78F85B5B07A97719A14108AB54CFF90A9B4CFEB7FB51EC7F8A68A9FBF996BDD0",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page0.png",
+    "sha256": "38ADEF0F6D0A7D19D4DDE43E1CD8A1319170F81936777CC17D79B5378D6F55F4",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page0-bottom.png",
+    "sha256": "FC2D15013AD576E11C41E4CFB2885B2A8E6E69E22019276A5844F29E5896973B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page1.png",
+    "sha256": "CC3B79F908CA7C11A2CCB787A8E4C4230AB58897994E481AF1B6B1AD4B9FB41D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page1-bottom.png",
+    "sha256": "F3ADEBADC17E2B12859BE731B52023F7DB4BC6EB70537B45722F62449A90E8F0",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/keyboard.png",
+    "sha256": "26D4551F2AA172043ACD0817ECD6BB2F7FC0C1F0A04C656244D41D86CE2429C6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/keyboard-password.png",
+    "sha256": "5F6534F8C816E9487D9BD7559388E7160A6CB6CD80D7A95189077F3D9A22B935",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/dropdown.png",
+    "sha256": "6764C537F06F9DAC5AC80B9965B234ED9DBF590FBCC8D26DEFA64E01C2469C2D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-first.png",
+    "sha256": "7E34CD0D0017B5085CBA14109D42A7EF8DABB7048CB9FB7945A417614E514ECC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-first-keyboard.png",
+    "sha256": "D4E414A3E488778E67608EBB044B0F66AEDD1042CB47C387BD53BB8F2A1BAA84",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-last.png",
+    "sha256": "EECD7660652CFB903D333FF8260FBBEA6717BAF7972BADC86AD0D32FE1303FB1",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-last-keyboard.png",
+    "sha256": "0A73ACEBDAEB6AEDA104DEE96270495C7A46A3043D70574C89DAE5C33E41C95F",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page2.png",
+    "sha256": "B3030FDCED7006D7101542B428809E60DF85B8FEF8CCAF7BF5DF7C76EB7DA2EB",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page2-bottom.png",
+    "sha256": "9D97C507D40BC69E0B1294A358B07874A75D169E72D6EB0DBA4E56F2964A42E5",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page3.png",
+    "sha256": "CE33A1C6CB937DC6579B0D3090A8664C0C98FC548C2A7AF848FEA5905575324E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page3-bottom.png",
+    "sha256": "56CB0143FDAF18D7366A8AECCE4F634050FBF6B9787E51A7F363990F00600750",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api29-environment/result.json",
+    "sha256": "A496F0869843541FC00C090E67D233DEC056CCB09D0B53649F470EE57F04641F",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api31-environment/result.json",
+    "sha256": "0FC385391E8A786523B5D2E3F30284FD0D60C2E940281032652D2244044E772D",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api33-environment/result.json",
+    "sha256": "DDF756E932DCE3A5EA442838B6257EDC9323EEF36427DA7A9D4C431B8A8E3282",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-account/result.json",
+    "sha256": "647725E047EEC182D33004E96ACC1EEBF3C2889F60803557ACE9900F45CE7956",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-diagnostics-export/result.json",
+    "sha256": "E55B2E32BF1E123DD9AB392AA043AC00BDA4E89FF766C86F8FE19E23370DF96B",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-diagnostics-session/result.json",
+    "sha256": "1730199BF48807F4B8CC74642100262821C2273BEBCD4E9F42968C07062B5DCB",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/result.json",
+    "sha256": "F66F573DFC5C17B6162CDDBC3632C0CF0C624B104B8EEBF8CC7FC2B4BA70525D",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page0.png",
+    "sha256": "7F27EA40B2D0171C99CFE4170C34C912981BE91161DE6675652A8E8DFEDB1DE0",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page0-bottom.png",
+    "sha256": "33FB3B81696E95B63BB36EC9421D5CCF80A1012E3ABEF1FDB57A80B1A70AA654",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page1.png",
+    "sha256": "36D77B58CFD1E779D8B1AEDB25D1C536E4B5C61C5495135185445FC76F0180C6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page1-bottom.png",
+    "sha256": "38CC572EF259947B453D6908244D5DB90D4DC1E3F58FCCBC7C6A7EE2253D39B7",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/keyboard.png",
+    "sha256": "4A17372B80BF23694BCC542EA96F660E92DBC0C420CB02382616FCB530DB6449",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/keyboard-password.png",
+    "sha256": "C7FD0EAB20346A37C20577F1BA8563EC63E1AE6E3C5A645E7ACD782602B9D314",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/dropdown.png",
+    "sha256": "F9C3B02D993247762F5A796911D18DE674251DDA8A0934707886E0640018EC04",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-first.png",
+    "sha256": "A910304805412CB77CB2F44F1FABCBF7DA082FEC6579DF02A4FF357886D5ED60",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-first-keyboard.png",
+    "sha256": "01EF1A87289F4AE5523CD9994F03B0E92EE4B23D2D5C5880F7A6E27E83C791B7",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-last.png",
+    "sha256": "75ED0897EE14A2B1E9EB67C83F39B1F3D7BD5BD2D2349DA6D12B7A7910D2529F",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-last-keyboard.png",
+    "sha256": "76B5BFA5BEA2C1B8D7D1B744B058985B2BAE61D54F968276FA5F57B0E26FA130",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page2.png",
+    "sha256": "F6AFE9F9437F85EEE4C79929A7DFDBD887ADC3787434BED70B929716EEE6DDD0",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page2-bottom.png",
+    "sha256": "176B6D9A8C5C3031964464D5FB2425CE98FEADB50578439D4542F417EADBD48C",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page3.png",
+    "sha256": "0354E3268A0576CD56A4BCC757A6794C77737977118C081D4296C081886989C6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page3-bottom.png",
+    "sha256": "73E0DE5E0574B7C901A330486E4F1B5F25B2158099EFFED91AAD7670165A947E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/result.json",
+    "sha256": "F2EE898B313C5EAA5DFBBC1EC4F2934DF69CAFFEAAE116AC5239121A9927105A",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page0.png",
+    "sha256": "0DC0036F92395C012F470F3D2FD077599D1176FDA158FAF636F6EEA5FAEF15F0",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page0-bottom.png",
+    "sha256": "6E0CB208BB7A04E2AB835AD7CE638AC3C650EACCFB44D4F892DA1E05F3315B53",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page1.png",
+    "sha256": "4770EFD9BD2F3EF36DE649AAF4CF8F9ADB7B2ADAD0F8E0E9F849B83672CA8E3B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page1-bottom.png",
+    "sha256": "56AD2230B7083655BEBD5B021A05545107428135F4E06FDCC7B8BB7C76088911",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/keyboard.png",
+    "sha256": "436BEA469CB20B510339E68AC2543C3B5A1D0962DDFF0CE2EE52A826B2920F12",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/keyboard-password.png",
+    "sha256": "8904C3DFE236B793E680363D48F9D1F2E7C88FCC0F568388D4BAF2D9FC2C8F3B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/dropdown.png",
+    "sha256": "11920CA5BA4686F5AFBBDC2E7BAECC697382FC832DB3E1786D7237CF4E02D06E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-first.png",
+    "sha256": "B70CB486189F29B60B5B1A5BCDC4F65E41CD119D2880EE5221459598BF3E5A43",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-first-keyboard.png",
+    "sha256": "CCD9113210CE3B3ABCE8BF6B6FB570C62A2C58F8C8EAA34952FFA894EFD0AC59",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-last.png",
+    "sha256": "524CF26E25A47173B2E90C8DF56B279CD994F818F11E307F73C336928E3FD9B9",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-last-keyboard.png",
+    "sha256": "37E77A5B69157BFAADF13E6314B9F2F4AC0F62415DF4C507231A42EBF767E405",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page2.png",
+    "sha256": "EFA249A78956C92C6AE279212569CDB84B092BABCCB3B18423D3287190319F0E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page2-bottom.png",
+    "sha256": "C3F8991BCD79D0F307746D2770C7D3062C74243DD2DEF27E16E057884C347222",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page3.png",
+    "sha256": "E255ECB6D6A3D9295FA0D068A80FD319121A3E2FCDE333C97E2A0A55EE5042D7",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page3-bottom.png",
+    "sha256": "5C25152F66FCD6AEF17F845651B92EE0411E5E17E5C1B70DFBF861600430161C",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/result.json",
+    "sha256": "F5D758129914180AFD6E12A30A47002BCF68293B257861A3388BF85A6FC0E397",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page0.png",
+    "sha256": "C757CB57233AEA51E721D3094146CB19E5F7A8042CB443894F2B82E079C315BD",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page0-bottom.png",
+    "sha256": "C757CB57233AEA51E721D3094146CB19E5F7A8042CB443894F2B82E079C315BD",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page1.png",
+    "sha256": "B2F99847B30666213A679621904E0B659ECDD1D3CC83532C784E6746B9431E68",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page1-bottom.png",
+    "sha256": "45131FD5854E7167891A6ECEE94968EAFCF6EE276D05B43BCA50F41AD224EB87",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/keyboard.png",
+    "sha256": "301351C3F9CD1D5D00685E01897896FD3829FAA698F7BFFED2DBBF4568EC4ED1",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/keyboard-password.png",
+    "sha256": "179BFBB54029DFA92835ADEAAF2B2142357E728DFB3AEB12E72DAFEBAB6047C9",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/dropdown.png",
+    "sha256": "BABF6657A82429F462867C3A0566D95FC884E9A68E1EE2B68FB28ACEFDF37DBC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-first.png",
+    "sha256": "874BF345C6FE7413D9A836476710EA6250511A4E7D65CBCBBD22D5DF50D149FA",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-first-keyboard.png",
+    "sha256": "D7288A3A989EC2D6988DB53EBCBD1A9B38813DC37DEF9E1FA0F14B1D6EC0CEB8",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-last.png",
+    "sha256": "E7B1CA15ED6B534235650D8E7502F46BDC2BB19AB37AD0AC846A53488706B087",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-last-keyboard.png",
+    "sha256": "6C118576299DBDBBB5A6ABCE7A9E8739FFA22987CB699CD89E1D4390F66CD0AF",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page2.png",
+    "sha256": "167ACBF61CC9FEEE59819698ADB782DA9D25852CA6C2441A2815EE1485A3C85B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page2-bottom.png",
+    "sha256": "677B317092323528FE9BA27FA68CEE63D1F98B71F394AEE63FFD7A6A99340535",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page3.png",
+    "sha256": "2B5D857FD3198B9C03E38377BEA35E66F0CD8EE4C8DB724147C6F7881933118A",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page3-bottom.png",
+    "sha256": "CB5914BA9EBBBFE6B6DE1E098DDEBFDA20F78C5953B84117C111E9799D010D60",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/result.json",
+    "sha256": "57C42DC8C1F2FAD35E2CA20D873CBEEBB2F2BF0E3B695E0ECA06EB40E50E9C9B",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page0.png",
+    "sha256": "4E4F2EF1DDC73DFA36891897F7B639FD25DFDB390FDA17F13F753B6C3E2D2576",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page0-bottom.png",
+    "sha256": "9222468BEA06219CA7DDBABDA7D549D56F67D983F63A04BBBF0F17AC27EF31E2",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page1.png",
+    "sha256": "435BCFABE48C4F18526CF7C5D482B9B53D7A2CD1733C4B1D6E63CADFFB095DBA",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page1-bottom.png",
+    "sha256": "848289142B183680108D7BE0B26EF4C10F204B12082F819F22BB483A89F948EC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/keyboard.png",
+    "sha256": "FED098991C86C4F5C229847D2E7C9C59C409C89E6AF5115C8A7D5789590905E4",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/keyboard-password.png",
+    "sha256": "F3D5945BF721A21419FD04E647C177E40BB0AB3081E55FC80F33086C8F5E2729",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/dropdown.png",
+    "sha256": "193CCAB7C1B8CC8C4C0561E5A8B3527C28D6AAD94FE8458E9D090C50107D828F",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-first.png",
+    "sha256": "A46EFCF381A5B3091641BC77B1157FFAE8123276817F4694596DBB1072D1670D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-first-keyboard.png",
+    "sha256": "771B4808761A53C33531E77E458F3FAAFAA83B7BFFD6C06B57549188F613AD06",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-last.png",
+    "sha256": "9F80BC32A0B007A9E27EBC2FA8F124591F2D981455F607E2DBEE4991E26A655D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-last-keyboard.png",
+    "sha256": "9C85DDE65C56E79D49D72EEFC758F001DF9F864B54D896ED2C8BBA28A48E1974",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page2.png",
+    "sha256": "D57CC9EBF6747E18CF2CE9655D6D5FB7078BBB75AB1DEB9374700442F3C4E8D5",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page2-bottom.png",
+    "sha256": "241540D3519508588759B93AE7ED5D60648E1D8502A6F389963CE46F69686FB5",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page3.png",
+    "sha256": "35F50249856363CD1B77EF9C383104313B41DF6C1F8A03CD288B561A7B75EFE9",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page3-bottom.png",
+    "sha256": "7F6FBBE5DDD025ACD72C8F6167E490C6BBAF2DDEB36B818EEC244F441757550E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/result.json",
+    "sha256": "D89DD870FB7D5850B1D0E6E62212E9490DCB33A3853194D942F22FD7722DF081",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page0.png",
+    "sha256": "C704E8CD68568599E63DC5606880D40C1C3E7F96F9DB56511A0440230D34EFFC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page0-bottom.png",
+    "sha256": "C704E8CD68568599E63DC5606880D40C1C3E7F96F9DB56511A0440230D34EFFC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page1.png",
+    "sha256": "106EB71E41DE557B76AA313323827A4E01A2E95F61ED8B8FBC23BC474B8BDEF9",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page1-bottom.png",
+    "sha256": "60C6D02FDDC9010F5CECD35BA8B8FF5BE16DB0BC060E4F408BA7FA05D54E1463",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/keyboard.png",
+    "sha256": "53C96F6A79F78E582F86E3F6C66468FC32EE27390D50E5FA39EA557C68946D3D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/keyboard-password.png",
+    "sha256": "A0DCA3A12EABF429446DFDBD09E2F418293108668CA43AF46B7E9AC5A641963D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/dropdown.png",
+    "sha256": "3750A68EB4BD052D3DF7FB5134615AF98E943813C380DB77AB802177E460E8A6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-first.png",
+    "sha256": "27117797EC43C77A491458C907A38E8D7874D0500D81BAAB74BB485B9E5119A4",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-first-keyboard.png",
+    "sha256": "4A300D70A5F13043DC353E3763D19DFE3185287043DA860F3023A3BE2AF7C5AA",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-last.png",
+    "sha256": "C8C74C7A86B0D9D785832EC583E607C2D872AADEB85BC9867DDBA46A8028230B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-last-keyboard.png",
+    "sha256": "329E17453B2D112348AA49C5CE9921F3C70BABA488A1C80978B120DE70D9FA87",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page2.png",
+    "sha256": "2B339610F684DE84D8A53C7876CE9E298FF742E5AD70AD3EE84BCC17AFE7FE70",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page2-bottom.png",
+    "sha256": "F339D56A36198496CC343642D445C551C1A250D4E7D30B4EFE680A3FED3DE56B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page3.png",
+    "sha256": "45F92EA9E3A19FB1500F4B6A34FAB4F7AB9FE4D369D378E2D7FD2C98BC290DC6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page3-bottom.png",
+    "sha256": "5D0F3A18259A206574B6A1DF773CE0D3CB90FBD78F2DF77DE5868421168EC1EF",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/result.json",
+    "sha256": "5325E02629F753C7B888E59C037268D27E1EBA64080B5F08391079B069509C09",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page0.png",
+    "sha256": "C1EE391B3AA0D161D10892297B66D0730FDD655B106C276365FEC0DD0B840383",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page0-bottom.png",
+    "sha256": "C1EE391B3AA0D161D10892297B66D0730FDD655B106C276365FEC0DD0B840383",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page1.png",
+    "sha256": "CAF3554A46253B85521A1DE500CF8B93F29082587F7C2B717733D4EB1E59F016",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page1-bottom.png",
+    "sha256": "FAF130DD6DDDBBC7B95CC00F177662B20E36E6D980F40A9D824923E3ED3E92C7",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/keyboard.png",
+    "sha256": "4690FB4AA0A87681A7462FEF694417E3BE1C5CD07AA2DB064A128E847801931E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/keyboard-password.png",
+    "sha256": "F5F07D7B11800D4BB740550A4F99C6EBFDED2384CF0E55D706AC675055C6E17A",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/dropdown.png",
+    "sha256": "BBE130187E4D3A2762AF504823587B1D9E6B8B43790C00E8932896301304DBCB",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-first.png",
+    "sha256": "2FE6424F00B385549D735D00F4F3A3A440056DE3F96B971851EF6094E884CBB3",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-first-keyboard.png",
+    "sha256": "A35C663BF2C1DE442ED6295D07571A43BE0909C9CE82F6191AB6C1537E4864FD",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-last.png",
+    "sha256": "979534B5DC9DF1D925D14734AB2C125886AB17D1B1AAD04515CB763B813EEA4D",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-last-keyboard.png",
+    "sha256": "B4E0F2EBCDA0AFAF0A0C3F225BBB4F3F1BE5A56917386FB40B96FD96D841F6C1",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page2.png",
+    "sha256": "0DA9E373E93094220A82D12AC3A623C657FDB4C43FF320BC8A8351787F70E69E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page2-bottom.png",
+    "sha256": "A556EB298F916E44E006D986C06B58DA23F89488604FAB9260368E66EE786028",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page3.png",
+    "sha256": "4A860C7DDDACE29FB23A6BEA88AB9D1D1CA6F991C6EB1CBA3ED476C5891AC1D6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page3-bottom.png",
+    "sha256": "6D66E0E760FC20588216B8D2E36BDAD4F0090B091B397D406EE8510532BEDF2B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/result.json",
+    "sha256": "90BB14A7B92AD37518DE4396DCBFFB175954E80A4BF858447C11F75B64D3E2F0",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page0.png",
+    "sha256": "804AD7D936DA587D934147990E9ED4CD8529655285CE159CC5F65BE158EE6F7C",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page0-bottom.png",
+    "sha256": "F46FF70FFE5D27E97E92868D0E69A46FDBC399C89B60E12EB96B3A591A7CA8AB",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page1.png",
+    "sha256": "556D4CC1DA9BFE007B567F3A247D5F4313B4FD8C9AE275B9E45E50E060963828",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page1-bottom.png",
+    "sha256": "F52073F769B86FF6197B804DEFA3CE041CB2D31776FA672480920B0B0E0B7F96",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/keyboard.png",
+    "sha256": "4AFFE2AFF85619D865C992BF2915F618FD349247987F3396218602869C8F7659",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/keyboard-password.png",
+    "sha256": "439EE2A98A59CBABCEA9398D0329C321AD5E5996A062CEE6D31FE7CEA392527B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/dropdown.png",
+    "sha256": "FCA58AED29CE707E1B6B05D448F41A757B5F9468778A280647949D20AFB43648",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-first.png",
+    "sha256": "551B7CCF88651B71B952C1D0CA77C59793B45909159BC1986693FEC6D10DEB44",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-first-keyboard.png",
+    "sha256": "1BF541D81BE56A183E2160FC9C8E6C6E08DC07A183637DCAAD1B09637F7DF31B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-last.png",
+    "sha256": "0C915CB2FBACD687DCBA4E23BC2D1EDA5CF3B3A4838A34A8CC26A80BFFC17F0E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-last-keyboard.png",
+    "sha256": "2953F51DA4ADE20149614621FEDBFBDAEB77DA4759A0CAF970753BA0C57E671E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page2.png",
+    "sha256": "5F598B0036E778F25C8F69AA84EA77DB56C275C56F9E6ADEEABB63932D645E89",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page2-bottom.png",
+    "sha256": "C8243119C93434CA51734DB20B72445BEFBB56D210237EBB4CC9B04D84DC6D74",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page3.png",
+    "sha256": "06D02B6D808A0527900E49147B2932F21B89C6B07BE0EE24BE1A48E0B1C4D6A6",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page3-bottom.png",
+    "sha256": "F8D724E95E462A9533E1A97E800B707744E923FFF8EDDFAFF32DBE5770CE9735",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/result.json",
+    "sha256": "AC4C32A00B22AC69F99CE3790DA25AE95EDCE71C502923EC4B781366C79FC5F8",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page0.png",
+    "sha256": "BBED2068EACA7A9E3688B4F9DB9E33F456E9C1C66150CE493A51DF9F11774854",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page0-bottom.png",
+    "sha256": "BBED2068EACA7A9E3688B4F9DB9E33F456E9C1C66150CE493A51DF9F11774854",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page1.png",
+    "sha256": "D9B9800E43E40EF50A6F74237DFF410552116294C75AE03F959B458519F80B15",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page1-bottom.png",
+    "sha256": "0090A59B4FAE17FF114B51583AAB34A7347EB56D868309FA4534750600278F99",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/keyboard.png",
+    "sha256": "0AD476EDA67B174385BE9342BB3E5E952CA8C23D9A5CBEF5FD3F329B542B5D14",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/keyboard-password.png",
+    "sha256": "24CF392603705FD906CDC903D90E6B013782246BC2AF55E4BF597D8307B848CF",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/dropdown.png",
+    "sha256": "00585953316E73A6E862AA72A638C59969E80E0AF53779B4B6B6268137552341",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-first.png",
+    "sha256": "57B55EC1DA7E0EEA0E4A4C436F5F790C0A492BCC1BF086823A965540C04ECF19",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-first-keyboard.png",
+    "sha256": "9835A711BE96CC7E4052BF4FB020E0F7ED05C607BD4D4608A1420781B9208BB9",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-last.png",
+    "sha256": "5DEA33D389686F4CB138E3475F6F5B532A886E93417658B0CDC556DB4823E547",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-last-keyboard.png",
+    "sha256": "D2D2867D055BA715E8446CDA29CEF62D49DB6A577E75E5014237B311A539F127",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page2.png",
+    "sha256": "8E4891B73A71691A5B22DFDFE629DF7164F913DFF7DAEFA1FA7B2D384377A339",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page2-bottom.png",
+    "sha256": "2565742E035C6BC1F94E4517A2D4FE92CDD4FC5B028CA55EA8753D5AB3A75990",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page3.png",
+    "sha256": "D3B8704E1DEF547483196302D900CC26B00DE25940A5ED5DB7CC3902F355FEEE",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page3-bottom.png",
+    "sha256": "CE3C6E062BB6625BC871B0207659F5B64C30C386726F8CA2CFC1EE3970B349DF",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-jni/result.json",
+    "sha256": "8BD6544877E52C9406C5540A424AEA248EC37C3F19646A0A69C740E673081081",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-lifecycle/result.json",
+    "sha256": "CB20E29FC72F9C11CC056C5601160AA4A554B4DE37186920588A56C536D6BBF7",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-repair/result.json",
+    "sha256": "6C34A7C9473303C8FC9E3762CD42DF6D25A5AFA217130FEE22CF53702A225445",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-repair-menu/result.json",
+    "sha256": "7A7B595A4F88BFCC95BCFD16197F2B1ACF39C497AF0BCF4103A80E927B64D5E8",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api36-environment/result.json",
+    "sha256": "EFE0BD9D9C2A8844712BF8A925C5DB0EA81D938B2DCB9C39385F648369A97807",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-diagnostics-export32/result.json",
+    "sha256": "AFD74170D5D56E23411CAE14E198DBA4AA7192AD508E30A643F829209700DE6B",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-diagnostics-export64/result.json",
+    "sha256": "53E6F9722A36A9E09C0844E5620981B890E3CE038450608287527DDFB51B3E18",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-diagnostics-session64/result.json",
+    "sha256": "ABFC750044888C2E9D1CDEF48517AAC05E5268BF6F71408C6FF0DFDFB4F7273B",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-jni32/result.json",
+    "sha256": "A64EA58BB3B67120758BF73DC27BB3068C28C0F7FDC14055D24E3C40083D8394",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-jni64/result.json",
+    "sha256": "E4C7360AA962B1759DB6017232AC6FBAE0A5A1D01E5D35BE9F1072BE1A4F0B75",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-live-00/result.json",
+    "sha256": "40709C198DB99D60ECC495E8BEADC988DF7CF32D23E763AF7AA1A45A9A5D9DCA",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-live-01/result.json",
+    "sha256": "F28928EF9DFA74D071FE582545553C9DF15C2D53D14E9390470B80B8020C2340",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-live-02/result.json",
+    "sha256": "96274EFC951BF6B070EB89662593159FBC98746D22C78C49BDA7C3166BA9038B",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-live-03/result.json",
+    "sha256": "96DF919C7534D08B24AB9E5BAE552CFDC3B8E12DA4638972AC4FDE0933109359",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-live-04/result.json",
+    "sha256": "85B1903F87DFDC4D6E968D9040F01E0FE7057E97B3107E309C7CB096FA91081F",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-live-observation/result.json",
+    "sha256": "7B3A1C4F26B22EC6F038FD48E8CEBD3BDF1D5458FF2455C0F3176A7E02C24CD0",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-main-install/result.json",
+    "sha256": "D68586334E4C88C337AE76F8BDBC3B2652D86D77BF69B8AB38FC09DA72B8F029",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-main-preflight/result.json",
+    "sha256": "5036C7C7B9E4FECAD522F5F3E9332D76631B7C69482EE77496FB02B7D1829F47",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-main-preflight-02/result.json",
+    "sha256": "EB28A04C2F3DA799CE2A9BDD4E5FBD35D5F8A2E75642F5D9D6CA9005B0D4E725",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-menu32/result.json",
+    "sha256": "E399587343EAD7CBC9E944F4F3C4B16D297EDD7277DF8C9B7883FE9A98E63067",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-menu64/result.json",
+    "sha256": "9189C224EB2587B37C4DB1CC6D64D05322E92B4BE869E6CB71DE335DD0C12483",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-restore-phone/result.json",
+    "sha256": "2FCFEE8A6BBFAAC8D73EEDD83BAE80D95653E2D42FC9C167AE38BB0AC7CD81C4",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-stability-account64/result.json",
+    "sha256": "2918405CFD7B305ED55822D993A3D80A5A0750AD04A6331939FB566B9522706F",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-stability-lifecycle64/result.json",
+    "sha256": "04013996FDB4AC67078FCA07DF24F0C8A36A5ECE975E05F11148088720619712",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-stability-repair64/result.json",
+    "sha256": "1BA059187321CABC7D48A0AB684482F734DD505CEC0BB76B05D5C7F87B11C9FA",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/result.json",
+    "sha256": "CECC44DA150FC19117FBBDAF499DA741B9C8AB16292DD1F9A0A3FCC8FA9229C9",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page0.png",
+    "sha256": "A0CAB2C4C947019D70962AA698E6B3EEA420583F5F183111BB1ABB61715D9E70",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page0-bottom.png",
+    "sha256": "A0CAB2C4C947019D70962AA698E6B3EEA420583F5F183111BB1ABB61715D9E70",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page1.png",
+    "sha256": "4CC66F0AAA6CAC4859F7B0A08B4043F479E4647B4924CFB837E4D5F4BAEDDEF7",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page1-bottom.png",
+    "sha256": "C1C7A2CF0240589F6E0DF1A763DD1372D55E4DF66616B6F322D5C188D105A2CB",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/keyboard.png",
+    "sha256": "69ED17B966F2781DCB2469587E678D30BDF5874579BDDB1243E36845C5901803",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/keyboard-password.png",
+    "sha256": "2507F76A61E187273999BB853835E490AB5EC2FD1E2B09B332151F80F0DC3E07",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/dropdown.png",
+    "sha256": "CA686083B6AD28C121C1546EEDDBA9119DEE68992D8CF5A13ACBE57FDFC3084B",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-first.png",
+    "sha256": "837631D57B69D164B10884ABB1BFEF5BAA4BA99B1A34AFDD25E5C74AF3F3B89E",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-first-keyboard.png",
+    "sha256": "2AF36ECA8E4929D123932054481D14CA51EB37B2EF311D5C813B58C355FFBEE7",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-last.png",
+    "sha256": "300D90AACFA41F02B4E8F33239E22BB308DDB93CB570AB485CED654FD981B6FC",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-last-keyboard.png",
+    "sha256": "8FDA193089470C5A2A600FB33D4467249C8A1CFAEC752269E3A0525A14F376F8",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page2.png",
+    "sha256": "C232B86B36DD7A217FA692A88FC6B3DD7C43982EE588E2C899E552CC90E247E0",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page2-bottom.png",
+    "sha256": "C232B86B36DD7A217FA692A88FC6B3DD7C43982EE588E2C899E552CC90E247E0",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page3.png",
+    "sha256": "D489969783F83A9C7329C53BB7F9A0C100AFB86F61E8492191C2BD4630D20BC8",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page3-bottom.png",
+    "sha256": "046C052193FD3F532E9BC7CE4E63B08CADEFCCC66A99350839968147A5266E13",
+    "role": "current run screenshot bound to page metadata",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-three/result.json",
+    "sha256": "D9E84031D916D8D86B8CAAC7945572EA86D59377AB31AE4DB161A2407D17C561",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font2-gesture/result.json",
+    "sha256": "F48D53CDD23BBDEA9A1AEE104C441CB7A5A8134569E38318B12E3781943B111E",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font2-three/result.json",
+    "sha256": "C0400552F0C6B85D2A68D7CF1F581EC1E760E6039559E8B1C045B7C80090F2C2",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-static/apk-audit.json",
+    "sha256": "703403BC764D665A3BD616F910EE68E1FA5A525A15056B055835CDD1782F7349",
+    "role": "final static audit",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/protected-before.json",
+    "sha256": "2618538C1A6858D7869C62256FF961B958B01DC3D07988C0F3ED45C667C6DCAB",
+    "role": "protected snapshot: paths withheld, hashes compared",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-protected-final-after.json",
+    "sha256": "66EC74DEB9AF87CAACF89BAE2E21A32AD7CFB45D1E50CAF2A4A427E12E73C7A1",
+    "role": "protected snapshot: paths withheld, hashes compared",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-protected-final.json",
+    "sha256": "7D3ADFFE642284EA8AF5EA5B8EF418520119AED6D1CD131CDEF511CCE317EE0C",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page0.png",
+    "sha256": "38ADEF0F6D0A7D19D4DDE43E1CD8A1319170F81936777CC17D79B5378D6F55F4",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page0-bottom.png",
+    "sha256": "FC2D15013AD576E11C41E4CFB2885B2A8E6E69E22019276A5844F29E5896973B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page1.png",
+    "sha256": "CC3B79F908CA7C11A2CCB787A8E4C4230AB58897994E481AF1B6B1AD4B9FB41D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page1-bottom.png",
+    "sha256": "F3ADEBADC17E2B12859BE731B52023F7DB4BC6EB70537B45722F62449A90E8F0",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/keyboard.png",
+    "sha256": "26D4551F2AA172043ACD0817ECD6BB2F7FC0C1F0A04C656244D41D86CE2429C6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/keyboard-password.png",
+    "sha256": "5F6534F8C816E9487D9BD7559388E7160A6CB6CD80D7A95189077F3D9A22B935",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/dropdown.png",
+    "sha256": "6764C537F06F9DAC5AC80B9965B234ED9DBF590FBCC8D26DEFA64E01C2469C2D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-first.png",
+    "sha256": "7E34CD0D0017B5085CBA14109D42A7EF8DABB7048CB9FB7945A417614E514ECC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-first-keyboard.png",
+    "sha256": "D4E414A3E488778E67608EBB044B0F66AEDD1042CB47C387BD53BB8F2A1BAA84",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-last.png",
+    "sha256": "EECD7660652CFB903D333FF8260FBBEA6717BAF7972BADC86AD0D32FE1303FB1",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/advanced-last-keyboard.png",
+    "sha256": "0A73ACEBDAEB6AEDA104DEE96270495C7A46A3043D70574C89DAE5C33E41C95F",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page2.png",
+    "sha256": "B3030FDCED7006D7101542B428809E60DF85B8FEF8CCAF7BF5DF7C76EB7DA2EB",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page2-bottom.png",
+    "sha256": "9D97C507D40BC69E0B1294A358B07874A75D169E72D6EB0DBA4E56F2964A42E5",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page3.png",
+    "sha256": "CE33A1C6CB937DC6579B0D3090A8664C0C98FC548C2A7AF848FEA5905575324E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font2-current-none/page3-bottom.png",
+    "sha256": "56CB0143FDAF18D7366A8AECCE4F634050FBF6B9787E51A7F363990F00600750",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page0.png",
+    "sha256": "21DC729680B7C1FAB5FFC49DEAB65689828B225B5733A4AFDD837D3D211B1D0E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page0-bottom.png",
+    "sha256": "F4911D75FA1A8CB25A26A74A119DCE318F9319A8AADAE252AC21BBFD9C2397DB",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page1.png",
+    "sha256": "D587B8EA702B2FF0D9AC87663166B26D16BF390CC423B96AC36C39D29A962E93",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page1-bottom.png",
+    "sha256": "24859D56B20DC18C568AE91F2A92B24D57F99BEC0DB9833CB0AE5B15EA8EBF59",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/keyboard.png",
+    "sha256": "112BDC52FEF3300330B75A4D6E200149361792C1718EA4F608EAE2AB235E67EB",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/keyboard-password.png",
+    "sha256": "A765D9DC565BF01337820AC996F23DCACD1D037DBCCD76C744B9561FE6371257",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/dropdown.png",
+    "sha256": "6692E3B1222D7EB9D63CAA299F3515726AAC797135E0F944AD42BA2B47DBED00",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-first.png",
+    "sha256": "E3C2F7C976D28A8A83D2F34EC49BB092AE074298FB470C0A330501D6E97A74D9",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-first-keyboard.png",
+    "sha256": "93832163B64613E4F89E005DD285372E72E059B21A16AF10B9C9E0F6C6B16A5F",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-last.png",
+    "sha256": "7F7BC871D9C16E8BD84601D4F45EA6926344371D0D105E74672317067C0BF3DC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/advanced-last-keyboard.png",
+    "sha256": "DFD76A5D5DBA323EA2581DC4853158E143550B098631C151991FFBE8F63DBD56",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page2.png",
+    "sha256": "FE5CB5243B0B9A3D99561FCB09A95B2C4F8BF9F9C002CD432022A578A8252ADA",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page2-bottom.png",
+    "sha256": "EF15E74B6B6BD3BBBCEDE3B8BBF65DEE376F1132A779E5E9AB5CF7AB43A35BBD",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page3.png",
+    "sha256": "C9FDA6531E8604D33182CE18939CF071AC33CDB1D6CD06144150A4BC696AEDEC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-ui-font1-current-none/page3-bottom.png",
+    "sha256": "DA9379C228EB77CE3FE2F2D8EFC0E761E925344B93DFACD67BF6AF32D994C573",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api26-visual.json",
+    "sha256": "36EF36DFE90EE9A4B4FFDF7C0C80C441871DA80D7961A419C09D27C66155C251",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page0.png",
+    "sha256": "7F27EA40B2D0171C99CFE4170C34C912981BE91161DE6675652A8E8DFEDB1DE0",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page0-bottom.png",
+    "sha256": "33FB3B81696E95B63BB36EC9421D5CCF80A1012E3ABEF1FDB57A80B1A70AA654",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page1.png",
+    "sha256": "36D77B58CFD1E779D8B1AEDB25D1C536E4B5C61C5495135185445FC76F0180C6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page1-bottom.png",
+    "sha256": "38CC572EF259947B453D6908244D5DB90D4DC1E3F58FCCBC7C6A7EE2253D39B7",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/keyboard.png",
+    "sha256": "4A17372B80BF23694BCC542EA96F660E92DBC0C420CB02382616FCB530DB6449",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/keyboard-password.png",
+    "sha256": "C7FD0EAB20346A37C20577F1BA8563EC63E1AE6E3C5A645E7ACD782602B9D314",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/dropdown.png",
+    "sha256": "F9C3B02D993247762F5A796911D18DE674251DDA8A0934707886E0640018EC04",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-first.png",
+    "sha256": "A910304805412CB77CB2F44F1FABCBF7DA082FEC6579DF02A4FF357886D5ED60",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-first-keyboard.png",
+    "sha256": "01EF1A87289F4AE5523CD9994F03B0E92EE4B23D2D5C5880F7A6E27E83C791B7",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-last.png",
+    "sha256": "75ED0897EE14A2B1E9EB67C83F39B1F3D7BD5BD2D2349DA6D12B7A7910D2529F",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/advanced-last-keyboard.png",
+    "sha256": "76B5BFA5BEA2C1B8D7D1B744B058985B2BAE61D54F968276FA5F57B0E26FA130",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page2.png",
+    "sha256": "F6AFE9F9437F85EEE4C79929A7DFDBD887ADC3787434BED70B929716EEE6DDD0",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page2-bottom.png",
+    "sha256": "176B6D9A8C5C3031964464D5FB2425CE98FEADB50578439D4542F417EADBD48C",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page3.png",
+    "sha256": "0354E3268A0576CD56A4BCC757A6794C77737977118C081D4296C081886989C6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-none/page3-bottom.png",
+    "sha256": "73E0DE5E0574B7C901A330486E4F1B5F25B2158099EFFED91AAD7670165A947E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page0.png",
+    "sha256": "0DC0036F92395C012F470F3D2FD077599D1176FDA158FAF636F6EEA5FAEF15F0",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page0-bottom.png",
+    "sha256": "6E0CB208BB7A04E2AB835AD7CE638AC3C650EACCFB44D4F892DA1E05F3315B53",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page1.png",
+    "sha256": "4770EFD9BD2F3EF36DE649AAF4CF8F9ADB7B2ADAD0F8E0E9F849B83672CA8E3B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page1-bottom.png",
+    "sha256": "56AD2230B7083655BEBD5B021A05545107428135F4E06FDCC7B8BB7C76088911",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/keyboard.png",
+    "sha256": "436BEA469CB20B510339E68AC2543C3B5A1D0962DDFF0CE2EE52A826B2920F12",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/keyboard-password.png",
+    "sha256": "8904C3DFE236B793E680363D48F9D1F2E7C88FCC0F568388D4BAF2D9FC2C8F3B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/dropdown.png",
+    "sha256": "11920CA5BA4686F5AFBBDC2E7BAECC697382FC832DB3E1786D7237CF4E02D06E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-first.png",
+    "sha256": "B70CB486189F29B60B5B1A5BCDC4F65E41CD119D2880EE5221459598BF3E5A43",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-first-keyboard.png",
+    "sha256": "CCD9113210CE3B3ABCE8BF6B6FB570C62A2C58F8C8EAA34952FFA894EFD0AC59",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-last.png",
+    "sha256": "524CF26E25A47173B2E90C8DF56B279CD994F818F11E307F73C336928E3FD9B9",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/advanced-last-keyboard.png",
+    "sha256": "37E77A5B69157BFAADF13E6314B9F2F4AC0F62415DF4C507231A42EBF767E405",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page2.png",
+    "sha256": "EFA249A78956C92C6AE279212569CDB84B092BABCCB3B18423D3287190319F0E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page2-bottom.png",
+    "sha256": "C3F8991BCD79D0F307746D2770C7D3062C74243DD2DEF27E16E057884C347222",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page3.png",
+    "sha256": "E255ECB6D6A3D9295FA0D068A80FD319121A3E2FCDE333C97E2A0A55EE5042D7",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-gesture-tall/page3-bottom.png",
+    "sha256": "5C25152F66FCD6AEF17F845651B92EE0411E5E17E5C1B70DFBF861600430161C",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page0.png",
+    "sha256": "C757CB57233AEA51E721D3094146CB19E5F7A8042CB443894F2B82E079C315BD",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page0-bottom.png",
+    "sha256": "C757CB57233AEA51E721D3094146CB19E5F7A8042CB443894F2B82E079C315BD",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page1.png",
+    "sha256": "B2F99847B30666213A679621904E0B659ECDD1D3CC83532C784E6746B9431E68",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page1-bottom.png",
+    "sha256": "45131FD5854E7167891A6ECEE94968EAFCF6EE276D05B43BCA50F41AD224EB87",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/keyboard.png",
+    "sha256": "301351C3F9CD1D5D00685E01897896FD3829FAA698F7BFFED2DBBF4568EC4ED1",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/keyboard-password.png",
+    "sha256": "179BFBB54029DFA92835ADEAAF2B2142357E728DFB3AEB12E72DAFEBAB6047C9",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/dropdown.png",
+    "sha256": "BABF6657A82429F462867C3A0566D95FC884E9A68E1EE2B68FB28ACEFDF37DBC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-first.png",
+    "sha256": "874BF345C6FE7413D9A836476710EA6250511A4E7D65CBCBBD22D5DF50D149FA",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-first-keyboard.png",
+    "sha256": "D7288A3A989EC2D6988DB53EBCBD1A9B38813DC37DEF9E1FA0F14B1D6EC0CEB8",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-last.png",
+    "sha256": "E7B1CA15ED6B534235650D8E7502F46BDC2BB19AB37AD0AC846A53488706B087",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/advanced-last-keyboard.png",
+    "sha256": "6C118576299DBDBBB5A6ABCE7A9E8739FFA22987CB699CD89E1D4390F66CD0AF",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page2.png",
+    "sha256": "167ACBF61CC9FEEE59819698ADB782DA9D25852CA6C2441A2815EE1485A3C85B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page2-bottom.png",
+    "sha256": "677B317092323528FE9BA27FA68CEE63D1F98B71F394AEE63FFD7A6A99340535",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page3.png",
+    "sha256": "2B5D857FD3198B9C03E38377BEA35E66F0CD8EE4C8DB724147C6F7881933118A",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-none/page3-bottom.png",
+    "sha256": "CB5914BA9EBBBFE6B6DE1E098DDEBFDA20F78C5953B84117C111E9799D010D60",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page0.png",
+    "sha256": "4E4F2EF1DDC73DFA36891897F7B639FD25DFDB390FDA17F13F753B6C3E2D2576",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page0-bottom.png",
+    "sha256": "9222468BEA06219CA7DDBABDA7D549D56F67D983F63A04BBBF0F17AC27EF31E2",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page1.png",
+    "sha256": "435BCFABE48C4F18526CF7C5D482B9B53D7A2CD1733C4B1D6E63CADFFB095DBA",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page1-bottom.png",
+    "sha256": "848289142B183680108D7BE0B26EF4C10F204B12082F819F22BB483A89F948EC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/keyboard.png",
+    "sha256": "FED098991C86C4F5C229847D2E7C9C59C409C89E6AF5115C8A7D5789590905E4",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/keyboard-password.png",
+    "sha256": "F3D5945BF721A21419FD04E647C177E40BB0AB3081E55FC80F33086C8F5E2729",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/dropdown.png",
+    "sha256": "193CCAB7C1B8CC8C4C0561E5A8B3527C28D6AAD94FE8458E9D090C50107D828F",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-first.png",
+    "sha256": "A46EFCF381A5B3091641BC77B1157FFAE8123276817F4694596DBB1072D1670D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-first-keyboard.png",
+    "sha256": "771B4808761A53C33531E77E458F3FAAFAA83B7BFFD6C06B57549188F613AD06",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-last.png",
+    "sha256": "9F80BC32A0B007A9E27EBC2FA8F124591F2D981455F607E2DBEE4991E26A655D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/advanced-last-keyboard.png",
+    "sha256": "9C85DDE65C56E79D49D72EEFC758F001DF9F864B54D896ED2C8BBA28A48E1974",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page2.png",
+    "sha256": "D57CC9EBF6747E18CF2CE9655D6D5FB7078BBB75AB1DEB9374700442F3C4E8D5",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page2-bottom.png",
+    "sha256": "241540D3519508588759B93AE7ED5D60648E1D8502A6F389963CE46F69686FB5",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page3.png",
+    "sha256": "35F50249856363CD1B77EF9C383104313B41DF6C1F8A03CD288B561A7B75EFE9",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f1-three-tall/page3-bottom.png",
+    "sha256": "7F6FBBE5DDD025ACD72C8F6167E490C6BBAF2DDEB36B818EEC244F441757550E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page0.png",
+    "sha256": "C704E8CD68568599E63DC5606880D40C1C3E7F96F9DB56511A0440230D34EFFC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page0-bottom.png",
+    "sha256": "C704E8CD68568599E63DC5606880D40C1C3E7F96F9DB56511A0440230D34EFFC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page1.png",
+    "sha256": "106EB71E41DE557B76AA313323827A4E01A2E95F61ED8B8FBC23BC474B8BDEF9",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page1-bottom.png",
+    "sha256": "60C6D02FDDC9010F5CECD35BA8B8FF5BE16DB0BC060E4F408BA7FA05D54E1463",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/keyboard.png",
+    "sha256": "53C96F6A79F78E582F86E3F6C66468FC32EE27390D50E5FA39EA557C68946D3D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/keyboard-password.png",
+    "sha256": "A0DCA3A12EABF429446DFDBD09E2F418293108668CA43AF46B7E9AC5A641963D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/dropdown.png",
+    "sha256": "3750A68EB4BD052D3DF7FB5134615AF98E943813C380DB77AB802177E460E8A6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-first.png",
+    "sha256": "27117797EC43C77A491458C907A38E8D7874D0500D81BAAB74BB485B9E5119A4",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-first-keyboard.png",
+    "sha256": "4A300D70A5F13043DC353E3763D19DFE3185287043DA860F3023A3BE2AF7C5AA",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-last.png",
+    "sha256": "C8C74C7A86B0D9D785832EC583E607C2D872AADEB85BC9867DDBA46A8028230B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/advanced-last-keyboard.png",
+    "sha256": "329E17453B2D112348AA49C5CE9921F3C70BABA488A1C80978B120DE70D9FA87",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page2.png",
+    "sha256": "2B339610F684DE84D8A53C7876CE9E298FF742E5AD70AD3EE84BCC17AFE7FE70",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page2-bottom.png",
+    "sha256": "F339D56A36198496CC343642D445C551C1A250D4E7D30B4EFE680A3FED3DE56B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page3.png",
+    "sha256": "45F92EA9E3A19FB1500F4B6A34FAB4F7AB9FE4D369D378E2D7FD2C98BC290DC6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-none/page3-bottom.png",
+    "sha256": "5D0F3A18259A206574B6A1DF773CE0D3CB90FBD78F2DF77DE5868421168EC1EF",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page0.png",
+    "sha256": "C1EE391B3AA0D161D10892297B66D0730FDD655B106C276365FEC0DD0B840383",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page0-bottom.png",
+    "sha256": "C1EE391B3AA0D161D10892297B66D0730FDD655B106C276365FEC0DD0B840383",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page1.png",
+    "sha256": "CAF3554A46253B85521A1DE500CF8B93F29082587F7C2B717733D4EB1E59F016",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page1-bottom.png",
+    "sha256": "FAF130DD6DDDBBC7B95CC00F177662B20E36E6D980F40A9D824923E3ED3E92C7",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/keyboard.png",
+    "sha256": "4690FB4AA0A87681A7462FEF694417E3BE1C5CD07AA2DB064A128E847801931E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/keyboard-password.png",
+    "sha256": "F5F07D7B11800D4BB740550A4F99C6EBFDED2384CF0E55D706AC675055C6E17A",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/dropdown.png",
+    "sha256": "BBE130187E4D3A2762AF504823587B1D9E6B8B43790C00E8932896301304DBCB",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-first.png",
+    "sha256": "2FE6424F00B385549D735D00F4F3A3A440056DE3F96B971851EF6094E884CBB3",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-first-keyboard.png",
+    "sha256": "A35C663BF2C1DE442ED6295D07571A43BE0909C9CE82F6191AB6C1537E4864FD",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-last.png",
+    "sha256": "979534B5DC9DF1D925D14734AB2C125886AB17D1B1AAD04515CB763B813EEA4D",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/advanced-last-keyboard.png",
+    "sha256": "B4E0F2EBCDA0AFAF0A0C3F225BBB4F3F1BE5A56917386FB40B96FD96D841F6C1",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page2.png",
+    "sha256": "0DA9E373E93094220A82D12AC3A623C657FDB4C43FF320BC8A8351787F70E69E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page2-bottom.png",
+    "sha256": "A556EB298F916E44E006D986C06B58DA23F89488604FAB9260368E66EE786028",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page3.png",
+    "sha256": "4A860C7DDDACE29FB23A6BEA88AB9D1D1CA6F991C6EB1CBA3ED476C5891AC1D6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-gesture-tall/page3-bottom.png",
+    "sha256": "6D66E0E760FC20588216B8D2E36BDAD4F0090B091B397D406EE8510532BEDF2B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page0.png",
+    "sha256": "804AD7D936DA587D934147990E9ED4CD8529655285CE159CC5F65BE158EE6F7C",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page0-bottom.png",
+    "sha256": "F46FF70FFE5D27E97E92868D0E69A46FDBC399C89B60E12EB96B3A591A7CA8AB",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page1.png",
+    "sha256": "556D4CC1DA9BFE007B567F3A247D5F4313B4FD8C9AE275B9E45E50E060963828",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page1-bottom.png",
+    "sha256": "F52073F769B86FF6197B804DEFA3CE041CB2D31776FA672480920B0B0E0B7F96",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/keyboard.png",
+    "sha256": "4AFFE2AFF85619D865C992BF2915F618FD349247987F3396218602869C8F7659",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/keyboard-password.png",
+    "sha256": "439EE2A98A59CBABCEA9398D0329C321AD5E5996A062CEE6D31FE7CEA392527B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/dropdown.png",
+    "sha256": "FCA58AED29CE707E1B6B05D448F41A757B5F9468778A280647949D20AFB43648",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-first.png",
+    "sha256": "551B7CCF88651B71B952C1D0CA77C59793B45909159BC1986693FEC6D10DEB44",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-first-keyboard.png",
+    "sha256": "1BF541D81BE56A183E2160FC9C8E6C6E08DC07A183637DCAAD1B09637F7DF31B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-last.png",
+    "sha256": "0C915CB2FBACD687DCBA4E23BC2D1EDA5CF3B3A4838A34A8CC26A80BFFC17F0E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/advanced-last-keyboard.png",
+    "sha256": "2953F51DA4ADE20149614621FEDBFBDAEB77DA4759A0CAF970753BA0C57E671E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page2.png",
+    "sha256": "5F598B0036E778F25C8F69AA84EA77DB56C275C56F9E6ADEEABB63932D645E89",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page2-bottom.png",
+    "sha256": "C8243119C93434CA51734DB20B72445BEFBB56D210237EBB4CC9B04D84DC6D74",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page3.png",
+    "sha256": "06D02B6D808A0527900E49147B2932F21B89C6B07BE0EE24BE1A48E0B1C4D6A6",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-none/page3-bottom.png",
+    "sha256": "F8D724E95E462A9533E1A97E800B707744E923FFF8EDDFAFF32DBE5770CE9735",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page0.png",
+    "sha256": "BBED2068EACA7A9E3688B4F9DB9E33F456E9C1C66150CE493A51DF9F11774854",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page0-bottom.png",
+    "sha256": "BBED2068EACA7A9E3688B4F9DB9E33F456E9C1C66150CE493A51DF9F11774854",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page1.png",
+    "sha256": "D9B9800E43E40EF50A6F74237DFF410552116294C75AE03F959B458519F80B15",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page1-bottom.png",
+    "sha256": "0090A59B4FAE17FF114B51583AAB34A7347EB56D868309FA4534750600278F99",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/keyboard.png",
+    "sha256": "0AD476EDA67B174385BE9342BB3E5E952CA8C23D9A5CBEF5FD3F329B542B5D14",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/keyboard-password.png",
+    "sha256": "24CF392603705FD906CDC903D90E6B013782246BC2AF55E4BF597D8307B848CF",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/dropdown.png",
+    "sha256": "00585953316E73A6E862AA72A638C59969E80E0AF53779B4B6B6268137552341",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-first.png",
+    "sha256": "57B55EC1DA7E0EEA0E4A4C436F5F790C0A492BCC1BF086823A965540C04ECF19",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-first-keyboard.png",
+    "sha256": "9835A711BE96CC7E4052BF4FB020E0F7ED05C607BD4D4608A1420781B9208BB9",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-last.png",
+    "sha256": "5DEA33D389686F4CB138E3475F6F5B532A886E93417658B0CDC556DB4823E547",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/advanced-last-keyboard.png",
+    "sha256": "D2D2867D055BA715E8446CDA29CEF62D49DB6A577E75E5014237B311A539F127",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page2.png",
+    "sha256": "8E4891B73A71691A5B22DFDFE629DF7164F913DFF7DAEFA1FA7B2D384377A339",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page2-bottom.png",
+    "sha256": "2565742E035C6BC1F94E4517A2D4FE92CDD4FC5B028CA55EA8753D5AB3A75990",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page3.png",
+    "sha256": "D3B8704E1DEF547483196302D900CC26B00DE25940A5ED5DB7CC3902F355FEEE",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-api35-f2-three-tall/page3-bottom.png",
+    "sha256": "CE3C6E062BB6625BC871B0207659F5B64C30C386726F8CA2CFC1EE3970B349DF",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-ui35-visual-review.json",
+    "sha256": "27E92F3EA8B19A2332F3B6462A346797880BEDAEB5F8043AC4419FD3966387BC",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme-manual-network/aggregate.json",
+    "sha256": "50B93B28A5D59436FA0EA7D026E3D69A2E9A0098C0EC182548A57BCD655264C8",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page0.png",
+    "sha256": "A0CAB2C4C947019D70962AA698E6B3EEA420583F5F183111BB1ABB61715D9E70",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page0-bottom.png",
+    "sha256": "A0CAB2C4C947019D70962AA698E6B3EEA420583F5F183111BB1ABB61715D9E70",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page1.png",
+    "sha256": "4CC66F0AAA6CAC4859F7B0A08B4043F479E4647B4924CFB837E4D5F4BAEDDEF7",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page1-bottom.png",
+    "sha256": "C1C7A2CF0240589F6E0DF1A763DD1372D55E4DF66616B6F322D5C188D105A2CB",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/keyboard.png",
+    "sha256": "69ED17B966F2781DCB2469587E678D30BDF5874579BDDB1243E36845C5901803",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/keyboard-password.png",
+    "sha256": "2507F76A61E187273999BB853835E490AB5EC2FD1E2B09B332151F80F0DC3E07",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/dropdown.png",
+    "sha256": "CA686083B6AD28C121C1546EEDDBA9119DEE68992D8CF5A13ACBE57FDFC3084B",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-first.png",
+    "sha256": "837631D57B69D164B10884ABB1BFEF5BAA4BA99B1A34AFDD25E5C74AF3F3B89E",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-first-keyboard.png",
+    "sha256": "2AF36ECA8E4929D123932054481D14CA51EB37B2EF311D5C813B58C355FFBEE7",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-last.png",
+    "sha256": "300D90AACFA41F02B4E8F33239E22BB308DDB93CB570AB485CED654FD981B6FC",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/advanced-last-keyboard.png",
+    "sha256": "8FDA193089470C5A2A600FB33D4467249C8A1CFAEC752269E3A0525A14F376F8",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page2.png",
+    "sha256": "C232B86B36DD7A217FA692A88FC6B3DD7C43982EE588E2C899E552CC90E247E0",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page2-bottom.png",
+    "sha256": "C232B86B36DD7A217FA692A88FC6B3DD7C43982EE588E2C899E552CC90E247E0",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page3.png",
+    "sha256": "D489969783F83A9C7329C53BB7F9A0C100AFB86F61E8492191C2BD4630D20BC8",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-ui-font1-gesture/page3-bottom.png",
+    "sha256": "046C052193FD3F532E9BC7CE4E63B08CADEFCCC66A99350839968147A5266E13",
+    "role": "explicitly reviewed per-image visual evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/r9-realme34-visual.json",
+    "sha256": "1D9BFCCA1D221CF6FB3AEB5DD7EC23B08D54534185BC7CB2572D45757AC90CEF",
+    "role": "explicitly reviewed aggregate evidence",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-x86_64-20261108-114228-439/build-command.json",
+    "sha256": "4BC1EBC5CFE1E2071743EB52F3F528A828E0F398D3D98DDE25C4D87C348489DE",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-x86_64-20261108-114228-439/build-exit.json",
+    "sha256": "FB3081A482B2447167B8E393328813FC2878F7CFC4E5B63614D4DE09C0E19D35",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-x86_64-20261108-114228-439/packaging-commands-isolation.json",
+    "sha256": "CEDAC2811E1EA8EAC61337EF3D60DFDEEB6DA4B8C54003B08A83E68960252ECB",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-x86_64-20261108-114228-439/packaging-exits-isolation.json",
+    "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-phone-20261108-114331-004/build-command.json",
+    "sha256": "A703429C189C1826DFC0B2D021F4ABE346F8184A137E73BBE930766FE86943DB",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-phone-20261108-114331-004/build-exit.json",
+    "sha256": "C5BE4AB9EE6A7A33981C92AF5F5BB1656E40C47F5FADD8ACD6C9B4866B03A4E5",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-phone-20261108-114331-004/packaging-commands-candidate.json",
+    "sha256": "B1D346C4ECD63FB25C9CCE97429C014B387830F76F505008DFFE45C0C177AA61",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-phone-20261108-114331-004/packaging-commands-isolation.json",
+    "sha256": "DC8604DACCC997DF1438C4CDC08C118F87BE1C81BB17E0FE9DD9F3243459DFE0",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-phone-20261108-114331-004/packaging-exits-candidate.json",
+    "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-phone-20261108-114331-004/packaging-exits-isolation.json",
+    "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-arm32-20261108-114500-545/build-command.json",
+    "sha256": "5FF365D199A59A10F3DE6EC3307EB74FEC9D9EBE5C594F60CEEB3A12666B9670",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-arm32-20261108-114500-545/build-exit.json",
+    "sha256": "5FDBC58E89A039089EA67A10226CDEFEB93BDFAA5DFE8896281A58E3B044F7A7",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-arm32-20261108-114500-545/packaging-commands-isolation.json",
+    "sha256": "FA493DF0F1D64599C2CCDE8799C8B8988301E0050733518BA22B1A7DE6E6F37D",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "evidence/build-arm32-20261108-114500-545/packaging-exits-isolation.json",
+    "sha256": "AE6956671B0605B3574AEB9CBDC53C0B9227F7C1DEA67B517CDC4A1B64ACB44C",
+    "role": "raw build command/exit retained locally",
+    "includedOriginal": false
+  },
+  {
+    "archivePath": "final-review-summary.txt",
+    "sha256": "1DD840AABD02F1275664B7C584EE9BCA6ECF658D83B365BFF83DE84C57928FA0",
+    "role": "explicitly reviewed final narrative outside Android build inputs",
+    "includedOriginal": false
+  }
+]

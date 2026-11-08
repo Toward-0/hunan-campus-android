@@ -1,85 +1,73 @@
-# 湖南校园网安卓项目当前进度
+# 当前状态：v34候选，阶段1未通过
 
-截至2026年11月7日（Asia/Shanghai），最新交付为 **0.2.21-compat-s1，versionCode 33**。realme和iQOO均已有该APK的实际联网成功记录；iQOO的本次连接证实可以保持高级参数为空，仅使用账号密码完成自动门户发现与认证。**阶段1整体仍未通过，尚未获准进入阶段2。** 单次联网、静态对齐和隔离测试不代表广泛手机兼容或长期锁屏稳定。
+本轮标识为 `s1-json-ui-20261108-01`，版本 **0.2.22-compat-s1 / versionCode 34**。阶段1结论仍为**未通过**，默认留在阶段1。阶段2、3、4没有因为旧版GitHub发布或本次本地构建自动获得授权。
 
-完整工作规范见[完整流程](FULL_WORKFLOW.md)，在新聊天继续开发可使用[接续提示词](NEXT_PROMPT.md)。仓库[顶层README](../README.md)是当前入口：Android工程在`source/`，主包和隔离包在`artifacts/main/`、`artifacts/isolation/`，发布证据在`evidence/`。以下源码路径均相对于`source/`。`source/README`里的旧版本字样属于历史内容，不替代本次进度。
+## 版本和证据入口
 
-## 当前可追溯版本
+本次按用户要求同步已固定的v34候选源码、APK、脚本和证据，不重新构建、不安装、不修改Android源码，也不创建新Release。[旧v33 Release](https://github.com/Toward-0/hunan-campus-android/releases/tag/v0.2.21-compat-s1)及其APK、证据继续保留，旧封存发布提交为8cb98b3b69a4e7d4d5d7afddb808a3b9ebd73c21，不强推或改写历史。
 
-| 项目 | 当前值 |
-|---|---|
-| versionName / versionCode | `0.2.21-compat-s1` / `33` |
-| 主包文件 | `ESurfingHunan-0.2.21-compat-s1-candidate-phone.apk` |
-| 主包名 | `org.esurfing.hunan` |
-| 隔离包名 | `org.esurfing.hunan.isolation` |
-| 主包ABI | `arm64-v8a`、`armeabi-v7a` |
-| minSdk / targetSdk | `26` / `35` |
-| 主APK SHA256 | `7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D` |
-| 原交付source-manifest.json SHA256 | `C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA` |
-| 原源码清单文件数 | 233 |
-| 测试签名证书SHA256 | `2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229` |
+本轮最终APK、实际输入和测试的唯一组合以[源码清单](../revisions/v0.2.22-compat-s1/source-manifest.json)、[validation](../revisions/v0.2.22-compat-s1/validation.json)、[构建记录](../revisions/v0.2.22-compat-s1/build-commands-public.json)、[证据索引](../revisions/v0.2.22-compat-s1/evidence-index.json)、[校验和](../revisions/v0.2.22-compat-s1/SHA256SUMS.txt)及[中文报告](../revisions/v0.2.22-compat-s1/阶段1验收报告.txt)为准。相同版本的中间迭代不能互相转记通过；每项保留PASS/FAIL/NOT_RUN/BLOCKED。
 
-上述源码清单标识原封存交付，仓库以`evidence/original-source-manifest.json`保存其原始清单，APK仍绑定该原始输入。发布副本的运行源码及构建文件不变；唯一源目录内的发布变化是将`source/docs/阶段1复现与真机操作.md`的真实设备序列号替换为`REPLACE_WITH_DEVICE_SERIAL`。此脱敏变化记录于`publication-changes.json`，发布副本另有新的`source-manifest.json`，具体位置见证据索引。新发布清单不能冒充原APK的构建输入。原封存文件未修改。证书摘要是公开标识，不是签名私钥；测试密钥和凭据文件不上传仓库。
+[v34手机主APK](../revisions/v0.2.22-compat-s1/ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk?raw=true) SHA256为`DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795`；238文件源码清单SHA256为`85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9`。仓库source保持实际输入的每字节一致。
 
-当前原构建工具链：JDK17.0.16、Gradle8.11.1、AGP8.9.2、Kotlin2.1.20、NDK28.0.13004108、CMake3.22.1、Android Build Tools35.0.0。不得为通过测试随意降低targetSdk或升级全部依赖。原构建脚本曾包含开发机工具链路径，新环境必须先完成路径参数化和写入路径预检。
+`revisions/v0.2.22-compat-s1/`全部243文件保持固定交付原字节，其中“未发布”“未推送”是构建交付当时的历史快照，本次同步不改写；顶层文档说明后续同步，不属于238文件Android构建输入。开发work因模拟器退出核验受阻仍未封存，固定交付的独立哈希绑定保留。
 
-## 已完成的主要工作
+## 19项门槛
 
-- 阶段1已加入手机双ARM ABI；x86_64仅用于隔离模拟器，不加入手机主交付范围。
-- realme真实32位及64位进程已运行JNI合成用例；适用64位ELF LOAD段和APK 16KB压缩包对齐检查通过。
-- 修正门户发现耗尽后的状态与账号切换保护，避免在活动连接、认证、注销或修复中写入另一组配置。
-- “更多→修复网络”成为常驻入口；连接页原按钮复用同一确认流程。条件不满足时说明原因，不把常驻入口解释为可以随时强制重登。
-- 用户确认、注销确认、客户端100秒等待、至多一次重登以及停止/网络变化/服务结束取消机制均保留。
-- v33在realme完成同签名覆盖安装；iQOO随后使用完全相同APK覆盖安装，无需改协议或为其另造客户端标识。
-- 本次GitHub保存是进度归档与后续协作基础，不代表阶段1验收完成，也不代表自动授权后续阶段。
+最终validation含17项必选和2项可选/补充；必选项非PASS，阶段结论仍为未通过。
 
-## 设计支持范围
-
-设计基线为API26及以上、targetSdk35，手机交付双ARM ABI。阶段1必选隔离矩阵至少包括API26/29/31/33/35；API34和36的补充范围须在实施前明确。不同厂商、ABI和页大小分别记录证据，“大部分安卓手机”是发展方向，不能作为未经验证的验收结论。
-
-## 已验证的系统、ABI、页大小与设备
-
-| 环境 | ABI / 位数 | 页大小 | 当前v33证据和边界 |
-|---|---|---|---|
-| realme RMX3820，Android14 / API34 | arm64-v8a / 64位 | 4096 | JNI、14类修复入口状态及确认保护、更多页截图、完整隔离修复回归、同签名覆盖安装；后续只读诊断确认登录、首次心跳、HTTPS外网成功 |
-| 同一realme，32位隔离构建 | armeabi-v7a / 32位 | 4096 | JNI与14类入口状态/确认保护；这是实际32位运行证据 |
-| iQOO12，设备回报V2307A / vivo，Android15 / API35 | arm64-v8a / 64位 | 4096 | JNI、菜单、带显式前台启动辅助的UI探针、同签名覆盖；仅账号密码的一次真实登录成功及一个后续计划心跳成功 |
-| Windows Android Emulator，API35 | x86_64 / 64位 | 4096 | JNI、菜单保护、字体1和2的UI探针；更多页大字体入口人工检查。不能据此证明ARM64或完整UI门槛通过 |
-
-两种ARM进程JNI记录覆盖182个畸形输入、200轮创建释放、9种合成算法、每算法20个分配失败位置，最终句柄数0。测试值属于相应APK和环境，不推广到尚未运行的环境。
-
-iQOO真实连接观察约286秒：登录1次、注销0次、修复0次，代理真实认证操作0次；portal/ip/gateway/mac/mscgip/hostname六项连接前后均为空，连接前没有身份缓存，成功后才创建缓存。门户FOUND、LOGIN、首次心跳及HTTPS_VERIFIED形成完整证据链。该设备仅报告arm64-v8a，不支持在其上补充v7a证据。它已有应用设置，因此本次不属于全新安装首启测试。
-
-## 尚未通过或未验证
-
-| 状态 | 项目 | 当前处理 |
+| 测试ID | 状态 | 定位 |
 |---|---|---|
-| BLOCKED | ARM64 / PAGE_SIZE16384安装、启动和JNI | 用户已确认暂无适合设备或ARM主机环境，同意保留阻塞；这不等于接受阶段1整体通过 |
-| BLOCKED | v33 API26补测 | 当时磁盘空间不足；清理本次AVD的命令被自动审批拒绝，未删除、未绕过。新环境应重新预检空间和权限 |
-| NOT_RUN | v33 API29/31/33/36补测 | v32历史结果保留，不能直接计入v33当前通过数 |
-| FAIL | 完整UI验收 | API35两倍字体状态栏顶部裁切仍存在；刘海、手势/三键、键盘、大字体全组合尚未闭合 |
-| 已知证据限制 | 既有UiProbe页码对应 | realme部分page0截图/元数据实际为更多页；自动PASS不能代替四页逐张人工验收 |
-| 已知缺陷，未修复 | 诊断JSON行截断 | `TimingTrace.export()`的`takeLast(128000)`可能截断第一条JSON记录；历史失败不追认通过 |
-| 未完成 | Lint有效警告处置 | 原v33主包0错误/15警告，隔离包0错误/33警告；原始警告数为零未达到，新构建须重新核实 |
-| NOT_RUN | Doze组合、8小时自然锁屏、长期厂商保活、完整进程生命周期 | 按后续阶段计划和用户确认执行，不从短时联网推定通过 |
+| JSON-COMPLETE-RECORDS | PASS | 必选 |
+| DIAGNOSTIC-CURRENT-STATE | PASS | 必选 |
+| UI-API35-COMPLETE | FAIL | 必选 |
+| API26-CURRENT-BUILD | FAIL | 必选 |
+| API29-CURRENT-BUILD | BLOCKED | 必选 |
+| API31-CURRENT-BUILD | NOT_RUN | 必选 |
+| API33-CURRENT-BUILD | NOT_RUN | 必选 |
+| API35-CURRENT-BUILD | FAIL | 必选 |
+| API34-REALME-AFFECTED | FAIL | 必选 |
+| ARM64-JNI | PASS | 必选 |
+| ARM32-JNI | PASS | 必选 |
+| SAFE-STOP-ACCOUNT-REPAIR | PASS | 必选 |
+| MAIN-SAME-SIGNATURE-INSTALL | PASS | 必选 |
+| CURRENT-MANUAL-REAL-NETWORK | BLOCKED | 可选短测 |
+| FINAL-STATIC-APK | PASS | 必选 |
+| PROTECTED-BASELINE-UNCHANGED | PASS | 必选 |
+| ENVIRONMENT-RESTORATION | BLOCKED | 必选 |
+| API36-SUPPLEMENTAL | NOT_RUN | 补充 |
+| ARM64-PAGE16384-RUNTIME | BLOCKED | 必选 |
 
-## 换机操作提示
+原v33主APK仍绑定原始233文件清单C83DFEAB98CBBA964C53000D9C01B300E98F706DBFBD2D376E0DAB6117F77DEA。发布副本另有E5D4794F2CA708136B5CE8687566200A7F3A184D8D9151BB253595E83737918E清单，仅历史说明中的设备序列号脱敏，不能倒签为旧APK构建输入。本轮清单独立绑定新APK。顶层文档/支持脚本与source实际构建输入分别列清单，source内旧README不是当前版本依据。
 
-更换手机前，请在原手机仍连接校园 Wi-Fi、仍保有会话时执行“注销并停止”，确认成功后再断开并在新手机手动连接。“停止连接”或关闭 Wi-Fi 不等于注销服务器会话。
+## 本轮修改与验证重点
 
-用户反馈该次换机连接问题与未注销旧客户端有关。本次面向使用者的交付不将其列为 APK 功能缺陷；既有诊断原始记录作为历史证据保留，不倒改。
+诊断导出使用完整JSON记录边界淘汰最旧记录，保留类型与字段白名单；元数据也是独立JSON，记录截断、拒绝和不可读计数。当前协议错误在新会话及成功心跳后清除，本轮历史失败保留，代次和取消语义不放宽。
 
-## 原始交付证据索引
+大字体界面修订集中于高级设置认证通道的完整文本显示。UI探针绑定前台Activity、选中页、页面内容、窗口和截图哈希，键盘必须真实可见；业务按钮用触摸按下并取消验证可达，不触发登录/注销/修复。逐图视觉检查单独记录，自动PASS不能替代视觉门槛。
 
-以下为原工作区相对阶段标识；GitHub发布只包含经检查的选择性内容时，仓库证据索引应标明哪些原始文件仅在本地保存，不能制造远程文件存在的假象。
+本轮约定必选环境：API26/29/31/33/35 x86_64隔离模拟器、API34 realme RMX3820实际ARM64和ARM32进程。API36作为补充，targetSdk仍35。API35覆盖字体1/2×手势/三键×无模拟刘海/高刘海；旧系统及realme按系统实际能力验证受影响组合，无法实现的组合不能假称执行。每项实际结果见validation和中文验收报告。
 
-| 原阶段标识 | 用途 |
-|---|---|
-| `campus-stability-v30`、`campus-stability-v30-version-label` | 原始v30稳定化和版本标签证据；联合读取，不能假定目录内文件同名 |
-| `compat-s1-20261106-01` | v31/0.2.19兼容性基建历史证据 |
-| `compat-s1-account-fix-20261106-01` | v32/0.2.20账号/门户发现修订和历史矩阵 |
-| `repair-menu-20261107-01` | 当前v33实际构建、源码清单、APK、签名、Lint、JNI、入口与修复回归 |
-| `iqoo12-s1-compare-20261107-01` | 同一v33在iQOO的对照与账号密码真实连接证据 |
-| `realme105-20261107-01` | 同一v33的换机操作、realme连接恢复历史记录 |
+Android26缺少getconf/awk，不将检测工具缺失误记为APK失败：页大小使用设备端仅提取AT_PAGESZ的白名单查询，并与JNI Os.sysconf返回值交叉核对；恢复脚本不依赖awk。未知页大小不默认写4096。
 
-最新源码来源是原封存`work/repair-menu-20261107-01/source`。iQOO对照和后续realme调查没有生成新源码版本。继续开发必须另建阶段/修订目录并重新绑定最终APK、源码清单和受影响测试。
+## 未关闭门槛及范围
+
+- ARM64 / PAGE_SIZE=16384的实际安装、启动、JNI仍缺环境，保持BLOCKED；用户已明确暂无法提供，不再反复询问。64位ELF及APK静态16KB对齐不能替代运行门槛。
+- API35大字体系统状态栏字形裁切在应用和系统设置页均有对照，最终120张截图逐图检查中部分组合仍为系统栏视觉FAIL；API26两倍字体也有裁切。应用控件与系统栏分项记录，不通过额外应用padding或自动几何PASS掩盖。
+- API29模拟器启动后ADB从offline转为absent；随后Windows拒绝Get-CimInstance进程身份查询，无法可靠核验并关闭残留。没有改用工具或路径绕过。API29本轮APK测试BLOCKED；API31/33必选矩阵及API36补充矩阵NOT_RUN。不得将此环境限制记作APK自身失败，亦不得用旧版结果补齐。
+- 本轮最终Lint：主包0错误/15警告，隔离包0错误/34警告；零警告目标FAIL。v33历史主包0错误/15警告、隔离包0错误/33警告仅是历史，不作为新构建结论。
+- realme已同签名覆盖至最终v34，用户反馈手动连接成功。约251秒、5次间隔至少60秒的白名单快照仅重复读到同一条已有心跳/HTTPS成功记录，没有取得本观察窗内新增计划心跳证据；实网短测门槛保留BLOCKED，不能写连续联网或后续心跳通过。未增加认证、注销、修复或额外网络探测。
+- realme最终ARM64/ARM32 JNI、导出、菜单及ARM64约定安全回归PASS，句柄归零。真机UI仅font1/gesture完成自动检查，其中密码键盘截图内容区域为黑色，人工视觉BLOCKED、原因未证；font2/gesture设置和恢复字体写入返回255，保留FAIL，三键两项NOT_RUN。原系统设置只读核对一致，未换工具重试；最终隔离包已恢复并停止。
+- iQOO12/V2307A本轮未连接，历史v33短时联网与64位JNI不能转为本轮v34通过，也不能替代v7a实际运行。
+- Doze组合、8小时自然锁屏、连续外网、全面厂商适配、全部进程生命周期及正式签名迁移不在本轮自动执行范围。服务端TTL未知，不推测数值。
+- 独立公开下载验证及可选问题模板上传的历史阻塞未假称完成；本轮没有重试被拒绝的浏览器上传/下载或历史AVD清理。
+
+## 产品与安全边界
+
+保持minSdk26、targetSdk35、手机双ARM ABI及既有测试签名；x86_64只用于隔离模拟器。不改协议、生产端点、MAC/客户端标识，不绕过认证或降低TLS校验。不把精确闹钟、电池豁免或通知许可变成连接硬门槛。
+
+真实登录、注销、修复由用户手动发起；网络丢失或身份变化后停止并等待手动连接，进程终止/force-stop/重启后不自动认证。修复仍需确认、自身注销成功、客户端100秒等待、最多一次重登，停止/网络变化/服务结束/证据过期取消。
+
+隔离用例仅使用org.esurfing.hunan.isolation、设备127.0.0.1、合成模块和虚构凭据。主应用不清数据、不卸载、不做破坏性用例。白名单采集不包含账号、密码、票据、密钥、完整抓包或完整日志。
+
+原源码、原交付、发布副本及发布归档共1442个保护文件阶段前后核对；检查结果必须以最终保护审计为准。所有写入位于本轮工作/输出目录；不删除历史交付释放空间，封存后另起修订。设计支持API26起不代表“大部分手机”已验证。

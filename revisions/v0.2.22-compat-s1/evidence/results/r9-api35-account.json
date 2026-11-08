@@ -1,0 +1,218 @@
+{
+  "testId": "r9-api35-account",
+  "probe": "StabilityProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:54:21.518681+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "StabilityProbe",
+    "mode": "account",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T03:54:21.518681+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 35,
+    "model": "sdk_gphone64_x86_64",
+    "supportedAbis": [
+      "x86_64",
+      "arm64-v8a"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "x86_64"
+    ],
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "cases": [
+      {
+        "handles": 0,
+        "case": "JNI synthetic 200 valid/short malformed lifecycles",
+        "elapsed": 9664683
+      },
+      {
+        "case": "waiting-account-change-rejected-true",
+        "elapsed": 9666752
+      },
+      {
+        "threadsTotal": 23,
+        "threadsWithoutFixture": 21,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 20314352,
+        "fd": 120,
+        "discoveryRequests": 9,
+        "loginRequests": 0,
+        "case": "discovery-exhausted-true",
+        "elapsed": 9707403
+      },
+      {
+        "case": "authenticated-account-change-rejected-true",
+        "elapsed": 9709404
+      },
+      {
+        "case": "logout-account-change-rejected-true",
+        "elapsed": 9709816
+      },
+      {
+        "threadsTotal": 25,
+        "threadsWithoutFixture": 23,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 22279808,
+        "fd": 149,
+        "case": "manual-retry-and-explicit-logout-true",
+        "elapsed": 9709944
+      },
+      {
+        "case": "waiting-account-change-rejected-false",
+        "elapsed": 9711663
+      },
+      {
+        "threadsTotal": 25,
+        "threadsWithoutFixture": 23,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 22220928,
+        "fd": 121,
+        "discoveryRequests": 9,
+        "loginRequests": 0,
+        "case": "discovery-exhausted-false",
+        "elapsed": 9752564
+      },
+      {
+        "case": "authenticated-account-change-rejected-false",
+        "elapsed": 9754527
+      },
+      {
+        "case": "logout-account-change-rejected-false",
+        "elapsed": 9754895
+      },
+      {
+        "threadsTotal": 27,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 22408736,
+        "fd": 144,
+        "case": "manual-retry-and-explicit-logout-false",
+        "elapsed": 9755041
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 21644912,
+        "fd": 120,
+        "case": "cancel-discovery-stop",
+        "elapsed": 9767129
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 21709728,
+        "fd": 120,
+        "case": "cancel-discovery-fixture-loss",
+        "elapsed": 9779197
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 21773744,
+        "fd": 120,
+        "case": "cancel-discovery-fixture-identity",
+        "elapsed": 9791276
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 21829168,
+        "fd": 120,
+        "case": "cancel-discovery-service-end",
+        "elapsed": 9803359
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 1,
+        "nativeBytes": 21631536,
+        "fd": 122,
+        "case": "stopped-ui-save-once-no-implicit-login",
+        "elapsed": 9805246
+      },
+      {
+        "threadsTotal": 26,
+        "threadsWithoutFixture": 25,
+        "platformPools": 0,
+        "ownedPools": 0,
+        "calls": 0,
+        "deadlines": 0,
+        "callbacks": 0,
+        "jniHandlesIncludingFixture": 0,
+        "nativeBytes": 21213456,
+        "fd": 120,
+        "case": "PASS",
+        "elapsed": 9805257
+      }
+    ],
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api35-account/result.json",
+    "sha256": "647725E047EEC182D33004E96ACC1EEBF3C2889F60803557ACE9900F45CE7956",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "path": "source/app/build.gradle.kts",
+    "changeType": "M",
+    "beforeSha256": "F2542C796C327847FC43DEC34557966466772906181DC28B490A5F2D8ECF07DB",
+    "afterSha256": "BF8970B6CAA04DAD547188924FBC2B00C7CA2B358C425BACCACCA70DA3753734"
+  },
+  {
+    "path": "source/app/src/isolation/AndroidManifest.xml",
+    "changeType": "M",
+    "beforeSha256": "C97C3DFAC836E2FA3B38F2B7369E17397EE0EF6888E6B4886B19C367F957900E",
+    "afterSha256": "4D0A008502926B1A130FA415251AD0E64C1B8F9CD0218D00212393005872B48A"
+  },
+  {
+    "path": "source/app/src/isolation/java/org/esurfing/hunan/DiagnosticsProbe.kt",
+    "changeType": "A",
+    "beforeSha256": null,
+    "afterSha256": "477EA00B1AFD9B2A82E033A044B527C58E21F49886DBB5F072493F9D9FB63C91"
+  },
+  {
+    "path": "source/app/src/isolation/java/org/esurfing/hunan/DiagnosticsRegression.kt",
+    "changeType": "A",
+    "beforeSha256": null,
+    "afterSha256": "ABB70B94623C26BE70A014145574091C9B29E2546BF52991FD5D8C3C66C372C6"
+  },
+  {
+    "path": "source/app/src/isolation/java/org/esurfing/hunan/StabilityProbe.kt",
+    "changeType": "M",
+    "beforeSha256": "39F2BF48D680023381FB4E54854866750DB6AF37C95F594FB4ADA32E556E12B1",
+    "afterSha256": "D8168675CA07458F261CD5C6E941A789FA4D3FDCAB7BD5A8CE5DC69B10EE9808"
+  },
+  {
+    "path": "source/app/src/isolation/java/org/esurfing/hunan/UiProbe.kt",
+    "changeType": "M",
+    "beforeSha256": "11CAA89325B28E674BCD561E0EEC409B48A26E69BF6B1C7EEA2D91D4BDF1F793",
+    "afterSha256": "41374837FDE0E88500F44A8A7B502AA78E3DA24E9EB3239B46DB8484743BDF67"
+  },
+  {
+    "path": "source/app/src/main/java/org/esurfing/hunan/DiagnosticJsonl.kt",
+    "changeType": "A",
+    "beforeSha256": null,
+    "afterSha256": "C6B8335CD5FD8814222FA108789FCA11BAB80BF691B6A9513EC7E2604A259831"
+  },
+  {
+    "path": "source/app/src/main/java/org/esurfing/hunan/MainActivity.kt",
+    "changeType": "M",
+    "beforeSha256": "522939D8DCB808D280B6AF765F28C22DD8B9160190B2D6F22C587A4CD5B9D753",
+    "afterSha256": "B1997EC60BE868C48848D2151C15048E181A3D3AE5F7D7C4E71E2C2E278DF905"
+  },
+  {
+    "path": "source/app/src/main/java/org/esurfing/hunan/SessionService.kt",
+    "changeType": "M",
+    "beforeSha256": "E6BCE2639BA5B347682F2D6437D44B52DAB0AE7DBD51D5420792EB9F787D7094",
+    "afterSha256": "E5F6EE40540445C15B24E8D3508636C70DB8B07A65A719F8558136BFC9411CE9"
+  },
+  {
+    "path": "source/app/src/main/java/org/esurfing/hunan/SessionState.kt",
+    "changeType": "M",
+    "beforeSha256": "E65A1FEFFE76E10696AB7FF89A150256002382E3816B8E8DFFD95B2889E89A7B",
+    "afterSha256": "67B3B0003FD888F99CED5402789ECF6F6A6AE4D6A94B7F36E249A630EF982AB4"
+  },
+  {
+    "path": "source/app/src/main/java/org/esurfing/hunan/TimingTrace.kt",
+    "changeType": "M",
+    "beforeSha256": "33882B9B3FF1B734C0B9AE283C9D534BAB55AB95F4D40790492E9952C34F0C14",
+    "afterSha256": "7D7147BAD0D1AE8FBD8659C5BBD43CB66AB0BD8DA870E2CA385FF689B84957B1"
+  },
+  {
+    "path": "source/build-stage.ps1",
+    "changeType": "M",
+    "beforeSha256": "ADA9BD03C0CFA58F52CCEAA53D1AA6F6543A479C743BFD2419E408FED5B58E05",
+    "afterSha256": "CCB9CDEFB5D8001C1709CE5DF64FC89855331C2B1923FE09CF11EBE6A1F0E169"
+  },
+  {
+    "path": "source/docs/构建隔离参数.txt",
+    "changeType": "A",
+    "beforeSha256": null,
+    "afterSha256": "45D1695B1DB0B4B959684A7DC82EB7C56344D1E2E00A13F7F5F3FA8D9C232FF5"
+  },
+  {
+    "path": "source/stage-env.ps1",
+    "changeType": "M",
+    "beforeSha256": "3BDA01E9446CDF6197D42CA6E901010B7D839D34BD1C90E37E44B0E6C668FEEE",
+    "afterSha256": "7A0DC442DB9671EE4F3DF0686C362674DA29BA6259B36DF6CADF1C19507833D0"
+  },
+  {
+    "path": "source/stage-tools.example.json",
+    "changeType": "A",
+    "beforeSha256": null,
+    "afterSha256": "26507068B4C0F4AB3957EBE82F1CC9BAC349546D53D62D86628B88B8DB440D19"
+  }
+]

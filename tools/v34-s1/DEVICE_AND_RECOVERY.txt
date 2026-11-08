@@ -1,0 +1,37 @@
+本轮主包安装、只读快照与恢复操作
+
+这些脚本用于本轮已约定的安装、隔离回归、只读采集与恢复；实际执行状态以对应result.json及validation.json为准，脚本存在不等于用例通过。执行前先加载本阶段source/stage-env.ps1。不得在封存目录运行。
+所有调用必须显式指定设备序列号、包名、APK、SHA256、源码标识、API和版本。不要将真实序列号写入公开脚本或报告。
+
+主包脚本 main-device.py
+  --mode preflight：只读检查目标APK及现有主包版本/哈希和空闲闸门；不要求当前已装新版，不上传或安装。
+  --mode install：只对授权且当前在线的realme RMX3820/iQOO V2307A执行pm install -r。
+  --mode snapshot：只读取主包白名单状态，不启动应用、认证或额外外网探测。
+
+共同参数形态：
+python -B main-device.py --serial REPLACE_WITH_DEVICE_SERIAL --package org.esurfing.hunan --apk ABSOLUTE_CURRENT_APK --sha256 ACTUAL_APK_SHA256 --source-id ACTUAL_SOURCE_ID --expected-api 34 --version 34 --mode snapshot --label main-before-auth-01
+
+安装前：核对本地APK包名/版本、双ARM ABI、固定测试证书；核对实际设备型号/API/ABI/页大小、现有包版本及哈希。现有versionCode高于目标则停止，不降级。
+安装闸门：manualOff必须明确为true；末条白名单状态desired必须false且为非活动phase；SessionService必须不存在。未知或任一活动状态均BLOCKED，用户手动停止后再执行。上传后、安装前再次检查，安装期间用户不要操作主应用。停止连接不等于服务端注销，脚本不替用户注销。
+安装中如手机显示系统安装确认，由用户手动处理；脚本不读取界面、不自动点击。最长安装等待默认120秒，可明确设30至180秒。拒绝/失败后停止，不卸载、不清数据、不降级、不重复安装风暴。
+安装超时或ADB通道中断时status记BLOCKED，并说明安装结果未知。先由用户查看安装器及应用版本，再按结果决定；脚本不自动重试。尚不能确认安装完成时不抢先删除正在使用的上传APK；仅在确认安装器结束后，可用显式设备执行rm -f /data/local/tmp/campus-s1-main-原label.apk。禁止通配符和目录递归删除。
+安装成功后再次核对已安装APK哈希和versionCode；不自动打开应用、连接、注销、修复或force-stop主包。
+
+采集边界：设备端awk仅输出manualOff布尔、SessionService存在布尔以及events.tsv末条固定枚举/数字/时刻。network列、协议原始文本、账号、密码、票据、IP、MAC和完整日志不出设备。未知/格式错误不静默当作安全状态。高级设置本方案无核实需求，不读取。
+事件摘要仅代表当前events.tsv范围；记录条数不是登录/心跳次数，不声称连续外网状态。诊断快照成功也不自动代表联网验收通过。
+
+本轮真实联网短测由用户手动发起：登录最多1次、注销0次、修复0次，最长观察5分钟。只保留应用正常心跳和现有预算内探测；脚本额外网络探测0次。收到用户成功反馈后采集第1次白名单快照，其后间隔至少60秒，共最多5次，单调时钟300秒为退出上限；采集本身不产生网络请求，不高频轮询。
+实际登录请求时刻未被采集时，只记录用户反馈来源及观察开始时刻，不伪造认证时间。五次读取成功也不能把重复的存量成功事件判定为窗口内新心跳或新HTTPS成功；须分别记录本窗口的新证据与缺口。未取得窗口内主机/设备时钟锚时，不用窗口外校核追认旧记录发生在观察窗口内。
+登录失败、网络/身份变化、异常重试、用户停止或达到5分钟即停止本次观察；不自动重新认证。失败后由用户停止连接，仅检查白名单证据；不得将单次HTTPS失败直接执行为修复。
+
+恢复脚本 restore_revision.py
+  --mode isolation：只接受本阶段run_ui在修改前生成的restore-journal.json；校验journal哈希、stageId、包、APK哈希/版本、型号/API/页大小及当前隔离APK。仅停止隔离包，并恢复journal中确实采集的字体、硬键盘显示输入法、导航/刘海overlay和隔离包通知权限；每项读回验证。无原始记录不猜默认值，不恢复主包权限。
+  --mode emulator：接受本阶段启动证据及哈希，要求显式emulator序列号、qemu=1、API一致，并核对实时AVD名称确为本阶段avd目录对应名称。先通过emulator_process_guard.py绑定对应Windows进程的PID、父PID、创建时刻、可执行文件路径及命令摘要，再发送reboot -p。最多30秒确认该序列号断开，随后确认已记录进程全部退出；ADB断开不能代替进程退出证据。必要时仅对重新核对全部身份字段一致的本轮残留进程执行终止；身份变化、系统拒绝读取或无法确认退出均BLOCKED，不改用其他工具/路径绕过拒绝，不关全局ADB、不按进程名批量杀进程、不删除任何历史AVD。
+
+恢复参数形态：
+python -B restore_revision.py --serial REPLACE_WITH_DEVICE_SERIAL --package org.esurfing.hunan.isolation --apk ABSOLUTE_ISOLATION_APK --sha256 ACTUAL_APK_SHA256 --source-id ACTUAL_SOURCE_ID --expected-api 34 --version 34 --mode isolation --record ABSOLUTE_CURRENT_RESTORE_JOURNAL --record-sha256 ACTUAL_RECORD_SHA256 --label restore-ui-01
+
+早期用例没有restore-journal.json时，不补造之前的设备设置。原测试finally恢复记录可只读核对；不能凭缺失记录自动重置系统。恢复脚本仅报告实际执行结果；未执行记录为NOT_RUN，缺权限或环境证据记录为BLOCKED。
+
+隔离批次run_realme_batch.py必须显式传入当前手机APK、32位隔离APK及各自哈希、源码标识、设备和版本；固定核实RMX3820/API34/4096页及双ARM能力。仅作用于隔离包。UI原样恢复、隔离服务清理与最终句柄释放分别查看实际证据，不能从批次脚本存在推断PASS。
+模拟器批次run_remaining_matrix.py只描述其明确记录的端口与顺序。一次环境阻塞后的其他API不自动算已测；续跑必须使用新证据标签并重新核实当前AVD与进程身份。本轮API29环境BLOCKED、后续API31/33/36未执行的具体原因见validation.json，不以历史版本测试替代。

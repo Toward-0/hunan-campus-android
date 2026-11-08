@@ -1,0 +1,153 @@
+{
+  "baseline": "published repository root and tools/v33-history",
+  "changes": [
+    {
+      "path": "README.md",
+      "changeType": "M",
+      "beforePath": "README.md",
+      "beforeSha256": "EAD2D6AD7679607913601483ACD9A5BDBF1A7CC62153AC6F49F9289AC65AE31C",
+      "afterSha256": "371D8A0F9669199D3269DAAB38EEBCAF4665630B09A4A42899B4EFDC8835FD96"
+    },
+    {
+      "path": ".gitignore",
+      "changeType": "M",
+      "beforePath": ".gitignore",
+      "beforeSha256": "512165F0EE6892FC08F46DFDFAD4B1A103FD880DD138137679ED74DC4EAB34AE",
+      "afterSha256": "3ECFE7CEAB92B22A74906570EF4EEBB07AD1F9752F663B67B53DB6A291BFD6B6"
+    },
+    {
+      "path": "docs/CURRENT_STATUS.md",
+      "changeType": "M",
+      "beforePath": "docs/CURRENT_STATUS.md",
+      "beforeSha256": "5684C6214168F08983BBC8F92366D18527DA09432495CF6B2CB278A49A90E0F4",
+      "afterSha256": "F0503A45065CD8C35BC5CC735FBD08088D944B2797F9672D379C5992212774BF"
+    },
+    {
+      "path": "docs/NEXT_PROMPT.md",
+      "changeType": "M",
+      "beforePath": "docs/NEXT_PROMPT.md",
+      "beforeSha256": "C39F2A18E6C5AB1F68A4CEF249CD25654215754599B16D954288BF595F0B5813",
+      "afterSha256": "9E2898DF2608442AB234DCEC5B9EDE68940E6F7D0102D1D0A5E5A60EBD2071E4"
+    },
+    {
+      "path": "docs/BUILD_AND_INSTALL.md",
+      "changeType": "M",
+      "beforePath": "docs/BUILD_AND_INSTALL.md",
+      "beforeSha256": "2CF12F563D6A8806C3D4B4807070D3B13476B392B3E28AA9C009204440BE5E48",
+      "afterSha256": "6AACCBEF888077690DC19552D0219BEB2E08E2DEAAA271B651846B46037158F9"
+    },
+    {
+      "path": "support/DEVICE_AND_RECOVERY.txt",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "D61361F08C15C237ACF9661A2949AA4230135274A3D28118C221E6AAF9E84A4A"
+    },
+    {
+      "path": "support/adb_client.py",
+      "changeType": "M",
+      "beforePath": "tools/v33-history/adb_client.py",
+      "beforeSha256": "89AC1533C508213BE6A0D2CF0BA06143BBF624F3BB0566186CA789AEE360306B",
+      "afterSha256": "7A5D379E44063E54F255AC7E44293BE1BFC767BC7F87ABF6C96548E66CD01966"
+    },
+    {
+      "path": "support/audit_artifacts.py",
+      "changeType": "M",
+      "beforePath": "tools/v33-history/audit_artifacts.py",
+      "beforeSha256": "4B0B10294DE984A4F1A761807396ACE16ECE6C43A6366D1A2E8879300986EE3D",
+      "afterSha256": "60EDB17F186CBB9EDC82869624DA3DDD9978D76B27718237C6B2FA97663A595E"
+    },
+    {
+      "path": "support/emulator_process_guard.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "BC56E9B10B813E6DA3AE6FC776A85942122780A18DE58C85493325A0B09777B0"
+    },
+    {
+      "path": "support/main-device.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "A15C76FDC90455390627AD5ACBAE806D70C560BD95C0C78F48C9B5C5B0B22AFA"
+    },
+    {
+      "path": "support/matrix-suite.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "CF02820556719A825A0D3ADB2B262BC1FDB467A50D26EC38322AC99B088A6245"
+    },
+    {
+      "path": "support/package_revision.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "A35BA9DE942FCDF9911FAFEA9A7B62B02A5E555852B90D3A64B989838B1A620B"
+    },
+    {
+      "path": "support/record_visual_review.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "C2D8937A622CD72A401B44B11AF64D68601A1F2F268EA7675E0DD6B32897C0C0"
+    },
+    {
+      "path": "support/restore_revision.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "86B8888E0B56BFE1C5F0B2EF76E591B05578163FFFA73EA0BF9EE2F86D61E412"
+    },
+    {
+      "path": "support/run_device.py",
+      "changeType": "M",
+      "beforePath": "tools/v33-history/run_device.py",
+      "beforeSha256": "52DA3792BE80649F119DC70E54A9C8DA4F67CD8C3E509540482AC814BE9ED149",
+      "afterSha256": "AFD62AD34D88B86DEEDE1DCC95EDBC291350A4028D2335B8127B92250CC072A6"
+    },
+    {
+      "path": "support/run_realme_batch.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "D89B10BD3D9F76F46D1BE3DF7221402A4ED25E5E3D95780081A3BAA671108F43"
+    },
+    {
+      "path": "support/run_remaining_matrix.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "797CBAAF877A4E9BEF6D2AA8D79C858FB98E7BA45E73CB573487518E7B7CB8FB"
+    },
+    {
+      "path": "support/run_ui.py",
+      "changeType": "M",
+      "beforePath": "tools/v33-history/run_ui.py",
+      "beforeSha256": "AEB659AF6B8FBC58D8FAFD648E29B58B23D38B79DF76BF72FE459E679CAAFD21",
+      "afterSha256": "9A6AA5052D75E3D978BCA2BB0E8B0CF8DFE3EA03D276AB0CCE924DCBF36B53C5"
+    },
+    {
+      "path": "support/stage_guard.py",
+      "changeType": "M",
+      "beforePath": "tools/v33-history/stage_guard.py",
+      "beforeSha256": "13C16A9E6B1FF606DDB97AFEABB4F5066F18193080CF8E8F04F7C9E6A759860B",
+      "afterSha256": "258CAF363D52C7E928200A925C63BCFFD1DAA2DB0142BA6AAE13241CE566690B"
+    },
+    {
+      "path": "support/start_emulator.py",
+      "changeType": "M",
+      "beforePath": "tools/v33-history/start_emulator.py",
+      "beforeSha256": "2A5CC76D06A6DBC06EF18A112906843E59A6A426F0DC78D2BF03B6722E3C8A33",
+      "afterSha256": "5C62DC9A0BDB482490811FB99C8D4E7BB76D815B88F16B3D6794FB25C22201D9"
+    },
+    {
+      "path": "support/verify-protected.py",
+      "changeType": "A",
+      "beforePath": null,
+      "beforeSha256": null,
+      "afterSha256": "5BB2B2523F42DEED2DB0E724D20EF33A483B306B359341AFB2F1039FC539BC54"
+    }
+  ],
+  "note": "与changes.json合看覆盖本轮源码、交付说明和选定支持脚本变化；不将缓存/运行证据当作源码。"
+}

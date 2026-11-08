@@ -1,4 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+    <instrumentation android:name="org.esurfing.hunan.DiagnosticsProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic JSONL and diagnostic state regression"/>
     <instrumentation android:name="org.esurfing.hunan.RepairMenuProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Synthetic repair menu UI regression"/>
     <instrumentation android:name="org.esurfing.hunan.DiscoveryProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated discovery and privacy regression"/>
     <instrumentation android:name="org.esurfing.hunan.UiProbe" android:targetPackage="org.esurfing.hunan.isolation" android:label="Isolated four-page layout verification"/>

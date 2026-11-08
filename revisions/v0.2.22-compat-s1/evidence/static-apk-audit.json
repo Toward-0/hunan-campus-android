@@ -1,0 +1,332 @@
+{
+  "testId": "r9-static",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": null,
+  "time": "2026-11-08T03:47:12.706755+00:00",
+  "expected": "APK identity/signature/ABI/ELF/ZIP/test-entrypoint static checks",
+  "actual": {
+    "apks": [
+      {
+        "testId": "APK-candidate-phone",
+        "file": "ESurfingHunan-0.2.22-compat-s1-candidate-phone.apk",
+        "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "sourceManifestSha256": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "time": "2026-11-08T03:47:13.040095+00:00",
+        "status": "PASS",
+        "sha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+        "metadata": {
+          "package": "org.esurfing.hunan",
+          "versionCode": "34",
+          "versionName": "0.2.22-compat-s1",
+          "minSdk": "26",
+          "targetSdk": "35"
+        },
+        "certificateSha256": "2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229",
+        "zipalign16kStatus": "PASS",
+        "testEntrypointsAbsent": true,
+        "nativeLibraries": [
+          {
+            "bits": 64,
+            "machine": 183,
+            "loadSegments": [
+              {
+                "fileOffset": 0,
+                "virtualAddress": 0,
+                "alignment": 16384,
+                "aligned16k": true
+              },
+              {
+                "fileOffset": 105344,
+                "virtualAddress": 121728,
+                "alignment": 16384,
+                "aligned16k": true
+              },
+              {
+                "fileOffset": 106728,
+                "virtualAddress": 139496,
+                "alignment": 16384,
+                "aligned16k": true
+              }
+            ],
+            "elf16kApplicable": true,
+            "elf16kStatus": "PASS",
+            "status": "PASS",
+            "entry": "lib/arm64-v8a/libhunan_core.so",
+            "sha256": "47A96F69111A54BF19EF3F946F2FA35FEE6629FC02F3E03D190C4D1C732E129E"
+          },
+          {
+            "bits": 32,
+            "machine": 40,
+            "loadSegments": [
+              {
+                "fileOffset": 0,
+                "virtualAddress": 0,
+                "alignment": 4096,
+                "aligned16k": false
+              },
+              {
+                "fileOffset": 61728,
+                "virtualAddress": 65824,
+                "alignment": 4096,
+                "aligned16k": false
+              },
+              {
+                "fileOffset": 62456,
+                "virtualAddress": 70648,
+                "alignment": 4096,
+                "aligned16k": false
+              }
+            ],
+            "elf16kApplicable": false,
+            "elf16kStatus": "NOT_RUN",
+            "status": "PASS",
+            "entry": "lib/armeabi-v7a/libhunan_core.so",
+            "sha256": "82D436F7BF2146BAB6BB860EA63D2826718C51CF564BF5D848415B29A8C05DBC"
+          }
+        ],
+        "abis": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ],
+        "dexClassCount": 1648
+      },
+      {
+        "testId": "APK-isolation-phone",
+        "file": "ESurfingHunan-0.2.22-compat-s1-isolation-phone.apk",
+        "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "sourceManifestSha256": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "time": "2026-11-08T03:47:13.606854+00:00",
+        "status": "PASS",
+        "sha256": "C4DCE4A82B979968F3EFE359E27F2F7F1376A2A4BBE88909787FC62A3FCBC953",
+        "metadata": {
+          "package": "org.esurfing.hunan.isolation",
+          "versionCode": "34",
+          "versionName": "0.2.22-compat-s1-isolation",
+          "minSdk": "26",
+          "targetSdk": "35"
+        },
+        "certificateSha256": "2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229",
+        "zipalign16kStatus": "PASS",
+        "nativeLibraries": [
+          {
+            "bits": 64,
+            "machine": 183,
+            "loadSegments": [
+              {
+                "fileOffset": 0,
+                "virtualAddress": 0,
+                "alignment": 16384,
+                "aligned16k": true
+              },
+              {
+                "fileOffset": 108080,
+                "virtualAddress": 124464,
+                "alignment": 16384,
+                "aligned16k": true
+              },
+              {
+                "fileOffset": 109552,
+                "virtualAddress": 142320,
+                "alignment": 16384,
+                "aligned16k": true
+              }
+            ],
+            "elf16kApplicable": true,
+            "elf16kStatus": "PASS",
+            "status": "PASS",
+            "entry": "lib/arm64-v8a/libhunan_core.so",
+            "sha256": "01B7F751F722A3A82F8A370DBF66247DF19E2CBE836630FDD478115976965E23"
+          },
+          {
+            "bits": 32,
+            "machine": 40,
+            "loadSegments": [
+              {
+                "fileOffset": 0,
+                "virtualAddress": 0,
+                "alignment": 4096,
+                "aligned16k": false
+              },
+              {
+                "fileOffset": 62288,
+                "virtualAddress": 66384,
+                "alignment": 4096,
+                "aligned16k": false
+              },
+              {
+                "fileOffset": 63024,
+                "virtualAddress": 71216,
+                "alignment": 4096,
+                "aligned16k": false
+              }
+            ],
+            "elf16kApplicable": false,
+            "elf16kStatus": "NOT_RUN",
+            "status": "PASS",
+            "entry": "lib/armeabi-v7a/libhunan_core.so",
+            "sha256": "D95AD223E98BB7FD3B9D98ED2028835CBCA8FD158158618A51F80DD0C07FB5F7"
+          }
+        ],
+        "abis": [
+          "arm64-v8a",
+          "armeabi-v7a"
+        ],
+        "dexClassCount": 1800
+      },
+      {
+        "testId": "APK-isolation-arm32",
+        "file": "ESurfingHunan-0.2.22-compat-s1-isolation-arm32.apk",
+        "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "sourceManifestSha256": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "time": "2026-11-08T03:47:14.266717+00:00",
+        "status": "PASS",
+        "sha256": "6F66062E52C7857924AB2F47BCF8CC97470ED31833745A00DD941459D2429B9C",
+        "metadata": {
+          "package": "org.esurfing.hunan.isolation",
+          "versionCode": "34",
+          "versionName": "0.2.22-compat-s1-isolation",
+          "minSdk": "26",
+          "targetSdk": "35"
+        },
+        "certificateSha256": "2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229",
+        "zipalign16kStatus": "PASS",
+        "nativeLibraries": [
+          {
+            "bits": 32,
+            "machine": 40,
+            "loadSegments": [
+              {
+                "fileOffset": 0,
+                "virtualAddress": 0,
+                "alignment": 4096,
+                "aligned16k": false
+              },
+              {
+                "fileOffset": 62288,
+                "virtualAddress": 66384,
+                "alignment": 4096,
+                "aligned16k": false
+              },
+              {
+                "fileOffset": 63024,
+                "virtualAddress": 71216,
+                "alignment": 4096,
+                "aligned16k": false
+              }
+            ],
+            "elf16kApplicable": false,
+            "elf16kStatus": "NOT_RUN",
+            "status": "PASS",
+            "entry": "lib/armeabi-v7a/libhunan_core.so",
+            "sha256": "D95AD223E98BB7FD3B9D98ED2028835CBCA8FD158158618A51F80DD0C07FB5F7"
+          }
+        ],
+        "abis": [
+          "armeabi-v7a"
+        ],
+        "dexClassCount": 1800
+      },
+      {
+        "testId": "APK-isolation-x86_64",
+        "file": "ESurfingHunan-0.2.22-compat-s1-isolation-x86_64.apk",
+        "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "sourceManifestSha256": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+        "time": "2026-11-08T03:47:14.870899+00:00",
+        "status": "PASS",
+        "sha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+        "metadata": {
+          "package": "org.esurfing.hunan.isolation",
+          "versionCode": "34",
+          "versionName": "0.2.22-compat-s1-isolation",
+          "minSdk": "26",
+          "targetSdk": "35"
+        },
+        "certificateSha256": "2df9ad39258e06a0174c45862dbd3bf1611d566e0dead5cae43a26a213b1b229",
+        "zipalign16kStatus": "PASS",
+        "nativeLibraries": [
+          {
+            "bits": 64,
+            "machine": 62,
+            "loadSegments": [
+              {
+                "fileOffset": 0,
+                "virtualAddress": 0,
+                "alignment": 16384,
+                "aligned16k": true
+              },
+              {
+                "fileOffset": 107488,
+                "virtualAddress": 123872,
+                "alignment": 16384,
+                "aligned16k": true
+              },
+              {
+                "fileOffset": 108896,
+                "virtualAddress": 141664,
+                "alignment": 16384,
+                "aligned16k": true
+              }
+            ],
+            "elf16kApplicable": true,
+            "elf16kStatus": "PASS",
+            "status": "PASS",
+            "entry": "lib/x86_64/libhunan_core.so",
+            "sha256": "541C5BDD15A5225C478B949C1699DFC7C44A1E183521253C2823BF90B6D3E79C"
+          }
+        ],
+        "abis": [
+          "x86_64"
+        ],
+        "dexClassCount": 1800
+      }
+    ],
+    "lint": [
+      {
+        "testId": "LINT-candidate",
+        "variant": "candidate",
+        "status": "PASS",
+        "reportSha256": "21C5BBEF5509DD0D9F6583D5C29D162585EA2B1AF946EDC3F51BF726703C017B",
+        "errors": 0,
+        "warnings": 15,
+        "severities": {
+          "Warning": 15
+        },
+        "ruleCounts": {
+          "ApplySharedPref": 10,
+          "ChromeOsAbiSupport": 2,
+          "StaticFieldLeak": 2,
+          "MissingApplicationIcon": 1
+        },
+        "zeroWarningTarget": "FAIL"
+      },
+      {
+        "testId": "LINT-isolation",
+        "variant": "isolation",
+        "status": "PASS",
+        "reportSha256": "77AC847D17C033DDE11D13D444A9A7A6ACAACC5B7C5E3FE55A1D529068448C96",
+        "errors": 0,
+        "warnings": 34,
+        "severities": {
+          "Warning": 34
+        },
+        "ruleCounts": {
+          "ApplySharedPref": 20,
+          "ImplicitSamInstance": 4,
+          "ChromeOsAbiSupport": 2,
+          "StaticFieldLeak": 2,
+          "MissingApplicationIcon": 1,
+          "SetTextI18n": 5
+        },
+        "zeroWarningTarget": "FAIL"
+      }
+    ]
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-static/apk-audit.json",
+    "sha256": "703403BC764D665A3BD616F910EE68E1FA5A525A15056B055835CDD1782F7349",
+    "role": "final static audit",
+    "includedOriginal": false
+  },
+  "scope": "static-only"
+}

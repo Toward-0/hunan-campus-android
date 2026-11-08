@@ -1,0 +1,44 @@
+[
+  {
+    "path": "build-stage.ps1",
+    "side": "before",
+    "scope": "entire legacy build script",
+    "reason": "Legacy signing-password literal withheld, including multiline continuations"
+  },
+  {
+    "path": "build-stage.ps1",
+    "side": "after",
+    "line": 7,
+    "reason": "Signing password-related statement withheld; original hashes remain authoritative"
+  },
+  {
+    "path": "build-stage.ps1",
+    "side": "after",
+    "line": 8,
+    "reason": "Signing password-related statement withheld; original hashes remain authoritative"
+  },
+  {
+    "path": "build-stage.ps1",
+    "side": "after",
+    "line": 9,
+    "reason": "Signing password-related statement withheld; original hashes remain authoritative"
+  },
+  {
+    "path": "build-stage.ps1",
+    "side": "after",
+    "line": 41,
+    "reason": "Signing password-related statement withheld; original hashes remain authoritative"
+  },
+  {
+    "path": "build-stage.ps1",
+    "side": "after",
+    "line": 50,
+    "reason": "Signing password-related statement withheld; original hashes remain authoritative"
+  },
+  {
+    "path": "stage-env.ps1",
+    "side": "after",
+    "line": 29,
+    "reason": "Signing password-related statement withheld; original hashes remain authoritative"
+  }
+]

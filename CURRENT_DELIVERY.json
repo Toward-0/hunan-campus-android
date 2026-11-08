@@ -1,0 +1,13 @@
+{
+  "versionName": "0.2.22-compat-s1",
+  "versionCode": 34,
+  "stage": "阶段1",
+  "stageStatus": "FAIL",
+  "delivery": "revisions/v0.2.22-compat-s1",
+  "sourceManifestSha256": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "mainApkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+  "originalPublicationCommit": "8cb98b3b69a4e7d4d5d7afddb808a3b9ebd73c21",
+  "rebuiltForPublication": false,
+  "newReleaseCreated": false,
+  "nextStageAuthorized": false
+}

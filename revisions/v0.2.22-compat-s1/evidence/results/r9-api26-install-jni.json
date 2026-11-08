@@ -1,0 +1,63 @@
+{
+  "testId": "r9-api26-install-jni",
+  "probe": "CompatProbe",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+  "time": "2026-11-08T03:46:21.964546+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "CompatProbe",
+    "package": "org.esurfing.hunan.isolation",
+    "apkSha256": "055F793A95278700B09D4E828E6D747F2857345B89D0D0E187765A59B775D0F0",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "time": "2026-11-08T03:46:21.964546+00:00",
+    "expected": "isolated assertions pass; cleanup succeeds",
+    "status": "PASS",
+    "api": 26,
+    "model": "Android SDK built for x86_64",
+    "supportedAbis": [
+      "x86_64",
+      "x86"
+    ],
+    "pageSize": 4096,
+    "versionCode": 34,
+    "apkAbis": [
+      "x86_64"
+    ],
+    "installSuccess": true,
+    "instrumentation": {
+      "exitCode": 0,
+      "completed": true,
+      "reportedFailure": false
+    },
+    "result": {
+      "nativeBits": 64,
+      "allocationFailurePositionsPerAlgorithm": 20,
+      "api": 26,
+      "manufacturer": "unknown",
+      "handlesAfter": 0,
+      "model": "Android SDK built for x86_64",
+      "status": "PASS",
+      "malformedRejected": 182,
+      "cycles": 200,
+      "loadedAbi": "x86_64",
+      "testId": "S1-JNI",
+      "supportedAbis": [
+        "x86_64",
+        "x86"
+      ],
+      "process64": true,
+      "syntheticAlgorithms": 9,
+      "pageSize": 4096
+    },
+    "cleanupExit": 0
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-api26-install-jni/result.json",
+    "sha256": "A1CCE842E2A51A9DCAEC88D4A9C3F63119431DBDE82F5B7C5587B472C598A692",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}

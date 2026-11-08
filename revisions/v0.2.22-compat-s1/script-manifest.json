@@ -1,0 +1,82 @@
+[
+  {
+    "path": "DEVICE_AND_RECOVERY.txt",
+    "sha256": "D61361F08C15C237ACF9661A2949AA4230135274A3D28118C221E6AAF9E84A4A",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "adb_client.py",
+    "sha256": "7A5D379E44063E54F255AC7E44293BE1BFC767BC7F87ABF6C96548E66CD01966",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "audit_artifacts.py",
+    "sha256": "60EDB17F186CBB9EDC82869624DA3DDD9978D76B27718237C6B2FA97663A595E",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "emulator_process_guard.py",
+    "sha256": "BC56E9B10B813E6DA3AE6FC776A85942122780A18DE58C85493325A0B09777B0",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "main-device.py",
+    "sha256": "A15C76FDC90455390627AD5ACBAE806D70C560BD95C0C78F48C9B5C5B0B22AFA",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "matrix-suite.py",
+    "sha256": "CF02820556719A825A0D3ADB2B262BC1FDB467A50D26EC38322AC99B088A6245",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "package_revision.py",
+    "sha256": "A35BA9DE942FCDF9911FAFEA9A7B62B02A5E555852B90D3A64B989838B1A620B",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "record_visual_review.py",
+    "sha256": "C2D8937A622CD72A401B44B11AF64D68601A1F2F268EA7675E0DD6B32897C0C0",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "restore_revision.py",
+    "sha256": "86B8888E0B56BFE1C5F0B2EF76E591B05578163FFFA73EA0BF9EE2F86D61E412",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "run_device.py",
+    "sha256": "AFD62AD34D88B86DEEDE1DCC95EDBC291350A4028D2335B8127B92250CC072A6",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "run_realme_batch.py",
+    "sha256": "D89B10BD3D9F76F46D1BE3DF7221402A4ED25E5E3D95780081A3BAA671108F43",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "run_remaining_matrix.py",
+    "sha256": "797CBAAF877A4E9BEF6D2AA8D79C858FB98E7BA45E73CB573487518E7B7CB8FB",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "run_ui.py",
+    "sha256": "9A6AA5052D75E3D978BCA2BB0E8B0CF8DFE3EA03D276AB0CCE924DCBF36B53C5",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "stage_guard.py",
+    "sha256": "258CAF363D52C7E928200A925C63BCFFD1DAA2DB0142BA6AAE13241CE566690B",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "start_emulator.py",
+    "sha256": "5C62DC9A0BDB482490811FB99C8D4E7BB76D815B88F16B3D6794FB25C22201D9",
+    "selection": "explicit --reviewed-script"
+  },
+  {
+    "path": "verify-protected.py",
+    "sha256": "5BB2B2523F42DEED2DB0E724D20EF33A483B306B359341AFB2F1039FC539BC54",
+    "selection": "explicit --reviewed-script"
+  }
+]

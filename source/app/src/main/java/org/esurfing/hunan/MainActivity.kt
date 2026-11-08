@@ -249,8 +249,58 @@ class MainActivity : Activity() {
         settings.addView(advanced)
         label(advanced,"认证通道",20f)
         channel=Spinner(this).apply {
-            adapter=ArrayAdapter(this@MainActivity,android.R.layout.simple_spinner_dropdown_item,listOf("iOS 兼容通道 · 优先验证","旧 Windows 通道 · 未通过放行验收"))
+            val spinner=this
+            adapter=object : BaseAdapter() {
+                private val options=listOf("iOS 兼容通道 · 优先验证","旧 Windows 通道 · 未通过放行验收")
+                override fun getCount()=options.size
+                override fun getItem(position: Int)=options[position]
+                override fun getItemId(position: Int)=position.toLong()
+                private fun row(position: Int, convertView: View?, parent: android.view.ViewGroup): View =
+                    ((convertView as? TextView) ?: TextView(this@MainActivity)).apply {
+                    // A plain multiline row avoids the platform spinner item's
+                    // single-line text appearance and natural-width measurement.
+                    text=options[position]
+                    textSize=18f
+                    setTextColor(Color.rgb(35,49,66))
+                    gravity=android.view.Gravity.CENTER_VERTICAL
+                    setSingleLine(false)
+                    setHorizontallyScrolling(false)
+                    maxLines=Int.MAX_VALUE
+                    ellipsize=null
+                    minimumHeight=dp(48)
+                    setPadding(dp(8),dp(8),dp(8),dp(8))
+                    if(parent is AbsListView) {
+                        // Preserve ListView's private recycling/forceAdd flags.
+                        val existing=layoutParams as? AbsListView.LayoutParams
+                        if(existing == null) layoutParams=AbsListView.LayoutParams(-1,-2)
+                        else { existing.width=-1; existing.height=-2 }
+                    } else if(layoutParams == null) layoutParams=android.view.ViewGroup.LayoutParams(-1,-2)
+                    maxWidth=if(spinner.width > 0) spinner.width else resources.displayMetrics.widthPixels-dp(48)
+                }
+                override fun getView(position: Int, convertView: View?, parent: android.view.ViewGroup): View =
+                    row(position,convertView,parent)
+                override fun getDropDownView(position: Int, convertView: View?, parent: android.view.ViewGroup): View {
+                    // DropDownListView forces a root TextView to scroll horizontally
+                    // after getDropDownView. Keep the multiline label inside a plain
+                    // container so the framework preserves its wrapping behavior.
+                    val container=(convertView as? FrameLayout) ?: FrameLayout(this@MainActivity)
+                    val label=row(position,container.getChildAt(0),container)
+                    if(label.parent == null) container.addView(label)
+                    if(label.layoutParams !is FrameLayout.LayoutParams) label.layoutParams=FrameLayout.LayoutParams(-1,-2)
+                    label.isClickable=false; label.isFocusable=false
+                    container.isClickable=false; container.isFocusable=false
+                    val existing=container.layoutParams as? AbsListView.LayoutParams
+                    if(existing == null) container.layoutParams=AbsListView.LayoutParams(-1,-2)
+                    else { existing.width=-1; existing.height=-2 }
+                    return container
+                }
+            }
             setSelection(if(prefs.getString("channel","ios")=="windows") 1 else 0)
+            addOnLayoutChangeListener { view,left,_,right,_,_,_,_,_ ->
+                // Use the actual safe content width, including after font/inset
+                // changes, instead of the text's unbounded preferred width.
+                (view as Spinner).dropDownWidth=(right-left).coerceAtLeast(1)
+            }
         }
         advanced.addView(channel)
         label(advanced,"通常无需修改。留空自动识别；修改后点“保存并连接”。",13f)

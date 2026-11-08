@@ -1,0 +1,101 @@
+{
+  "testId": "r9-realme34-main-install",
+  "probe": "MAIN-INSTALL",
+  "status": "PASS",
+  "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+  "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+  "time": "2026-11-08T03:52:36.447522+00:00",
+  "expected": "本条脚本约定断言与恢复清理通过；完整范围见对应脚本及验收门槛",
+  "actual": {
+    "testId": "MAIN-INSTALL",
+    "time": "2026-11-08T03:52:36.447522+00:00",
+    "sourceId": "85E866229FF79660EE560B586B0A04AE2F10B16F287AD5315CB0D1147266A1F9",
+    "package": "org.esurfing.hunan",
+    "targetVersion": 34,
+    "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795",
+    "status": "PASS",
+    "automaticLoginCount": 0,
+    "automaticLogoutCount": 0,
+    "automaticRepairCount": 0,
+    "additionalNetworkProbeCount": 0,
+    "mainForceStopCount": 0,
+    "mainDataClearCount": 0,
+    "model": "RMX3820",
+    "api": 34,
+    "supportedAbis": [
+      "arm64-v8a",
+      "armeabi-v7a",
+      "armeabi"
+    ],
+    "pageSize": 4096,
+    "beforeInstall": {
+      "versionCode": 33,
+      "apkSha256": "7D73C1C63A746E5747E1A41D4100ED83F9036C0C4C0BC6A721E4513E6320AE2D"
+    },
+    "beforeState": {
+      "manualOff": "true",
+      "sessionServicePresent": false,
+      "events": {
+        "validRowsInCurrentFile": 365,
+        "invalidRowsInCurrentFile": 0,
+        "lastEvent": {
+          "wall": 1794109885108,
+          "desired": false,
+          "generation": 5,
+          "phase": "STOPPED",
+          "heartbeatAt": 0,
+          "heartbeatResult": "UNKNOWN",
+          "internetAt": 0,
+          "internetResult": "UNKNOWN",
+          "error": "NONE",
+          "retries": 0,
+          "nextRecoveryAt": 0,
+          "heartbeatDueAt": 0,
+          "heartbeatDelayMs": 0,
+          "durationMs": 0,
+          "internetEvidence": "NOT_CHECKED"
+        }
+      }
+    },
+    "idleForInstall": true,
+    "immediateBeforeInstallState": {
+      "manualOff": "true",
+      "sessionServicePresent": false,
+      "events": {
+        "validRowsInCurrentFile": 365,
+        "invalidRowsInCurrentFile": 0,
+        "lastEvent": {
+          "wall": 1794109885108,
+          "desired": false,
+          "generation": 5,
+          "phase": "STOPPED",
+          "heartbeatAt": 0,
+          "heartbeatResult": "UNKNOWN",
+          "internetAt": 0,
+          "internetResult": "UNKNOWN",
+          "error": "NONE",
+          "retries": 0,
+          "nextRecoveryAt": 0,
+          "heartbeatDueAt": 0,
+          "heartbeatDelayMs": 0,
+          "durationMs": 0,
+          "internetEvidence": "NOT_CHECKED"
+        }
+      }
+    },
+    "installOutcome": "SUCCESS",
+    "uploadCleanupStatus": "PASS",
+    "installed": {
+      "versionCode": 34,
+      "apkSha256": "DC738FCDC352E1A67B3E456E2D376E25260DEA18D9DB561600709D6DDF682795"
+    },
+    "finishedAt": "2026-11-08T03:52:39.284082+00:00"
+  },
+  "evidence": {
+    "archivePath": "evidence/r9-realme34-main-install/result.json",
+    "sha256": "D68586334E4C88C337AE76F8BDBC3B2652D86D77BF69B8AB38FC09DA72B8F029",
+    "role": "selected result",
+    "includedOriginal": false
+  },
+  "scope": "current-final-build"
+}
